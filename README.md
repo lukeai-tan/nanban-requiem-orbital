@@ -65,15 +65,6 @@ We aim to deliver a game that provides deep strategic elements and encourages cr
 - **GitHub**
 
 
-## Qualifications
-
-**Ziming**  
-- Completed: CS1101S, CS1231S, CS2030S, CS2040S  
-
-**Luke**  
-- Completed: CS1010, CG1111A, CG2111A, CS2040C  
-
-
 ## Software Engineering
 
 To achieve our goal of Apollo 11, we plan to implement the following software engineering practices:
