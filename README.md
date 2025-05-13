@@ -12,14 +12,28 @@ As both of us are avid fans of tower defence games, we wanted to try our hand at
 
 ## Aim
 
-We aim to deliver a game that provides deep strategic elements and encourages creative thinking, while offering a fresh challenge with each playthrough.
+The game will feature both melee and ranged towers, each with unique abilities and upgrade paths, as well as diverse enemies with different movement and attack patterns.  
 
+Interactions between towers and enemies will also help shape the flow of the combat. Such interactions include enemy blocking, tower synergies and terrain manipulation.
+
+Our key goals for this game consist of:
+- Creating a variety of tower and enemy types that interact in meaningful or unpredictable ways
+- Introducing environmental elements that players (or enemies) can interact with
+- Supporting multiple strategies or playstyles (no One Size Fits All approach), encouraging experimentation and stategising
+
+Ultimately, our aim is to create a game that challenges players not just to react, but to adapt, plan, and think creatively under pressure.
 
 ## User Stories
 
-1. As a player who wants a challenge in a tower defence game, I want to be able to face progressively harder waves of enemies while managing limited resources.  
-2. As a player who wants to experience a visually appealing game, I want to see enhanced graphics and animations for towers, enemies, and projectiles that make the gameplay more immersive.
+- As a player who wants a challenge in a tower defence game, I want to be able to face progressively harder waves of enemies while managing limited resources.
+- As a player who wants to experience a visually appealing game, I want to see enhanced graphics and animations for towers, enemies, and projectiles that make the gameplay more immersive.
 
+
+## Architecture
+
+
+## Workflow
+[insert game loop] 
 
 ## Features
 
@@ -38,6 +52,10 @@ We aim to deliver a game that provides deep strategic elements and encourages cr
 
 
 ## Timeline
+
+### Liftoff (12 May - 19 May)
+- Designing liftoff poster and presentation video
+- Learn how to effectively version control using Git/Github through workshops
 
 ### Milestone 1 - Technical proof of concept
 - Features 1, 2 base completed (Pathing)
@@ -58,21 +76,31 @@ We aim to deliver a game that provides deep strategic elements and encourages cr
 
 ## Tech Stack
 
-- **Godot**
-- **Python**
-- **C#**
-- **Piskel**
-- **GitHub**
+Our game will be developed using the following tools and technologies:
+
+- **Godot Engine**  
+  A lightweight, open-source game engine used to build our 2D gameplay systems and visuals.
+
+- **GDScript**  
+  Godot’s built-in scripting language, ideal for rapid prototyping and implementing core game logic.
+
+- **C#**  
+
+- **Piskel**  
+  A free online pixel art editor used to create and animate tower, enemy, and environment sprites.
+
+- **Git & GitHub**  
+  Used for version control, collaboration, issue tracking, and managing the development process.
 
 
 ## Software Engineering
 
 To achieve our goal of Apollo 11, we plan to implement the following software engineering practices:
 
-1. **Encapsulation**: We will use classes to represent different entities, such as enemies, towers or stage obstacles.  
-2. **Inheritance & Polymorphism**: We will create layers of abstraction using inheritance and use polymorphism to define unique methods of attack/movement for each entity.  
-3. **Composition**: We will use separate classes and interfaces to define base characteristics such as area of effect, upgrades etc and include them in entity classes.  
-4. **Git & GitHub**: We will use Git for version control to manage code and collaborate efficiently, and GitHub will serve as the central repository.  
-5. **Code Documentation**: We will write clear, consistent documentation for all code.
+- **Encapsulation**: We will use classes to represent different entities, such as enemies, towers or stage obstacles.
+- **Inheritance & Polymorphism**: We will create layers of abstraction using inheritance and use polymorphism to define unique methods of attack/movement for each entity.  
+- **Composition**: We will use separate classes and interfaces to define base characteristics such as area of effect, upgrades etc and include them in entity classes.  
+- **Git & GitHub**: We will use Git for version control to manage code and collaborate efficiently, and GitHub will serve as the central repository.  
+- **Code Documentation**: We will write clear, consistent documentation for all code.
 
 
