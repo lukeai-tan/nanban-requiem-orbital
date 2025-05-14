@@ -25,8 +25,10 @@ Ultimately, our aim is to create a game that challenges players not just to reac
 
 ## User Stories
 
-- As a player who wants a challenge in a tower defence game, I want to be able to face progressively harder waves of enemies while managing limited resources.
-- As a player who wants to experience a visually appealing game, I want to see enhanced graphics and animations for towers, enemies, and projectiles that make the gameplay more immersive.
+- As a strategic player, I can deploy both melee and ranged towers with unique abilities so that I can experiment with different combinations and adapt to enemy types.
+- As a player who values immersion, I can see detailed animations and visual effects for towers, enemies, and projectiles so that the gameplay feels more dynamic and engaging.
+- As a challenge-seeking player, I can face waves of increasingly powerful enemies while managing limited resources, encouraging me to think critically and weigh the priorities of different choices.
+- As a creative player, I can interact with the terrain/environment so that I can influence the battlefield and come up with unique strategies.
 
 
 ## Architecture
@@ -102,5 +104,7 @@ To achieve our goal of Apollo 11, we plan to implement the following software en
 - **Composition**: We will use separate classes and interfaces to define base characteristics such as area of effect, upgrades etc and include them in entity classes.  
 - **Git & GitHub**: We will use Git for version control to manage code and collaborate efficiently, and GitHub will serve as the central repository.  
 - **Code Documentation**: We will write clear, consistent documentation for all code.
+
+## Documentation
 
 
