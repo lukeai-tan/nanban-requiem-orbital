@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvp6ablr4c170"]
+
+[ext_resource type="TileSet" uid="uid://81h3usx4iuo6" path="res://Resources/Tilesets/Ground.tres" id="1_dsyx2"]
+
+[node name="Map1" type="Node2D"]
+
+[node name="TowerExclusion" type="TileMapLayer" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_dsyx2")
