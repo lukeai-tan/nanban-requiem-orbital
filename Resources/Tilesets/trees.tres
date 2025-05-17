@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ds084dqim88g3"]
+
+[ext_resource type="Texture2D" uid="uid://bkqird25es8ao" path="res://Assets/Environment/Props/treeGreen_large.png" id="1_2r0bc"]
+[ext_resource type="Texture2D" uid="uid://dbxsg11ade8o3" path="res://Assets/Environment/Props/treeBrown_large.png" id="2_2mcr4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrxpu"]
+texture = ExtResource("1_2r0bc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hibju"]
+texture = ExtResource("2_2mcr4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_lrxpu")
+sources/1 = SubResource("TileSetAtlasSource_hibju")
