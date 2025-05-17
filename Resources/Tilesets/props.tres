@@ -1,0 +1,33 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://ds084dqim88g3"]
+
+[ext_resource type="Texture2D" uid="uid://bkqird25es8ao" path="res://Assets/Environment/Props/treeGreen_large.png" id="1_2r0bc"]
+[ext_resource type="Texture2D" uid="uid://dbxsg11ade8o3" path="res://Assets/Environment/Props/treeBrown_large.png" id="2_2mcr4"]
+[ext_resource type="Texture2D" uid="uid://depv4nt5rr6su" path="res://Assets/Environment/Props/crateMetal.png" id="3_lrxpu"]
+[ext_resource type="Texture2D" uid="uid://dasy2m31cpuec" path="res://Assets/Environment/Props/crateWood.png" id="4_hibju"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrxpu"]
+texture = ExtResource("1_2r0bc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hibju"]
+texture = ExtResource("2_2mcr4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgd0y"]
+texture = ExtResource("3_lrxpu")
+texture_region_size = Vector2i(28, 28)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7xf8"]
+texture = ExtResource("4_hibju")
+texture_region_size = Vector2i(28, 28)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_lrxpu")
+sources/1 = SubResource("TileSetAtlasSource_hibju")
+sources/6 = SubResource("TileSetAtlasSource_xgd0y")
+sources/7 = SubResource("TileSetAtlasSource_v7xf8")
