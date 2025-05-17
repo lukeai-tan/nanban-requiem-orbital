@@ -106,5 +106,3 @@ To achieve our goal of Apollo 11, we plan to implement the following software en
 - **Code Documentation**: We will write clear, consistent documentation for all code.
 
 ## Documentation
-
-
