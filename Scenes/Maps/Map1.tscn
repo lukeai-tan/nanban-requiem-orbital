@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://cvp6ablr4c170"]
+[gd_scene load_steps=4 format=4 uid="uid://b1ptux668fjj2"]
 
 [ext_resource type="TileSet" uid="uid://dkohxdkag76rp" path="res://Resources/Tilesets/ground_grass.tres" id="1_66ww1"]
 [ext_resource type="TileSet" uid="uid://bgese4do3tjh4" path="res://Resources/Tilesets/path.tres" id="2_3atk3"]
