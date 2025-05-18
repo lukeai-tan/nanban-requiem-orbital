@@ -1,11 +1,11 @@
 extends Node
 
 func _ready():
-	get_node("MainMenu/Margin/VBoxContainer/NewGame").connect("pressed", Callable(self, "onNewGamePressed"))
-	# get_node("MainMenu/Margin/VBoxContainer/Trophies").connect("pressed", Callable(self, "onTrophiesPressed"))
-	get_node("MainMenu/Margin/VBoxContainer/Settings").connect("pressed", Callable(self, "onSettingsPressed"))
-	get_node("MainMenu/Margin/VBoxContainer/Credits").connect("pressed", Callable(self, "onCreditsPressed"))
-	get_node("MainMenu/Margin/VBoxContainer/Quit").connect("pressed", Callable(self, "onQuitPressed"))
+	get_node("MainMenu/Margin/VB_buttons/NewGame").connect("pressed", Callable(self, "onNewGamePressed"))
+	# get_node("MainMenu/Margin/VB_buttons/Trophies").connect("pressed", Callable(self, "onTrophiesPressed"))
+	get_node("MainMenu/Margin/VB_buttons/Settings").connect("pressed", Callable(self, "onSettingsPressed"))
+	get_node("MainMenu/Margin/VB_buttons/Credits").connect("pressed", Callable(self, "onCreditsPressed"))
+	get_node("MainMenu/Margin/VB_buttons/Quit").connect("pressed", Callable(self, "onQuitPressed"))
 
 func onNewGamePressed():
 	get_node("MainMenu").queue_free()

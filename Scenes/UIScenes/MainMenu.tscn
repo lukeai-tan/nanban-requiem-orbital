@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cia7hkwwboa"]
+[gd_scene load_steps=7 format=3 uid="uid://cia7hkwwboa"]
 
-[ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_75job"]
+[ext_resource type="Texture2D" uid="uid://cods5ea5wgjir" path="res://Assets/UI/Art/mm_ChickenNanbanDon.jpg" id="1_tg48g"]
+[ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="2_jrpvl"]
 [ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="2_qc1fl"]
 [ext_resource type="Texture2D" uid="uid://q3rsu63tn56h" path="res://Assets/UI/Buttons/button_rectangle_gradient.png" id="3_qc1fl"]
 [ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="4_2e4mf"]
@@ -21,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_75job")
+texture = ExtResource("1_tg48g")
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -35,14 +36,33 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+[node name="VB_title" type="VBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="Margin/VB_title"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_jrpvl")
+theme_override_font_sizes/font_size = 130
+text = "Nanban
+Requiem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VB_buttons" type="VBoxContainer" parent="Margin"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 35
 alignment = 1
 
-[node name="NewGame" type="TextureButton" parent="Margin/VBoxContainer"]
+[node name="NewGame" type="TextureButton" parent="Margin/VB_buttons"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -51,7 +71,7 @@ texture_pressed = ExtResource("3_qc1fl")
 texture_hover = ExtResource("2_qc1fl")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Margin/VBoxContainer/NewGame"]
+[node name="Label" type="Label" parent="Margin/VB_buttons/NewGame"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +85,7 @@ text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="TextureButton" parent="Margin/VBoxContainer"]
+[node name="Settings" type="TextureButton" parent="Margin/VB_buttons"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -74,7 +94,7 @@ texture_pressed = ExtResource("3_qc1fl")
 texture_hover = ExtResource("2_qc1fl")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Margin/VBoxContainer/Settings"]
+[node name="Label" type="Label" parent="Margin/VB_buttons/Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +108,7 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credits" type="TextureButton" parent="Margin/VBoxContainer"]
+[node name="Credits" type="TextureButton" parent="Margin/VB_buttons"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -97,7 +117,7 @@ texture_pressed = ExtResource("3_qc1fl")
 texture_hover = ExtResource("2_qc1fl")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Margin/VBoxContainer/Credits"]
+[node name="Label" type="Label" parent="Margin/VB_buttons/Credits"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +131,7 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="Margin/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Margin/VB_buttons"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -120,7 +140,7 @@ texture_pressed = ExtResource("3_qc1fl")
 texture_hover = ExtResource("2_qc1fl")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Margin/VBoxContainer/Quit"]
+[node name="Label" type="Label" parent="Margin/VB_buttons/Quit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
