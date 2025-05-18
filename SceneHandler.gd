@@ -9,8 +9,8 @@ func _ready():
 
 func onNewGamePressed():
 	get_node("MainMenu").queue_free()
-	# var gameScene = load("res://Scenes/MainScenes/GameScene.tscn").instance()
-	# add_child(gameScene)
+	var gameScene = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
+	add_child(gameScene)
 	
 func onTrophiesPressed():
 	pass
