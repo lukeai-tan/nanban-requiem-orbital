@@ -65,29 +65,6 @@ text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Trophies" type="TextureButton" parent="Margin/VBoxContainer"]
-custom_minimum_size = Vector2(350, 75)
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("4_2e4mf")
-texture_pressed = ExtResource("3_qc1fl")
-texture_hover = ExtResource("2_qc1fl")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Margin/VBoxContainer/Trophies"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_tg48g")
-theme_override_font_sizes/font_size = 40
-text = "Trophies"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Settings" type="TextureButton" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
