@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cia7hkwwboa"]
+[gd_scene load_steps=6 format=3 uid="uid://cia7hkwwboa"]
 
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_75job"]
+[ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="2_qc1fl"]
+[ext_resource type="Texture2D" uid="uid://q3rsu63tn56h" path="res://Assets/UI/Buttons/button_rectangle_gradient.png" id="3_qc1fl"]
+[ext_resource type="Texture2D" uid="uid://cgp6wl2uo3mq5" path="res://Assets/UI/Buttons/button_rectangle_flat.png" id="4_jrpvl"]
+[ext_resource type="FontFile" uid="uid://dvgh261lgwa5g" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="5_tg48g"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -35,3 +39,26 @@ theme_override_constants/margin_bottom = 50
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+
+[node name="TextureButton" type="TextureButton" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_qc1fl")
+texture_pressed = ExtResource("3_qc1fl")
+texture_hover = ExtResource("4_jrpvl")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_tg48g")
+theme_override_font_sizes/font_size = 40
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
