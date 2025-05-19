@@ -39,8 +39,7 @@ theme_override_constants/margin_bottom = 50
 [node name="VB_title" type="VBoxContainer" parent="Margin"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-size_flags_horizontal = 0
-alignment = 1
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Margin/VB_title"]
 layout_mode = 2
@@ -49,7 +48,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("2_jrpvl")
-theme_override_font_sizes/font_size = 130
+theme_override_font_sizes/font_size = 120
 text = "Nanban
 Requiem"
 horizontal_alignment = 1
@@ -58,9 +57,9 @@ vertical_alignment = 1
 [node name="VB_buttons" type="VBoxContainer" parent="Margin"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-size_flags_horizontal = 8
-theme_override_constants/separation = 35
-alignment = 1
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 2
 
 [node name="NewGame" type="TextureButton" parent="Margin/VB_buttons"]
 custom_minimum_size = Vector2(350, 75)
