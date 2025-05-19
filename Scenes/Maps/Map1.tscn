@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://b1ptux668fjj2"]
+[gd_scene load_steps=7 format=4 uid="uid://b1ptux668fjj2"]
 
 [ext_resource type="TileSet" uid="uid://cf0oeugm6g4ml" path="res://Resources/Tilesets/ground_grass.tres" id="1_66ww1"]
 [ext_resource type="TileSet" uid="uid://blubtqs7tphi1" path="res://Resources/Tilesets/path.tres" id="2_3atk3"]
 [ext_resource type="TileSet" uid="uid://s88v4in7hdi7" path="res://Resources/Tilesets/props.tres" id="3_bp0wf"]
 [ext_resource type="PackedScene" uid="uid://cljsgi0uutk64" path="res://Scenes/Towers/RangedTower1.tscn" id="4_bp0wf"]
+[ext_resource type="Script" uid="uid://bdu6sh01uo7iu" path="res://Scenes/Towers/TowerLogic.gd" id="4_kkfd8"]
 [ext_resource type="PackedScene" uid="uid://vjype0tn26a4" path="res://Scenes/Towers/RangedTower2.tscn" id="5_kkfd8"]
 
 [node name="Map1" type="Node2D"]
@@ -21,6 +22,7 @@ tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAAGAAEAAAAAAAAAAAAKAAIAAAAAAAA
 tile_set = ExtResource("3_bp0wf")
 
 [node name="Towers" type="Node2D" parent="."]
+script = ExtResource("4_kkfd8")
 
 [node name="RangedTower1" parent="Towers" instance=ExtResource("4_bp0wf")]
 position = Vector2(300, 309)
