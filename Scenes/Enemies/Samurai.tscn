@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2d410drs2l0u"]
+[gd_scene load_steps=5 format=3 uid="uid://d2d410drs2l0u"]
 
 [ext_resource type="Texture2D" uid="uid://c07ck0n3xwxf1" path="res://Assets/Enemies/samurai_running.png" id="1_5yni6"]
 
@@ -18,27 +18,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_x24qx"]
-resource_name = "running_right"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w887p"]
 _data = {
-&"RESET": SubResource("Animation_n58dq"),
-&"running_right": SubResource("Animation_x24qx")
+&"running_right": SubResource("Animation_n58dq")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63h8"]
