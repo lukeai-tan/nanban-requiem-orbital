@@ -6,8 +6,8 @@ var last_position: Vector2
 func _ready():
 	last_position = global_position
 	var enemy = get_node("Samurai")
-	if enemy and enemy.has_node("SamuraiAnimation"):
-		enemy.get_node("SamuraiAnimation").play("RESET")
+	if enemy and enemy.has_node("SamuraiSprite/SamuraiAnimation"):
+		enemy.get_node("SamuraiSprite/SamuraiAnimation").play("RESET")
 
 func _process(delta):
 	progress += speed * delta
