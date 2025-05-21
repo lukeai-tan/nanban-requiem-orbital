@@ -46,7 +46,7 @@ func update_tower_preview():
 	var current_tile = map_node.get_node("TowerExclusions").local_to_map(mouse_position)
 	var title_position = map_node.get_node("TowerExclusions").map_to_local(current_tile)
 	
-	if map_node.get_node("TowerExclusions").get_cell_source_id(current_tile):
+	if map_node.get_node("TowerExclusions").get_cell_source_id(current_tile) == -1:
 		get_node("UI").update_tower_preview(title_position, "fff")
 		build_valid = true 
 		build_location = title_position
