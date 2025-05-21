@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var speed: float = 250.0
+@export var speed: float = 500.0
 var last_position: Vector2
 
 func _ready():

@@ -262,7 +262,7 @@ size = Vector2(33, 34)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_n58dq")
 animation = &"attack"
-frame_progress = 0.343766
+frame_progress = 0.403475
 speed_scale = 2.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
