@@ -30,6 +30,10 @@ func _unhandled_input(event):
 	pass
 	
 func initiate_build_mode(tower_type):
+	# Base case where build mode is initiated during build mode
+	if build_mode:
+		return
+		
 	build_type = tower_type
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
