@@ -1,10 +1,10 @@
 extends Node2D
-'''
+
 var map_node: Node2D
 var build_mode: bool = false
 var build_valid: bool = false
 var build_location: Vector2
-var build_type: String: Node2D
+var build_type: String
 
 # Called when the node enters the scene tree for the first time.
 # Sets up the scene
@@ -12,22 +12,25 @@ func _ready():
 	# Can turn this into a variable that changes based on selected map
 	# For now we just set it to the only map we have
 	map_node = get_node("Map1")
-	for i in get_tree().get_nodes_in_group("tower_buttons"):
+	for i in get_tree().get_nodes_in_group("tower_options"):
 		# connects signal from pressing respective buttons to call initiate build mode
 		# inputs the tower name associated with the button as the tower_type parameter
-		i.pressed.connect(inititate_build_mode.bind(i.name))
+		i.pressed.connect(initiate_build_mode.bind(i.name))
 
 # constantly update location of tower while in build mode
 # location of tower is based on mouse location
 # eg. when dragging it around the map
-func _process(delta: float):
+func _process(_delta: float):
 	if build_mode:
 		update_tower_preview()
 	
 # listen for mouse clicks
 func _unhandled_input(event):
-	# TODO
-	pass
+	if event.is_action_released("ui_cancel") and build_mode == true:
+		cancel_build_mode()
+	if event.is_action_released("ui_accept") and build_mode == true:
+		verify_and_build()
+		cancel_build_mode()
 	
 func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
@@ -39,8 +42,18 @@ func initiate_build_mode(tower_type):
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
 func update_tower_preview():
-	# TODO
-	pass
+	var mouse_position = get_global_mouse_position()
+	var current_tile = map_node.get_node("TowerExclusions").local_to_map(mouse_position)
+	var title_position = map_node.get_node("TowerExclusions").map_to_local(current_tile)
+	
+	if map_node.get_node("TowerExclusions").get_cell_source_id(current_tile):
+		get_node("UI").update_tower_preview(title_position, "fff")
+		build_valid = true 
+		build_location = title_position
+	else:
+		get_node("UI").update_tower_preview(title_position, "000")
+		build_valid = false
+
 
 func cancel_build_mode():
 	build_mode = false
@@ -50,6 +63,7 @@ func cancel_build_mode():
 # IF build location is valid, instantiate selected tower scene
 # position it at stored tile
 func verify_and_build():
-	# TODO
-	pass
-'''
+	if build_valid:
+		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
+		new_tower.position = build_location
+		map_node.get_node("Towers").add_child(new_tower, true)

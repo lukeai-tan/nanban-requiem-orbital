@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=9 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
+[ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
 [ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="3_tnagp"]
 [ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="4_o10dm"]
 [ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="5_no243"]
@@ -14,6 +15,7 @@ script = ExtResource("1_68uyl")
 [node name="Map1" parent="." instance=ExtResource("1_ianr5")]
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_jem3k")
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
@@ -22,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
 layout_direction = 2
@@ -33,8 +36,9 @@ anchor_bottom = 1.0
 offset_top = -100.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="RangedTower1" type="TextureButton" parent="UI/HUD/BuildBar"]
+[node name="RangedTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -53,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_o10dm")
 
-[node name="RangedTower2" type="TextureButton" parent="UI/HUD/BuildBar"]
+[node name="RangedTower2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
