@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var speed: float = 500.0
+@export var speed: float = 250.0
 var last_position: Vector2
 
 func _ready():
@@ -9,6 +9,6 @@ func _ready():
 	if enemy_sprite:
 		enemy_sprite.play("running")
 
-func _process(delta):
+func _process(delta: float) -> void:
 	progress += speed * delta
 	last_position = global_position

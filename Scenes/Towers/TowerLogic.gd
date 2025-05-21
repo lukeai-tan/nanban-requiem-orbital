@@ -1,6 +1,6 @@
 extends Node2D
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	turn()
 
 # rotation of turrets on Ranged towers
