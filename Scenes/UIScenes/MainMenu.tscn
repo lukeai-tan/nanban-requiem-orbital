@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cia7hkwwboa"]
+[gd_scene load_steps=8 format=3 uid="uid://cia7hkwwboa"]
 
 [ext_resource type="Texture2D" uid="uid://cods5ea5wgjir" path="res://Assets/UI/Art/mm_ChickenNanbanDon.jpg" id="1_tg48g"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="2_jrpvl"]
 [ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="2_qc1fl"]
+[ext_resource type="Script" uid="uid://hdedpe6j2kof" path="res://Scenes/UIScenes/VB_buttons.gd" id="3_2e4mf"]
 [ext_resource type="Texture2D" uid="uid://q3rsu63tn56h" path="res://Assets/UI/Buttons/button_rectangle_gradient.png" id="3_qc1fl"]
 [ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="4_2e4mf"]
 [ext_resource type="FontFile" uid="uid://dvgh261lgwa5g" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="5_tg48g"]
@@ -60,8 +61,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 alignment = 2
+script = ExtResource("3_2e4mf")
 
-[node name="NewGame" type="TextureButton" parent="Margin/VB_buttons"]
+[node name="NewGame" type="TextureButton" parent="Margin/VB_buttons" groups=["mainmenu_buttons"]]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -84,7 +86,7 @@ text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="TextureButton" parent="Margin/VB_buttons"]
+[node name="Settings" type="TextureButton" parent="Margin/VB_buttons" groups=["mainmenu_buttons"]]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -107,7 +109,7 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credits" type="TextureButton" parent="Margin/VB_buttons"]
+[node name="Credits" type="TextureButton" parent="Margin/VB_buttons" groups=["mainmenu_buttons"]]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -130,7 +132,7 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="Margin/VB_buttons"]
+[node name="Quit" type="TextureButton" parent="Margin/VB_buttons" groups=["mainmenu_buttons"]]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
