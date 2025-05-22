@@ -6,6 +6,7 @@ var build_valid: bool = false
 var build_location: Vector2
 var build_type: String
 
+
 # Called when the node enters the scene tree for the first time.
 # Sets up the scene
 func _ready():
@@ -17,13 +18,15 @@ func _ready():
 		# inputs the tower name associated with the button as the tower_type parameter
 		i.pressed.connect(initiate_build_mode.bind(i.name))
 
+
 # constantly update location of tower while in build mode
 # location of tower is based on mouse location
 # eg. when dragging it around the map
 func _process(_delta: float):
 	if build_mode:
 		update_tower_preview()
-	
+
+
 # listen for mouse clicks
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -31,7 +34,8 @@ func _unhandled_input(event):
 	if event.is_action_released("ui_accept") and build_mode == true:
 		verify_and_build()
 		cancel_build_mode()
-	
+
+
 func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
 	if build_mode:
@@ -40,6 +44,7 @@ func initiate_build_mode(tower_type):
 	build_type = tower_type
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
+
 
 '''
 func update_tower_preview():
@@ -55,6 +60,7 @@ func update_tower_preview():
 		get_node("UI").update_tower_preview(title_position, "000")
 		build_valid = false
 '''
+
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
@@ -84,6 +90,7 @@ func cancel_build_mode():
 	build_mode = false
 	build_valid = false
 	get_node("UI/TowerPreview").queue_free()
+
 
 # IF build location is valid, instantiate selected tower scene
 # position it at stored tile
