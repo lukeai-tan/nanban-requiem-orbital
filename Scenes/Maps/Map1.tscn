@@ -50,4 +50,4 @@ position = Vector2(-2.11979, -45.9946)
 scale = Vector2(1.5, 1.5)
 
 [node name="Projectile" parent="." instance=ExtResource("6_g86u4")]
-position = Vector2(224, 408)
+position = Vector2(24, 472)
