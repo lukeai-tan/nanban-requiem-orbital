@@ -41,6 +41,7 @@ func initiate_build_mode(tower_type):
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
+'''
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	var current_tile = map_node.get_node("TowerExclusions").local_to_map(mouse_position)
@@ -52,6 +53,26 @@ func update_tower_preview():
 		build_location = title_position
 	else:
 		get_node("UI").update_tower_preview(title_position, "000")
+		build_valid = false
+'''
+
+func update_tower_preview():
+	var mouse_position = get_global_mouse_position()
+	var tower_exclusions = map_node.get_node("TowerExclusions")
+	var path_layer = map_node.get_node("Path")
+	
+	var current_tile = tower_exclusions.local_to_map(mouse_position)
+	var tile_position = tower_exclusions.map_to_local(current_tile)
+	var blocked_by_exclusion : bool = tower_exclusions.get_cell_source_id(current_tile) != -1
+	var tile_in_path = path_layer.local_to_map(mouse_position)
+	var blocked_by_path = path_layer.get_cell_source_id(tile_in_path) != -1
+
+	if not blocked_by_exclusion and not blocked_by_path:
+		get_node("UI").update_tower_preview(tile_position, "fff")
+		build_valid = true 
+		build_location = tile_position
+	else:
+		get_node("UI").update_tower_preview(tile_position, "000")
 		build_valid = false
 
 

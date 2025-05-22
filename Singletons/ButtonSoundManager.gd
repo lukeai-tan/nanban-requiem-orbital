@@ -5,7 +5,6 @@ extends Node
 
 var player := AudioStreamPlayer.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_child(player)
 	hover_sound = load("res://Assets/UI/Sounds/click-b.ogg")
