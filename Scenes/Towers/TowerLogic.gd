@@ -7,6 +7,7 @@ var projectile_speed : float
 var attack_speed : float
 var target : Enemy
 
+
 func _physics_process(_delta: float) -> void:
 	turn()
 
@@ -17,10 +18,9 @@ func turn():
 
 func shoot() :
 	var projectile = projectile_scene.instantiate()
-	var tower_position = global_position
-	projectile.global_position = tower_position
+	projectile.global_position = global_position
 	projectile.damage = attack
 	projectile.speed = projectile_speed
 	projectile.target = target
-	add_child(projectile)
+	get_tree().current_scene.get_node("Projectile").add_child(projectile)
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cljsgi0uutk64"]
+[gd_scene load_steps=5 format=3 uid="uid://cljsgi0uutk64"]
 
 [ext_resource type="Script" uid="uid://bj2e1vpry5pe5" path="res://Scenes/Towers/RangedTower1.gd" id="1_ex6la"]
 [ext_resource type="Texture2D" uid="uid://ejn8qva8ata5" path="res://Assets/Towers/towerDefense_tile181.png" id="1_ohjd4"]
 [ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/towerDefense_tile249.png" id="2_ex6la"]
+[ext_resource type="Script" uid="uid://b3qktcqm0dwp6" path="res://Scenes/Towers/Timer.gd" id="4_qxkfp"]
 
 [node name="RangedTower1" type="Node2D"]
 script = ExtResource("1_ex6la")
@@ -16,3 +17,7 @@ offset = Vector2(12, 0)
 
 [node name="Muzzle" type="Marker2D" parent="Turret"]
 position = Vector2(43, 0)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("4_qxkfp")
