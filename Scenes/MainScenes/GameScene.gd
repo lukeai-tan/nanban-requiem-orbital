@@ -3,6 +3,7 @@ extends Node2D
 var map_node: Node2D
 var build_mode: bool = false
 var build_valid: bool = false
+var build_tile
 var build_location: Vector2
 var build_type: String
 
@@ -82,6 +83,7 @@ func update_tower_preview():
 		get_node("UI").update_tower_preview(tile_position, "fff")
 		build_valid = true 
 		build_location = tile_position
+		build_tile = current_tile
 	else:
 		get_node("UI").update_tower_preview(tile_position, "f00")
 		build_valid = false
@@ -100,3 +102,4 @@ func verify_and_build():
 		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		map_node.get_node("Towers").add_child(new_tower, true)
+		map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
