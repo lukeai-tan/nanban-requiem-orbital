@@ -39,7 +39,7 @@ func _unhandled_input(event):
 func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
 	if build_mode:
-		return
+		cancel_build_mode()
 		
 	build_type = tower_type
 	build_mode = true
@@ -69,11 +69,12 @@ func update_tower_preview():
 	var tower_exclusions = map_node.get_node("TowerExclusions") # props
 	var path_layer = map_node.get_node("Path") # path
 	
-	# current tilesize as well as storing tower exclusions tile
+	# check if current tile is from tower exclusion tilemaplayer
 	var current_tile = tower_exclusions.local_to_map(mouse_position)
 	var tile_position = tower_exclusions.map_to_local(current_tile)
-	
 	var invalid_by_exclusion : bool = tower_exclusions.get_cell_source_id(current_tile) != -1
+	
+	# check if current tile is from path tilemaplayer
 	var path_tile = path_layer.local_to_map(mouse_position)
 	var invalid_by_path : bool = path_layer.get_cell_source_id(path_tile) != -1
 
@@ -82,14 +83,14 @@ func update_tower_preview():
 		build_valid = true 
 		build_location = tile_position
 	else:
-		get_node("UI").update_tower_preview(tile_position, "000")
+		get_node("UI").update_tower_preview(tile_position, "f00")
 		build_valid = false
 
 
 func cancel_build_mode():
 	build_mode = false
 	build_valid = false
-	get_node("UI/TowerPreview").queue_free()
+	get_node("UI/TowerPreview").free()
 
 
 # IF build location is valid, instantiate selected tower scene
