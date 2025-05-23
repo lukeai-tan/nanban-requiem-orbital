@@ -7,6 +7,8 @@
 size = Vector2(33, 10)
 
 [node name="Projectile" type="CharacterBody2D"]
+collision_mask = 8
+safe_margin = 0.001
 script = ExtResource("1_k1cl8")
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]

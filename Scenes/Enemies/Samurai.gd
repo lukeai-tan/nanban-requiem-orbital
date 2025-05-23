@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Samurai
 
-var hp : float = 100
+var hp : float = 3000
 
 signal despawn()
 

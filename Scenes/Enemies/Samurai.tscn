@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://d2d410drs2l0u"]
+[gd_scene load_steps=40 format=3 uid="uid://d2d410drs2l0u"]
 
 [ext_resource type="Texture2D" uid="uid://c07ck0n3xwxf1" path="res://Assets/Enemies/samurai_running.png" id="1_5yni6"]
+[ext_resource type="Script" uid="uid://1mi8i2anj6tn" path="res://Scenes/Enemies/Samurai.gd" id="1_w887p"]
 [ext_resource type="Texture2D" uid="uid://c7vrgaq1x7gfj" path="res://Assets/Enemies/samurai_attack.png" id="2_x24qx"]
 [ext_resource type="Texture2D" uid="uid://64pna1v5rsmq" path="res://Assets/Enemies/samurai_idle.png" id="3_n58dq"]
 
@@ -253,10 +254,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g63h8"]
-size = Vector2(33, 34)
+[sub_resource type="CircleShape2D" id="CircleShape2D_w887p"]
+radius = 6.08276
 
 [node name="Samurai" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_w887p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -266,5 +269,4 @@ frame_progress = 0.964484
 speed_scale = 2.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(6.5, 18)
-shape = SubResource("RectangleShape2D_g63h8")
+shape = SubResource("CircleShape2D_w887p")

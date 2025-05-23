@@ -5,9 +5,9 @@ const DetectionRange = preload("res://Scenes/DetectionRange/DetectionRange.gd")
 const DetectionRangeScene = preload("res://Scenes/DetectionRange/DetectionRange.tscn")
 
 var projectile_scene : PackedScene = load("res://Scenes/Projectile/Projectile.tscn")
-var attack : float = 10
+var attack : float = 1
 var projectile_speed : float = 300
-var attack_speed : float = 1
+var attack_speed : float = 10
 var target : Enemy = null
 var attack_range : DetectionRange
 var time_since_last_shot := 0.0
@@ -17,6 +17,7 @@ func _ready() -> void:
 	add_child(attack_range)
 
 func _process(delta: float) -> void:
+	time_since_last_shot += delta
 	if (target == null or not attack_range.still_in_range()) :
 		target = attack_range.find_nearest_enemy()
 	elif time_since_last_shot >= (1.0 / attack_speed):

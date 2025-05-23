@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://b1ptux668fjj2"]
+[gd_scene load_steps=9 format=4 uid="uid://b1ptux668fjj2"]
 
 [ext_resource type="TileSet" uid="uid://cf0oeugm6g4ml" path="res://Resources/Tilesets/ground_grass.tres" id="1_66ww1"]
 [ext_resource type="TileSet" uid="uid://blubtqs7tphi1" path="res://Resources/Tilesets/path.tres" id="2_3atk3"]
 [ext_resource type="TileSet" uid="uid://s88v4in7hdi7" path="res://Resources/Tilesets/props.tres" id="3_bp0wf"]
 [ext_resource type="PackedScene" uid="uid://cljsgi0uutk64" path="res://Scenes/Towers/RangedTower1.tscn" id="4_bp0wf"]
 [ext_resource type="PackedScene" uid="uid://vjype0tn26a4" path="res://Scenes/Towers/RangedTower2.tscn" id="5_kkfd8"]
-[ext_resource type="PackedScene" uid="uid://bvdoqwfqvwxaj" path="res://Scenes/Projectile/Projectile.tscn" id="6_g86u4"]
 [ext_resource type="Script" uid="uid://ul8htjrpjroh" path="res://Scenes/Maps/PathFollowing.gd" id="6_ufnsk"]
 [ext_resource type="PackedScene" uid="uid://d2d410drs2l0u" path="res://Scenes/Enemies/Samurai.tscn" id="7_g86u4"]
 
@@ -32,10 +31,187 @@ tile_set = ExtResource("3_bp0wf")
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="RangedTower1" parent="Towers" instance=ExtResource("4_bp0wf")]
-position = Vector2(288, 224)
+position = Vector2(508, 56)
 
 [node name="RangedTower2" parent="Towers" instance=ExtResource("5_kkfd8")]
-position = Vector2(288, 416)
+position = Vector2(505, 408)
+
+[node name="RangedTower31" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(630, 496)
+
+[node name="RangedTower32" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(627, 424)
+
+[node name="RangedTower33" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(629, 305)
+
+[node name="RangedTower34" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(136, 233)
+
+[node name="RangedTower35" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(206, 237)
+
+[node name="RangedTower36" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(574, 654)
+
+[node name="RangedTower37" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(591, 241)
+
+[node name="RangedTower38" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(514, 228)
+
+[node name="RangedTower39" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(473, 294)
+
+[node name="RangedTower40" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(409, 486)
+
+[node name="RangedTower41" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(219, 354)
+
+[node name="RangedTower42" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(82, 344)
+
+[node name="RangedTower43" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(136, 295)
+
+[node name="RangedTower44" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(426, 221)
+
+[node name="RangedTower45" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(354, 227)
+
+[node name="RangedTower46" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(567, 596)
+
+[node name="RangedTower47" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(563, 526)
+
+[node name="RangedTower48" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(107, 545)
+
+[node name="RangedTower49" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(183, 544)
+
+[node name="RangedTower50" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(354, 292)
+
+[node name="RangedTower51" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(349, 355)
+
+[node name="RangedTower52" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(259, 550)
+
+[node name="RangedTower53" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(340, 412)
+
+[node name="RangedTower54" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(338, 480)
+
+[node name="RangedTower55" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(333, 545)
+
+[node name="RangedTower56" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(108, 674)
+
+[node name="RangedTower57" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(505, 675)
+
+[node name="RangedTower58" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(434, 676)
+
+[node name="RangedTower59" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(152, 421)
+
+[node name="RangedTower60" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(213, 295)
+
+[node name="RangedTower61" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(367, 676)
+
+[node name="RangedTower4" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(182, 615)
+
+[node name="RangedTower5" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(498, 604)
+
+[node name="RangedTower6" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(343, 619)
+
+[node name="RangedTower7" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(509, 347)
+
+[node name="RangedTower28" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(278, 684)
+
+[node name="RangedTower29" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(184, 682)
+
+[node name="RangedTower30" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(101, 609)
+
+[node name="RangedTower21" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(73, 402)
+
+[node name="RangedTower22" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(149, 353)
+
+[node name="RangedTower23" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(216, 402)
+
+[node name="RangedTower24" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(91, 476)
+
+[node name="RangedTower25" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(177, 472)
+
+[node name="RangedTower26" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(569, 459)
+
+[node name="RangedTower27" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(596, 371)
+
+[node name="RangedTower8" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(275, 258)
+
+[node name="RangedTower9" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(278, 337)
+
+[node name="RangedTower10" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(259, 468)
+
+[node name="RangedTower11" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(413, 538)
+
+[node name="RangedTower12" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(417, 435)
+
+[node name="RangedTower13" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(413, 294)
+
+[node name="RangedTower14" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(277, 195)
+
+[node name="RangedTower15" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(270, 405)
+
+[node name="RangedTower16" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(258, 613)
+
+[node name="RangedTower17" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(411, 613)
+
+[node name="RangedTower18" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(488, 532)
+
+[node name="RangedTower19" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(484, 465)
+
+[node name="RangedTower20" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(418, 367)
+
+[node name="RangedTower3" parent="Towers" instance=ExtResource("5_kkfd8")]
+position = Vector2(548, 295)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bp0wf")
@@ -48,6 +224,3 @@ script = ExtResource("6_ufnsk")
 [node name="Samurai" parent="Path2D/PathFollow2D" instance=ExtResource("7_g86u4")]
 position = Vector2(-2.11979, -45.9946)
 scale = Vector2(1.5, 1.5)
-
-[node name="Projectile" parent="." instance=ExtResource("6_g86u4")]
-position = Vector2(24, 472)
