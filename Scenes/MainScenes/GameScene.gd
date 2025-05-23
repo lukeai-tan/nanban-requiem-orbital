@@ -3,6 +3,7 @@ extends Node2D
 var map_node: Node2D
 var build_mode: bool = false
 var build_valid: bool = false
+var build_tile
 var build_location: Vector2
 var build_type: String
 
@@ -46,22 +47,6 @@ func initiate_build_mode(tower_type):
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
 
-'''
-func update_tower_preview():
-	var mouse_position = get_global_mouse_position()
-	var current_tile = map_node.get_node("TowerExclusions").local_to_map(mouse_position)
-	var title_position = map_node.get_node("TowerExclusions").map_to_local(current_tile)
-	
-	if map_node.get_node("TowerExclusions").get_cell_source_id(current_tile) == -1:
-		get_node("UI").update_tower_preview(title_position, "fff")
-		build_valid = true 
-		build_location = title_position
-	else:
-		get_node("UI").update_tower_preview(title_position, "000")
-		build_valid = false
-'''
-
-
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	
@@ -82,6 +67,7 @@ func update_tower_preview():
 		get_node("UI").update_tower_preview(tile_position, "fff")
 		build_valid = true 
 		build_location = tile_position
+		build_tile = current_tile
 	else:
 		get_node("UI").update_tower_preview(tile_position, "f00")
 		build_valid = false
@@ -100,3 +86,5 @@ func verify_and_build():
 		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		map_node.get_node("Towers").add_child(new_tower, true)
+		# create a dummy tile to act as the tower exclusion in the tower position
+		map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
