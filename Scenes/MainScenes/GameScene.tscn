@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=12 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="5_no243"]
 [ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/towerDefense_tile249.png" id="6_o10dm"]
 [ext_resource type="Texture2D" uid="uid://cntcgyt8s5788" path="res://Assets/Towers/towerDefense_tile250.png" id="7_no243"]
+[ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="9_80vwl"]
+[ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="9_br1xs"]
+[ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="10_80vwl"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_68uyl")
@@ -75,3 +78,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_no243")
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(150, 75)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
+layout_mode = 2
+texture_normal = ExtResource("9_80vwl")
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+layout_direction = 3
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("9_br1xs")
+texture_pressed = ExtResource("10_80vwl")
