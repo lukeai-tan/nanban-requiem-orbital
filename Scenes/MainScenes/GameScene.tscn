@@ -90,12 +90,17 @@ grow_horizontal = 0
 alignment = 2
 
 [node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
 layout_mode = 2
 texture_normal = ExtResource("9_80vwl")
 
 [node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
 layout_direction = 3
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("9_br1xs")
 texture_pressed = ExtResource("10_80vwl")
+
+[connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
