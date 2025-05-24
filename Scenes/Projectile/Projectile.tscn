@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba7uou4c0vx4o"]
+[gd_scene load_steps=4 format=3 uid="uid://bvdoqwfqvwxaj"]
 
 [ext_resource type="Script" uid="uid://ch03fkhqgxu5b" path="res://Scenes/Projectile/Projectile.gd" id="1_k1cl8"]
 [ext_resource type="Texture2D" uid="uid://o2wkixblyrol" path="res://Assets/Towers/towerDefense_tile251.png" id="2_y0kec"]

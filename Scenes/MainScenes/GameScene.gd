@@ -89,3 +89,4 @@ func verify_and_build():
 		map_node.get_node("Towers").add_child(new_tower, true)
 		# create a dummy tile to act as the tower exclusion in the tower position
 		map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
+		

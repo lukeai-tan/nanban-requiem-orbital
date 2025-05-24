@@ -15,6 +15,8 @@ var target : Enemy = null
 var attack_range : TowerRange
 var time_since_last_shot := 0.0
 var built : bool = false
+var build_tile
+var exclusion
 
 func _ready() -> void:
 	if not built:
@@ -47,9 +49,15 @@ func shoot() :
 	
 signal despawn()
 
+func get_tower_exclusions() -> TileMap:
+	# Go up twice: TowerInstance -> Towers -> Map, then get TowerExclusions
+	return get_parent().get_parent().get_node("TowerExclusions")
+
+
 func get_hit(damage : float) :
 	if damage >= hp :
 		despawn.emit()
 		queue_free()
+
 	else :
 		hp = hp - damage

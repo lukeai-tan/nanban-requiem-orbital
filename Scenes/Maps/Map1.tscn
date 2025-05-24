@@ -38,10 +38,12 @@ rotation = 0.00260416
 script = ExtResource("6_ufnsk")
 
 [node name="Samurai" parent="Path2D/PathFollow2D" instance=ExtResource("7_g86u4")]
+light_mask = 1
 position = Vector2(7.94008, -23.0207)
 scale = Vector2(1.5, 1.5)
 
 [node name="Samurai" parent="Path2D/PathFollow2D/Samurai" instance=ExtResource("7_g86u4")]
+light_mask = 1
 position = Vector2(35.3158, -6.75871)
 scale = Vector2(1.5, 1.5)
 

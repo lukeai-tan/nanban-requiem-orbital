@@ -27,5 +27,6 @@ func _physics_process(delta: float) -> void:
 		target.get_hit(damage)
 		queue_free()
 
+
 func enemy_despawn() -> void:
 	queue_free()
