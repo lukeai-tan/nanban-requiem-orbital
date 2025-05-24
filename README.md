@@ -88,9 +88,6 @@ Our game will be developed using the following tools and technologies:
 
 - **C#**  
 
-- **Piskel**  
-  A free online pixel art editor used to create and animate tower, enemy, and environment sprites.
-
 - **Git & GitHub**  
   Used for version control, collaboration, issue tracking, and managing the development process.
 
