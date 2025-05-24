@@ -8,9 +8,12 @@ func _ready():
 	get_node("MainMenu/Margin/VB_buttons/Quit").connect("pressed", Callable(self, "on_quit_pressed"))
 
 func on_new_game_pressed():
+	'''
 	get_node("MainMenu").queue_free()
 	var gameScene = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
 	add_child(gameScene)
+	'''
+	get_tree().change_scene_to_file("res://Scenes/MainScenes/GameScene.tscn")
 	
 '''
 func on_trophies_pressed():
