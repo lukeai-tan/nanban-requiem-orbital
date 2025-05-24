@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c68ve171mfrxr"]
+[gd_scene load_steps=3 format=3 uid="uid://bdplq6scuwjxq"]
 
 [ext_resource type="Script" uid="uid://cahh4hmmk2qqy" path="res://Scenes/DetectionRange/DetectionRange.gd" id="1_oedmo"]
 
@@ -11,6 +11,3 @@ script = ExtResource("1_oedmo")
 
 [node name="Range" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3ostw")
-
-[connection signal="body_entered" from="." to="." method="_on_enemy_entered"]
-[connection signal="body_exited" from="." to="." method="_on_enemy_exited"]

@@ -13,13 +13,10 @@ func initialize(damage : float, speed : float, target : Enemy, pos : Vector2) ->
 	self.target = target
 	self.global_position = pos
 	self.initialized = true
+	target.despawn.connect(enemy_despawn)
 
 func _physics_process(delta: float) -> void:
 	if not initialized :
-		return
-	
-	if not is_instance_valid(target):
-		queue_free()
 		return
 	
 	var direction = target.global_position - global_position
@@ -30,3 +27,6 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(target.global_position) < 3:
 		target.get_hit(damage)
 		queue_free()
+
+func enemy_despawn() -> void:
+	queue_free()

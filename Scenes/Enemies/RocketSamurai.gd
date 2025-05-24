@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Samurai
+class_name RocketSamurai
 
 var hp : float = 300
 
