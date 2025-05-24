@@ -11,12 +11,17 @@ var attack_speed : float = 10
 var target : Enemy = null
 var attack_range : DetectionRange
 var time_since_last_shot := 0.0
+var built : bool = false
 
 func _ready() -> void:
+	if not built:
+		return
 	attack_range = DetectionRangeScene.instantiate()
 	add_child(attack_range)
 
 func _process(delta: float) -> void:
+	if not built:
+		return
 	time_since_last_shot += delta
 	if (target == null or not attack_range.still_in_range()) :
 		target = attack_range.find_nearest_enemy()
