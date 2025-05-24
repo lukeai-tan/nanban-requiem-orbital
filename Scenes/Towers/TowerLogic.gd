@@ -15,8 +15,8 @@ var target : Enemy = null
 var attack_range : TowerRange
 var time_since_last_shot := 0.0
 var built : bool = false
-var build_tile
-var exclusion
+var build_location
+
 
 func _ready() -> void:
 	if not built:
@@ -42,6 +42,7 @@ func turn():
 	var enemy_pos = target.global_position
 	get_node("Turret").look_at(enemy_pos)
 
+
 func shoot() :
 	var projectile = projectile_scene.instantiate()
 	projectile.initialize(attack, projectile_speed, target, global_position)
@@ -49,13 +50,10 @@ func shoot() :
 	
 signal despawn()
 
-func get_tower_exclusions() -> TileMap:
-	# Go up twice: TowerInstance -> Towers -> Map, then get TowerExclusions
-	return get_parent().get_parent().get_node("TowerExclusions")
-
 
 func get_hit(damage : float) :
 	if damage >= hp :
+		attack_range.queue_free()
 		despawn.emit()
 		queue_free()
 

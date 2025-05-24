@@ -64,6 +64,11 @@ func update_tower_preview():
 	var invalid_by_path : bool = path_layer.get_cell_source_id(path_tile) != -1
 
 	if not invalid_by_exclusion and not invalid_by_path:
+		for t in get_node("Map1/Towers").get_children():
+			if t.position == tile_position:
+				get_node("UI").update_tower_preview(tile_position, "f00")
+				build_valid = false
+				return
 		get_node("UI").update_tower_preview(tile_position, "fff")
 		build_valid = true 
 		build_location = tile_position
@@ -86,7 +91,8 @@ func verify_and_build():
 		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		new_tower.built = true;
+		new_tower.build_location = build_location
 		map_node.get_node("Towers").add_child(new_tower, true)
 		# create a dummy tile to act as the tower exclusion in the tower position
-		map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
+		#map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
 		
