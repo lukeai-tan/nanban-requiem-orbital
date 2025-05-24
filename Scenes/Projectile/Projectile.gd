@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var direction = target.global_position - global_position
+	rotation = direction.angle()
 	velocity = direction.normalized() * speed
 	global_position += velocity * delta
 	

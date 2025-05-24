@@ -1,3 +1,3 @@
 extends Node
 
-var projectile_scene PackedScene = load()
+# var projectile_scene PackedScene = load()
