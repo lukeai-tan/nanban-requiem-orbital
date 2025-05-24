@@ -8,6 +8,7 @@
 size = Vector2(54, 52)
 
 [node name="RangedTower2" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_1xtqi")
 
 [node name="Base" type="Sprite2D" parent="."]

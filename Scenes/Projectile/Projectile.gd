@@ -1,20 +1,19 @@
 extends CharacterBody2D
 
-const Enemy = preload("res://Scenes/Enemies/Samurai.gd")
-
 var damage : float
 var speed : float
-var target : Enemy
+var target : Node2D = null
 var initialized = false
 
-func initialize(damage : float, speed : float, target : Enemy, pos : Vector2) -> void:
+func initialize(damage : float, speed : float, target : Node2D, pos : Vector2) -> void:
 	self.damage = damage
 	self.speed = speed
-	self.target = target
 	self.global_position = pos
+	if target.has_signal("despawn") and target.has_method("get_hit") :
+		self.target = target
+		target.despawn.connect(enemy_despawn)
 	self.initialized = true
-	target.despawn.connect(enemy_despawn)
-
+	
 func _physics_process(delta: float) -> void:
 	if not initialized :
 		return

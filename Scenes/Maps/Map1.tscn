@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://b1ptux668fjj2"]
+[gd_scene load_steps=8 format=4 uid="uid://b1ptux668fjj2"]
 
 [ext_resource type="TileSet" uid="uid://cf0oeugm6g4ml" path="res://Resources/Tilesets/ground_grass.tres" id="1_66ww1"]
 [ext_resource type="TileSet" uid="uid://blubtqs7tphi1" path="res://Resources/Tilesets/path.tres" id="2_3atk3"]
 [ext_resource type="TileSet" uid="uid://s88v4in7hdi7" path="res://Resources/Tilesets/props.tres" id="3_bp0wf"]
+[ext_resource type="PackedScene" uid="uid://dehoi81tova0d" path="res://Scenes/Enemies/RocketSamurai.tscn" id="6_kkfd8"]
 [ext_resource type="Script" uid="uid://ul8htjrpjroh" path="res://Scenes/Maps/PathFollowing.gd" id="6_ufnsk"]
 [ext_resource type="PackedScene" uid="uid://d2d410drs2l0u" path="res://Scenes/Enemies/Samurai.tscn" id="7_g86u4"]
 
@@ -39,3 +40,11 @@ script = ExtResource("6_ufnsk")
 [node name="Samurai" parent="Path2D/PathFollow2D" instance=ExtResource("7_g86u4")]
 position = Vector2(7.94008, -23.0207)
 scale = Vector2(1.5, 1.5)
+
+[node name="Samurai" parent="Path2D/PathFollow2D/Samurai" instance=ExtResource("7_g86u4")]
+position = Vector2(35.3158, -6.75871)
+scale = Vector2(1.5, 1.5)
+
+[node name="RocketSamurai" parent="Path2D/PathFollow2D" instance=ExtResource("6_kkfd8")]
+position = Vector2(-36.0311, -11.9063)
+rotation = -0.00260416

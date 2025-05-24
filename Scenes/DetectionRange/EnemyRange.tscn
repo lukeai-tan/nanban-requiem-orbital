@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdplq6scuwjxq"]
+
+[ext_resource type="Script" uid="uid://tn6rrecen074" path="res://Scenes/DetectionRange/EnemyRange.gd" id="1_kmylh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ostw"]
+radius = 381.021
+
+[node name="EnemyRange" type="Area2D"]
+collision_mask = 4
+script = ExtResource("1_kmylh")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3ostw")
+
+[connection signal="area_entered" from="." to="." method="_on_enemy_entered"]
+[connection signal="area_exited" from="." to="." method="_on_enemy_exited"]

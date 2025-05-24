@@ -1,13 +1,16 @@
 extends Area2D
 
+class_name Tower
+
 const Enemy = preload("res://Scenes/Enemies/Samurai.gd")
 const TowerRange = preload("res://Scenes/DetectionRange/TowerRange.gd")
 const TowerRangeScene = preload("res://Scenes/DetectionRange/TowerRange.tscn")
 
 var projectile_scene : PackedScene = load("res://Scenes/Projectile/Projectile.tscn")
-var attack : float = 1
+var hp : float = 1000
+var attack : float = 10
 var projectile_speed : float = 300
-var attack_speed : float = 10
+var attack_speed : float = 3
 var target : Enemy = null
 var attack_range : TowerRange
 var time_since_last_shot := 0.0
@@ -41,3 +44,12 @@ func shoot() :
 	var projectile = projectile_scene.instantiate()
 	projectile.initialize(attack, projectile_speed, target, global_position)
 	get_tree().current_scene.add_child(projectile)
+	
+signal despawn()
+
+func get_hit(damage : float) :
+	if damage >= hp :
+		despawn.emit()
+		queue_free()
+	else :
+		hp = hp - damage
