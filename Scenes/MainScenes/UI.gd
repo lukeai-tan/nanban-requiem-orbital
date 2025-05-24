@@ -34,6 +34,8 @@ func update_tower_preview(new_position, color):
 ## Main Controls
 # Pause/Play Button
 func _on_pause_play_pressed() -> void:
+	if get_parent().build_mode:
+		get_parent().cancel_build_mode()
 	if get_tree().is_paused():
 		get_tree().paused = false
 	else:
@@ -41,6 +43,8 @@ func _on_pause_play_pressed() -> void:
 
 # Fast Forward button (x1/x10)
 func _on_fast_forward_pressed() -> void:
+	if get_parent().build_mode:
+		get_parent().cancel_build_mode()
 	if Engine.get_time_scale() == 10.0:
 		Engine.set_time_scale(1.0)
 	else:
