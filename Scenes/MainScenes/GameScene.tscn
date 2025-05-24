@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=13 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cntcgyt8s5788" path="res://Assets/Towers/towerDefense_tile250.png" id="7_no243"]
 [ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="9_80vwl"]
 [ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="9_br1xs"]
+[ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="9_h0y4r"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="10_80vwl"]
 
 [node name="GameScene" type="Node2D"]
@@ -89,6 +90,11 @@ anchor_right = 1.0
 grow_horizontal = 0
 alignment = 2
 
+[node name="Restart" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_mode = 2
+texture_normal = ExtResource("9_h0y4r")
+
 [node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
 process_mode = 3
 layout_mode = 2
@@ -102,5 +108,6 @@ toggle_mode = true
 texture_normal = ExtResource("9_br1xs")
 texture_pressed = ExtResource("10_80vwl")
 
+[connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
