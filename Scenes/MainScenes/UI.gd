@@ -31,13 +31,15 @@ func update_tower_preview(new_position, color):
 		get_node("TowerPreview/Sprite2D").modulate = Color(color)
 
 
+## Main Controls
+# Pause/Play Button
 func _on_pause_play_pressed() -> void:
 	if get_tree().is_paused():
 		get_tree().paused = false
 	else:
 		get_tree().paused = true
 
-
+# Fast Forward button (x1/x10)
 func _on_fast_forward_pressed() -> void:
 	if Engine.get_time_scale() == 10.0:
 		Engine.set_time_scale(1.0)
