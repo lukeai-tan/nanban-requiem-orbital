@@ -7,6 +7,8 @@ var build_tile
 var build_location: Vector2
 var build_type: String
 
+var current_wave = 0
+var enemies_in_wave = 0
 
 # Called when the node enters the scene tree for the first time.
 # Sets up the scene
@@ -18,7 +20,7 @@ func _ready():
 		# connects signal from pressing respective buttons to call initiate build mode
 		# inputs the tower name associated with the button as the tower_type parameter
 		i.pressed.connect(initiate_build_mode.bind(i.name))
-
+	start_next_wave()
 
 # constantly update location of tower while in build mode
 # location of tower is based on mouse location
@@ -37,6 +39,9 @@ func _unhandled_input(event):
 		cancel_build_mode()
 
 
+##
+## Tower Building Functions
+##
 func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
 	if build_mode:
@@ -96,3 +101,30 @@ func verify_and_build():
 		# create a dummy tile to act as the tower exclusion in the tower position
 		#map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
 		
+
+##
+## Enemy Wave Functions
+## 
+func start_next_wave():
+	var wave_data = retrieve_wave_data()
+	await(get_tree().create_timer(0.2)).timeout
+	spawn_enemies(wave_data)
+	
+func retrieve_wave_data():
+	var wave_data = [["Samurai", 0.0], ["RocketSamurai", 2.0]]
+	current_wave += 1
+	enemies_in_wave = wave_data.size()
+	return wave_data
+	
+func spawn_enemies(wave_data):
+	for i in wave_data:
+		await get_tree().create_timer(i[1]).timeout
+
+		var enemy_scene = load("res://Scenes/Enemies/" + i[0] + ".tscn")
+		var enemy = enemy_scene.instantiate()
+
+		var path_follow = PathFollow2D.new()
+		path_follow.progress = 0.0
+		path_follow.add_child(enemy)
+
+		map_node.get_node("Path2D").add_child(path_follow)
