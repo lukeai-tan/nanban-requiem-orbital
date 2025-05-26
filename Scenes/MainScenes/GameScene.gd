@@ -29,7 +29,6 @@ func _process(_delta: float):
 	if build_mode:
 		update_tower_preview()
 
-
 # listen for mouse clicks
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
