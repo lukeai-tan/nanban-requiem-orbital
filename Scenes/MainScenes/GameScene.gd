@@ -9,6 +9,7 @@ var build_type: String
 
 var current_wave = 0
 var enemies_in_wave = 0
+var all_enemies_in_wave_spawned = false
 
 # Called when the node enters the scene tree for the first time.
 # Sets up the scene
@@ -28,6 +29,10 @@ func _ready():
 func _process(_delta: float):
 	if build_mode:
 		update_tower_preview()
+	var path = map_node.get_node("Path2D")
+	if all_enemies_in_wave_spawned and path.get_child_count() == 0:
+		start_next_wave() 
+		all_enemies_in_wave_spawned = false
 
 # listen for mouse clicks
 func _unhandled_input(event):
@@ -127,3 +132,4 @@ func spawn_enemies(wave_data):
 		path_follow.add_child(enemy)
 
 		map_node.get_node("Path2D").add_child(path_follow)
+	all_enemies_in_wave_spawned = true

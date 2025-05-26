@@ -26,6 +26,6 @@ func _process(delta):
 func get_hit(damage : float) :
 	if damage >= hp :
 		despawn.emit()
-		queue_free()
+		get_parent().queue_free()
 	else :
 		hp = hp - damage
