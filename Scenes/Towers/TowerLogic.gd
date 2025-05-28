@@ -6,6 +6,9 @@ const Enemy = preload("res://Scenes/Enemies/Samurai.gd")
 const TowerRange = preload("res://Scenes/DetectionRange/TowerRange.gd")
 const TowerRangeScene = preload("res://Scenes/DetectionRange/TowerRange.tscn")
 
+const HealthBar = preload("res://Scenes/HealthBar/HealthBar.tscn")
+var health_bar
+
 var projectile_scene : PackedScene = load("res://Scenes/Projectile/Projectile.tscn")
 var hp : float = 1000
 var attack : float = 10
@@ -23,6 +26,10 @@ func _ready() -> void:
 		return
 	attack_range = TowerRangeScene.instantiate()
 	add_child(attack_range)
+	health_bar = HealthBar.instantiate()
+	add_child(health_bar)
+	health_bar.max_value = hp
+	health_bar.value = hp
 
 func _process(delta: float) -> void:
 	if not built:
@@ -59,3 +66,4 @@ func get_hit(damage : float) :
 
 	else :
 		hp = hp - damage
+		health_bar.value = hp
