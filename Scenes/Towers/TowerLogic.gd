@@ -60,6 +60,7 @@ signal despawn()
 
 func get_hit(damage : float) :
 	if damage >= hp :
+		hp = 0
 		attack_range.queue_free()
 		despawn.emit()
 		queue_free()
