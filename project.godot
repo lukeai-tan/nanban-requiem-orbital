@@ -31,6 +31,10 @@ mouse_cursor/custom_image="uid://dub52gf3i6q3r"
 
 project/assembly_name="Nanban Requiem"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [input]
 
 ui_accept={
