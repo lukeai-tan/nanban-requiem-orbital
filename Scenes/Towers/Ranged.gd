@@ -1,6 +1,6 @@
 extends "res://Scenes/Unit/Unit.gd"
 
-class_name Tower
+class_name Ranged
 
 const Enemy = preload("res://Scenes/Enemies/Samurai.gd")
 const TowerRange = preload("res://Scenes/DetectionRange/TowerRange.gd")

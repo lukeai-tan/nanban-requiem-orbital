@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb0xqwqkjp184"]
 
 [ext_resource type="Script" uid="uid://b3jw25s5dqxaq" path="res://Scenes/Obstacles/Obstacle.gd" id="1_w76wq"]
-[ext_resource type="Texture2D" uid="uid://c8308nhcjcb7j" path="res://icon.svg" id="2_y6w7j"]
+[ext_resource type="Texture2D" uid="uid://bw04bnk7t326q" path="res://Assets/Towers/Arknights_icon.png" id="2_w76wq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
-size = Vector2(125, 121)
+size = Vector2(133, 132)
 
 [node name="Obstacle" type="Area2D"]
 collision_layer = 4
@@ -14,11 +14,12 @@ script = ExtResource("1_w76wq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 8
-position = Vector2(1.5, 1.5)
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_a6yce")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_y6w7j")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_w76wq")
 
 [connection signal="body_entered" from="." to="." method="_on_enemy_entered"]
 [connection signal="body_exited" from="." to="." method="_on_enemy_exited"]
