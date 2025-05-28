@@ -258,6 +258,7 @@ animations = [{
 radius = 6.08276
 
 [node name="RocketSamurai" type="CharacterBody2D"]
+light_mask = 8
 collision_layer = 8
 script = ExtResource("1_rbxbo")
 

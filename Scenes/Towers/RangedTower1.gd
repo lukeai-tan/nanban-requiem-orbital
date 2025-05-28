@@ -1,1 +1,1 @@
-extends "res://Scenes/Towers/TowerLogic.gd"
+extends "res://Scenes/Towers/Ranged.gd"

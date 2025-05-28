@@ -2,12 +2,14 @@ extends CharacterBody2D
 
 class_name Samurai
 
+const Unit = preload("res://Scenes/Unit/Unit.gd")
 const HealthBar = preload("res://Scenes/HealthBar/HealthBar.tscn")
 var health_bar
 
 var hp : float = 300
 @export var movement_speed: float = 100.0
 var last_position: Vector2
+var block : Unit = null
 
 signal despawn()
 
@@ -24,10 +26,9 @@ func _ready():
 	health_bar.max_value = hp
 	health_bar.value = hp
 
-
 func _process(delta):
 	var path = get_parent()
-	if path is PathFollow2D:
+	if block == null and path is PathFollow2D:
 		path.progress += movement_speed * delta
 		
 func _get_progress() -> float:
@@ -40,3 +41,8 @@ func get_hit(damage : float) :
 	else :
 		hp = hp - damage
 		health_bar.value = hp
+
+func blocked(unit : Unit) :
+	block = unit
+	unit.despawn.connect(func(): block = null)
+	
