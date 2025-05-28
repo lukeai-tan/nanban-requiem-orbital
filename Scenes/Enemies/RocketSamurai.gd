@@ -5,6 +5,8 @@ const Tower = preload("res://Scenes/Towers/TowerLogic.gd")
 const EnemyRange = preload("res://Scenes/DetectionRange/EnemyRange.gd")
 const EnemyRangeScene = preload("res://Scenes/DetectionRange/EnemyRange.tscn")
 
+
+
 var projectile_scene : PackedScene = load("res://Scenes/Projectile/Projectile.tscn")
 var attack : float = 100
 var projectile_speed : float = 200
@@ -16,6 +18,10 @@ var time_since_last_shot := 0.0
 func _ready() -> void:
 	attack_range = EnemyRangeScene.instantiate()
 	add_child(attack_range)
+	health_bar = HealthBar.instantiate()
+	add_child(health_bar)
+	health_bar.max_value = hp
+	health_bar.value = hp
 	
 	### Added this
 	position.y -= 25

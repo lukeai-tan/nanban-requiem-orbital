@@ -3,16 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="1_0bnvf"]
 
 [node name="HealthBar" type="TextureProgressBar"]
-offset_left = -100.0
-offset_top = -116.0
-offset_right = 100.0
-offset_bottom = -96.0
+offset_left = -13.0
+offset_top = -21.0
+offset_right = 13.0
+offset_bottom = -18.0
 value = 50.0
 nine_patch_stretch = true
-stretch_margin_left = 100
-stretch_margin_top = 10
-stretch_margin_right = 100
-stretch_margin_bottom = 10
 texture_under = ExtResource("1_0bnvf")
 texture_progress = ExtResource("1_0bnvf")
 tint_under = Color(0.207843, 0.207843, 0.207843, 1)
