@@ -36,14 +36,13 @@ func _process(delta: float) -> void:
 	### Added this
 	var path = get_parent()
 	if path is PathFollow2D:
-		path.progress += movement_speed * delta
+		path.progress += 2 * movement_speed * delta
 	attack_range.global_position = global_position
 	###
 	
 	time_since_last_shot += delta
-	if (target == null or not attack_range.still_in_range()) :
-		target = attack_range.find_nearest_enemy()
-	elif time_since_last_shot >= (1.0 / attack_speed):
+	target = attack_range.find_nearest_enemy()
+	if (target != null and time_since_last_shot >= (1.0 / attack_speed)):
 		shoot()
 		time_since_last_shot = 0.0
 

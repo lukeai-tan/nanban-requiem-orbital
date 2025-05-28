@@ -36,14 +36,13 @@ func _process(delta: float) -> void:
 	if not built:
 		return
 	time_since_last_shot += delta
-	if (target == null or not attack_range.still_in_range()) :
-		target = attack_range.find_nearest_enemy()
-	elif time_since_last_shot >= (1.0 / attack_speed):
+	target = attack_range.find_nearest_enemy()
+	if (target != null and time_since_last_shot >= (1.0 / attack_speed)):
 		shoot()
 		time_since_last_shot = 0.0
 
 func _physics_process(_delta: float) -> void:
-	if (target != null and attack_range.still_in_range()) : turn()
+	if (target != null) : turn()
 
 # rotation of turrets on Ranged towers
 func turn():

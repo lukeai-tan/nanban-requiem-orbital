@@ -29,6 +29,9 @@ func _process(delta):
 	var path = get_parent()
 	if path is PathFollow2D:
 		path.progress += movement_speed * delta
+		
+func _get_progress() -> float:
+	return get_parent().progress
 
 func get_hit(damage : float) :
 	if damage >= hp :

@@ -9,7 +9,7 @@ func _on_enemy_exited(enemy: Enemy):
 	_on_body_exited(enemy)
 
 func _distance_sort(enemy1: Enemy, enemy2: Enemy) -> bool:
-	return (global_position - enemy1.global_position).length() < (global_position - enemy2.global_position).length()
+	return enemy1._get_progress() > enemy2._get_progress()
 
 func sort_by_priority() -> void:
 	targets_in_range.sort_custom(Callable(self, "_distance_sort"))

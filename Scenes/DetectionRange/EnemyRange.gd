@@ -3,7 +3,6 @@ extends "res://Scenes/DetectionRange/DetectionRange.gd"
 const Tower = preload("res://Scenes/Towers/TowerLogic.gd")
 
 func _on_enemy_entered(enemy: Tower):
-	print("hi")
 	_on_body_entered(enemy)
 	
 func _on_enemy_exited(enemy: Tower):
@@ -16,5 +15,4 @@ func sort_by_priority() -> void:
 	targets_in_range.sort_custom(Callable(self, "_distance_sort"))
 
 func find_nearest_enemy() -> Tower:
-	print("finding")
 	return find_nearest_body() as Tower
