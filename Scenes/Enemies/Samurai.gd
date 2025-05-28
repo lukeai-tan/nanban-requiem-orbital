@@ -17,7 +17,8 @@ func _ready():
 	var enemy_sprite = get_node("AnimatedSprite2D")
 	if enemy_sprite:
 		enemy_sprite.play("running")
-		
+	
+	## Health Bar
 	health_bar = HealthBar.instantiate()
 	add_child(health_bar)
 	health_bar.max_value = hp
@@ -28,7 +29,6 @@ func _process(delta):
 	var path = get_parent()
 	if path is PathFollow2D:
 		path.progress += movement_speed * delta
-
 
 func get_hit(damage : float) :
 	if damage >= hp :

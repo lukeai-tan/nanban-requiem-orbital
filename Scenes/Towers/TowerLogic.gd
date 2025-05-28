@@ -31,6 +31,7 @@ func _ready() -> void:
 	health_bar.max_value = hp
 	health_bar.value = hp
 
+
 func _process(delta: float) -> void:
 	if not built:
 		return

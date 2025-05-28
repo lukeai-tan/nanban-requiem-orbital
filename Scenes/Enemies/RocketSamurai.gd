@@ -18,18 +18,18 @@ var time_since_last_shot := 0.0
 func _ready() -> void:
 	attack_range = EnemyRangeScene.instantiate()
 	add_child(attack_range)
+	
+	## Health Bar 
 	health_bar = HealthBar.instantiate()
 	add_child(health_bar)
 	health_bar.max_value = hp
 	health_bar.value = hp
 	
-	### Added this
 	position.y -= 25
 	scale = Vector2(2, 2)
 	var enemy_sprite = get_node("AnimatedSprite2D")
 	if enemy_sprite:
 		enemy_sprite.play("running")
-	### 
 
 
 func _process(delta: float) -> void:
