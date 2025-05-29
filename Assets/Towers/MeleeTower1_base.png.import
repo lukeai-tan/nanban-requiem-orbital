@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw04bnk7t326q"
-path="res://.godot/imported/Arknights_icon.png-95fedc57b724f5b94ae2d949806680a7.ctex"
+path="res://.godot/imported/MeleeTower1_base.png-cb1e194af6e7efaa21e7fba547ef3fdd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Towers/Arknights_icon.png"
-dest_files=["res://.godot/imported/Arknights_icon.png-95fedc57b724f5b94ae2d949806680a7.ctex"]
+source_file="res://Assets/Towers/MeleeTower1_base.png"
+dest_files=["res://.godot/imported/MeleeTower1_base.png-cb1e194af6e7efaa21e7fba547ef3fdd.ctex"]
 
 [params]
 

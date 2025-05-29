@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=14 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="9_80vwl"]
 [ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="9_br1xs"]
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="9_h0y4r"]
+[ext_resource type="Texture2D" uid="uid://bw04bnk7t326q" path="res://Assets/Towers/MeleeTower1_base.png" id="9_j856t"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="10_80vwl"]
 
 [node name="GameScene" type="Node2D"]
@@ -78,6 +79,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_no243")
+
+[node name="MeleeTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_tnagp")
+texture_pressed = ExtResource("4_o10dm")
+texture_hover = ExtResource("5_no243")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/MeleeTower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_j856t")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
 custom_minimum_size = Vector2(150, 75)

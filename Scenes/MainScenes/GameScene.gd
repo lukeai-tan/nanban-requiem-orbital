@@ -55,7 +55,7 @@ func initiate_build_mode(tower_type):
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
-
+'''
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	
@@ -85,7 +85,47 @@ func update_tower_preview():
 	else:
 		get_node("UI").update_tower_preview(tile_position, "f00")
 		build_valid = false
+'''
 
+func update_tower_preview():
+	var mouse_position = get_global_mouse_position()
+	
+	# tile layers that don't allow tower placements
+	var tower_exclusions = map_node.get_node("TowerExclusions")
+	var path_layer = map_node.get_node("Path")
+	
+	# check if current tile is from tower exclusion tilemaplayer
+	var current_tile = tower_exclusions.local_to_map(mouse_position)
+	var tile_position = tower_exclusions.map_to_local(current_tile)
+	
+	# check if current tile is from path tilemaplayer
+	var invalid_by_exclusion : bool = tower_exclusions.get_cell_source_id(current_tile) != -1
+	var path_tile = path_layer.local_to_map(mouse_position)
+	var is_path_tile : bool = path_layer.get_cell_source_id(path_tile) != -1
+	
+	# check if current tile has an existing tower
+	var tile_is_occupied : bool = false
+	for t in map_node.get_node("Towers").get_children():
+		if t.position == tile_position:
+			tile_is_occupied = true
+			break
+			
+	var valid : bool = false
+	
+	if build_type.begins_with("RangedTower"):
+		valid = not invalid_by_exclusion and not is_path_tile and not tile_is_occupied
+	elif build_type.begins_with("MeleeTower"):
+		valid = is_path_tile and not tile_is_occupied
+		
+	if valid:
+		get_node("UI").update_tower_preview(tile_position, "fff")
+		build_valid = true
+		build_location = tile_position
+		build_tile = current_tile
+	else:
+		get_node("UI").update_tower_preview(tile_position, "f00")
+		build_valid = false
+		
 
 func cancel_build_mode():
 	build_mode = false

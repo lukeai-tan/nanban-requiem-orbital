@@ -42,6 +42,7 @@ func _get_progress() -> float:
 
 func get_hit(damage : float) :
 	if damage >= hp :
+		hp = 0
 		despawn.emit()
 		get_parent().queue_free()
 	else :
