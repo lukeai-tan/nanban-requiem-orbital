@@ -31,11 +31,16 @@ func _ready():
 
 func _process(delta):
 	var path = get_parent()
+	var enemy_sprite = get_node("AnimatedSprite2D")
 	time_since_last_attack += delta
 	if block != null :
 		hit()
+		enemy_sprite.play("attack")
+			
 	elif path is PathFollow2D :
 		path.progress += movement_speed * delta
+		enemy_sprite.play("running")
+		
 		
 func _get_progress() -> float:
 	return get_parent().progress
