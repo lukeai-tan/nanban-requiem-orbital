@@ -7,6 +7,6 @@ var tower_data = {
 	"RangedTower2":
 		{"range": 600},
 	
-	"MeleeTower1":
+	"MeleeTower0":
 		{"range": 0}
 	}

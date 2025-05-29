@@ -266,7 +266,8 @@ script = ExtResource("1_w887p")
 texture_filter = 1
 position = Vector2(-6, -16)
 sprite_frames = SubResource("SpriteFrames_n58dq")
-animation = &"running"
+animation = &"attack"
+frame_progress = 0.629403
 speed_scale = 2.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
