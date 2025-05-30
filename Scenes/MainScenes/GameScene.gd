@@ -11,7 +11,7 @@ var current_wave = 0
 var enemies_in_wave = 0
 var all_enemies_in_wave_spawned = false
 
-var base_health = 4.0
+var base_health = 5.0
 
 signal game_finished(result)
 
