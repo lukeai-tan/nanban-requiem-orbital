@@ -8,5 +8,8 @@ var tower_data = {
 		{"range": 600},
 	
 	"MeleeTower0":
-		{"range": 0}
+		{"range": 0},
+		
+	"MeleeTower1":
+		{"range": 0},
 	}
