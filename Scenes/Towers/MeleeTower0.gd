@@ -13,7 +13,6 @@ func _ready() -> void:
 	super._ready()
 
 func _on_enemy_entered(enemy: Enemy) -> void:
-	print("Melee Tower: hi")
 	if current_block_count < block_count :
 		enemy.blocked(self)
 		enemies_blocked.append(enemy)
@@ -21,7 +20,6 @@ func _on_enemy_entered(enemy: Enemy) -> void:
 		current_block_count += 1
 
 func _on_enemy_exited(enemy: Enemy) -> void:
-	print("Melee Tower: bye")
 	var idx = enemies_blocked.find(enemy)
 	if idx != -1:
 		enemies_blocked.remove_at(idx)

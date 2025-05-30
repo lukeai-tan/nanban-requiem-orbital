@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Samurai
+class_name Enemy
 
 const Unit = preload("res://Scenes/Unit/Unit.gd")
 const HealthBar = preload("res://Scenes/HealthBar/HealthBar.tscn")
