@@ -69,10 +69,10 @@ func _on_pause_play_pressed() -> void:
 func _on_fast_forward_pressed() -> void:
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
-	if Engine.get_time_scale() == 10.0:
+	if Engine.get_time_scale() == 2.0:
 		Engine.set_time_scale(1.0)
 	else:
-		Engine.set_time_scale(10.0)
+		Engine.set_time_scale(2.0)
 
 # Restart current scene Button
 func _on_restart_pressed() -> void:

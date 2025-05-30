@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/MeleeTower0_base.png" id="9_j856t"]
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="10_7ddxx"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="10_80vwl"]
-[ext_resource type="Texture2D" uid="uid://bw04bnk7t326q" path="res://Assets/Towers/MeleeTower1_base.png" id="10_a7g65"]
+[ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="10_a7g65"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="11_a7g65"]
 
 [node name="GameScene" type="Node2D"]

@@ -1,7 +1,6 @@
 extends "res://Scenes/Towers/Melee.gd"
 
 func _ready():
-	built = true
 	health_bar = HealthBar.instantiate()
 	add_child(health_bar)
 	health_bar.max_value = hp

@@ -13,7 +13,7 @@ var target : Enemy = null
 var time_since_last_hit := 0.0
 
 func _ready() -> void:
-	hp = 1250
+	hp = 1000
 	super._ready()
 	
 func _process(delta: float) -> void:
