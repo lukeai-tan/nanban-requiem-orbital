@@ -47,10 +47,10 @@ func _process(delta):
 		var max_progress = path.get_parent().curve.get_baked_length()
 		#print("progress:", path.progress, "max:", max_progress)
 		if path.progress >= max_progress - 10.0:
-			emit_signal("damage_base", base_damage)
-			print("Enemy entered base")
 			despawn.emit()
 			get_parent().queue_free()
+			emit_signal("damage_base", base_damage)
+			print("Enemy entered base")
 		else:
 			path.progress += movement_speed * delta
 			enemy_sprite.play("running")
