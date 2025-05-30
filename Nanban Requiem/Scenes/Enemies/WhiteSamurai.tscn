@@ -258,6 +258,7 @@ animations = [{
 radius = 6.08276
 
 [node name="WhiteSamurai" type="CharacterBody2D"]
+collision_layer = 8
 script = ExtResource("1_jxw4w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
