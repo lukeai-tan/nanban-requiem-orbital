@@ -6,7 +6,6 @@ const Enemy = preload("res://Scenes/Enemies/Samurai.gd")
 const TowerRange = preload("res://Scenes/DetectionRange/TowerRange.gd")
 const TowerRangeScene = preload("res://Scenes/DetectionRange/TowerRange.tscn")
 
-var projectile_scene : PackedScene = load("res://Scenes/Projectile/Projectile.tscn")
 var attack : float = 10
 var projectile_speed : float = 300
 var attack_speed : float = 3
@@ -35,9 +34,7 @@ func turn():
 	get_node("Turret").look_at(enemy_pos)
 
 func shoot() :
-	var projectile = projectile_scene.instantiate()
-	projectile.initialize(attack, projectile_speed, target, global_position)
-	get_tree().current_scene.add_child(projectile)
+	pass
 
 func get_hit(damage : float) :
 	if damage >= hp :

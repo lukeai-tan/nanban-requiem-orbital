@@ -1,6 +1,5 @@
 extends "res://Scenes/Enemies/Samurai.gd"
 
-class_name RocketSamurai
 const EnemyRange = preload("res://Scenes/DetectionRange/EnemyRange.gd")
 const EnemyRangeScene = preload("res://Scenes/DetectionRange/EnemyRange.tscn")
 

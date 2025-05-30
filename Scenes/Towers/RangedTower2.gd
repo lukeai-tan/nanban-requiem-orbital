@@ -1,7 +1,13 @@
 extends "res://Scenes/Towers/Ranged.gd"
 
-func _ready() -> void:
-	hp = 250
-	attack = 12
-	attack_speed = 6
+var projectile_scene : PackedScene = load("res://Scenes/Projectile/AOEProjectile.tscn")
+
+func _ready() :
 	super._ready()
+	self.attack = 5
+	self.attack_speed = 1
+
+func shoot() :
+	var projectile = projectile_scene.instantiate()
+	projectile.initialize(attack, projectile_speed, target, global_position)
+	get_tree().current_scene.add_child(projectile)

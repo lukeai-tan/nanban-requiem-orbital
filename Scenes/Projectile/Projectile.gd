@@ -24,9 +24,11 @@ func _physics_process(delta: float) -> void:
 	global_position += velocity * delta
 	
 	if global_position.distance_to(target.global_position) < 3:
-		target.get_hit(damage)
-		queue_free()
+		hit_target()
 
+func hit_target() :
+	target.get_hit(damage)
+	queue_free()
 
 func enemy_despawn() -> void:
 	queue_free()

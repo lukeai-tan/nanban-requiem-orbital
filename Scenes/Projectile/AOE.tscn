@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpy306be7ciei"]
+
+[ext_resource type="Script" uid="uid://bvcvx1jgpbs8v" path="res://Scenes/Projectile/AOE.gd" id="1_k28vi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc7ak"]
+radius = 95.352
+
+[node name="AOE" type="Area2D"]
+visibility_layer = 8
+collision_mask = 8
+script = ExtResource("1_k28vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 8
+shape = SubResource("CircleShape2D_wc7ak")
