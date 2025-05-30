@@ -1,6 +1,6 @@
 extends "res://Scenes/Towers/Ranged.gd"
 
 func _ready() -> void:
-	attack = 5
+	hp = 250
 	attack_speed = 6
 	super._ready()
