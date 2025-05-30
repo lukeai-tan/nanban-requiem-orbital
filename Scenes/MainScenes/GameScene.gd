@@ -123,7 +123,7 @@ func on_base_damage(damage):
 	base_health -= damage
 	if base_health <= 0:
 		get_node("UI").update_health_bar(base_health)
-		#emit_signal("game_finished", false)
+		game_finished.emit("game_finished")
 	else:
 		get_node("UI").update_health_bar(base_health)
 
