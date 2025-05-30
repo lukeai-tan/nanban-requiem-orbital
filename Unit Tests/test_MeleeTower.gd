@@ -1,13 +1,13 @@
 extends "res://addons/gut/test.gd"
 
-var melee_tower = preload("res://Scenes/Towers/MeleeTower1.gd")
+var melee_tower = preload("res://Scenes/Towers/MeleeTower0.gd")
 var _tower = null
 
 func before_each():
 	_tower = melee_tower.new()
-	_tower.hp = 100.0
 	_tower.built = true
 	_tower._ready()
+	_tower.hp = 100.0
 	
 func after_each():
 	_tower.free()

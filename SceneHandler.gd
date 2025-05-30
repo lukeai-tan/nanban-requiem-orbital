@@ -27,3 +27,7 @@ func on_credits_pressed():
 
 func on_quit_pressed():
 	get_tree().quit()
+
+func unload_game():
+	get_node("GameScene").queue_free()
+	get_tree().change_scene_to_file("res://Scenes/MainScenes/GameScene.tscn")

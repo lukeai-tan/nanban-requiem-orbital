@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var base_hp_bar = get_node("HUD/InfoBar/HBoxContainer/BaseHPBar")
 
 func set_tower_preview(tower_type, mouse_position):
 	
@@ -76,3 +77,14 @@ func _on_fast_forward_pressed() -> void:
 # Restart current scene Button
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
+	
+
+func update_health_bar(base_health):
+	var hp_bar_tween = base_hp_bar.create_tween()
+	hp_bar_tween.tween_property(base_hp_bar, "value", base_health, 0.1)
+	if base_health >= 4.0:
+		base_hp_bar.tint_progress = Color("3cc510") # Green
+	elif base_health <= 4.0 and base_health >= 2.0:
+		base_hp_bar.tint_progress = Color("e1be32") # Orange
+	else:
+		base_hp_bar.tint_progress = Color("e11e1e") # Red

@@ -13,7 +13,9 @@ var block : Unit = null
 var attack : float = 100
 var attack_speed : float = 0.5
 var time_since_last_attack := 0.0
+var base_damage = 1.0
 
+signal damage_base(amount: float)
 signal despawn()
 
 func _ready():
@@ -33,15 +35,27 @@ func _process(delta):
 	var path = get_parent()
 	var enemy_sprite = get_node("AnimatedSprite2D")
 	time_since_last_attack += delta
+	
 	if block != null :
 		hit()
 		enemy_sprite.play("attack")
 			
 	elif path is PathFollow2D :
-		path.progress += movement_speed * delta
-		enemy_sprite.play("running")
+		##path.progress += movement_speed * delta
+		##enemy_sprite.play("running")
 		
-		
+		var max_progress = path.get_parent().curve.get_baked_length()
+		#print("progress:", path.progress, "max:", max_progress)
+		if path.progress >= max_progress - 10.0:
+			emit_signal("damage_base", base_damage)
+			print("Enemy entered base")
+			despawn.emit()
+			get_parent().queue_free()
+		else:
+			path.progress += movement_speed * delta
+			enemy_sprite.play("running")
+
+
 func _get_progress() -> float:
 	return get_parent().progress
 

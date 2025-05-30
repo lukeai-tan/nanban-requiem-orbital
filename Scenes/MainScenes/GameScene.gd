@@ -11,6 +11,10 @@ var current_wave = 0
 var enemies_in_wave = 0
 var all_enemies_in_wave_spawned = false
 
+var base_health = 4.0
+
+signal game_finished(result)
+
 # Called when the node enters the scene tree for the first time.
 # Sets up the scene
 func _ready():
@@ -55,37 +59,6 @@ func initiate_build_mode(tower_type):
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
-'''
-func update_tower_preview():
-	var mouse_position = get_global_mouse_position()
-	
-	# tile layers that don't allow tower placements
-	var tower_exclusions = map_node.get_node("TowerExclusions") # props
-	var path_layer = map_node.get_node("Path") # path
-	
-	# check if current tile is from tower exclusion tilemaplayer
-	var current_tile = tower_exclusions.local_to_map(mouse_position)
-	var tile_position = tower_exclusions.map_to_local(current_tile)
-	var invalid_by_exclusion : bool = tower_exclusions.get_cell_source_id(current_tile) != -1
-	
-	# check if current tile is from path tilemaplayer
-	var path_tile = path_layer.local_to_map(mouse_position)
-	var invalid_by_path : bool = path_layer.get_cell_source_id(path_tile) != -1
-
-	if not invalid_by_exclusion and not invalid_by_path:
-		for t in get_node("Map1/Towers").get_children():
-			if t.position == tile_position:
-				get_node("UI").update_tower_preview(tile_position, "f00")
-				build_valid = false
-				return
-		get_node("UI").update_tower_preview(tile_position, "fff")
-		build_valid = true 
-		build_location = tile_position
-		build_tile = current_tile
-	else:
-		get_node("UI").update_tower_preview(tile_position, "f00")
-		build_valid = false
-'''
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
@@ -146,6 +119,15 @@ func verify_and_build():
 		#map_node.get_node("TowerExclusions").set_cell(build_tile, 2, Vector2(1, 0))
 		
 
+func on_base_damage(damage):
+	base_health -= damage
+	if base_health <= 0:
+		get_node("UI").update_health_bar(base_health)
+		#emit_signal("game_finished", false)
+		pass
+	else:
+		get_node("UI").update_health_bar(base_health)
+
 ##
 ## Enemy Wave Functions
 ## 
@@ -166,10 +148,10 @@ func spawn_enemies(wave_data):
 
 		var enemy_scene = load("res://Scenes/Enemies/" + i[0] + ".tscn")
 		var enemy = enemy_scene.instantiate()
-
+		enemy.connect("damage_base", Callable(self, "on_base_damage"))
 		var path_follow = PathFollow2D.new()
 		path_follow.progress = 0.0
 		path_follow.add_child(enemy)
 
 		map_node.get_node("Path2D").add_child(path_follow)
-	all_enemies_in_wave_spawned = true
+		all_enemies_in_wave_spawned = true
