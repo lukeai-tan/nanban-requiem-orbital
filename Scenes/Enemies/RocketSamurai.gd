@@ -7,13 +7,15 @@ const EnemyRangeScene = preload("res://Scenes/DetectionRange/EnemyRange.tscn")
 var projectile_scene : PackedScene = load("res://Scenes/Projectile/Projectile.tscn")
 
 var ranged_attack_speed : float = 1
+var ranged_attack_dmg : float = 100
 var projectile_speed : float = 200
 var target : Unit = null
 var attack_range : EnemyRange
 
 
 func _ready() -> void:
-	movement_speed = 200
+	attack = 50
+	movement_speed = 75
 	attack_range = EnemyRangeScene.instantiate()
 	add_child(attack_range)
 	
@@ -45,7 +47,7 @@ func _process(delta: float) -> void:
 func shoot() :
 	if time_since_last_attack >= (1.0 / ranged_attack_speed) :
 		var projectile = projectile_scene.instantiate()
-		projectile.initialize(attack, projectile_speed, target, global_position)
+		projectile.initialize(ranged_attack_dmg, projectile_speed, target, global_position)
 		get_tree().current_scene.add_child(projectile)
 		time_since_last_attack = 0.0
 	

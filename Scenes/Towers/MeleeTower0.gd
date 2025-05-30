@@ -9,7 +9,7 @@ var current_block_count : int = 0
 var enemies_blocked : Array[Enemy] = []
 
 func _ready() -> void:
-	built = true
+	hp = 1250
 	super._ready()
 
 func _on_enemy_entered(enemy: Enemy) -> void:

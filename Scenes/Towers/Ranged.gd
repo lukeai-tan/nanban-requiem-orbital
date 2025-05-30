@@ -20,8 +20,6 @@ func _ready() -> void:
 	add_child(attack_range)
 
 func _process(delta: float) -> void:
-	if not built:
-		return
 	time_since_last_shot += delta
 	target = attack_range.find_nearest_enemy()
 	if (target != null and time_since_last_shot >= (1.0 / attack_speed)):
