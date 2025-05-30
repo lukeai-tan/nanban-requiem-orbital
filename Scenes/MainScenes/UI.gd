@@ -84,7 +84,7 @@ func update_health_bar(base_health):
 	hp_bar_tween.tween_property(base_hp_bar, "value", base_health, 0.1)
 	if base_health >= 5.0:
 		base_hp_bar.tint_progress = Color("3cc510") # Green
-	elif base_health <= 5.0 and base_health >= 2.0:
+	elif base_health <= 4.0 and base_health >= 2.0:
 		base_hp_bar.tint_progress = Color("e1be32") # Orange
 	else:
 		base_hp_bar.tint_progress = Color("e11e1e") # Red
