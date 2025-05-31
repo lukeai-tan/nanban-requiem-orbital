@@ -136,7 +136,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["Samurai", 0.0], ["RocketSamurai", 2.0], ["WhiteSamurai", 10.0], ["Samurai", 11.0], ["Samurai", 13.0]]
+	var wave_data = [["Samurai", 0.0], ["RocketSamurai", 2.0], ["WhiteSamurai", 10.0], ["Samurai", 2.0], ["Samurai", 1.0], ["RocketSamurai", 1.0], ["RocketSamurai", 1.0]]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data
@@ -153,4 +153,4 @@ func spawn_enemies(wave_data):
 		path_follow.add_child(enemy)
 
 		map_node.get_node("Path2D").add_child(path_follow)
-		all_enemies_in_wave_spawned = true
+	all_enemies_in_wave_spawned = true
