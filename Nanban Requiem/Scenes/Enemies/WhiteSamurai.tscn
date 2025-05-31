@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1024o8ausuua"]
+[gd_scene load_steps=41 format=3 uid="uid://c1024o8ausuua"]
 
 [ext_resource type="Script" uid="uid://cohvmpuh4xmga" path="res://Scenes/Enemies/WhiteSamurai.gd" id="1_jxw4w"]
 [ext_resource type="Texture2D" uid="uid://c7vrgaq1x7gfj" path="res://Assets/Enemies/samurai_attack.png" id="2_7cwfa"]
@@ -254,6 +254,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jxw4w"]
+blend_mode = 2
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 16
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_awte2"]
 radius = 6.08276
 
@@ -269,6 +277,19 @@ sprite_frames = SubResource("SpriteFrames_cigdo")
 animation = &"attack"
 frame_progress = 0.634471
 speed_scale = 2.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_jxw4w")
+position = Vector2(-15, 0)
+scale = Vector2(2, 2)
+amount = 5
+texture = ExtResource("4_pi7fv")
+speed_scale = 3.0
+spread = 0.0
+gravity = Vector2(-50, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 light_mask = 8
