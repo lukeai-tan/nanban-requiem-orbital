@@ -23,8 +23,9 @@ func _process(delta: float) -> void:
 		time_since_last_hit = 0.0
 
 func _on_enemy_entered(enemy: Enemy) -> void:
-	if current_block_count < block_count :
+	if current_block_count < block_count:
 		enemy.blocked(self)
+		print("I blocked a dude")
 		enemies_blocked.append(enemy)
 		enemy.despawn.connect(func(): _on_enemy_exited(enemy))
 		current_block_count += 1
