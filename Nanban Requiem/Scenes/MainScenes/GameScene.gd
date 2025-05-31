@@ -136,7 +136,6 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	#var wave_data = [["Samurai", 0.0], ["RocketSamurai", 2.0], ["WhiteSamurai", 10.0], ["Samurai", 2.0], ["Samurai", 1.0], ["RocketSamurai", 1.0], ["RocketSamurai", 1.0]]
 	var wave_data = GameData.wave_data["Map1"]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
