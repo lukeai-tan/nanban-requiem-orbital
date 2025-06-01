@@ -12,6 +12,9 @@ var tower_data = {
 		
 	"MeleeTower1":
 		{"range": 0},
+	
+	"Girl":
+		{"range": 600},
 	}
 	
 var wave_data = {

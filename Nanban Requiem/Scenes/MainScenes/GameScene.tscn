@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=18 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="10_7ddxx"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="10_80vwl"]
 [ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="10_a7g65"]
+[ext_resource type="Texture2D" uid="uid://ct6dljjm44wq1" path="res://Assets/Towers/girl_icon.png" id="11_0dyjl"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="11_a7g65"]
 
 [node name="GameScene" type="Node2D"]
@@ -132,6 +133,32 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_a7g65")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Girl" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_tnagp")
+texture_pressed = ExtResource("4_o10dm")
+texture_hover = ExtResource("5_no243")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Girl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_0dyjl")
 expand_mode = 2
 stretch_mode = 4
 
