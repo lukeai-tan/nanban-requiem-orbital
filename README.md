@@ -172,18 +172,18 @@ Settings and Credits buttons are a work in progress.
 
 ## Towers
 
-| ![][image5] Pew Pew | Pew Pew is the first ranged tower in the game. It shoots projectiles at the enemies, constantly targeting the enemy closest to the base. HP: 1000 Ranged attack damage: 10 Attack speed: 3 |
+| Pew Pew | Pew Pew is the first ranged tower in the game. It shoots projectiles at the enemies, constantly targeting the enemy closest to the base. HP: 1000 Ranged attack damage: 10 Attack speed: 3 |
 | :---- | :---- |
-| ![][image6] Rocketeer | Rocketeer has the same stats as Pew Pew, but deals Area of Effect (AoE) damage to enemies HP: 1000 Ranged attack damage: 10 Attack speed: 1 |
-| ![][image7] The Boulder | The Boulder is the first melee tower that blocks enemies. It serves as a deployable obstacle or a meatshield to hinder enemy movement. It is also unable to attack enemies. Respect the Boulder. HP: 1000 Block count: 2 |
-| ![][image8] Inverse Boulder | The Inverse Boulder is a copy of The Boulder that offers melee attacks. HP: 1000 Block count: 2 Melee attack damage: 30  |
+| Rocketeer | Rocketeer has the same stats as Pew Pew, but deals Area of Effect (AoE) damage to enemies HP: 1000 Ranged attack damage: 10 Attack speed: 1 |
+| The Boulder | The Boulder is the first melee tower that blocks enemies. It serves as a deployable obstacle or a meatshield to hinder enemy movement. It is also unable to attack enemies. Respect the Boulder. HP: 1000 Block count: 2 |
+| Inverse Boulder | The Inverse Boulder is a copy of The Boulder that offers melee attacks. HP: 1000 Block count: 2 Melee attack damage: 30  |
 
 ## Enemies
 
-| ![][image9] Samurai | The Samurai is the first enemy encounter in the game. It is a melee enemy that only attacks towers in the path. HP: 300 Movement Speed: 100 Melee Attack Dmg: 100 Melee Attack speed: 0.5 |
+| Samurai | The Samurai is the first enemy encounter in the game. It is a melee enemy that only attacks towers in the path. HP: 300 Movement Speed: 100 Melee Attack Dmg: 100 Melee Attack speed: 0.5 |
 | :---- | :---- |
-| ![][image10] Rocket Samurai | The Rocket Samurai is a ranged variant of the Samurai with both melee and ranged modes. When blocked by a melee tower, it will initiate melee mode, attacking the tower until it is dead. When not blocked, it will launch projectiles at the nearest tower. Rocket Samurai deals twice more damage in ranged mode than in melee mode. HP: 300 Movement Speed: 75 Melee Attack Dmg: 50 Melee Attack speed: 0.5 Ranged Attack Dmg: 100 Ranged Attack speed: 1 |
-| ![][image11] Mighty Whitey | Mighty Whitey is a buffed variant of the Samurai, with double its melee attack damage and movement speed, but half its HP. HP: 150 Movement Speed: 200 Melee Attack Dmg: 200 Melee Attack speed: 0.5 |
+| Rocket Samurai | The Rocket Samurai is a ranged variant of the Samurai with both melee and ranged modes. When blocked by a melee tower, it will initiate melee mode, attacking the tower until it is dead. When not blocked, it will launch projectiles at the nearest tower. Rocket Samurai deals twice more damage in ranged mode than in melee mode. HP: 300 Movement Speed: 75 Melee Attack Dmg: 50 Melee Attack speed: 0.5 Ranged Attack Dmg: 100 Ranged Attack speed: 1 |
+| Mighty Whitey | Mighty Whitey is a buffed variant of the Samurai, with double its melee attack damage and movement speed, but half its HP. HP: 150 Movement Speed: 200 Melee Attack Dmg: 200 Melee Attack speed: 0.5 |
 
 ## Maps
 
