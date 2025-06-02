@@ -31,8 +31,8 @@ func set_tower_preview(tower_type, mouse_position):
 			turret_sprite.texture = load(texture_path)
 			turret_sprite.name = "TurretSprite"
 			control.add_child(turret_sprite)
-		else:
-			print("Error: Turret texture not found at path:", texture_path)
+		##else:
+			##print("Error: Turret texture not found at path:", texture_path)
 
 	add_child(control)
 	move_child(control, 0)
