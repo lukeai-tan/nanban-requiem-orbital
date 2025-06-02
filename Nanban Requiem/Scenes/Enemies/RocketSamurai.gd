@@ -10,14 +10,15 @@ var ranged_attack_dmg : float = 100
 var projectile_speed : float = 200
 var target : Unit = null
 var attack_range : EnemyRange
-
+var projectiles_node : Node2D
 
 func _ready() -> void:
 	attack = 50
 	movement_speed = 75
 	attack_range = EnemyRangeScene.instantiate()
 	add_child(attack_range)
-	
+	projectiles_node = get_tree().current_scene.get_node("GameScene/Map1/Projectiles")
+
 	## Health Bar 
 	health_bar = HealthBar.instantiate()
 	add_child(health_bar)
@@ -47,7 +48,7 @@ func shoot() :
 	if time_since_last_attack >= (1.0 / ranged_attack_speed) :
 		var projectile = projectile_scene.instantiate()
 		projectile.initialize(ranged_attack_dmg, projectile_speed, target, global_position)
-		get_tree().current_scene.add_child(projectile)
+		projectiles_node.add_child(projectile)
 		time_since_last_attack = 0.0
 	
 func blocked(unit : Unit) :

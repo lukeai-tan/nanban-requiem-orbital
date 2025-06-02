@@ -12,11 +12,13 @@ var attack_speed : float = 3
 var target : Enemy = null
 var attack_range : TowerRange
 var time_since_last_shot := 0.0
+var projectiles_node : Node2D
 
 func _ready() -> void:
 	super._ready()
 	attack_range = TowerRangeScene.instantiate()
 	add_child(attack_range)
+	projectiles_node = get_tree().current_scene.get_node("GameScene/Map1/Projectiles")
 
 func _process(delta: float) -> void:
 	time_since_last_shot += delta

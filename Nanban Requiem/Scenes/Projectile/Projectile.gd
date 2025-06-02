@@ -17,13 +17,12 @@ func initialize(damage : float, speed : float, target : Node2D, pos : Vector2) -
 func _physics_process(delta: float) -> void:
 	if not initialized :
 		return
-	
-	var direction = target.global_position - global_position
+	var direction = target.global_position - self.global_position
 	rotation = direction.angle()
 	velocity = direction.normalized() * speed
-	global_position += velocity * delta
+	self.global_position += velocity * delta
 	
-	if global_position.distance_to(target.global_position) < 3:
+	if self.global_position.distance_to(target.global_position) < 5:
 		hit_target()
 
 func hit_target() :
