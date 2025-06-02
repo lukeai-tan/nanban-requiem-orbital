@@ -24,10 +24,15 @@ func set_tower_preview(tower_type, mouse_position):
 	control.add_child(base_sprite)
 	
 	if tower_type.begins_with("RangedTower"):
-		var turret_sprite := Sprite2D.new()
-		turret_sprite.texture = load("res://Assets/Towers/" + tower_type + "_turret.png")
-		turret_sprite.set_name("TurretSprite")
-		control.add_child(turret_sprite)
+		var texture_path: String = "res://Assets/Towers/" + tower_type + "_turret.png"
+		
+		if FileAccess.file_exists(texture_path):
+			var turret_sprite := Sprite2D.new()
+			turret_sprite.texture = load(texture_path)
+			turret_sprite.name = "TurretSprite"
+			control.add_child(turret_sprite)
+		else:
+			print("Error: Turret texture not found at path:", texture_path)
 
 	add_child(control)
 	move_child(control, 0)

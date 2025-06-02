@@ -13,7 +13,7 @@ var tower_data = {
 	"MeleeTower1":
 		{"range": 0},
 	
-	"Girl":
+	"RangedTowerGirl":
 		{"range": 600},
 	}
 	

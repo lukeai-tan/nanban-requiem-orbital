@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		time_since_last_shot = 0.0
 
 func _physics_process(_delta: float) -> void:
-	if (target != null) : turn()
+	if (has_node("Turret") and target != null) : turn()
 
 # rotation of turrets on Ranged towers
 func turn():
