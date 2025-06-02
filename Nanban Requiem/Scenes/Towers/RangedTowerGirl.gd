@@ -2,7 +2,6 @@ extends "res://Scenes/Towers/Ranged.gd"
 
 func _ready():
 	super._ready()
-	
 
 
 func _process(delta):
