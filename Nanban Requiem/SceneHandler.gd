@@ -11,10 +11,6 @@ func load_main_menu():
 	get_node("MainMenu/Margin/VB_buttons/Quit").connect("pressed", Callable(self, "on_quit_pressed"))
 
 func on_new_game_pressed():
-	'''
-	get_tree().change_scene_to_file("res://Scenes/MainScenes/GameScene.tscn")
-	get_tree().connect("game_finished", Callable(self, "unload_game"))
-	'''
 	$"MainMenu".queue_free()
 	var game_scene: Node2D = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
 	game_scene.connect("game_finished", unload_game)
