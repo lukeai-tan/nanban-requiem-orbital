@@ -62,10 +62,7 @@ func update_tower_preview():
 func cancel_build_mode():
 	build_mode = false
 	build_valid = false
-	if tower_preview_node != null and tower_preview_node.is_inside_tree():
-		tower_preview_node.queue_free()
-	tower_preview_node = null
-
+	ui.get_node("TowerPreview").free()
 
 # IF build location is valid, instantiate selected tower scene
 # position it at stored tile
