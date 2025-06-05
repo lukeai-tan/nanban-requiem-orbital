@@ -41,7 +41,6 @@ func set_tower_preview(tower_type, mouse_position):
 
 
 func update_tower_preview(new_position, color):
-
 	var preview := get_node("TowerPreview")
 	preview.position = new_position
 	
