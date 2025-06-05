@@ -16,7 +16,7 @@ func initiate_build_mode(tower_type):
 		
 	build_type = tower_type
 	build_mode = true
-	tower_preview_node = ui.set_tower_preview(build_type, get_global_mouse_position())
+	ui.set_tower_preview(build_type, get_global_mouse_position())
 
 
 func update_tower_preview():
@@ -74,9 +74,10 @@ func verify_and_build():
 		new_tower.build_location = build_location
 		map_node.get_node("Towers").add_child(new_tower)
 		
+		'''
 		if tower_preview_node and tower_preview_node.is_inside_tree():
 			tower_preview_node.queue_free()
 			tower_preview_node = null
-		
+		'''
 		build_mode = false
 		build_valid = false
