@@ -279,6 +279,7 @@ frame_progress = 0.634471
 speed_scale = 2.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
+self_modulate = Color(1, 1, 1, 0.26)
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_jxw4w")
 position = Vector2(-15, 0)
