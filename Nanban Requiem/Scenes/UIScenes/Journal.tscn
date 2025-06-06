@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcxqohfhf52a3"]
+[gd_scene load_steps=5 format=3 uid="uid://bcxqohfhf52a3"]
 
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_ivkee"]
 [ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="2_0wac4"]
+[ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="3_0wac4"]
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="3_nmr7m"]
 
 [node name="Journal" type="Control"]
@@ -46,11 +47,37 @@ layout_mode = 2
 texture_normal = ExtResource("2_0wac4")
 stretch_mode = 0
 
+[node name="Label" type="Label" parent="Margin/Toggle Buttons/Toggle Tower"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_0wac4")
+theme_override_font_sizes/font_size = 25
+text = "Towers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Toggle Enemy" type="TextureButton" parent="Margin/Toggle Buttons"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_0wac4")
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/Toggle Buttons/Toggle Enemy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_0wac4")
+theme_override_font_sizes/font_size = 25
+text = "Enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackToMain" type="TextureButton" parent="Margin"]
 custom_minimum_size = Vector2(90, 90)
