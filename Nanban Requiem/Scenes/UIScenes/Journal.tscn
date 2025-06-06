@@ -92,3 +92,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("3_nmr7m")
 stretch_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Margin"]
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Entry List" type="VBoxContainer" parent="Margin/ScrollContainer"]
+layout_mode = 2
