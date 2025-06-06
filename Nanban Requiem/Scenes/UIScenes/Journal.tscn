@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcxqohfhf52a3"]
+[gd_scene load_steps=7 format=3 uid="uid://bcxqohfhf52a3"]
 
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_ivkee"]
 [ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="2_0wac4"]
+[ext_resource type="Texture2D" uid="uid://q3rsu63tn56h" path="res://Assets/UI/Buttons/button_rectangle_gradient.png" id="3_0trq0"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="3_0wac4"]
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="3_nmr7m"]
+[ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="4_0trq0"]
 
 [node name="Journal" type="Control"]
 layout_mode = 3
@@ -45,6 +47,8 @@ theme_override_constants/separation = 30
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_0wac4")
+texture_pressed = ExtResource("3_0trq0")
+texture_hover = ExtResource("4_0trq0")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/Toggle Buttons/Toggle Tower"]
@@ -64,6 +68,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_0wac4")
+texture_pressed = ExtResource("3_0trq0")
+texture_hover = ExtResource("4_0trq0")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/Toggle Buttons/Toggle Enemy"]
