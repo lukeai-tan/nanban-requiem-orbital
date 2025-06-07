@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cia7hkwwboa"]
+[gd_scene load_steps=9 format=3 uid="uid://cia7hkwwboa"]
 
 [ext_resource type="Texture2D" uid="uid://cods5ea5wgjir" path="res://Assets/UI/Art/mm_ChickenNanbanDon.jpg" id="1_tg48g"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="2_jrpvl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://q3rsu63tn56h" path="res://Assets/UI/Buttons/button_rectangle_gradient.png" id="3_qc1fl"]
 [ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="4_2e4mf"]
 [ext_resource type="FontFile" uid="uid://dvgh261lgwa5g" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="5_tg48g"]
+[ext_resource type="AudioStream" uid="uid://bv8h7ekrxnwc1" path="res://Assets/UI/Sounds/cyberpunk-street.mp3" id="8_1brix"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -154,3 +155,7 @@ theme_override_font_sizes/font_size = 40
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1brix")
+autoplay = true
