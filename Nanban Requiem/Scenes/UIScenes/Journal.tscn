@@ -1,0 +1,189 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcxqohfhf52a3"]
+
+[ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_ivkee"]
+[ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="2_0wac4"]
+[ext_resource type="Texture2D" uid="uid://q3rsu63tn56h" path="res://Assets/UI/Buttons/button_rectangle_gradient.png" id="3_0trq0"]
+[ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="3_nmr7m"]
+[ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="4_0trq0"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="5_0kdm6"]
+[ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl_icon.png" id="7_8yeyp"]
+[ext_resource type="Texture2D" uid="uid://brssddm2ydou0" path="res://Assets/Towers/RangedTowerGirl_base.png" id="8_4u0g4"]
+
+[node name="Journal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ivkee")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Toggle Buttons" type="VBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Toggle Tower" type="TextureButton" parent="Margin/Toggle Buttons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_0wac4")
+texture_pressed = ExtResource("3_0trq0")
+texture_hover = ExtResource("4_0trq0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/Toggle Buttons/Toggle Tower"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0kdm6")
+theme_override_font_sizes/font_size = 45
+text = "Towers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toggle Enemy" type="TextureButton" parent="Margin/Toggle Buttons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_0wac4")
+texture_pressed = ExtResource("3_0trq0")
+texture_hover = ExtResource("4_0trq0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/Toggle Buttons/Toggle Enemy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0kdm6")
+theme_override_font_sizes/font_size = 45
+text = "Enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMain" type="TextureButton" parent="Margin"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("3_nmr7m")
+stretch_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Margin"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Entry List" type="GridContainer" parent="Margin/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="Margin/ScrollContainer/Entry List"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Margin/ScrollContainer/Entry List/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_8yeyp")
+expand_mode = 3
+
+[node name="Info Panel" type="Control" parent="Margin"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Background" type="TextureRect" parent="Margin/Info Panel"]
+self_modulate = Color(0, 2.763, 2.762, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ivkee")
+expand_mode = 2
+
+[node name="Sprite" type="TextureRect" parent="Margin/Info Panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+texture = ExtResource("8_4u0g4")
+
+[node name="Label" type="Label" parent="Margin/Info Panel"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 20.0
+offset_right = 800.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("5_0kdm6")
+theme_override_font_sizes/font_size = 58
+text = "Ranged Tower Girl"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Margin/Info Panel"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 0
+offset_left = 300.0
+offset_top = 125.0
+offset_right = 800.0
+offset_bottom = 375.0
+theme_override_fonts/font = ExtResource("5_0kdm6")
+theme_override_font_sizes/font_size = 30
+text = "Ranged Tower Girl is a ranged tower girl. 
+
+
+NSFW Swimsuit skin COMING SOON!"
+
+[node name="Stats" type="Label" parent="Margin/Info Panel"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 0
+offset_left = 300.0
+offset_top = 400.0
+offset_right = 800.0
+offset_bottom = 550.0
+theme_override_fonts/font = ExtResource("5_0kdm6")
+theme_override_font_sizes/font_size = 30
+text = "Health : 1000
+Attack : XXX
+Aspd : XXX"
