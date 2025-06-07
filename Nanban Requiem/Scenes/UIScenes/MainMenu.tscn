@@ -158,5 +158,6 @@ vertical_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_1brix")
+volume_db = -10.0
 autoplay = true
 parameters/looping = true
