@@ -46,7 +46,7 @@ func update_tower_preview():
 	
 	if build_type.begins_with("RangedTower"):
 		valid = not invalid_by_exclusion and not is_path_tile and not tile_is_occupied
-	elif build_type.begins_with("MeleeTower"):
+	elif build_type.begins_with("MeleeTower") or build_type.begins_with("Obstacle"):
 		valid = is_path_tile and not tile_is_occupied
 		
 	if valid:

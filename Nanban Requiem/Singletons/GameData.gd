@@ -19,10 +19,10 @@ var tower_data = {
 		"stats": "Rocketeer stats"
 	},
 	
-	"MeleeTower0": {
+	"Obstacle1": {
 		"range": 0,
-		"sprite_icon": "res://Assets/Towers/MeleeTower0_base.png",
-		"sprite_in_game": "res://Assets/Towers/MeleeTower0_base.png",
+		"sprite_icon": "res://Assets/Towers/Obstacle1_base.png",
+		"sprite_in_game": "res://Assets/Towers/Obstacle1_base.png",
 		"name": "Boulder",
 		"description": "This is a boulder description",
 		"stats": "Boulder stats"
