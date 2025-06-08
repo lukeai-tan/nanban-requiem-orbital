@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb0xqwqkjp184"]
 
-[ext_resource type="Script" uid="uid://b3jw25s5dqxaq" path="res://Scenes/Towers/MeleeTower0.gd" id="1_fbrej"]
-[ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/MeleeTower0_base.png" id="2_ah5hh"]
+[ext_resource type="Script" uid="uid://b3jw25s5dqxaq" path="res://Scenes/Towers/Obstacle1.gd" id="1_fbrej"]
+[ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/Obstacle1_base.png" id="2_ah5hh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
 size = Vector2(133, 132)
