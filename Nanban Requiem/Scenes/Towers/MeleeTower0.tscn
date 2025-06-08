@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
 size = Vector2(133, 132)
 
-[node name="Melee0" type="Area2D"]
+[node name="Obstacle1" type="Area2D"]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_fbrej")
