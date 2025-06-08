@@ -1,21 +1,51 @@
 extends Node
 
 var tower_data = {
-	"RangedTower1": 
-		{"range": 300},
+	"RangedTower1": {
+		"range": 300,
+		"sprite_icon": "res://Assets/Towers/RangedTower1_turret.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTower1_turret.png",
+		"name": "Pew Pew",
+		"description": "This is a Pew Pew description",
+		"stats": ""
+	},
 		
-	"RangedTower2":
-		{"range": 600},
+	"RangedTower2": {
+		"range": 600,
+		"sprite_icon": "res://Assets/Towers/RangedTower2_turret.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTower2_turret.png",
+		"name": "Rocketeer",
+		"description": "This is a rocketeer description",
+		"stats": "Rocketeer stats"
+	},
 	
-	"MeleeTower0":
-		{"range": 0},
+	"MeleeTower0": {
+		"range": 0,
+		"sprite_icon": "res://Assets/Towers/MeleeTower0_base.png",
+		"sprite_in_game": "res://Assets/Towers/MeleeTower0_base.png",
+		"name": "Boulder",
+		"description": "This is a boulder description",
+		"stats": "Boulder stats"
+	},
 		
-	"MeleeTower1":
-		{"range": 0},
+	"MeleeTower1": {
+		"range": 0,
+		"sprite_icon": "res://Assets/Towers/MeleeTower1_base.png",
+		"sprite_in_game": "res://Assets/Towers/MeleeTower1_base.png",
+		"name": "Inverse Boulder",
+		"description": "",
+		"stats": ""
+	},
 	
-	"RangedTowerGirl":
-		{"range": 600},
-	}
+	"RangedTowerGirl": {
+		"range": 600,
+		"sprite_icon": "res://Assets/Towers/RangedTowerGirl_icon.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl_base.png",
+		"name": "Insert Girl Name",
+		"description": "This is a girl description",
+		"stats": "Girl stats"
+	},
+}
 	
 var wave_data = {
 	"Map1": [
