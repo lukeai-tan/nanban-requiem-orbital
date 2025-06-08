@@ -110,7 +110,7 @@ size_flags_vertical = 3
 localize_numeral_system = false
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 6
+columns = 4
 
 [node name="EntryIconButton" type="TextureButton" parent="Margin/ScrollContainer/Entry List"]
 custom_minimum_size = Vector2(150, 150)
