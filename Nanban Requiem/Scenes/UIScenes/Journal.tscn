@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcxqohfhf52a3"]
+[gd_scene load_steps=11 format=3 uid="uid://bcxqohfhf52a3"]
 
 [ext_resource type="Script" uid="uid://c6av7voh46gmf" path="res://Scenes/UIScenes/Journal.gd" id="1_8yeyp"]
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_ivkee"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="3_nmr7m"]
 [ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="4_0trq0"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="5_0kdm6"]
+[ext_resource type="Texture2D" uid="uid://chso7g3mw7gue" path="res://Assets/Icons/home.png" id="7_4u0g4"]
 [ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl_icon.png" id="7_8yeyp"]
 [ext_resource type="Texture2D" uid="uid://brssddm2ydou0" path="res://Assets/Towers/RangedTowerGirl_base.png" id="8_4u0g4"]
 
@@ -95,7 +96,8 @@ custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture_normal = ExtResource("3_nmr7m")
+texture_normal = ExtResource("7_4u0g4")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Margin"]
@@ -146,9 +148,9 @@ texture = ExtResource("8_4u0g4")
 
 [node name="Name" type="Label" parent="Margin/Info Panel"]
 layout_mode = 0
-offset_left = 300.0
+offset_left = 175.0
 offset_top = 20.0
-offset_right = 800.0
+offset_right = 675.0
 offset_bottom = 100.0
 theme_override_fonts/font = ExtResource("5_0kdm6")
 theme_override_font_sizes/font_size = 58
@@ -183,4 +185,19 @@ text = "Health : 1000
 Attack : XXX
 Aspd : XXX"
 
+[node name="ClosePanel" type="TextureButton" parent="Margin/Info Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.0
+offset_top = 7.0
+offset_right = -10.0
+offset_bottom = 82.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_nmr7m")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="Margin/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="Margin/Info Panel/ClosePanel" to="." method="_on_close_panel_pressed"]
