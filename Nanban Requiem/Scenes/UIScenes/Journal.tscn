@@ -41,7 +41,6 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="Background" type="TextureRect" parent="Margin"]
-visible = false
 self_modulate = Color(0, 2.763, 2.762, 1)
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
@@ -59,6 +58,8 @@ theme_override_constants/separation = 30
 [node name="Toggle Tower" type="TextureButton" parent="Margin/Toggle Buttons"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("2_0wac4")
 texture_pressed = ExtResource("3_0trq0")
 texture_hover = ExtResource("4_0trq0")
@@ -80,6 +81,8 @@ vertical_alignment = 1
 [node name="Toggle Enemy" type="TextureButton" parent="Margin/Toggle Buttons"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("2_0wac4")
 texture_pressed = ExtResource("3_0trq0")
 texture_hover = ExtResource("4_0trq0")
@@ -119,7 +122,7 @@ size_flags_vertical = 3
 localize_numeral_system = false
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 4
+columns = 5
 
 [node name="EntryIconButton" type="TextureButton" parent="Margin/ScrollContainer/Entry List"]
 custom_minimum_size = Vector2(150, 150)
@@ -129,6 +132,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Info Panel" type="Control" parent="Margin"]
+visible = false
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 size_flags_horizontal = 8
