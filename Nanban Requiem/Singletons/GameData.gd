@@ -74,6 +74,33 @@ var tower_data = {
 		"stats": "Tokisaki do nothing"
 	},
 
+	"RangedTowerGirl2": {
+		"range": 0,
+		"sprite_icon": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
+		"name": "Vampire Girl",
+		"description": "Vampire girl wants to suck your blood",
+		"stats": "Vampire girl stats"
+	},
+
+	"RangedTowerBoy": {
+		"range": 0,
+		"sprite_icon": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
+		"name": "Kakyoin Ripoff",
+		"description": "Kakyoin description",
+		"stats": "Kakyoin stats"
+	},
+
+	"RangedTowerBoy2": {
+		"range": 0,
+		"sprite_icon": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
+		"name": "Dio Brando Ripoff",
+		"description": "Dio Brando Ripoff description",
+		"stats": "Dio Brando stats"
+	},
+
 }
 
 
