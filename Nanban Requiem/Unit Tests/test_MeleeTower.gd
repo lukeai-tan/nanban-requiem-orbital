@@ -1,6 +1,6 @@
 extends "res://addons/gut/test.gd"
 
-var melee_tower = preload("res://Scenes/Towers/MeleeTower0.gd")
+var melee_tower = preload("res://Scenes/Towers/Obstacle1.gd")
 var _tower = null
 
 func before_each():
