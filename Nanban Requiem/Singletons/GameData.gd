@@ -1,5 +1,24 @@
 extends Node
 
+
+
+'''
+# Template for Tower Data
+"Tower name": {
+		"range": Tower range,
+		"sprite_icon": "res://filepath",
+		"sprite_in_game": "res://filepath",
+		"name": "Tower name",
+		"description": "Tower description",
+		"stats": "Tower stats"
+	},
+'''
+
+
+
+
+
+
 var tower_data = {
 	"RangedTower1": {
 		"range": 300,
@@ -45,6 +64,16 @@ var tower_data = {
 		"description": "This is a girl description",
 		"stats": "Girl stats"
 	},
+
+	"Tokisaki": {
+		"range": 0,
+		"sprite_icon": "res://Assets/Towers/RangedTowerGirl_icon.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl_base.png",
+		"name": "Tokisaki",
+		"description": "Tokisaki blow up",
+		"stats": "Tokisaki do nothing"
+	},
+
 }
 	
 var wave_data = {
