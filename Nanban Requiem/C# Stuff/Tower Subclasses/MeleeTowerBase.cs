@@ -15,6 +15,7 @@ public abstract partial class MeleeTowerBase : ObstacleBase
 
     public override void _Ready()
     {
+        base._Ready();
         this.basicMelee = new BasicMeleeAttack();
         this.basicMelee.SetAttack(this.meleeAttack);
     }
