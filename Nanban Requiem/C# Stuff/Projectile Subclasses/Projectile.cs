@@ -42,7 +42,6 @@ public partial class Projectile<T> : CharacterBody2D
         {
             this.Land();
         }
-
     }
 
     protected virtual void Land()

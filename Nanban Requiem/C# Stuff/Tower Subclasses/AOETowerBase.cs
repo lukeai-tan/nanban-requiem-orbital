@@ -8,27 +8,13 @@ public abstract partial class AOETowerBase : RangedTowerBase
 {
 
     [Export] protected PackedScene areaEffectScene;
-    protected AOERangedAttack aoeRanged;
 
-    public override void _Ready()
+    public override void SetActions()
     {
-        this.aoeRanged = new AOERangedAttack(this.projectileScene, this, this.areaEffectScene);
-        this.aoeRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
-        base._Ready();
+        this.basicRanged = new AOERangedAttack(this.projectileScene, this, this.areaEffectScene);
+        this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
     }
 
-    public override void Act()
-    {
-        if (this.timeSinceLastAttack >= 1f / this.attackSpeed)
-        {
-            Enemy target = this.targeting.GetTarget(this.range.GetTargets());
-            if (target != null)
-            {
-                this.aoeRanged.SetModifiers(this.rangedDamage, 1);
-                this.aoeRanged.Execute(target);
-            }
-        }
-    }
     public override string ToString()
     {
         return "AOE " + base.ToString();

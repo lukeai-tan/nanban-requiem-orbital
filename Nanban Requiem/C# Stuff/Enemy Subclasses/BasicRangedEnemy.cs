@@ -18,6 +18,11 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
     public override void _Ready()
     {
         this.range = this.GetNodeOrNull<EnemyDetectionRange>("Detection Range");
+        base._Ready();
+    }
+
+    public override void SetActions()
+    {
         this.basicRanged = new BasicRangedAttack(this.projectileScene, this);
         this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
     }
@@ -32,6 +37,7 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
             }
             else
             {
+                this.animation.Play("running");
                 this.Act();
                 this.pathing.Update(delta);
             }

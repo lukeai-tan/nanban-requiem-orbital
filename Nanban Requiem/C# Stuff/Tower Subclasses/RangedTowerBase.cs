@@ -3,7 +3,7 @@ using Godot;
 
 // Layer 2 tower logic that handles specialized detection, targeting and ranged attacking
 // Required fields: health, physDefense, artsDefense, rangedDamage, rangedAttack, projectileSpeed, projectileScene, attackSpeed, range, targeting
-public abstract partial class RangedTowerBase : Tower
+public abstract partial class RangedTowerBase : Tower, IAct
 {
 
     protected int rangedDamage;
@@ -19,6 +19,12 @@ public abstract partial class RangedTowerBase : Tower
     public override void _Ready()
     {
         this.range = this.GetNodeOrNull<TowerDetectionRange>("Detection Range");
+        this.SetActions();
+        base._Ready();
+    }
+
+    public virtual void SetActions()
+    {
         this.basicRanged = new BasicRangedAttack(this.projectileScene, this);
         this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
     }
@@ -36,6 +42,11 @@ public abstract partial class RangedTowerBase : Tower
             Enemy target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
+                Area2D turret = this.GetNodeOrNull<Area2D>("Turret");
+                if (turret != null)
+                {
+                    turret.LookAt(target.GlobalPosition);
+                }
                 this.basicRanged.SetModifiers(this.rangedDamage, 1);
                 this.basicRanged.Execute(target);
             }
