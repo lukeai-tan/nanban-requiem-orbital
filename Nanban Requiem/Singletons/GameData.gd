@@ -67,15 +67,49 @@ var tower_data = {
 
 	"Tokisaki": {
 		"range": 0,
-		"sprite_icon": "res://Assets/Towers/RangedTowerGirl_icon.png",
-		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl_base.png",
+		"sprite_icon": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
 		"name": "Tokisaki",
 		"description": "Tokisaki blow up",
 		"stats": "Tokisaki do nothing"
 	},
 
 }
+
+
+var enemy_data = {
+	"Samurai": {
+		"health": 100,
+		"speed": 50,
+		"sprite_icon": "res://Assets/Enemies/samurai_sprite.png",
+		"sprite_in_game": "res://Assets/Enemies/samurai_sprite.png",
+		"name": "Samurai",
+		"description": "This is a Samurai description",
+		"stats": "Samurai stats"
+	},
 	
+	"RocketSamurai": {
+		"health": 200,
+		"speed": 75,
+		"sprite_icon": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
+		"name": "Rocket Samurai",
+		"description": "This is a Rocket Samurai description",
+		"stats": "Rocket Samurai stats"
+	},
+	
+	"WhiteSamurai": {
+		"health": 300,
+		"speed": 100,
+		"sprite_icon": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
+		"name": "Mighty Whitey",
+		"description": "This is a Mighty Whitey description",
+		"stats": "Mighty Whitey stats"
+	}
+}
+	
+
 var wave_data = {
 	"Map1": [
 		# Wave 1
