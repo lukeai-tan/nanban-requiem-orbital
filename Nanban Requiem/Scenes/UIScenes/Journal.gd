@@ -8,6 +8,8 @@ extends Control
 @onready var stats_label = $"Margin/Info Panel/Stats"
 @onready var entry_list = $"Margin/ScrollContainer/Entry List"
 
+signal return_to_main_menu
+
 func _ready():
 	info_panel.visible = false
 	_populate_icons()
@@ -36,4 +38,5 @@ func _on_icon_pressed(entry):
 
 
 func _on_back_to_main_pressed() -> void:
-	get_tree().reload_current_scene()
+	emit_signal("return_to_main_menu")
+	queue_free()
