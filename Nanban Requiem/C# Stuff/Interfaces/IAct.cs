@@ -4,6 +4,8 @@ using System;
 public interface IAct
 {
 
+    public void SetActions();
+
     public void Act();
 
 }

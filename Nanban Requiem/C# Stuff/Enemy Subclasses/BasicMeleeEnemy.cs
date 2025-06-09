@@ -17,6 +17,12 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
 
     public override void _Ready()
     {
+        this.SetActions();
+        base._Ready();
+    }
+
+    public virtual void SetActions()
+    {
         this.basicMelee = new BasicMeleeAttack();
         this.basicMelee.SetAttack(this.meleeAttack);
     }
@@ -31,6 +37,7 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
             }
             else
             {
+                this.animation.Play("running");
                 this.pathing.Update(delta);
             }
             this.timeSinceLastAttack += delta;
@@ -41,6 +48,7 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
     {
         if (this.timeSinceLastAttack >= 1f / this.attackSpeed)
         {
+            this.animation.Play("attack");
             this.basicMelee.SetModifiers(this.meleeDamage, 1);
             this.basicMelee.Execute(this.blocked);
         }

@@ -7,6 +7,8 @@ using Godot;
 public abstract partial class Enemy : CharacterBody2D, IUnit
 {
 
+    [Signal]
+    public delegate void DamageBaseEventHandler(float damage);
     public event EventHandler Despawning;
     protected int health;
     protected int physDefense;
@@ -15,6 +17,17 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
     protected bool targetable = true;
     protected IPathing pathing;
     protected bool initialized = false;
+    protected TextureProgressBar healthBar;
+    protected AnimatedSprite2D animation;
+
+    public override void _Ready()
+    {
+        this.healthBar = GD.Load<PackedScene>("res://Scenes/HealthBar/HealthBar.tscn").Instantiate<TextureProgressBar>();
+        this.AddChild(this.healthBar);
+        this.healthBar.MaxValue = this.health;
+        this.healthBar.Value = this.health;
+        this.animation = this.GetNodeOrNull<AnimatedSprite2D>("Sprite");
+    }
 
     public virtual void Initialize(Path2D path)
     {
@@ -39,6 +52,7 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
         else
         {
             this.health -= trueDamage;
+            this.healthBar.Value = this.health;
         }
     }
 
@@ -75,6 +89,7 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
 
     public void ReachedBase(object pathing, EventArgs e)
     {
+        this.EmitSignal(nameof(DamageBase), 1);
         this.QueueFree();
     }
 

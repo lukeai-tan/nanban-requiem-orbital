@@ -11,6 +11,16 @@ public abstract partial class Tower : CharacterBody2D, IUnit
     protected int physDefense;
     protected int artsDefense;
     protected bool targetable = true;
+    protected TextureProgressBar healthBar;
+
+    public override void _Ready()
+    {
+        this.healthBar = GD.Load<PackedScene>("res://Scenes/HealthBar/HealthBar.tscn").Instantiate<TextureProgressBar>();
+        this.AddChild(this.healthBar);
+        this.healthBar.MaxValue = this.health;
+        this.healthBar.Value = this.health;
+    }
+
 
     public bool CanTarget()
     {
@@ -27,6 +37,7 @@ public abstract partial class Tower : CharacterBody2D, IUnit
         else
         {
             this.health -= trueDamage;
+            this.healthBar.Value = this.health;
         }
     }
 

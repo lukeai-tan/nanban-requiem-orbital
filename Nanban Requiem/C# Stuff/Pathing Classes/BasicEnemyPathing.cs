@@ -17,12 +17,16 @@ public class BasicEnemyPathing : IPathing
     {
         this.speed = speed;
         this.self = self;
+        this.self.Despawning += this.ClearPath;
     }
 
     public void InitializePath(Path2D path)
     {
         this.path = path;
-        this.pathing = new PathFollow2D();
+        if (this.pathing == null)
+        {
+            this.pathing = new PathFollow2D();
+        }
         this.path.AddChild(this.pathing);
         this.pathing.AddChild(this.self);
         this.pathing.Progress = 0f;
@@ -57,6 +61,11 @@ public class BasicEnemyPathing : IPathing
         {
             return -1f;
         }
+    }
+
+    public void ClearPath(object target, EventArgs e) 
+    {
+        this.pathing.QueueFree();
     }
 
     public override string ToString()

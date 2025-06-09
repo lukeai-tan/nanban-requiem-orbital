@@ -3,7 +3,7 @@ using Godot;
 
 // Layer 2 tower logic that handles melee attacking and targeting
 // Required fields: health, physDefense, artsDefense, meleeDamage, meleeAttack, attackSpeed, blockCount, range, targeting
-public abstract partial class MeleeTowerBase : ObstacleBase
+public abstract partial class MeleeTowerBase : ObstacleBase, IAct
 {
 
     protected int meleeDamage;
@@ -15,7 +15,12 @@ public abstract partial class MeleeTowerBase : ObstacleBase
 
     public override void _Ready()
     {
+        this.SetActions();
         base._Ready();
+    }
+
+    public virtual void SetActions()
+    {
         this.basicMelee = new BasicMeleeAttack();
         this.basicMelee.SetAttack(this.meleeAttack);
     }
