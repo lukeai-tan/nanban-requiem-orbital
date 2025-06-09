@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
+.vscode/
+
+# Mono specific
+.mono/
+data_*/
+mono_crash.*.json
+
 /android/
