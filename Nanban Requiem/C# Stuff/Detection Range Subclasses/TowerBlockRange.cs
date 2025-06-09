@@ -6,14 +6,16 @@ using Godot;
 public partial class TowerBlockRange : DetectionRange<Enemy>
 {
 
-    [Export] protected ObstacleBase owner;
+    protected ObstacleBase owner;
     protected int totalBlock;
     protected int currentBlock;
 
     public override void _Ready()
     {
+        this.owner = this.GetParentOrNull<ObstacleBase>();
         this.totalBlock = this.owner.GetBlockCount();
         this.currentBlock = this.totalBlock;
+        base._Ready();
     }
 
     protected override void OnUnitEntered(Enemy enemy)

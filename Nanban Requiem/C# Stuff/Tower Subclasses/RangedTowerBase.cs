@@ -13,11 +13,12 @@ public abstract partial class RangedTowerBase : Tower
     [Export] protected PackedScene projectileScene;
     protected double attackSpeed;
     protected double timeSinceLastAttack = 0;
-    [Export] protected TowerDetectionRange range;
+    protected TowerDetectionRange range;
     protected ITargeting<Enemy> targeting;
 
     public override void _Ready()
     {
+        this.range = this.GetNodeOrNull<TowerDetectionRange>("Detection Range");
         this.basicRanged = new BasicRangedAttack(this.projectileScene, this);
         this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
     }

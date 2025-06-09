@@ -7,7 +7,13 @@ public abstract partial class ObstacleBase : Tower
 {
 
     protected int blockCount;
-    [Export] protected TowerBlockRange range;
+    protected TowerBlockRange range;
+
+    public override void _Ready()
+    {
+        this.range = this.GetNodeOrNull<TowerBlockRange>("Block Range");
+    }
+
 
     public int GetBlockCount()
     {

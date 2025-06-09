@@ -13,10 +13,11 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
     protected BasicRangedAttack basicRanged;
     [Export] protected PackedScene projectileScene;
     protected ITargeting<Tower> targeting;
-    [Export] protected EnemyDetectionRange range;
+    protected EnemyDetectionRange range;
 
     public override void _Ready()
     {
+        this.range = this.GetNodeOrNull<EnemyDetectionRange>("Detection Range");
         this.basicRanged = new BasicRangedAttack(this.projectileScene, this);
         this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
     }
