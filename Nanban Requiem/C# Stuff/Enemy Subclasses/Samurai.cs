@@ -3,7 +3,8 @@ using Godot;
 
 public partial class Samurai : BasicMeleeEnemy
 {
-    public new void Initialize()
+
+    public override void _Ready()
     {
         this.health = 300;
         this.physDefense = 0;
@@ -13,7 +14,6 @@ public partial class Samurai : BasicMeleeEnemy
         this.meleeDamage = 100;
         this.attackSpeed = 0.5;
         this.blockCount = 1;
-        base.Initialize();
     }
     public override string ToString()
     {

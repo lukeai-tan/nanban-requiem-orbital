@@ -3,7 +3,7 @@ using Godot;
 
 public partial class RocketSamurai : BasicRangedEnemy
 {
-    public new void Initialize()
+    public override void _Ready()
     {
         this.health = 200;
         this.physDefense = 0;
@@ -16,10 +16,7 @@ public partial class RocketSamurai : BasicRangedEnemy
         this.rangedAttack = new PhysicalAttack();
         this.rangedDamage = 50;
         this.projectileSpeed = 200;
-        this.projectileScene = (PackedScene)GD.Load("res://path/to/Projectile.tscn");
         this.targeting = new TowerClosestToSelf(this);
-        this.range = (EnemyDetectionRange)((PackedScene)GD.Load("res://path/to/EnemyDetectionRange.tscn")).Instantiate();
-        base.Initialize();
     }
 
     public override string ToString()

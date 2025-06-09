@@ -11,12 +11,6 @@ public abstract partial class Tower : CharacterBody2D, IUnit
     protected int physDefense;
     protected int artsDefense;
     protected bool targetable = true;
-    protected bool initialized = false;
-
-    protected virtual void Initialize()
-    {
-        this.initialized = true;
-    }
 
     public bool CanTarget()
     {

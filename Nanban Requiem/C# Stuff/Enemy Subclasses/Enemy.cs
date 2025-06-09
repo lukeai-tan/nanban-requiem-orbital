@@ -16,9 +16,10 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
     protected IPathing pathing;
     protected bool initialized = false;
 
-    protected virtual void Initialize()
+    public virtual void Initialize(Path2D path)
     {
         this.pathing = new BasicEnemyPathing(this.movementSpeed, this);
+        this.pathing.InitializePath(path);
         this.pathing.PathCompletion += this.ReachedBase;
         this.initialized = true;
     }
@@ -67,7 +68,7 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
         return this.health;
     }
 
-    public void InitializePath(Path2D path)
+    protected void ChangePath(Path2D path)
     {
         this.pathing.InitializePath(path);
     }

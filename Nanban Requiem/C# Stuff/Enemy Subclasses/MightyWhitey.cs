@@ -2,7 +2,7 @@ using System;
 using Godot;
 public partial class MightyWhitey : BasicMeleeEnemy
 {
-    public new void Initialize()
+    public override void _Ready()
     {
         this.health = 150;
         this.physDefense = 0;
@@ -12,9 +12,8 @@ public partial class MightyWhitey : BasicMeleeEnemy
         this.meleeDamage = 50;
         this.attackSpeed = 2;
         this.blockCount = 1;
-        base.Initialize();
     }
-
+    
     public override string ToString()
     {
         return "White: " + this.meleeDamage.ToString() + " " + base.ToString();

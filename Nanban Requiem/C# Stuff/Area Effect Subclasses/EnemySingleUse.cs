@@ -5,7 +5,7 @@ using Godot;
 public partial class EnemySingleUse : AreaEffect<Tower>
 {
 
-    public override void _Ready()
+    public override void _Process(double delta)
     {
         if (this.active)
         {

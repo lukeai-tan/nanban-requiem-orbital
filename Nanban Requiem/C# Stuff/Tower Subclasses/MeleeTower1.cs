@@ -3,7 +3,7 @@ using Godot;
 
 public partial class MeleeTower1 : MeleeTowerBase
 {
-    public new void Initialize()
+    public override void _Ready()
     {
         this.health = 1200;
         this.physDefense = 50;
@@ -13,8 +13,7 @@ public partial class MeleeTower1 : MeleeTowerBase
         this.attackSpeed = 1.5;
         this.blockCount = 2;
         this.targeting = new EnemyWithMostHealth();
-        this.range = (TowerBlockRange)((PackedScene)GD.Load("res://path/to/TowerBlockRange.tscn")).Instantiate();
-        base.Initialize();
+        base._Ready();
     }
 
     public override string ToString()
