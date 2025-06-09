@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cia7hkwwboa"]
+[gd_scene load_steps=10 format=3 uid="uid://cia7hkwwboa"]
 
 [ext_resource type="Texture2D" uid="uid://cods5ea5wgjir" path="res://Assets/UI/Art/mm_ChickenNanbanDon.jpg" id="1_tg48g"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="2_jrpvl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://duc3fuxlc1616" path="res://Assets/UI/Buttons/button_rectangle_depth_gradient.png" id="4_2e4mf"]
 [ext_resource type="FontFile" uid="uid://dvgh261lgwa5g" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="5_tg48g"]
 [ext_resource type="AudioStream" uid="uid://bv8h7ekrxnwc1" path="res://Assets/UI/Sounds/cyberpunk-street.mp3" id="8_1brix"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="8_50puj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -104,8 +105,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_tg48g")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("8_50puj")
+theme_override_font_sizes/font_size = 50
 text = "Journal"
 horizontal_alignment = 1
 vertical_alignment = 1
