@@ -33,3 +33,7 @@ func _on_icon_pressed(entry):
 	description_label.text = entry["description"]
 	stats_label.text = entry["stats"]
 	info_panel.visible = true
+
+
+func _on_back_to_main_pressed() -> void:
+	get_tree().reload_current_scene()

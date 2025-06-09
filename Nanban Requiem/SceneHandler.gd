@@ -25,6 +25,8 @@ func on_trophies_pressed():
 func on_journal_pressed():
 	print("Journal button pressed")
 	print("Yes Ziming, the font difference is intended")
+	var journal_scene: Control = load("res://Scenes/UIScenes/Journal.tscn").instantiate()
+	call_deferred('add_child', journal_scene)
 
 func on_settings_pressed():
 	print("Settings button pressed")
