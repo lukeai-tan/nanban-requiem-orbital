@@ -3,7 +3,7 @@ using Godot;
 
 public partial class RangedTower2 : AOETowerBase
 {
-    public new void Initialize()
+    public override void _Ready()
     {
         this.health = 800;
         this.physDefense = 10;
@@ -12,11 +12,8 @@ public partial class RangedTower2 : AOETowerBase
         this.rangedDamage = 20;
         this.attackSpeed = 1;
         this.projectileSpeed = 300;
-        this.projectileScene = (PackedScene)GD.Load("res://path/to/AOEProjectile.tscn");
         this.targeting = new EnemyClosestToBase();
-        this.range = (TowerDetectionRange)((PackedScene)GD.Load("res://path/to/TowerDetectionRange.tscn")).Instantiate();
-        this.areaEffect = (TowerSingleUse)((PackedScene)GD.Load("res://path/to/TowerSingleUse.tscn")).Instantiate();
-        base.Initialize();
+        base._Ready();
     }
 
     public override string ToString()

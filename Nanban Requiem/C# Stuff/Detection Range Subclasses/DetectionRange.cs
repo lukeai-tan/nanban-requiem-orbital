@@ -8,7 +8,7 @@ public abstract partial class DetectionRange<T> : Area2D
     where T : Node2D, IUnit
 {
 
-    protected List<T> targetsInRange;
+    protected List<T> targetsInRange = new List<T>();
 
     public override void _Ready()
     {

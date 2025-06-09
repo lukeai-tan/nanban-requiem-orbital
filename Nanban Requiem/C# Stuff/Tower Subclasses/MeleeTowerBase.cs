@@ -13,20 +13,16 @@ public abstract partial class MeleeTowerBase : ObstacleBase
     protected double timeSinceLastAttack = 0;
     protected ITargeting<Enemy> targeting;
 
-    protected override void Initialize()
+    public override void _Ready()
     {
         this.basicMelee = new BasicMeleeAttack();
         this.basicMelee.SetAttack(this.meleeAttack);
-        base.Initialize();
     }
 
     public override void _Process(double delta)
     {
-        if (this.initialized)
-        {
-            this.Act();
-            this.timeSinceLastAttack += delta;
-        }
+        this.Act();
+        this.timeSinceLastAttack += delta;
     }
 
     public virtual void Act()

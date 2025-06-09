@@ -6,13 +6,7 @@ using Godot;
 public partial class EnemyDetectionRange : DetectionRange<Tower>
 {
 
-    protected Enemy owner;
-
-    public void Initialize(Enemy owner)
-    {
-        this.targetsInRange = new List<Tower>();
-        this.owner = owner;
-    }
+    [Export] protected Enemy owner;
 
     public override string ToString()
     {

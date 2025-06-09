@@ -7,14 +7,14 @@ using Godot;
 public abstract partial class AOETowerBase : RangedTowerBase
 {
 
-    protected AreaEffect<Enemy> areaEffect;
+    [Export] protected PackedScene areaEffectScene;
     protected AOERangedAttack aoeRanged;
 
-    protected override void Initialize()
+    public override void _Ready()
     {
-        this.aoeRanged = new AOERangedAttack(this.projectileScene, this, this.areaEffect);
+        this.aoeRanged = new AOERangedAttack(this.projectileScene, this, this.areaEffectScene);
         this.aoeRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
-        base.Initialize();
+        base._Ready();
     }
 
     public override void Act()

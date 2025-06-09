@@ -3,7 +3,7 @@ using Godot;
 
 public partial class RangedTower1 : RangedTowerBase
 {
-    public new void Initialize()
+    public override void _Ready()
     {
         this.health = 1000;
         this.physDefense = 20;
@@ -12,10 +12,8 @@ public partial class RangedTower1 : RangedTowerBase
         this.rangedDamage = 10;
         this.attackSpeed = 3;
         this.projectileSpeed = 300;
-        this.projectileScene = (PackedScene)GD.Load("res://path/to/Projectile.tscn");
         this.targeting = new EnemyClosestToBase();
-        this.range = (TowerDetectionRange)((PackedScene)GD.Load("res://path/to/TowerDetectionRange.tscn")).Instantiate();
-        base.Initialize();
+        base._Ready();
     }
 
     public override string ToString()

@@ -4,11 +4,11 @@ using Godot;
 public abstract partial class AOEProjectile<T> : Projectile<T>
     where T : Node2D, IUnit
 {
-    protected AreaEffect<T> areaEffect;
+    protected PackedScene areaEffectScene;
 
-    public void Initialize(Attack attack, int damage, double multiplier, T target, int speed, Vector2 position, AreaEffect<T> areaEffect)
+    public void Initialize(Attack attack, int damage, double multiplier, T target, int speed, Vector2 position, PackedScene areaEffectScene)
     {
-        this.areaEffect = areaEffect;
+        this.areaEffectScene = areaEffectScene;
         base.Initialize(attack, damage, multiplier, target, speed, position);
     }
 
@@ -22,8 +22,13 @@ public abstract partial class AOEProjectile<T> : Projectile<T>
         BasicMeleeAttack hit = new BasicMeleeAttack();
         hit.SetAttack(this.attack);
         hit.SetModifiers(this.damage, this.multiplier);
-        areaEffect.Activate(this.GlobalPosition, hit);
-        this.QueueFree();
+        Node areaEffect = this.areaEffectScene.Instantiate();
+        if (areaEffect is AreaEffect<T> effect)
+        {
+            this.GetParent().AddChild(effect);
+            effect.Activate(this.GlobalPosition, hit);
+            this.QueueFree();
+        }
     }
 
     public override string ToString()

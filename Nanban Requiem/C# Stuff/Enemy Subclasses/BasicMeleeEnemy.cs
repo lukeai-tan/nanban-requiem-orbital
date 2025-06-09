@@ -15,11 +15,10 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
     protected int blockCount;
     protected Tower blocked = null;
 
-    protected override void Initialize()
+    public override void _Ready()
     {
         this.basicMelee = new BasicMeleeAttack();
         this.basicMelee.SetAttack(this.meleeAttack);
-        base.Initialize();
     }
 
     public override void _Process(double delta)

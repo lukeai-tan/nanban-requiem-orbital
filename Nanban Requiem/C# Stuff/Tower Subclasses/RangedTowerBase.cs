@@ -10,28 +10,22 @@ public abstract partial class RangedTowerBase : Tower
     protected Attack rangedAttack;
     protected int projectileSpeed;
     protected BasicRangedAttack basicRanged;
-    protected PackedScene projectileScene;
+    [Export] protected PackedScene projectileScene;
     protected double attackSpeed;
     protected double timeSinceLastAttack = 0;
-    protected TowerDetectionRange range;
+    [Export] protected TowerDetectionRange range;
     protected ITargeting<Enemy> targeting;
 
-    protected override void Initialize()
+    public override void _Ready()
     {
         this.basicRanged = new BasicRangedAttack(this.projectileScene, this);
         this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
-        this.AddChild(this.range);
-        this.range.Initialize(this);
-        base.Initialize();
     }
 
     public override void _Process(double delta)
     {
-        if (this.initialized)
-        {
-            this.Act();
-            this.timeSinceLastAttack += delta;
-        }
+        this.Act();
+        this.timeSinceLastAttack += delta;
     }
 
     public virtual void Act()

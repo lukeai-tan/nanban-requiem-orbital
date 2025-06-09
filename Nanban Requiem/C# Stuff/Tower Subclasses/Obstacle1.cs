@@ -3,14 +3,13 @@ using Godot;
 
 public partial class Obstacle1 : ObstacleBase
 {
-    public new void Initialize()
+    public override void _Ready()
     {
         this.health = 1500;
         this.physDefense = 50;
         this.artsDefense = 50;
         this.blockCount = 2;
-        this.range = (TowerBlockRange)((PackedScene)GD.Load("res://path/to/TowerBlockRange.tscn")).Instantiate();
-        base.Initialize();
+        base._Ready();
     }
 
     public override string ToString()
