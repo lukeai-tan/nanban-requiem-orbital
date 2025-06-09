@@ -24,6 +24,9 @@ func on_trophies_pressed():
 
 func on_journal_pressed():
 	print("Journal button pressed")
+	print("Yes Ziming, the font difference is intended")
+	var journal_scene: Control = load("res://Scenes/UIScenes/Journal.tscn").instantiate()
+	call_deferred('add_child', journal_scene)
 
 func on_settings_pressed():
 	print("Settings button pressed")
@@ -31,7 +34,7 @@ func on_settings_pressed():
 func on_quit_pressed():
 	get_tree().quit()
 
-func unload_game(result):
+func unload_game(_result):
 	$GameScene.queue_free()
 	var main_menu = load("res://Scenes/UIScenes/MainMenu.tscn").instantiate()
 	add_child(main_menu)
