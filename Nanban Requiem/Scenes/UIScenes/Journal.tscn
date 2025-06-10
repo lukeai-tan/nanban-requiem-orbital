@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="5_0kdm6"]
 [ext_resource type="Texture2D" uid="uid://chso7g3mw7gue" path="res://Assets/Icons/home.png" id="7_4u0g4"]
 [ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl_icon.png" id="7_8yeyp"]
-[ext_resource type="Texture2D" uid="uid://brssddm2ydou0" path="res://Assets/Towers/RangedTowerGirl_base.png" id="8_4u0g4"]
+[ext_resource type="Texture2D" uid="uid://cd604w7ph8xrp" path="res://Assets/Towers/RangedTowerGirl_base.png" id="8_4u0g4"]
 
 [node name="Journal" type="Control"]
 layout_mode = 3

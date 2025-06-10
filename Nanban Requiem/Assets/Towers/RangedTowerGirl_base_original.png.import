@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd604w7ph8xrp"
-path="res://.godot/imported/RangedTowerGirl_base.png-040dcc99195df423677e6691ad90abe6.ctex"
+uid="uid://cc5ksjtpj73yv"
+path="res://.godot/imported/RangedTowerGirl_base_original.png-22bf078c4aa5417c3f0f39220fbdcd65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Towers/RangedTowerGirl_base.png"
-dest_files=["res://.godot/imported/RangedTowerGirl_base.png-040dcc99195df423677e6691ad90abe6.ctex"]
+source_file="res://Assets/Towers/RangedTowerGirl_base_original.png"
+dest_files=["res://.godot/imported/RangedTowerGirl_base_original.png-22bf078c4aa5417c3f0f39220fbdcd65.ctex"]
 
 [params]
 
