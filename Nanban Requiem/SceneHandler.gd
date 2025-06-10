@@ -45,6 +45,9 @@ func on_journal_pressed():
 
 func on_settings_pressed():
 	print("Settings button pressed")
+	var volume_settings_scene: Control = load("res://Scenes/UIScenes/Settings.tscn").instantiate()
+	volume_settings_scene.connect("return_to_main_menu", Callable(self, "load_main_menu"))
+	call_deferred('add_child', volume_settings_scene)
 
 func on_quit_pressed():
 	get_tree().quit()
