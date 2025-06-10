@@ -168,5 +168,6 @@ parameters/looping = true
 
 [node name="Secret Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_hi0sg")
+volume_db = -10.0
 bus = &"Secret"
 parameters/looping = true
