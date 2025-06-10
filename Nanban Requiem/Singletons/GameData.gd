@@ -172,7 +172,27 @@ var wave_data = {
 		["WhiteSamurai", 1.0],
 	],
 	
-	"Map2": [
-		
+	"Samurai": [
+		["Samurai", 0.0],
+		["Samurai", 1.0],
+		["Samurai", 1.0],
+		["Samurai", 1.0],
+		["Samurai", 1.0],
+	],
+
+	"RocketSamurai": [
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 1.0],
+		["RocketSamurai", 1.0],
+		["RocketSamurai", 1.0],
+		["RocketSamurai", 1.0],
+	],
+
+	"WhiteSamurai": [
+		["WhiteSamurai", 0.0],
+		["WhiteSamurai", 1.0],
+		["WhiteSamurai", 1.0],
+		["WhiteSamurai", 1.0],
+		["WhiteSamurai", 1.0],
 	],
 }
