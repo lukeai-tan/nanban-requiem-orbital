@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpy306be7ciei"]
+[gd_scene load_steps=3 format=3 uid="uid://couignito2a3k"]
 
-[ext_resource type="Script" uid="uid://bvcvx1jgpbs8v" path="res://Scenes/Projectile/AOE.gd" id="1_k28vi"]
+[ext_resource type="Script" uid="uid://bfio1skywqmmq" path="res://C# Classes/Area Effect Subclasses/TowerSingleUse.cs" id="1_k28vi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wc7ak"]
 radius = 95.352

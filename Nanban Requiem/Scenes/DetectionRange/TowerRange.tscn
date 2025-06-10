@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://r7y1x0x2qcp1"]
 
-[ext_resource type="Script" uid="uid://vkbyal2nrqly" path="res://Scenes/DetectionRange/TowerRange.gd" id="1_fbcur"]
+[ext_resource type="Script" uid="uid://vkbyal2nrqly" path="res://Old GDScripts/TowerRange.gd" id="1_fbcur"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ostw"]
 radius = 325.014
