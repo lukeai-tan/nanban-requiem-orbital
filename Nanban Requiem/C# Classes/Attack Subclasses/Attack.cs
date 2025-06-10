@@ -1,4 +1,6 @@
 using System;
+using System.Runtime;
+using System.Text;
 
 public abstract class Attack
 {

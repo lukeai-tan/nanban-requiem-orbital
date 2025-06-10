@@ -90,7 +90,7 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
     public void ReachedBase(object pathing, EventArgs e)
     {
         this.EmitSignal(nameof(DamageBase), 1);
-        this.QueueFree();
+        this.Despawn();
     }
 
     public override void _ExitTree()

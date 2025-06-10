@@ -7,18 +7,12 @@ public abstract partial class Projectile<T> : CharacterBody2D
     where T : Node2D, IUnit
 {
 
-    protected Attack attack;
-    protected int damage;
-    protected double multiplier;
     protected T target;
     protected int speed;
     protected bool initialized = false;
 
-    public virtual void Initialize(Attack attack, int damage, double multiplier, T target, int speed, Vector2 position)
+    protected virtual void Initialize(T target, int speed, Vector2 position)
     {
-        this.attack = attack;
-        this.damage = damage;
-        this.multiplier = multiplier;
         this.speed = speed;
         this.target = target;
         this.target.Despawning += this.EnemyDespawn;
@@ -46,7 +40,6 @@ public abstract partial class Projectile<T> : CharacterBody2D
 
     protected virtual void Land()
     {
-        this.attack.Hit(this.target, this.damage, this.multiplier);
         this.QueueFree();
     }
 
@@ -60,9 +53,10 @@ public abstract partial class Projectile<T> : CharacterBody2D
         this.target.Despawning -= EnemyDespawn;
         base._ExitTree();
     }
+    
     public override string ToString()
     {
-        return "Projectile: " + this.damage.ToString() + " x " + this.multiplier.ToString() + " to " + this.target.ToString();
+        return "Projectile: " + " to " + this.target.ToString();
     }
 
 }

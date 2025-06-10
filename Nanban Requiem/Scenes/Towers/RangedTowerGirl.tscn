@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkdvukd2s5scb" path="res://Assets/Towers/RangedTowerGirl_spritesheet.png" id="2_00p4n"]
 [ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/Projectile/TowerSingleUse.tscn" id="2_xi3eb"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="3_70tsj"]
-[ext_resource type="PackedScene" uid="uid://bhq23dymrbssa" path="res://Scenes/Projectile/AOETowerProjectile.tscn" id="3_th0ik"]
+[ext_resource type="PackedScene" uid="uid://bhq23dymrbssa" path="res://Scenes/Projectile/TowerProjectileAA.tscn" id="3_th0ik"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37isq"]
 atlas = ExtResource("2_00p4n")
