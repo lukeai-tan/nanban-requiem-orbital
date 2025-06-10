@@ -37,7 +37,7 @@ public class BasicRangedAttack : Action
         {
             Node2D projectilesNode = this.initiator.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map1/Projectiles");
             var projectileInstance = this.projectileScene.Instantiate();
-            if (projectileInstance is Projectile<T> projectile)
+            if (projectileInstance is AttackProjectile<T> projectile)
             {
                 projectile.Initialize(this.attack, this.damage, this.multiplier, target, this.projectileSpeed, this.initiator.GlobalPosition);
                 projectilesNode.AddChild(projectile);

@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc70qkqay7c1l"]
 
-[ext_resource type="Script" uid="uid://dix6hiovwcg5o" path="res://C# Classes/Projectile Subclasses/EnemyProjectile.cs" id="1_pfhpp"]
-[ext_resource type="Texture2D" uid="uid://o2wkixblyrol" path="res://Assets/Towers/towerDefense_tile251.png" id="2_6nurs"]
+[ext_resource type="Script" uid="uid://dix6hiovwcg5o" path="res://C# Classes/Projectile Subclasses/EnemyProjectileA.cs" id="1_g45d2"]
+[ext_resource type="Texture2D" uid="uid://o2wkixblyrol" path="res://Assets/Towers/towerDefense_tile251.png" id="2_j3xlo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tri7"]
 size = Vector2(33, 10)
 
-[node name="EnemyProjectile" type="CharacterBody2D"]
+[node name="EnemyProjectileA" type="CharacterBody2D"]
 collision_mask = 4
 safe_margin = 0.001
-script = ExtResource("1_pfhpp")
+script = ExtResource("1_g45d2")
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_6nurs")
+texture = ExtResource("2_j3xlo")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)

@@ -31,8 +31,6 @@ public class BasicEnemyPathing : IPathing
         this.completion = this.path.Curve.GetBakedLength();
     }
     
-
-
     public void Update(float progress)
     {
         if (pathing == null)

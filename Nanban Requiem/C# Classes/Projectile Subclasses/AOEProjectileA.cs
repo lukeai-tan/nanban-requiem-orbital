@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public abstract partial class AOEProjectile<T> : Projectile<T>
+public abstract partial class AOEProjectileA<T> : AttackProjectile<T>
     where T : Node2D, IUnit
 {
     protected PackedScene areaEffectScene;

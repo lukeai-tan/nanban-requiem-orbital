@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkgxgm6mdeyi5" path="res://C# Classes/Tower Subclasses/RangedTower1.cs" id="1_ex6la"]
 [ext_resource type="Texture2D" uid="uid://ejn8qva8ata5" path="res://Assets/Towers/RangedTower1_base.png" id="1_ohjd4"]
 [ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/RangedTower1_turret.png" id="2_ex6la"]
-[ext_resource type="PackedScene" uid="uid://bvdoqwfqvwxaj" path="res://Scenes/Projectile/TowerProjectile.tscn" id="2_qxkfp"]
+[ext_resource type="PackedScene" uid="uid://bvdoqwfqvwxaj" path="res://Scenes/Projectile/TowerProjectileA.tscn" id="2_qxkfp"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="5_ymvci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxkfp"]
