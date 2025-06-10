@@ -307,4 +307,5 @@ frame_progress = 0.461897
 speed_scale = 2.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_okqrl")

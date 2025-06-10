@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1xwefeaxq38t"]
 
-[ext_resource type="Script" uid="uid://cahh4hmmk2qqy" path="res://Scenes/DetectionRange/DetectionRange.gd" id="1_oedmo"]
+[ext_resource type="Script" uid="uid://cahh4hmmk2qqy" path="res://Old GDScripts/DetectionRange.gd" id="1_oedmo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ostw"]
 radius = 325.014

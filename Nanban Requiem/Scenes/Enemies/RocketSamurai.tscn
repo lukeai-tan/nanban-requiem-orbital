@@ -1,9 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://dehoi81tova0d"]
+[gd_scene load_steps=43 format=3 uid="uid://dehoi81tova0d"]
 
-[ext_resource type="Script" uid="uid://1mi8i2anj6tn" path="res://Scenes/Enemies/RocketSamurai.gd" id="1_rbxbo"]
+[ext_resource type="Script" uid="uid://br05wnxcpbty8" path="res://C# Classes/Enemy Subclasses/RocketSamurai.cs" id="1_fhnag"]
 [ext_resource type="Texture2D" uid="uid://c7vrgaq1x7gfj" path="res://Assets/Enemies/samurai_attack.png" id="2_fhnag"]
+[ext_resource type="PackedScene" uid="uid://cc70qkqay7c1l" path="res://Scenes/Projectile/EnemyProjectile.tscn" id="2_hkmou"]
 [ext_resource type="Texture2D" uid="uid://64pna1v5rsmq" path="res://Assets/Enemies/samurai_idle.png" id="3_hkmou"]
 [ext_resource type="Texture2D" uid="uid://c07ck0n3xwxf1" path="res://Assets/Enemies/samurai_running.png" id="4_kt04j"]
+[ext_resource type="Script" uid="uid://bra7k2qumsqdq" path="res://C# Classes/Detection Range Subclasses/EnemyDetectionRange.cs" id="5_hkmou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x24qx"]
 atlas = ExtResource("2_fhnag")
@@ -257,10 +259,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_w887p"]
 radius = 6.08276
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kt04j"]
+radius = 172.073
+
 [node name="RocketSamurai" type="CharacterBody2D"]
 light_mask = 8
 collision_layer = 8
-script = ExtResource("1_rbxbo")
+script = ExtResource("1_fhnag")
+projectileScene = ExtResource("2_hkmou")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.93, 0, 0, 1)
@@ -273,3 +279,10 @@ speed_scale = 2.0
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 light_mask = 8
 shape = SubResource("CircleShape2D_w887p")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("5_hkmou")
+
+[node name="Hitbox" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_kt04j")

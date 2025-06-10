@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpy306be7ciei"]
+
+[ext_resource type="Script" uid="uid://bfio1skywqmmq" path="res://C# Classes/Area Effect Subclasses/TowerSingleUse.cs" id="1_76sct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc7ak"]
+radius = 102.259
+
+[node name="TowerSingleUse" type="Area2D"]
+visibility_layer = 8
+collision_mask = 8
+script = ExtResource("1_76sct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wc7ak")

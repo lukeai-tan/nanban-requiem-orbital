@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3 uid="uid://d2d410drs2l0u"]
 
 [ext_resource type="Texture2D" uid="uid://c07ck0n3xwxf1" path="res://Assets/Enemies/samurai_running.png" id="1_5yni6"]
-[ext_resource type="Script" uid="uid://b6mcifvlqgf3e" path="res://Scenes/Enemies/Samurai.gd" id="1_w887p"]
+[ext_resource type="Script" uid="uid://78g6q1uovoev" path="res://C# Classes/Enemy Subclasses/Samurai.cs" id="1_w887p"]
 [ext_resource type="Texture2D" uid="uid://c7vrgaq1x7gfj" path="res://Assets/Enemies/samurai_attack.png" id="2_x24qx"]
 [ext_resource type="Texture2D" uid="uid://64pna1v5rsmq" path="res://Assets/Enemies/samurai_idle.png" id="3_n58dq"]
 

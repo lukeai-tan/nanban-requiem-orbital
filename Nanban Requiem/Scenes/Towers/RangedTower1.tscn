@@ -1,15 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cljsgi0uutk64"]
+[gd_scene load_steps=8 format=3 uid="uid://cljsgi0uutk64"]
 
-[ext_resource type="Script" uid="uid://bj2e1vpry5pe5" path="res://Scenes/Towers/RangedTower1.gd" id="1_ex6la"]
+[ext_resource type="Script" uid="uid://dkgxgm6mdeyi5" path="res://C# Classes/Tower Subclasses/RangedTower1.cs" id="1_ex6la"]
 [ext_resource type="Texture2D" uid="uid://ejn8qva8ata5" path="res://Assets/Towers/RangedTower1_base.png" id="1_ohjd4"]
 [ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/RangedTower1_turret.png" id="2_ex6la"]
+[ext_resource type="PackedScene" uid="uid://bvdoqwfqvwxaj" path="res://Scenes/Projectile/TowerProjectile.tscn" id="2_qxkfp"]
+[ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="5_ymvci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxkfp"]
 size = Vector2(54, 52)
 
-[node name="RangedTower1" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxkfp"]
+radius = 306.0
+
+[node name="RangedTower1" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_ex6la")
+projectileScene = ExtResource("2_qxkfp")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("1_ohjd4")
@@ -24,3 +30,10 @@ position = Vector2(43, 0)
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_qxkfp")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("5_ymvci")
+
+[node name="Hitbox" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_qxkfp")
