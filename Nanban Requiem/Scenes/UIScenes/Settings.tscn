@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btnwxiy0ykpun"]
+[gd_scene load_steps=17 format=3 uid="uid://btnwxiy0ykpun"]
 
 [ext_resource type="Script" uid="uid://b6aik8aheohkf" path="res://Scenes/UIScenes/VolumeSettings.gd" id="1_0mts2"]
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_cpvir"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b5qgb20uas70" path="res://Assets/UI/Sliders/slide_hangle_yellow.png" id="4_0mts2"]
 [ext_resource type="Texture2D" uid="uid://7bh7hrsk6bho" path="res://Assets/UI/Sliders/slide_horizontal_color.png" id="4_l1mvs"]
 [ext_resource type="Texture2D" uid="uid://chso7g3mw7gue" path="res://Assets/Icons/home.png" id="8_8q63x"]
+[ext_resource type="Texture2D" uid="uid://d4dlth8cccty1" path="res://Assets/UI/Sliders/slide_horizontal_color_red.png" id="9_jj3wc"]
+[ext_resource type="Texture2D" uid="uid://dehmpdftacghk" path="res://Assets/UI/Sliders/slide_hangle_red.png" id="9_ls5v6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36kqx"]
 texture = ExtResource("3_36kqx")
@@ -31,6 +33,29 @@ texture_margin_top = 8.0
 texture_margin_right = 48.0
 texture_margin_bottom = 8.0
 region_rect = Rect2(0, 0, 81.0215, 15.9655)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_418ro"]
+texture = ExtResource("3_36kqx")
+texture_margin_left = 48.0
+texture_margin_top = 8.0
+texture_margin_right = 48.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rs21w"]
+texture = ExtResource("9_jj3wc")
+texture_margin_left = 48.0
+texture_margin_top = 8.0
+texture_margin_right = 48.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 79.863, 15.369)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mqtos"]
+texture = ExtResource("9_jj3wc")
+texture_margin_left = 48.0
+texture_margin_top = 8.0
+texture_margin_right = 48.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 81.021, 15.965)
 
 [node name="VolumeSettings" type="Control"]
 layout_mode = 3
@@ -74,13 +99,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -150.0
+offset_top = -165.0
 offset_right = 250.0
-offset_bottom = 150.0
+offset_bottom = 322.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
-alignment = 1
 
 [node name="Master" type="Label" parent="VBoxContainer"]
 texture_filter = 1
@@ -151,8 +175,39 @@ step = 0.001
 value = 1.0
 tick_count = 5
 
+[node name="Secret" type="Label" parent="VBoxContainer"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vw478")
+theme_override_font_sizes/font_size = 30
+text = "Secret"
+
+[node name="Secret Slider" type="HSlider" parent="VBoxContainer"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("9_ls5v6")
+theme_override_icons/grabber_highlight = ExtResource("4_0mts2")
+theme_override_icons/grabber_disabled = ExtResource("9_ls5v6")
+theme_override_styles/slider = SubResource("StyleBoxTexture_418ro")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_rs21w")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_mqtos")
+max_value = 1.0
+step = 0.001
+value = 1.0
+tick_count = 5
+
 [node name="BackToMain" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(90, 90)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 115.0
+offset_bottom = 115.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("8_8q63x")
