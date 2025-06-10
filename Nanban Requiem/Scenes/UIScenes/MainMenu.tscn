@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cia7hkwwboa"]
+[gd_scene load_steps=12 format=3 uid="uid://cia7hkwwboa"]
 
+[ext_resource type="Script" uid="uid://d4c2hckeymnr6" path="res://Scenes/UIScenes/MainMenu.gd" id="1_36q6b"]
 [ext_resource type="Texture2D" uid="uid://cods5ea5wgjir" path="res://Assets/UI/Art/mm_ChickenNanbanDon.jpg" id="1_tg48g"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="2_jrpvl"]
 [ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="2_qc1fl"]
@@ -9,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://dvgh261lgwa5g" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="5_tg48g"]
 [ext_resource type="AudioStream" uid="uid://bv8h7ekrxnwc1" path="res://Assets/UI/Sounds/cyberpunk-street.mp3" id="8_1brix"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="8_50puj"]
+[ext_resource type="AudioStream" uid="uid://c7dnvmjtl3pwe" path="res://Assets/UI/Sounds/SecretAudio.mp3" id="11_hi0sg"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_36q6b")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -157,9 +160,13 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Default Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_1brix")
 volume_db = -10.0
-autoplay = true
 bus = &"Music"
+parameters/looping = true
+
+[node name="Secret Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hi0sg")
+bus = &"Secret"
 parameters/looping = true
