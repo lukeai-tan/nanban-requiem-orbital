@@ -144,7 +144,7 @@ areaEffectScene = ExtResource("2_xi3eb")
 projectileScene = ExtResource("3_th0ik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_c1jiw")
 animation = &"idle"
 

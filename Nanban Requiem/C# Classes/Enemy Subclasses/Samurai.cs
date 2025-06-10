@@ -14,6 +14,8 @@ public partial class Samurai : BasicMeleeEnemy
         this.meleeDamage = 100;
         this.attackSpeed = 1;
         this.blockCount = 1;
+        this.Scale = new Vector2(2f, 2f);
+        this.Position = new Vector2(0, -25);
         base._Ready();
     }
 

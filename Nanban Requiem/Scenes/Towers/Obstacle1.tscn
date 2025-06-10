@@ -21,6 +21,7 @@ position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_a6yce")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_ah5hh")
 
 [node name="BlockRange" type="Area2D" parent="."]
