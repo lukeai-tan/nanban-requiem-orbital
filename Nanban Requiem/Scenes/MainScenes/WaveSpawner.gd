@@ -33,8 +33,9 @@ func spawn_enemies(wave_data):
 		await get_tree().create_timer(i[1]).timeout
 
 		var enemy_scene = load("res://Scenes/Enemies/" + i[0] + ".tscn")
-		var enemy = enemy_scene.instantiate()
-		enemy.connect("damage_base", Callable(get_parent(), "on_base_damage"))
+		var enemy = enemy_scene.instantiate();
+		enemy.call("Initialize", map_node.get_node("Path2D"));
+		enemy.connect("DamageBase", Callable(get_parent(), "on_base_damage"))
 		'''
 		var path_follow = PathFollow2D.new()
 		path_follow.progress = 0.0

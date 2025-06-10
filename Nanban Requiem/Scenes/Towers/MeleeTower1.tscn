@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlam6s51lpa3h"]
+[gd_scene load_steps=6 format=3 uid="uid://dlam6s51lpa3h"]
 
-[ext_resource type="Script" uid="uid://bie4jbkmfq7q7" path="res://Scenes/Towers/MeleeTower1.gd" id="1_01t3b"]
+[ext_resource type="Script" uid="uid://dllymyl1uhj6o" path="res://C# Classes/Tower Subclasses/MeleeTower1.cs" id="1_ns6h8"]
 [ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="2_01t3b"]
+[ext_resource type="Script" uid="uid://oylut6vt30jg" path="res://C# Classes/Detection Range Subclasses/TowerBlockRange.cs" id="3_3d6m0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
 size = Vector2(133, 132)
 
-[node name="Melee1" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu6rp"]
+size = Vector2(134, 132)
+
+[node name="Melee1" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 8
-script = ExtResource("1_01t3b")
+script = ExtResource("1_ns6h8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 8
 position = Vector2(0.5, 1)
@@ -20,5 +24,10 @@ shape = SubResource("RectangleShape2D_a6yce")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_01t3b")
 
-[connection signal="body_entered" from="." to="." method="_on_enemy_entered"]
-[connection signal="body_exited" from="." to="." method="_on_enemy_exited"]
+[node name="BlockRange" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("3_3d6m0")
+
+[node name="Hitbox" type="CollisionShape2D" parent="BlockRange"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gu6rp")
