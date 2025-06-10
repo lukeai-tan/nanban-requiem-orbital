@@ -161,4 +161,5 @@ vertical_alignment = 1
 stream = ExtResource("8_1brix")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true

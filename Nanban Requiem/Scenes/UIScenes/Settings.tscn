@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://btnwxiy0ykpun"]
+[gd_scene load_steps=12 format=3 uid="uid://btnwxiy0ykpun"]
 
+[ext_resource type="Script" uid="uid://b6aik8aheohkf" path="res://Scenes/UIScenes/VolumeSettings.gd" id="1_0mts2"]
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_cpvir"]
 [ext_resource type="Texture2D" uid="uid://6whh4xyp1uwx" path="res://Assets/UI/Sliders/slide_hangle.png" id="2_6sp2k"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="2_vw478"]
 [ext_resource type="Texture2D" uid="uid://c2iusn0s4rr7v" path="res://Assets/UI/Sliders/slide_horizontal_grey.png" id="3_36kqx"]
 [ext_resource type="Texture2D" uid="uid://b5qgb20uas70" path="res://Assets/UI/Sliders/slide_hangle_yellow.png" id="4_0mts2"]
 [ext_resource type="Texture2D" uid="uid://7bh7hrsk6bho" path="res://Assets/UI/Sliders/slide_horizontal_color.png" id="4_l1mvs"]
+[ext_resource type="Texture2D" uid="uid://chso7g3mw7gue" path="res://Assets/Icons/home.png" id="8_8q63x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36kqx"]
 texture = ExtResource("3_36kqx")
@@ -37,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0mts2")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -147,3 +150,13 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 tick_count = 5
+
+[node name="BackToMain" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(90, 90)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("8_8q63x")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
