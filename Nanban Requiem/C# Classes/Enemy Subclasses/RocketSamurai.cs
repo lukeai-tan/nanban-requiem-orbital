@@ -17,6 +17,8 @@ public partial class RocketSamurai : BasicRangedEnemy
         this.rangedDamage = 100;
         this.projectileSpeed = 200;
         this.targeting = new TowerClosestToSelf(this);
+        this.Scale = new Vector2(2f, 2f);
+        this.Position = new Vector2(0, -25);
         base._Ready();
     }
 

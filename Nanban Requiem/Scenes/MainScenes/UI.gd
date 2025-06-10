@@ -48,6 +48,7 @@ func update_tower_preview(new_position, color):
 	
 	if preview.has_node("BaseSprite"):
 		var base_sprite := preview.get_node("BaseSprite") as Sprite2D
+		base_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		if base_sprite.modulate != color_value:
 			base_sprite.modulate = color_value
 			

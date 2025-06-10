@@ -12,6 +12,8 @@ public partial class WhiteSamurai : BasicMeleeEnemy
         this.meleeDamage = 50;
         this.attackSpeed = 2;
         this.blockCount = 1;
+        this.Scale = new Vector2(2f, 2f);
+        this.Position = new Vector2(0, -25);
         base._Ready();
     }
     
