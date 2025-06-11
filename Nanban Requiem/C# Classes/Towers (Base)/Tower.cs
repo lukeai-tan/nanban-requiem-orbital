@@ -8,10 +8,10 @@ public abstract partial class Tower : CharacterBody2D, IUnit, IBuffable
 {
 
     public event EventHandler Despawning;
-    protected int health;
-    protected int physDefense;
+    [Export] protected int health;
+    [Export] protected int physDefense;
     protected double pdModifier = 1;
-    protected int artsDefense;
+    [Export] protected int artsDefense;
     protected double adModifier = 1;
     protected bool targetable = true;
     protected TextureProgressBar healthBar;
@@ -46,12 +46,14 @@ public abstract partial class Tower : CharacterBody2D, IUnit, IBuffable
 
     public void TakePhysicalDamage(int damage)
     {
-        this.TakeDamage(damage - (int) Math.Floor(this.physDefense * this.pdModifier));
+        double modifier = this.pdModifier < 0 ? 0 : this.pdModifier;
+        this.TakeDamage(damage - (int) Math.Floor(this.physDefense * modifier));
     }
 
     public void TakeArtsDamage(int damage)
     {
-        this.TakeDamage(damage - (int) Math.Floor(this.artsDefense * this.adModifier));
+        double modifier = this.adModifier < 0 ? 0 : this.adModifier;
+        this.TakeDamage(damage - (int) Math.Floor(this.artsDefense * modifier));
     }
 
     public void ReceiveBuff(Buff buff)

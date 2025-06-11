@@ -13,12 +13,12 @@ public abstract partial class Enemy : CharacterBody2D, IUnit, IBuffable
     [Signal]
     public delegate void DamageBaseEventHandler(float damage);
     public event EventHandler Despawning;
-    protected int health;
-    protected int physDefense;
+    [Export] protected int health;
+    [Export] protected int physDefense;
     protected double pdModifier = 1;
-    protected int artsDefense;
+    [Export] protected int artsDefense;
     protected double adModifier = 1;
-    protected int movementSpeed;
+    [Export] protected int movementSpeed;
     protected double msModifier = 1;
     protected bool targetable = true;
     protected IPathing pathing;
@@ -46,7 +46,8 @@ public abstract partial class Enemy : CharacterBody2D, IUnit, IBuffable
 
     public virtual void Move(double delta)
     {
-        this.pathing.Update(this.movementSpeed * (float) msModifier * (float) delta);
+        double modifier = this.msModifier < 0 ? 0 : this.msModifier;
+        this.pathing.Update(this.movementSpeed * (float) modifier * (float) delta);
     }
 
     public bool CanTarget()
@@ -70,12 +71,14 @@ public abstract partial class Enemy : CharacterBody2D, IUnit, IBuffable
 
     public void TakePhysicalDamage(int damage)
     {
-        this.TakeDamage(damage - (int) Math.Floor(this.physDefense * this.pdModifier));
+        double modifier = this.pdModifier < 0 ? 0 : this.pdModifier;
+        this.TakeDamage(damage - (int) Math.Floor(this.physDefense * modifier));
     }
 
     public void TakeArtsDamage(int damage)
     {
-        this.TakeDamage(damage - (int) Math.Floor(this.artsDefense * this.adModifier));
+        double modifier = this.adModifier < 0 ? 0 : this.adModifier;
+        this.TakeDamage(damage - (int) Math.Floor(this.artsDefense * modifier));
     }
 
     public void ReceiveBuff(Buff buff)

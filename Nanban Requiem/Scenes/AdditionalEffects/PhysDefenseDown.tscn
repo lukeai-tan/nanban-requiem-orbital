@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cix7tiilnucau"]
+
+[ext_resource type="Script" uid="uid://b6p8catdirkwr" path="res://C# Classes/Buff Subclasses/PhysDefenseBuff.cs" id="1_4ypnr"]
+
+[node name="PhysDefenseDown" type="Node2D"]
+script = ExtResource("1_4ypnr")
+id = 3
+duration = 2.0
+modifier = -0.15

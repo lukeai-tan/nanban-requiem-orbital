@@ -8,9 +8,9 @@ using Godot;
 // rangedDamage, rangedAttack, projectileSpeed, projectileScene, targeting, range
 public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
 {
-    protected int rangedDamage;
+    [Export] protected int rangedDamage;
     protected Attack rangedAttack;
-    protected int projectileSpeed;
+    [Export] protected int projectileSpeed;
     protected BasicRangedAttack basicRanged;
     [Export] protected PackedScene projectileScene;
     protected ITargeting<Tower> targeting;

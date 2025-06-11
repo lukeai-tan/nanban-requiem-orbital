@@ -6,10 +6,10 @@ using Godot;
 public abstract partial class MeleeTowerBase : ObstacleBase, IAct
 {
 
-    protected int meleeDamage;
+    [Export] protected int meleeDamage;
     protected Attack meleeAttack;
     protected BasicMeleeAttack basicMelee;
-    protected double attackSpeed;
+    [Export] protected double attackSpeed;
     protected double timeSinceLastAttack = 0;
     protected ITargeting<Enemy> targeting;
 

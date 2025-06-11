@@ -11,4 +11,5 @@ public partial class SlowingProjectile : TowerProjectileB
             animation.Play("default");
         }
     }
+    
 }

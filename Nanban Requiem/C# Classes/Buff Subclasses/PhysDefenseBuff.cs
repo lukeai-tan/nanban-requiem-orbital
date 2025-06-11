@@ -6,12 +6,6 @@ public partial class PhysDefenseBuff : Buff
 
     protected IUnit target = null;
 
-    public PhysDefenseBuff(double modifier, double duration)
-    {
-        this.modifier = modifier;
-        this.duration = duration;
-    }
-
     public override void Activate(IBuffable target)
     {
         if (target is IUnit unit)

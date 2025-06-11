@@ -1,17 +1,11 @@
 using System;
 using Godot;
 
-public partial class RangedTowerGirl : RangedBufferBase
+public partial class RangedTowerGirl1 : RangedBufferBase
 {
     public override void _Ready()
     {
-        this.health = 500;
-        this.physDefense = 10;
-        this.artsDefense = 10;
         this.rangedAttack = new ArtsAttack();
-        this.rangedDamage = 50;
-        this.attackSpeed = 0.5;
-        this.projectileSpeed = 300;
         this.targeting = new EnemyClosestToBase();
         base._Ready();
     }
@@ -28,7 +22,7 @@ public partial class RangedTowerGirl : RangedBufferBase
 
     public override string ToString()
     {
-        return "Ranged Tower Girl: " + this.rangedDamage.ToString() + " " + base.ToString();
+        return "Ranged Tower Girl 1: " + this.rangedDamage.ToString() + " " + base.ToString();
     }
 
 }

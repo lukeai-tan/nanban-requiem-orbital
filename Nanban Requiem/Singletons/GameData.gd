@@ -58,10 +58,10 @@ var tower_data = {
 		"stats": ""
 	},
 	
-	"RangedTowerGirl": {
+	"RangedTowerGirl1": {
 		"range": 600,
-		"sprite_icon": "res://Assets/Towers/RangedTowerGirl_icon.png",
-		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl_base.png",
+		"sprite_icon": "res://Assets/Towers/RangedTowerGirl1_icon.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl1_base.png",
 		"name": "Ranged Tower Girl",
 		"description": "Unleashes fiery blasts that deal powerful area damage. Where she stands, enemy waves burn and fall.",
 		"stats": "Girl stats"

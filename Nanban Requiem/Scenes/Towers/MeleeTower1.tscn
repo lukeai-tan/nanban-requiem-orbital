@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlam6s51lpa3h"]
 
-[ext_resource type="Script" uid="uid://dllymyl1uhj6o" path="res://C# Classes/Tower Subclasses/MeleeTower1.cs" id="1_ns6h8"]
+[ext_resource type="Script" uid="uid://dllymyl1uhj6o" path="res://C# Classes/Towers (Functional)/MeleeTower1.cs" id="1_ns6h8"]
 [ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="2_01t3b"]
 [ext_resource type="Script" uid="uid://oylut6vt30jg" path="res://C# Classes/Detection Range Subclasses/TowerBlockRange.cs" id="3_3d6m0"]
 
@@ -14,6 +14,12 @@ size = Vector2(134, 132)
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_ns6h8")
+meleeDamage = 30
+attackSpeed = 1.0
+blockCount = 2
+health = 1000
+physDefense = 20
+artsDefense = 20
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 light_mask = 4

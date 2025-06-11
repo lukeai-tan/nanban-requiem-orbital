@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://vjype0tn26a4"]
 
-[ext_resource type="Script" uid="uid://dnatvi1qnrlxa" path="res://C# Classes/Tower Subclasses/RangedTower2.cs" id="1_242v2"]
+[ext_resource type="Script" uid="uid://dnatvi1qnrlxa" path="res://C# Classes/Towers (Functional)/RangedTower2.cs" id="1_jvvqi"]
 [ext_resource type="Texture2D" uid="uid://b0mgwhi506oh2" path="res://Assets/Towers/RangedTower2_base.png" id="1_px2cr"]
 [ext_resource type="Texture2D" uid="uid://cntcgyt8s5788" path="res://Assets/Towers/RangedTower2_turret.png" id="2_1xtqi"]
 [ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="2_jvvqi"]
@@ -15,9 +15,15 @@ radius = 333.191
 
 [node name="RangedTower2" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_242v2")
+script = ExtResource("1_jvvqi")
 areaEffectScene = ExtResource("2_jvvqi")
+rangedDamage = 30
+projectileSpeed = 300
 projectileScene = ExtResource("3_qy3on")
+attackSpeed = 0.7
+health = 800
+physDefense = 10
+artsDefense = 10
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("1_px2cr")
