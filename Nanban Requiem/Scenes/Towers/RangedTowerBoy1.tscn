@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://h8u4ma4vla85"]
+
+[ext_resource type="Texture2D" uid="uid://uf5bydw3u5x4" path="res://Assets/Towers/RangedTowerBoy1_base.png" id="1_pk3i1"]
+[ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="2_yhphy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhphy"]
+atlas = ExtResource("1_pk3i1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q15eo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhphy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdf7w"]
+size = Vector2(54, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ff34"]
+radius = 354.51
+
+[node name="RangedTowerBoy1" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q15eo")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_fdf7w")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("2_yhphy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_7ff34")
