@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class TowerProjectileAA : AOEProjectileA<Enemy>
+public partial class TowerProjectileAA : ProjectileAA<Enemy>
 {
     
 }

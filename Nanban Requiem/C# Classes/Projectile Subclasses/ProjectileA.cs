@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public abstract partial class AttackProjectile<T> : Projectile<T>
+public abstract partial class ProjectileA<T> : Projectile<T>
     where T : Node2D, IUnit
 {
     

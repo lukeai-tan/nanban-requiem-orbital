@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://y1hvkxfqu4vf" path="res://C# Classes/Tower Subclasses/RangedTowerGirl.cs" id="1_37isq"]
 [ext_resource type="Texture2D" uid="uid://dkdvukd2s5scb" path="res://Assets/Towers/RangedTowerGirl_spritesheet.png" id="2_00p4n"]
-[ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/Projectile/TowerSingleUse.tscn" id="2_xi3eb"]
+[ext_resource type="PackedScene" uid="uid://dqxhgfphncata" path="res://Scenes/AdditionalEffects/MovementSpeedBuff.tscn" id="2_xi3eb"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="3_70tsj"]
-[ext_resource type="PackedScene" uid="uid://dvos2kip1ivqs" path="res://Scenes/Projectile/FlamingProjectile.tscn" id="3_xi3eb"]
+[ext_resource type="PackedScene" uid="uid://010ixe7e0342" path="res://Scenes/Projectile/SlowingProjectile.tscn" id="3_th0ik"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37isq"]
 atlas = ExtResource("2_00p4n")
@@ -140,8 +140,8 @@ radius = 354.51
 [node name="RangedTowerGirl" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_37isq")
-areaEffectScene = ExtResource("2_xi3eb")
-projectileScene = ExtResource("3_xi3eb")
+buffScene = ExtResource("2_xi3eb")
+projectileScene = ExtResource("3_th0ik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.07, 0.07)
