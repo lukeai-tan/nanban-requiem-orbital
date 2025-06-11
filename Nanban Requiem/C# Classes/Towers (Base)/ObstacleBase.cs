@@ -6,7 +6,7 @@ using Godot;
 public abstract partial class ObstacleBase : Tower
 {
 
-    protected int blockCount;
+    [Export] protected int blockCount;
     protected TowerBlockRange range;
 
     public override void _Ready()

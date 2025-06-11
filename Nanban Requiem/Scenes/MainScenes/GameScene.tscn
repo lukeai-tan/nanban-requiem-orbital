@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="10_7ddxx"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="10_80vwl"]
 [ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="10_a7g65"]
-[ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl_icon.png" id="11_0dyjl"]
+[ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl1_icon.png" id="11_0dyjl"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="11_a7g65"]
 [ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="12_ibot7"]
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_rs15k"]
@@ -138,7 +138,7 @@ texture = ExtResource("10_a7g65")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="RangedTowerGirl" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+[node name="RangedTowerGirl1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -148,7 +148,7 @@ texture_pressed = ExtResource("4_o10dm")
 texture_hover = ExtResource("5_no243")
 stretch_mode = 4
 
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl"]
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

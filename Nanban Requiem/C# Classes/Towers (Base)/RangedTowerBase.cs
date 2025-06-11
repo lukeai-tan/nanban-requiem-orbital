@@ -6,12 +6,12 @@ using Godot;
 public abstract partial class RangedTowerBase : Tower, IAct
 {
 
-    protected int rangedDamage;
+    [Export] protected int rangedDamage;
     protected Attack rangedAttack;
-    protected int projectileSpeed;
+    [Export] protected int projectileSpeed;
     protected BasicRangedAttack basicRanged;
     [Export] protected PackedScene projectileScene;
-    protected double attackSpeed;
+    [Export] protected double attackSpeed;
     protected double timeSinceLastAttack = 0;
     protected TowerDetectionRange range;
     protected ITargeting<Enemy> targeting;

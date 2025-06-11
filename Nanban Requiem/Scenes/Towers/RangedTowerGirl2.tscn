@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxjqn8vyn63cn"]
+[gd_scene load_steps=10 format=3 uid="uid://bxjqn8vyn63cn"]
 
+[ext_resource type="Script" uid="uid://c7jcmvn4rpf7n" path="res://C# Classes/Towers (Functional)/RangedTowerGirl2.cs" id="1_044w5"]
 [ext_resource type="Texture2D" uid="uid://b71poiu2f5kig" path="res://Assets/Towers/RangedTowerGirl2_base.png" id="1_lo6s8"]
+[ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="2_omxl8"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="2_sjwcm"]
+[ext_resource type="PackedScene" uid="uid://dvos2kip1ivqs" path="res://Scenes/Projectile/FlamingProjectile.tscn" id="3_h7mj7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpbcf"]
 atlas = ExtResource("1_lo6s8")
@@ -25,6 +28,15 @@ size = Vector2(54, 52)
 radius = 354.51
 
 [node name="RangedTowerGirl2" type="CharacterBody2D"]
+script = ExtResource("1_044w5")
+areaEffectScene = ExtResource("2_omxl8")
+rangedDamage = 100
+projectileSpeed = 300
+projectileScene = ExtResource("3_h7mj7")
+attackSpeed = 0.3
+health = 500
+physDefense = 10
+artsDefense = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7q840")

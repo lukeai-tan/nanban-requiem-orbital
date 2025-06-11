@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cb0xqwqkjp184"]
 
-[ext_resource type="Script" uid="uid://ckipfnop6kkvs" path="res://C# Classes/Tower Subclasses/Obstacle1.cs" id="1_kmpsh"]
+[ext_resource type="Script" uid="uid://ckipfnop6kkvs" path="res://C# Classes/Towers (Functional)/Obstacle1.cs" id="1_kmpsh"]
 [ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/Obstacle1_base.png" id="2_ah5hh"]
 [ext_resource type="Script" uid="uid://oylut6vt30jg" path="res://C# Classes/Detection Range Subclasses/TowerBlockRange.cs" id="3_6snuo"]
 
@@ -13,6 +13,10 @@ size = Vector2(131, 136)
 [node name="Obstacle1" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_kmpsh")
+blockCount = 3
+health = 1500
+physDefense = 30
+artsDefense = 30
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 light_mask = 4

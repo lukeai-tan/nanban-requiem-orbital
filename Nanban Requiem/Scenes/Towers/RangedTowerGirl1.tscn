@@ -1,73 +1,73 @@
 [gd_scene load_steps=25 format=3 uid="uid://okodqlkijpuv"]
 
-[ext_resource type="Script" uid="uid://y1hvkxfqu4vf" path="res://C# Classes/Tower Subclasses/RangedTowerGirl.cs" id="1_37isq"]
-[ext_resource type="Texture2D" uid="uid://dkdvukd2s5scb" path="res://Assets/Towers/RangedTowerGirl_spritesheet.png" id="2_00p4n"]
-[ext_resource type="PackedScene" uid="uid://dqxhgfphncata" path="res://Scenes/AdditionalEffects/MovementSpeedBuff.tscn" id="2_xi3eb"]
-[ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="3_70tsj"]
-[ext_resource type="PackedScene" uid="uid://010ixe7e0342" path="res://Scenes/Projectile/SlowingProjectile.tscn" id="3_th0ik"]
+[ext_resource type="Script" uid="uid://y1hvkxfqu4vf" path="res://C# Classes/Towers (Functional)/RangedTowerGirl1.cs" id="1_0glqi"]
+[ext_resource type="PackedScene" uid="uid://dqxhgfphncata" path="res://Scenes/AdditionalEffects/MovementSpeedBuff.tscn" id="2_loo18"]
+[ext_resource type="PackedScene" uid="uid://010ixe7e0342" path="res://Scenes/Projectile/BuffProjectile.tscn" id="3_jo774"]
+[ext_resource type="Texture2D" uid="uid://dkdvukd2s5scb" path="res://Assets/Towers/RangedTowerGirl1_spritesheet.png" id="4_cwpt2"]
+[ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="5_153y8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37isq"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70tsj"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(1024, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi3eb"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(2048, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th0ik"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(3072, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86kg2"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(0, 1024, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gg3d"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(1024, 1024, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0a0d"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(2048, 1024, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bo46g"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(3072, 1024, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e71xg"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(0, 2048, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4k6u"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(1024, 2048, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bspyi"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(2048, 2048, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4drh"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(3072, 2048, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kxej"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(0, 3072, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v85d2"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(1024, 3072, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68u65"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(2048, 3072, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flrd1"]
-atlas = ExtResource("2_00p4n")
+atlas = ExtResource("4_cwpt2")
 region = Rect2(3072, 3072, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c1jiw"]
@@ -139,9 +139,15 @@ radius = 354.51
 
 [node name="RangedTowerGirl" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_37isq")
-buffScene = ExtResource("2_xi3eb")
-projectileScene = ExtResource("3_th0ik")
+script = ExtResource("1_0glqi")
+buffScene = ExtResource("2_loo18")
+rangedDamage = 30
+projectileSpeed = 300
+projectileScene = ExtResource("3_jo774")
+attackSpeed = 0.5
+health = 1000
+physDefense = 10
+artsDefense = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.07, 0.07)
@@ -154,7 +160,7 @@ shape = SubResource("RectangleShape2D_7esgv")
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_mask = 8
-script = ExtResource("3_70tsj")
+script = ExtResource("5_153y8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_xi3eb")

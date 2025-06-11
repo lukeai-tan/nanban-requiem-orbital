@@ -7,12 +7,12 @@ using Godot;
 public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
 {
 
-    protected int meleeDamage;
+    [Export] protected int meleeDamage;
     protected Attack meleeAttack;
     protected BasicMeleeAttack basicMelee;
-    protected double attackSpeed;
+    [Export] protected double attackSpeed;
     protected double timeSinceLastAttack = 0;
-    protected int blockCount;
+    [Export] protected int blockCount;
     protected Tower blocked = null;
 
     public override void _Ready()
