@@ -22,8 +22,6 @@ func start_next_wave():
 
 
 func retrieve_wave_data():
-	# Map Names for testing (replace Map1)
-	# Samurai, RocketSamurai, WhiteSamurai
 	var wave_data = GameData.wave_data["Map1"]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
@@ -38,10 +36,4 @@ func spawn_enemies(wave_data):
 		var enemy = enemy_scene.instantiate();
 		enemy.call("Initialize", map_node.get_node("Path2D"));
 		enemy.connect("DamageBase", Callable(get_parent(), "on_base_damage"))
-		'''
-		var path_follow = PathFollow2D.new()
-		path_follow.progress = 0.0
-		path_follow.add_child(enemy)
-		map_node.get_node("Path2D").add_child(path_follow)
-		'''
 	all_enemies_in_wave_spawned = true

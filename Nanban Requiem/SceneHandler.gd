@@ -38,13 +38,12 @@ func on_journal_pressed():
 	print("Yes Ziming, the fonts for all the buttons are same now")
 	var journal_scene: Control = load("res://Scenes/UIScenes/Journal.tscn").instantiate()
 	journal_scene.connect("return_to_main_menu", Callable(self, "_on_ui_returned").bind(journal_scene))
-	#journal_scene.connect("return_to_main_menu", Callable(self, "load_main_menu"))
 	call_deferred('add_child', journal_scene)
 
 func on_settings_pressed():
 	print("Settings button pressed")
 	var volume_settings_scene: Control = load("res://Scenes/UIScenes/Settings.tscn").instantiate()
-	volume_settings_scene.connect("return_to_main_menu", Callable(self, "load_main_menu"))
+	volume_settings_scene.connect("return_to_main_menu", Callable(self, "_on_ui_returned").bind(volume_settings_scene))
 	call_deferred('add_child', volume_settings_scene)
 
 func on_quit_pressed():
