@@ -24,6 +24,7 @@ func load_main_menu():
 	if not quit_button.is_connected("pressed", Callable(self, "on_quit_pressed")):
 		quit_button.connect("pressed", Callable(self, "on_quit_pressed"))
 
+
 func on_new_game_pressed():
 	$"MainMenu".queue_free()
 	print("New Game button pressed")
@@ -31,16 +32,13 @@ func on_new_game_pressed():
 	game_scene.connect("game_finished", unload_game)
 	call_deferred('add_child', game_scene)
 	
-'''
-func on_trophies_pressed():
-	pass
-''' 
 
 func on_journal_pressed():
 	print("Journal button pressed")
-	print("Yes Ziming, the font difference is intended")
+	print("Yes Ziming, the fonts for all the buttons are same now")
 	var journal_scene: Control = load("res://Scenes/UIScenes/Journal.tscn").instantiate()
-	journal_scene.connect("return_to_main_menu", Callable(self, "load_main_menu"))
+	journal_scene.connect("return_to_main_menu", Callable(self, "_on_ui_returned").bind(journal_scene))
+	#journal_scene.connect("return_to_main_menu", Callable(self, "load_main_menu"))
 	call_deferred('add_child', journal_scene)
 
 func on_settings_pressed():
@@ -52,8 +50,13 @@ func on_settings_pressed():
 func on_quit_pressed():
 	get_tree().quit()
 
+
+func _on_ui_returned(ui_node):
+	ui_node.queue_free()
+	load_main_menu()
+
 func unload_game(_result):
-	$GameScene.queue_free()
+	get_node("GameScene").queue_free()
 	var main_menu = load("res://Scenes/UIScenes/MainMenu.tscn").instantiate()
 	add_child(main_menu)
 	load_main_menu()
