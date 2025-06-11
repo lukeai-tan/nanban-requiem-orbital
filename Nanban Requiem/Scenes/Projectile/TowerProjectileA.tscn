@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvdoqwfqvwxaj"]
 
-[ext_resource type="Script" uid="uid://8drjo5abg2pd" path="res://C# Classes/Projectile Subclasses/TowerProjectileA.cs" id="1_8lq7c"]
+[ext_resource type="Script" uid="uid://8drjo5abg2pd" path="res://C# Classes/Projectiles (Functional)/TowerProjectileA.cs" id="1_8o888"]
 [ext_resource type="Texture2D" uid="uid://o2wkixblyrol" path="res://Assets/Towers/towerDefense_tile251.png" id="2_7ct3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tri7"]
@@ -9,7 +9,7 @@ size = Vector2(33, 10)
 [node name="TowerProjectileA" type="CharacterBody2D"]
 collision_mask = 8
 safe_margin = 0.001
-script = ExtResource("1_8lq7c")
+script = ExtResource("1_8o888")
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_7ct3o")

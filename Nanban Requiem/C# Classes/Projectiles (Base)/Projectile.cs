@@ -11,6 +11,15 @@ public abstract partial class Projectile<T> : CharacterBody2D
     protected int speed;
     protected bool initialized = false;
 
+    public override void _Ready()
+    {
+        AnimatedSprite2D animation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+        if (animation != null)
+        {
+            animation.Play("default");
+        }
+    }
+
     protected virtual void Initialize(T target, int speed, Vector2 position)
     {
         this.speed = speed;

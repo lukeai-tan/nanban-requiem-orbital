@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc70qkqay7c1l"]
 
-[ext_resource type="Script" uid="uid://dix6hiovwcg5o" path="res://C# Classes/Projectile Subclasses/EnemyProjectileA.cs" id="1_g45d2"]
+[ext_resource type="Script" uid="uid://dix6hiovwcg5o" path="res://C# Classes/Projectiles (Functional)/EnemyProjectileA.cs" id="1_g45d2"]
 [ext_resource type="Texture2D" uid="uid://o2wkixblyrol" path="res://Assets/Towers/towerDefense_tile251.png" id="2_j3xlo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tri7"]

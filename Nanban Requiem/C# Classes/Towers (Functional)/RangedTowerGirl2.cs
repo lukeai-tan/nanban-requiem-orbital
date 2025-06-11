@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class RangedTowerGirl2 : AOETowerBase
+public partial class RangedTowerGirl2 : RangedDOTBase
 {
     public override void _Ready()
     {

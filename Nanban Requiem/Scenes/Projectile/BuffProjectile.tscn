@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://010ixe7e0342"]
 
-[ext_resource type="Script" uid="uid://bvfjmssiu8u05" path="res://C# Classes/Projectile Subclasses/SlowingProjectile.cs" id="1_53321"]
+[ext_resource type="Script" uid="uid://cnfvwg1rjwr15" path="res://C# Classes/Projectiles (Functional)/TowerProjectileB.cs" id="1_chb7o"]
 [ext_resource type="Texture2D" uid="uid://dkxdyeeqah2ac" path="res://Assets/Towers/FlameProjectile_spritesheet.png" id="2_sa1xf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1m8h"]
@@ -84,9 +84,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owlg4"]
 size = Vector2(71, 13)
 
-[node name="SlowingProjectile" type="CharacterBody2D"]
+[node name="BuffProjectile" type="CharacterBody2D"]
 safe_margin = 0.001
-script = ExtResource("1_53321")
+script = ExtResource("1_chb7o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0.101961, 0.466667, 1)
