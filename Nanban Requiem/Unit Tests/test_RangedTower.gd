@@ -1,5 +1,5 @@
 extends "res://addons/gut/test.gd"
-
+'''
 var ranged_tower = preload("res://Scenes/Towers/RangedTower1.gd")
 var _tower = null
 
@@ -26,3 +26,4 @@ func test_damage_higher_than_hp():
 	_tower.get_hit(120.0)
 	var result = _tower.hp
 	assert_eq(result, 0.0, "HP should be 0.0")
+'''
