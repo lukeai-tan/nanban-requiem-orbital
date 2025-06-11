@@ -71,13 +71,14 @@ var tower_data = {
 	"RangedTowerGirl2": {
 		"range": 0,
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl2_icon.png",
-		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl2_base.png",
 		"name": "Nyx",
 		"description": "Silent and swift, Nyx uses blood magic to sap strength from enemies.",
 		"stats": "Vampire girl stats"
 	},
 
-	"RangedTowerBoy": {
+
+	"RangedTowerBoy1": {
 		"range": 0,
 		"sprite_icon": "res://Assets/Towers/RangedTowerBoy1_icon.png",
 		"sprite_in_game": "res://Assets/Icons/coming_soon_icon.png",
