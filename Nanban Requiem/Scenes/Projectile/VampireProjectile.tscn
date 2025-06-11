@@ -1,46 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvos2kip1ivqs"]
+[gd_scene load_steps=15 format=3 uid="uid://dcbx45vnyumly"]
 
-[ext_resource type="Script" uid="uid://cefkpgofd07lk" path="res://C# Classes/Projectiles (Functional)/TowerProjectileAA.cs" id="1_d1m8h"]
-[ext_resource type="Texture2D" uid="uid://dkxdyeeqah2ac" path="res://Assets/Towers/FlameProjectile_spritesheet.png" id="1_tscri"]
+[ext_resource type="Script" uid="uid://dftpkfrqxgfe7" path="res://C# Classes/Projectiles (Functional)/TowerProjectileD.cs" id="1_3iec4"]
+[ext_resource type="Texture2D" uid="uid://dkxdyeeqah2ac" path="res://Assets/Towers/FlameProjectile_spritesheet.png" id="2_vb7s2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1m8h"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(0, 0, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nt55k"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(96, 0, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02g0y"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(192, 0, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku7yr"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(0, 48, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v85rm"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(96, 48, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fay5h"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(192, 48, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nx4k"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(0, 96, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d623h"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(96, 96, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61kcv"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(192, 96, 96, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pilph"]
-atlas = ExtResource("1_tscri")
+atlas = ExtResource("2_vb7s2")
 region = Rect2(0, 144, 96, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xr5h"]
@@ -84,9 +84,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owlg4"]
 size = Vector2(71, 13)
 
-[node name="FlamingProjectile" type="CharacterBody2D"]
+[node name="VampireProjectile" type="CharacterBody2D"]
 safe_margin = 0.001
-script = ExtResource("1_d1m8h")
+script = ExtResource("1_3iec4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0.101961, 0.466667, 1)

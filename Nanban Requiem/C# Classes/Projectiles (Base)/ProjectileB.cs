@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class ProjectileB<T> : ProjectileA<T>
+public abstract partial class ProjectileB<T> : ProjectileA<T>
     where T : Node2D, IUnit
 {
     protected PackedScene buffScene;
