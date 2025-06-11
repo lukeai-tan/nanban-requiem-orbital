@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Globalization;
 using System.Threading;
 using Godot;
 
 // Layer 0 enemy logic that handles path following and hit response
 // Required fields: health, physDefense, artsDefense, movementSpeed
-public abstract partial class Enemy : CharacterBody2D, IUnit
+public abstract partial class Enemy : CharacterBody2D, IUnit, IBuffable
 {
 
     [Signal]
@@ -12,13 +15,17 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
     public event EventHandler Despawning;
     protected int health;
     protected int physDefense;
+    protected double pdModifier = 1;
     protected int artsDefense;
+    protected double adModifier = 1;
     protected int movementSpeed;
+    protected double msModifier = 1;
     protected bool targetable = true;
     protected IPathing pathing;
     protected bool initialized = false;
     protected TextureProgressBar healthBar;
     protected AnimatedSprite2D animation;
+    protected Dictionary<int, Buff> status = new Dictionary<int, Buff>(30);
 
     public override void _Ready()
     {
@@ -35,6 +42,11 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
         this.pathing.InitializePath(path);
         this.pathing.PathCompletion += this.ReachedBase;
         this.initialized = true;
+    }
+
+    public virtual void Move(double delta)
+    {
+        this.pathing.Update(this.movementSpeed * (float) msModifier * (float) delta);
     }
 
     public bool CanTarget()
@@ -58,12 +70,70 @@ public abstract partial class Enemy : CharacterBody2D, IUnit
 
     public void TakePhysicalDamage(int damage)
     {
-        this.TakeDamage(damage - this.physDefense);
+        this.TakeDamage(damage - (int) Math.Floor(this.physDefense * this.pdModifier));
     }
 
     public void TakeArtsDamage(int damage)
     {
-        this.TakeDamage(damage - this.artsDefense);
+        this.TakeDamage(damage - (int) Math.Floor(this.artsDefense * this.adModifier));
+    }
+
+    public void ReceiveBuff(Buff buff)
+    {
+        int id = buff.GetId();
+        if (id <= 0 || id >= 30)
+        {
+            buff.QueueFree();
+        }
+        else if (this.status.ContainsKey(id))
+        {
+            Buff old = this.status[id];
+            if (old.GetDuration() <= buff.GetDuration())
+            {
+                this.ClearBuff(old);
+                this.status[id] = buff;
+                this.AddChild(buff);
+                buff.Activate(this);
+                buff.Expired += this.ExpiredBuff;
+            }
+            else
+            {
+                buff.QueueFree();
+            }
+        }
+        else
+        {
+            this.status[id] = buff;
+            this.AddChild(buff);
+            buff.Activate(this);
+        }
+    }
+
+    protected void ExpiredBuff(object expired, EventArgs e)
+    {
+        this.ClearBuff((Buff)expired);
+    }
+
+    protected void ClearBuff(Buff buff)
+    {
+        int id = buff.GetId();
+        this.status.Remove(id);
+        buff.Deactivate();
+    }
+
+    public void ModifyPhysicalDefense(double multiplier)
+    {
+        this.pdModifier += multiplier;
+    }
+
+    public void ModifyArtsDefense(double multiplier)
+    {
+        this.adModifier += multiplier;
+    }
+
+    public void ModifyMovementSpeed(double multiplier)
+    {
+        this.msModifier += multiplier;
     }
 
     public void Despawn()

@@ -3,15 +3,15 @@ using Godot;
 
 // Layer 2 tower logic that handles specialized detection, targeting and area damage ranged attacks
 // Required fields: health, physDefense, artsDefense, rangedDamage, rangedAttack, projectileSpeed, projectileScene,
-// attackSpeed, range, targeting, areaEffectScene
-public abstract partial class AOETowerBase : RangedTowerBase
+// attackSpeed, range, targeting, buffScene
+public abstract partial class RangedBufferBase : RangedTowerBase
 {
 
-    [Export] protected PackedScene areaEffectScene;
+    [Export] protected PackedScene buffScene;
 
     public override void SetActions()
     {
-        this.basicRanged = new AOERangedAttack(this.projectileScene, this, this.areaEffectScene);
+        this.basicRanged = new BasicRangedBuff(this.projectileScene, this, this.buffScene);
         this.basicRanged.SetAttackAndSpeed(this.rangedAttack, this.projectileSpeed);
     }
 
@@ -19,6 +19,5 @@ public abstract partial class AOETowerBase : RangedTowerBase
     {
         return "AOE " + base.ToString();
     }
-
 
 }

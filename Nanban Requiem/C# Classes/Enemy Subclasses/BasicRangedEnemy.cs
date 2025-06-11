@@ -44,7 +44,7 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
                     this.animation.Play("running");
                 }
                 this.Act();
-                this.pathing.Update(this.movementSpeed * (float)delta);
+                this.Move(delta);
             }
             this.timeSinceLastAttack += delta;
         }

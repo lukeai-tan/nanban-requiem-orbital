@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class RangedTowerGirl : AOETowerBase
+public partial class RangedTowerGirl : RangedBufferBase
 {
     public override void _Ready()
     {
@@ -9,8 +9,8 @@ public partial class RangedTowerGirl : AOETowerBase
         this.physDefense = 10;
         this.artsDefense = 10;
         this.rangedAttack = new ArtsAttack();
-        this.rangedDamage = 100;
-        this.attackSpeed = 0.3;
+        this.rangedDamage = 50;
+        this.attackSpeed = 0.5;
         this.projectileSpeed = 300;
         this.targeting = new EnemyClosestToBase();
         base._Ready();

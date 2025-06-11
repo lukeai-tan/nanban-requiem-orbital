@@ -17,7 +17,7 @@ public partial class AOERangedAttack : BasicRangedAttack
         {
             Node2D projectilesNode = this.initiator.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map1/Projectiles");
             var projectileInstance = this.projectileScene.Instantiate();
-            if (projectileInstance is AOEProjectileA<T> projectile)
+            if (projectileInstance is ProjectileAA<T> projectile)
             {
                 projectile.Initialize(this.attack, this.damage, this.multiplier, target, this.projectileSpeed, this.initiator.GlobalPosition, areaEffectScene);
                 projectilesNode.AddChild(projectile);

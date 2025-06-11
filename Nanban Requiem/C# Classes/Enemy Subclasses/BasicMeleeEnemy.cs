@@ -41,7 +41,7 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
                 {
                     this.animation.Play("running");
                 }
-                this.pathing.Update(this.movementSpeed * (float)delta);
+                base.Move(delta);
             }
             this.timeSinceLastAttack += delta;
         }

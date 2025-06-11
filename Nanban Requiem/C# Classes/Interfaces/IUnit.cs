@@ -12,6 +12,10 @@ public interface IUnit
 
     public void TakeArtsDamage(int damage);
 
+    public void ModifyPhysicalDefense(double multiplier);
+
+    public void ModifyArtsDefense(double multiplier);
+ 
     public void Despawn();
 
 }
