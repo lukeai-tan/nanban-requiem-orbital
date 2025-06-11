@@ -70,13 +70,7 @@ func verify_and_build():
 	if build_valid:
 		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
-		#new_tower.build_location = build_location
 		map_node.get_node("Towers").add_child(new_tower)
 		
-		'''
-		if tower_preview_node and tower_preview_node.is_inside_tree():
-			tower_preview_node.queue_free()
-			tower_preview_node = null
-		'''
 		build_mode = false
 		build_valid = false

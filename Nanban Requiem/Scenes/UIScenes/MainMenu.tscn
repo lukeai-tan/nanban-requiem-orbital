@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://dvgh261lgwa5g" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="5_tg48g"]
 [ext_resource type="AudioStream" uid="uid://bv8h7ekrxnwc1" path="res://Assets/UI/Sounds/cyberpunk-street.mp3" id="8_1brix"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="8_50puj"]
-[ext_resource type="AudioStream" uid="uid://c7dnvmjtl3pwe" path="res://Assets/UI/Sounds/SecretAudio.mp3" id="11_hi0sg"]
+[ext_resource type="AudioStream" uid="uid://oelr3j4xc5y7" path="res://Assets/UI/Sounds/SecretAudio2.mp3" id="11_hi0sg"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
