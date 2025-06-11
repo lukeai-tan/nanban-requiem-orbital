@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://b1ptux668fjj2"]
+[gd_scene load_steps=6 format=4 uid="uid://b1ptux668fjj2"]
 
 [ext_resource type="TileSet" uid="uid://cf0oeugm6g4ml" path="res://Resources/Tilesets/ground_grass.tres" id="1_66ww1"]
 [ext_resource type="TileSet" uid="uid://blubtqs7tphi1" path="res://Resources/Tilesets/path.tres" id="2_3atk3"]
 [ext_resource type="TileSet" uid="uid://s88v4in7hdi7" path="res://Resources/Tilesets/props.tres" id="3_bp0wf"]
+[ext_resource type="AudioStream" uid="uid://ukorkss4cwrc" path="res://Assets/UI/Sounds/GameplayMusic.mp3" id="4_3atk3"]
 
 [sub_resource type="Curve2D" id="Curve2D_bp0wf"]
 _data = {
@@ -30,3 +31,10 @@ tile_set = ExtResource("3_bp0wf")
 curve = SubResource("Curve2D_bp0wf")
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3atk3")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
