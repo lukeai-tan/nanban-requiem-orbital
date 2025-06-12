@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=21 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -19,6 +19,7 @@
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="11_a7g65"]
 [ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="12_ibot7"]
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_rs15k"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_ahi2e"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_68uyl")
@@ -227,7 +228,7 @@ grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/InfoBar"]
 layout_mode = 0
-offset_right = 451.0
+offset_right = 516.0
 offset_bottom = 60.0
 theme_override_constants/separation = 20
 
@@ -252,6 +253,28 @@ texture_under = ExtResource("10_7ddxx")
 texture_progress = ExtResource("10_7ddxx")
 tint_under = Color(0.215686, 0.215686, 0.215686, 1)
 tint_progress = Color(0.305882, 1, 0.0823529, 1)
+
+[node name="Tower Count Label" type="Label" parent="UI/HUD/InfoBar"]
+layout_direction = 2
+layout_mode = 2
+offset_left = 644.0
+offset_top = 18.0
+offset_right = 834.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("16_ahi2e")
+theme_override_font_sizes/font_size = 30
+text = "Tower count:"
+
+[node name="Tower Count" type="Label" parent="UI/HUD/InfoBar"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 806.0
+offset_top = 18.0
+offset_right = 996.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("16_ahi2e")
+theme_override_font_sizes/font_size = 30
+text = "0 / 10"
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
 custom_minimum_size = Vector2(150, 75)

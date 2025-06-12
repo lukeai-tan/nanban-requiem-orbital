@@ -1,7 +1,10 @@
 extends CanvasLayer
 
 @onready var base_hp_bar = get_node("HUD/InfoBar/HBoxContainer/BaseHPBar")
+@onready var tower_count = get_node("HUD/InfoBar/Tower Count")
+
 var tower_builder
+var tower_manager
 
 func set_tower_preview(tower_type, mouse_position):
 	
@@ -94,3 +97,7 @@ func update_health_bar(base_health):
 		base_hp_bar.tint_progress = Color("e1be32") # Orange
 	else:
 		base_hp_bar.tint_progress = Color("e11e1e") # Red
+
+
+func update_tower_count(current_count: int, max_count: int) -> void:
+	tower_count.text = "%d / %d" % [current_count, max_count]

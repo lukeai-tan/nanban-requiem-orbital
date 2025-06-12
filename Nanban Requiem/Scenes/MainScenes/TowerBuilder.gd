@@ -7,6 +7,7 @@ var build_tile
 var build_location: Vector2
 var build_type: String
 var ui
+var tower_manager: Node2D
 var tower_preview_node = null
 
 func initiate_build_mode(tower_type):
@@ -67,10 +68,13 @@ func cancel_build_mode():
 # IF build location is valid, instantiate selected tower scene
 # position it at stored tile
 func verify_and_build():
-	if build_valid:
+	if build_valid and tower_manager and tower_manager.can_place_tower():
 		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		map_node.get_node("Towers").add_child(new_tower)
 		
 		build_mode = false
 		build_valid = false
+	
+	elif not tower_manager.can_place_tower():
+		return
