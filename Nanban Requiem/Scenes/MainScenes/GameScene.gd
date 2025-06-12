@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var tower_builder = preload("res://Scenes/MainScenes/TowerBuilder.gd").new()
 @onready var wave_spawner = preload("res://Scenes/MainScenes/WaveSpawner.gd").new()
+@onready var tower_manager = preload("res://Scenes/MainScenes/TowerManager.gd").new()
 
 signal game_finished(result)
 
@@ -12,13 +13,21 @@ func _ready():
 	ui = get_node("UI")
 	add_child(tower_builder)
 	add_child(wave_spawner)
+	add_child(tower_manager)
 
 	var map_node = get_node("Map1")
 	tower_builder.map_node = map_node
 	tower_builder.ui = ui
+	tower_builder.tower_manager = tower_manager
+
 	ui.tower_builder = tower_builder
-	wave_spawner.map_node = map_node
+	ui.tower_manager = tower_manager
+
+	tower_manager.set_ui(ui)
+	tower_manager.map_node = map_node
+	tower_manager.connect("tower_count_changed", Callable(ui, "update_tower_count"))
 	
+	wave_spawner.map_node = map_node
 	wave_spawner.wave_complete.connect(_on_wave_complete)
 
 	for i in get_tree().get_nodes_in_group("tower_options"):
