@@ -63,7 +63,7 @@ var tower_data = {
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl1_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl1_base.png",
 		"name": "Ranged Tower Girl",
-		"description": "Unleashes fiery blasts that deal powerful area damage. Where she stands, enemy waves burn and fall.",
+		"description": "Unleashes gravity magic on enemies, slowing them down while dealing damage.",
 		"stats": "Girl stats"
 	},
 
@@ -73,7 +73,7 @@ var tower_data = {
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl2_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl2_base.png",
 		"name": "Nyx",
-		"description": "Silent and swift, Nyx uses blood magic to sap strength from enemies.",
+		"description": "Silent and swift, Nyx uses blood magic on enemies to inflict damage over time.",
 		"stats": "Vampire girl stats"
 	},
 
