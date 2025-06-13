@@ -3,7 +3,7 @@ using System;
 public class PhysicalAttack : Attack
 {
 
-    public override void Hit(IUnit target, int damage, double multiplier)
+    public override void Hit(Unit target, int damage, double multiplier)
     {
         int finalDamage = (int) Math.Round(damage * multiplier);
         target.TakePhysicalDamage(finalDamage);

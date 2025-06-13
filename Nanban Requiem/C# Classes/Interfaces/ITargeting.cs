@@ -4,9 +4,9 @@ using Godot;
 
 // Interface for all target picking classes
 public interface ITargeting<T>
-    where T : Node2D, IUnit
+    where T : Unit
 {
-
+    
     public abstract T GetTarget(List<T> targets);
 
 }

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.Marshalling;
 using Godot;
 
 public abstract partial class Projectile<T> : CharacterBody2D
-    where T : Node2D, IUnit
+    where T : Unit
 {
 
     protected T target;

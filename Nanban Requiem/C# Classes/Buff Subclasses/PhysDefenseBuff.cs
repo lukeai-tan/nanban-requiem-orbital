@@ -4,11 +4,11 @@ using Godot;
 public partial class PhysDefenseBuff : Buff
 {
 
-    protected IUnit target = null;
+    protected Unit target = null;
 
     public override void Activate(IBuffable target)
     {
-        if (target is IUnit unit)
+        if (target is Unit unit)
         {
             this.target = unit;
             unit.ModifyPhysicalDefense(this.modifier);

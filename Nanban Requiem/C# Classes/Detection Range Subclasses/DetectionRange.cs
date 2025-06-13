@@ -5,7 +5,7 @@ using Godot;
 
 // Base class for detecting and tracking units
 public abstract partial class DetectionRange<T> : Area2D
-    where T : Node2D, IUnit
+    where T : Unit
 {
 
     protected List<T> targetsInRange = new List<T>();

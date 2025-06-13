@@ -4,7 +4,7 @@ using Godot;
 public abstract partial class DamageOverTime : Node2D
 {
 
-    protected IUnit target;
+    protected Unit target;
     protected Attack attack;
     protected int damage;
     [Export] protected double multiplier;
@@ -13,7 +13,7 @@ public abstract partial class DamageOverTime : Node2D
     protected double timeSinceLastAttack = 0;
     protected bool initialized = false;
 
-    public void Initialize(IUnit target, int damage)
+    public void Initialize(Unit target, int damage)
     {
         this.target = target;
         this.target.Despawning += this.EnemyDespawn;

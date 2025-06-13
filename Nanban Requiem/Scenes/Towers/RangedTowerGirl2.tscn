@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxjqn8vyn63cn"]
+[gd_scene load_steps=11 format=3 uid="uid://bxjqn8vyn63cn"]
 
 [ext_resource type="Script" uid="uid://c7jcmvn4rpf7n" path="res://C# Classes/Towers (Functional)/RangedTowerGirl2.cs" id="1_044w5"]
 [ext_resource type="Texture2D" uid="uid://b71poiu2f5kig" path="res://Assets/Towers/RangedTowerGirl2_base.png" id="1_lo6s8"]
 [ext_resource type="PackedScene" uid="uid://cb20rv8qcup1l" path="res://Scenes/AdditionalEffects/VampireDOT.tscn" id="2_044w5"]
+[ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="2_omxl8"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="2_sjwcm"]
 [ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/VampireProjectile.tscn" id="3_omxl8"]
 
@@ -30,6 +31,7 @@ radius = 354.51
 [node name="RangedTowerGirl2" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_044w5")
+aoeScene = ExtResource("2_omxl8")
 dotScene = ExtResource("2_044w5")
 rangedDamage = 100
 projectileSpeed = 300

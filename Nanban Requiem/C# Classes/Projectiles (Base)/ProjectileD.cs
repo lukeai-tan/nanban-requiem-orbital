@@ -2,7 +2,7 @@ using System;
 using Godot;
 
 public abstract partial class ProjectileD<T> : ProjectileA<T>
-    where T : Node2D, IUnit
+    where T : Unit
 {
     protected PackedScene dotScene;
 
@@ -19,21 +19,13 @@ public abstract partial class ProjectileD<T> : ProjectileA<T>
 
     protected override void Land()
     {
-        try
+        Node effect = this.dotScene.Instantiate();
+        if (effect is DamageOverTime dot)
         {
-            Node effect = this.dotScene.Instantiate();
-            if (effect is DamageOverTime dot)
-            {
-                this.target.AddChild(dot);
-                dot.Initialize(this.target, this.damage);
-            }
-            base.Land();
+            this.target.AddChild(dot);
+            dot.Initialize(this.target, this.damage);
         }
-        catch (Exception e)
-        {
-            GD.Print(e);
-        }
-
+        base.Land();
     }
 
     public override string ToString()

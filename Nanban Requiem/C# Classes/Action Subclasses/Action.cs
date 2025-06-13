@@ -8,7 +8,7 @@ public abstract class Action : IAction
     protected bool usable = false;
     protected int priority;
 
-    public bool isUsable()
+    public virtual bool IsUsable()
     {
         return this.usable;
     }
@@ -19,6 +19,11 @@ public abstract class Action : IAction
     }
 
     public abstract void Execute<T>(T target)
-        where T : Node2D, IUnit;
+        where T : Unit;
+
+    public int GetPriority()
+    {
+        return this.priority;
+    }
 
 }
