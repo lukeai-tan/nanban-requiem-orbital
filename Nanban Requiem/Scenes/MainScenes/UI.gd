@@ -6,6 +6,7 @@ extends CanvasLayer
 var tower_builder
 var tower_manager
 
+
 func set_tower_preview(tower_type, mouse_position):
 	
 	var base_sprite := Sprite2D.new()

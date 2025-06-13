@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=22 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
 [ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
 [ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="3_tnagp"]
+[ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="4_7co2h"]
 [ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="4_o10dm"]
 [ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="5_no243"]
 [ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/RangedTower1_turret.png" id="6_o10dm"]
@@ -48,8 +49,10 @@ offset_top = -85.0
 offset_right = 180.0
 grow_vertical = 0
 theme_override_constants/separation = 10
+script = ExtResource("4_7co2h")
 
 [node name="RangedTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -69,6 +72,7 @@ grow_vertical = 2
 texture = ExtResource("6_o10dm")
 
 [node name="RangedTower2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -88,6 +92,7 @@ grow_vertical = 2
 texture = ExtResource("7_no243")
 
 [node name="Obstacle1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -114,6 +119,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="MeleeTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -140,6 +146,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="RangedTowerGirl1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -166,6 +173,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="RangedTowerGirl2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -176,22 +184,18 @@ texture_hover = ExtResource("5_no243")
 stretch_mode = 4
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 2.0
-offset_right = 168.0
-offset_bottom = 167.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 254.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_ibot7")
 expand_mode = 2
 stretch_mode = 4
 
 [node name="RangedTowerBoy1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 0

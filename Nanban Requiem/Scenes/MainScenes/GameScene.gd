@@ -3,6 +3,8 @@ extends Node2D
 @onready var tower_builder = preload("res://Scenes/MainScenes/TowerBuilder.gd").new()
 @onready var wave_spawner = preload("res://Scenes/MainScenes/WaveSpawner.gd").new()
 @onready var tower_manager = preload("res://Scenes/MainScenes/TowerManager.gd").new()
+#@onready var build_bar_manager = preload("res://Scenes/MainScenes/BuildBarManager.gd").new()
+@onready var build_bar = get_node("UI/HUD/BuildBar")
 
 signal game_finished(result)
 
@@ -15,6 +17,7 @@ func _ready():
 	add_child(wave_spawner)
 	add_child(tower_manager)
 
+
 	var map_node = get_node("Map1")
 	tower_builder.map_node = map_node
 	tower_builder.ui = ui
@@ -23,17 +26,22 @@ func _ready():
 	ui.tower_builder = tower_builder
 	ui.tower_manager = tower_manager
 
+	var build_bar_manager = build_bar
+	build_bar_manager.setup(tower_builder)
+	build_bar_manager.tower_builder = tower_builder
+
 	tower_manager.set_ui(ui)
 	tower_manager.map_node = map_node
 	tower_manager.connect("tower_count_changed", Callable(ui, "update_tower_count"))
 	
 	wave_spawner.map_node = map_node
 	wave_spawner.wave_complete.connect(_on_wave_complete)
-
+	'''
 	for i in get_tree().get_nodes_in_group("tower_options"):
 		i.pressed.connect(tower_builder.initiate_build_mode.bind(i.name))
-
+	'''
 	wave_spawner.start_next_wave()
+
 
 func _on_wave_complete():
 	wave_spawner.start_next_wave()

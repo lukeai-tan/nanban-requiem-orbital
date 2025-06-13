@@ -14,8 +14,17 @@ extends Node
 	},
 '''
 
-
-
+var tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": true,
+	"RangedTowerGirl2": true,
+	"RangedTowerBoy1": true,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
 
 
 
