@@ -2,7 +2,7 @@ using System;
 using Godot;
 
 public abstract partial class ProjectileAA<T> : ProjectileA<T>
-    where T : Node2D, IUnit
+    where T : Unit
 {
     protected PackedScene areaEffectScene;
 

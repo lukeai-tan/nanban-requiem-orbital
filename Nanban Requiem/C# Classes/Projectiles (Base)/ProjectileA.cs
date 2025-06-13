@@ -2,7 +2,7 @@ using System;
 using Godot;
 
 public abstract partial class ProjectileA<T> : Projectile<T>
-    where T : Node2D, IUnit
+    where T : Unit
 {
     
     protected Attack attack;

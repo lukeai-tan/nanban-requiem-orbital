@@ -33,7 +33,7 @@ public class BasicRangedAttack : Action
 
     public override void Execute<T>(T target)
     {
-        if (this.isUsable())
+        if (this.IsUsable())
         {
             Node2D projectilesNode = this.initiator.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map1/Projectiles");
             var projectileInstance = this.projectileScene.Instantiate();

@@ -6,8 +6,10 @@ public interface IAction
 {
 
     public void Execute<T>(T target)
-        where T : Node2D, IUnit;
+        where T : Unit;
 
-    public bool isUsable();
+    public bool IsUsable();
+
+    public int GetPriority();
 
 }

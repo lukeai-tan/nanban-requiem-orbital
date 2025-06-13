@@ -4,7 +4,7 @@ using Godot;
 
 // Base class that performs a certain action to all targets in range
 public abstract partial class AreaEffect<T> : Area2D, IAreaEffect
-    where T : Node2D, IUnit
+    where T : Unit
 {
 
     protected bool active = false;

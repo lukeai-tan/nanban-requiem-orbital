@@ -27,7 +27,7 @@ public class BasicMeleeAttack : Action
 
     public override void Execute<T>(T target)
     {
-        if (this.isUsable())
+        if (this.IsUsable())
         {
             this.attack.Hit(target, this.damage, this.multiplier);
         }

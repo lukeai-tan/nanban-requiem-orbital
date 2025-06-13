@@ -8,6 +8,8 @@ public interface IUnit
 
     public bool CanTarget();
 
+    public void Heal(int damage);
+
     public void TakePhysicalDamage(int damage);
 
     public void TakeArtsDamage(int damage);
