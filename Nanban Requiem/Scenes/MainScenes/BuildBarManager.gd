@@ -2,6 +2,9 @@ extends HBoxContainer
 
 var tower_builder
 
+# Takes in reference to TowerBuilder instance and loads tower buttons based on Towers set to true in GameData
+# Each button is connected to initiate_build_mode in TowerBuilder
+
 func setup(tower_builder_ref):
     tower_builder = tower_builder_ref
     _create_buttons()
