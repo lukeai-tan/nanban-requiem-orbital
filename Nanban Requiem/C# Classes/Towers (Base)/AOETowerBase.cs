@@ -20,5 +20,4 @@ public abstract partial class AOETowerBase : RangedTowerBase
         return "AOE " + base.ToString();
     }
 
-
 }

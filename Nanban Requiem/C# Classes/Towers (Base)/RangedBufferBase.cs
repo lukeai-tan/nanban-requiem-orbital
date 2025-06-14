@@ -17,7 +17,7 @@ public abstract partial class RangedBufferBase : RangedTowerBase
 
     public override string ToString()
     {
-        return "AOE " + base.ToString();
+        return "Buffer " + base.ToString();
     }
 
 }

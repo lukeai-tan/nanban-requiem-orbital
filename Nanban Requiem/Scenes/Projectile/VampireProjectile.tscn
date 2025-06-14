@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dcbx45vnyumly"]
 
-[ext_resource type="Script" uid="uid://dftpkfrqxgfe7" path="res://C# Classes/Projectiles (Functional)/TowerProjectileD.cs" id="1_3iec4"]
+[ext_resource type="Script" uid="uid://cnfvwg1rjwr15" path="res://C# Classes/Projectiles (Functional)/TowerProjectileB.cs" id="1_3iec4"]
 [ext_resource type="Texture2D" uid="uid://dkxdyeeqah2ac" path="res://Assets/Towers/FlameProjectile_spritesheet.png" id="2_vb7s2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1m8h"]
