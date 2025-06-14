@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Godot;
 
-public class TowerSkill
+public abstract partial class TowerSkill : Node2D
 {
 
-    protected int cost;
+    [Export] protected int cost;
+    [Export] protected double initialPoints;
     protected double points;
+    protected Tower owner;
 
-    public TowerSkill(int cost, double initialPoints)
+    public override void _Ready()
     {
-        this.cost = cost;
-        this.points = initialPoints;
+        this.owner = this.GetParentOrNull<Tower>();
+        this.points = this.initialPoints;
+    }
+
+    public override void _Process(double delta)
+    {
+        this.points += delta;
     }
 
     public bool IsReady()
@@ -20,36 +27,11 @@ public class TowerSkill
         return this.points >= this.cost;
     }
 
-    public void gainPoints(double points)
-    {
-        this.points += points;
-    }
-
     protected void ResetPoints()
     {
-        this.points = 0;
+        this.points = this.initialPoints;
     }
 
-    public void Call<T>(List<T> targets, List<Action> actions)
-        where T : Unit
-    {
-        if (!this.IsReady() || targets.Count != actions.Count)
-        {
-            return;
-        }
-        else
-        {
-            for (int i = 0; i < targets.Count; i++)
-            {
-                T target = targets[i];
-                Action action = actions[i];
-                if (GodotObject.IsInstanceValid(target))
-                {
-                    action.Execute(target);
-                }
-            }
-            this.ResetPoints();
-        }
-    }
+    public abstract void Call();
 
 }

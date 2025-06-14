@@ -1,9 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb20rv8qcup1l"]
+[gd_scene load_steps=11 format=3 uid="uid://cb20rv8qcup1l"]
 
-[ext_resource type="Script" uid="uid://c8mp8turxkxki" path="res://C# Classes/DOT Subclasses/ArtsDOT.cs" id="1_ix60d"]
+[ext_resource type="Script" uid="uid://vwvo4j8wdkb1" path="res://C# Classes/Buff Subclasses/ArtsDOTBuff.cs" id="1_u2ux8"]
+[ext_resource type="Texture2D" uid="uid://ulo4ivk5cele" path="res://Assets/VFX/Blood Splat.png" id="2_nwhj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oei4i"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pfq4"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cijns"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejul7"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1e8v"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1v4q"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5t5i"]
+atlas = ExtResource("2_nwhj4")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eljug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oei4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pfq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cijns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejul7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1e8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1v4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5t5i")
+}],
+"loop": true,
+"name": &"effect",
+"speed": 7.0
+}]
 
 [node name="VampireDot" type="Node2D"]
-script = ExtResource("1_ix60d")
-multiplier = 0.5
-duration = 3.0
+script = ExtResource("1_u2ux8")
+damage = 20
 interval = 0.3
+id = 4
+duration = 3.0
+modifier = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eljug")
+animation = &"effect"
+frame = 3
+frame_progress = 0.339573

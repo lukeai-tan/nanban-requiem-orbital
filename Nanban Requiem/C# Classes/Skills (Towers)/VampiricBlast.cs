@@ -1,34 +1,54 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Godot;
 
-public class VampiricBlast
+public partial class VampiricBlast : TowerSkill
 {
 
-    protected PackedScene projectileScene;
-    protected PackedScene aoeScene;
-    protected PackedScene dotScene;
-    protected Tower initiator;
+    [Export] protected int damage;
+    [Export] protected double multiplier;
+    [Export] protected PackedScene projectileScene;
+    [Export] protected PackedScene aoeScene;
+    [Export] protected PackedScene dotScene;
+    [Export] protected PackedScene regenScene;
+    protected ITargeting<Enemy> targeting = new EnemyClosestToBase();
+    protected DetectionRange<Enemy> range;
 
-    public VampiricBlast(PackedScene projectileScene, PackedScene aoeScene, PackedScene dotScene, Tower initiator)
+    public override void _Ready()
     {
-        this.projectileScene = projectileScene;
-        this.aoeScene = aoeScene;
-        this.dotScene = dotScene;
-        this.initiator = initiator;
+        base._Ready();
+        this.range = this.owner.GetNodeOrNull<DetectionRange<Enemy>>("DetectionRange");
     }
 
-    public List<Action> Skill(int damage, double multiplier)
+    public override void _Process(double delta)
     {
-        AOERangedAttack aoe = new AOERangedAttack(this.projectileScene, this.initiator, this.aoeScene);
-        aoe.SetAttackAndSpeed(new ArtsAttack(), 300);
-        aoe.SetModifiers(damage, multiplier);
-        BasicMeleeDOT dot = new BasicMeleeDOT(this.dotScene);
-        dot.SetAttack(new ArtsAttack());
-        BasicMeleeAttack heal = new BasicMeleeAttack();
-        heal.SetAttack(new Heal());
-        heal.SetModifiers(damage, multiplier);
-        return new List<Action> { aoe, dot, heal };
+        base._Process(delta);
+        if (this.IsReady())
+        {
+            this.Call();
+        }
+    }
+
+    public override void Call()
+    {
+        if (this.IsReady())
+        {
+            AOERangedAttack aoe = new AOERangedAttack(this.projectileScene, this.owner, this.aoeScene);
+            aoe.SetAttackAndSpeed(new ArtsAttack(), 300);
+            aoe.SetModifiers(this.damage, this.multiplier);
+            Enemy target = this.targeting.GetTarget(this.range.GetTargets());
+            if (target != null)
+            {
+                aoe.Execute(target);
+            }
+
+            BasicMeleeBuff regen = new BasicMeleeBuff(this.regenScene);
+            regen.SetAttack(new Heal());
+            regen.Execute(this.owner);
+
+            this.points = this.initialPoints;
+        }
     }
 
 }

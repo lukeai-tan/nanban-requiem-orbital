@@ -9,6 +9,16 @@ public abstract partial class Buff : Node2D
     [Export] protected double duration;
     [Export] protected double modifier;
     protected bool activated = false;
+    protected AnimatedSprite2D animation = null;
+
+    public override void _Ready()
+    {
+        AnimatedSprite2D animation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+        if (animation != null)
+        {
+            this.animation = animation;
+        }
+    }
 
     public override void _Process(double delta)
     {
@@ -16,13 +26,18 @@ public abstract partial class Buff : Node2D
         {
             if (this.duration <= 0)
             {
-                this.Expired?.Invoke(this, EventArgs.Empty);
+                this.IsExpired();
             }
             else
             {
                 this.duration -= delta;
             }
         }
+    }
+
+    protected void IsExpired()
+    {
+        this.Expired?.Invoke(this, EventArgs.Empty);
     }
 
     public int GetId()

@@ -54,6 +54,7 @@ public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
         {
             this.health = trueHealth;
         }
+        this.healthBar.Value = this.health;
     }
 
     public void TakePhysicalDamage(int damage)

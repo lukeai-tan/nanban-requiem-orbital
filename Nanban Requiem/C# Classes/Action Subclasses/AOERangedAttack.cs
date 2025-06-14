@@ -25,4 +25,9 @@ public partial class AOERangedAttack : BasicRangedAttack
         }
     }
 
+    public override string ToString()
+    {
+        return "AOE " + base.ToString();
+    }
+
 }
