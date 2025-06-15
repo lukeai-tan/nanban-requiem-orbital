@@ -163,6 +163,8 @@ script = ExtResource("1_jp0vf")
 shape = SubResource("CircleShape2D_wc7ak")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
 position = Vector2(-1.99999, -1.50001)
 scale = Vector2(2.3125, 2.4625)
 sprite_frames = SubResource("SpriteFrames_x5lds")
