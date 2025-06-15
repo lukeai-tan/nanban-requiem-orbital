@@ -85,6 +85,7 @@ animations = [{
 size = Vector2(71, 13)
 
 [node name="VampireProjectile" type="CharacterBody2D"]
+texture_filter = 1
 safe_margin = 0.001
 script = ExtResource("1_3iec4")
 
