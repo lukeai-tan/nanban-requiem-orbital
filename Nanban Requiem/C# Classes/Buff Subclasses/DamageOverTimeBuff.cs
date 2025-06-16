@@ -44,11 +44,6 @@ public abstract partial class DamageOverTimeBuff : Buff
         this.activated = true;
     }
 
-    public override void Deactivate()
-    {
-        this.QueueFree();
-    }
-
     public override string ToString()
     {
         return "DOT " + base.ToString();

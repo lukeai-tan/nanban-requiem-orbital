@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Godot;
 
-public partial class VampiricBlast : TowerSkill
+public partial class VampiricBlast : ManualTowerSkill
 {
 
     [Export] protected int damage;
@@ -21,34 +21,22 @@ public partial class VampiricBlast : TowerSkill
         this.range = this.owner.GetNodeOrNull<DetectionRange<Enemy>>("DetectionRange");
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        if (this.IsReady())
-        {
-            this.Call();
-        }
-    }
-
     public override void Call()
     {
-        if (this.IsReady())
+        AOERangedAttack aoe = new AOERangedAttack(this.projectileScene, this.owner, this.aoeScene);
+        aoe.SetAttackAndSpeed(new ArtsAttack(), 300);
+        aoe.SetModifiers(this.damage, this.multiplier);
+        Enemy target = this.targeting.GetTarget(this.range.GetTargets());
+        if (target != null)
         {
-            AOERangedAttack aoe = new AOERangedAttack(this.projectileScene, this.owner, this.aoeScene);
-            aoe.SetAttackAndSpeed(new ArtsAttack(), 300);
-            aoe.SetModifiers(this.damage, this.multiplier);
-            Enemy target = this.targeting.GetTarget(this.range.GetTargets());
-            if (target != null)
-            {
-                aoe.Execute(target);
-            }
-
-            BasicMeleeBuff regen = new BasicMeleeBuff(this.regenScene);
-            regen.SetAttack(new Heal());
-            regen.Execute(this.owner);
-
-            this.points = this.initialPoints;
+            aoe.Execute(target);
         }
+
+        BasicMeleeBuff regen = new BasicMeleeBuff(this.regenScene);
+        regen.SetAttack(new Heal());
+        regen.Execute(this.owner);
+
+        base.Call();
     }
 
 }

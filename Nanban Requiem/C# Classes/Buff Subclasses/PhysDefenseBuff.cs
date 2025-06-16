@@ -22,7 +22,7 @@ public partial class PhysDefenseBuff : Buff
         {
             this.target.ModifyPhysicalDefense(-this.modifier);
         }
-        this.QueueFree();
+        base.Deactivate();
     }
 
     public override string ToString()
