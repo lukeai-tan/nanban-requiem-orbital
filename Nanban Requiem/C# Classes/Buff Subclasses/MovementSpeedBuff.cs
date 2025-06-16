@@ -22,7 +22,7 @@ public partial class MovementSpeedBuff : Buff
         {
             this.target.ModifyMovementSpeed(-this.modifier);
         }
-        this.QueueFree();
+        base.Deactivate();
     }
 
     public override string ToString()

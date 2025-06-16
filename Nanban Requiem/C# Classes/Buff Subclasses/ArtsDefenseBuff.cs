@@ -22,7 +22,7 @@ public partial class ArtsDefenseBuff : Buff
         {
             this.target.ModifyArtsDefense(-this.modifier);
         }
-        this.QueueFree();
+        base.Deactivate();
     }
 
     public override string ToString()

@@ -20,18 +20,20 @@ public abstract partial class TowerSkill : Node2D
     public override void _Process(double delta)
     {
         this.points += delta;
+        if (this.points >= this.cost)
+        {
+            this.Call();
+        }
     }
 
-    public bool IsReady()
-    {
-        return this.points >= this.cost;
-    }
-
-    protected void ResetPoints()
+    protected virtual void ResetPoints()
     {
         this.points = this.initialPoints;
     }
 
-    public abstract void Call();
+    public virtual void Call()
+    {
+        this.ResetPoints();
+    }
 
 }

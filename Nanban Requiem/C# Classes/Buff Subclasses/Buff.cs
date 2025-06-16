@@ -52,7 +52,10 @@ public abstract partial class Buff : Node2D
 
     public abstract void Activate(IBuffable target);
 
-    public abstract void Deactivate();
+    public virtual void Deactivate()
+    {
+        this.QueueFree();
+    }
 
     public override string ToString()
     {

@@ -97,6 +97,7 @@ public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
             this.status[id] = buff;
             this.AddChild(buff);
             buff.Activate(this);
+            buff.Expired += this.ExpiredBuff;
         }
     }
 
