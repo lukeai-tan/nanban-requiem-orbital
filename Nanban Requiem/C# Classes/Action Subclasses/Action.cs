@@ -1,5 +1,5 @@
-using Godot;
 using System;
+using Godot;
 
 // Base class for any action performable on a Unit, has a priority which is used in skill picking
 public abstract class Action : IAction
