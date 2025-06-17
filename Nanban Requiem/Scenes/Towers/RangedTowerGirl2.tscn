@@ -70,10 +70,10 @@ cost = 5
 
 [node name="Button" type="TextureButton" parent="SKill"]
 visible = false
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 175.0
-offset_bottom = 175.0
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 223.0
+offset_bottom = 223.0
 scale = Vector2(0.25, 0.25)
 disabled = true
 texture_normal = ExtResource("10_whhsv")
