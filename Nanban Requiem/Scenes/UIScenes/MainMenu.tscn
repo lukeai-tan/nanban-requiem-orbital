@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cia7hkwwboa"]
 
-[ext_resource type="Script" path="res://Scenes/UIScenes/MainMenu.gd" id="1_36q6b"]
+[ext_resource type="Script" uid="uid://d4c2hckeymnr6" path="res://Scenes/UIScenes/MainMenu.gd" id="1_36q6b"]
 [ext_resource type="Texture2D" uid="uid://cods5ea5wgjir" path="res://Assets/UI/Art/mm_ChickenNanbanDon.jpg" id="1_tg48g"]
 [ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="2_jrpvl"]
 [ext_resource type="Texture2D" uid="uid://dnetv5bmd7rr8" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="2_qc1fl"]
