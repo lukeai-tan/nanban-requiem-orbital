@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd7jedlxx0vn4"]
+
+[ext_resource type="Script" uid="uid://dhrrp84j5byq6" path="res://Scenes/UIScenes/MapIcon.gd" id="1_0dmwc"]
+[ext_resource type="Texture2D" uid="uid://bvee8cxo0e54n" path="res://Assets/UI/Art/ChickenBowl.png" id="1_6tukk"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="2_0dmwc"]
+
+[node name="MapIcon" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -560.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dmwc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_6tukk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 128.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("2_0dmwc")
+theme_override_font_sizes/font_size = 20
+text = "Map 1"
+horizontal_alignment = 1
+vertical_alignment = 1
