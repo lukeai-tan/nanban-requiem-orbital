@@ -147,7 +147,18 @@ var enemy_data = {
 		"name": "Mighty Whitey",
 		"description": "This is a Mighty Whitey description",
 		"stats": "Mighty Whitey stats"
+	},
+
+	"Unknown": {
+		"health": 0,
+		"speed": 0,
+		"sprite_icon": "res://Assets/Enemies/REDACTED.png",
+		"sprite_in_game": "res://Assets/Enemies/PRTS.png",
+		"name": "XXXX",
+		"description": "I'm not upset",
+		"stats": "[REDACTED]"
 	}
+
 }
 	
 
