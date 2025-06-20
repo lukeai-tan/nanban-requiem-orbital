@@ -2,6 +2,9 @@
 extends Control
 
 @export var map_index: int = 1
+#@export var map_selector_packed: PackedScene = preload("res://Scenes/UIScenes/MapSelector.tscn")
+#@onready var map_selector_scene: MapSelector = map_selector_packed.instantiate()
+#@export_file("*.tscn") var next_scene_path: String
 
 
 func _ready() -> void:
