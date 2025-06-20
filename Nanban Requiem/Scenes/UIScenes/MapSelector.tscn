@@ -42,9 +42,9 @@ horizontal_alignment = 1
 
 [node name="MapIcon" parent="." instance=ExtResource("3_e51tu")]
 layout_mode = 1
-offset_left = 257.0
+offset_left = 259.0
 offset_top = 256.0
-offset_right = -895.0
+offset_right = -893.0
 offset_bottom = -304.0
 
 [node name="MapIcon2" parent="." instance=ExtResource("3_e51tu")]
