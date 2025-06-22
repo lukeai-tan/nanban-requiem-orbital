@@ -3,6 +3,7 @@ extends Node2D
 var current_wave = 0
 var enemies_in_wave = 0
 var all_enemies_in_wave_spawned = false
+var map_to_load: String = "Map1"
 
 signal wave_complete
 
@@ -22,7 +23,7 @@ func start_next_wave():
 
 
 func retrieve_wave_data():
-	var wave_data = GameData.wave_data["Map1"]
+	var wave_data = GameData.wave_data[map_to_load]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data

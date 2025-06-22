@@ -21,7 +21,7 @@ var tower_squad = {
 	"MeleeTower1": true,
 	"RangedTowerGirl1": true,
 	"RangedTowerGirl2": true,
-	"RangedTowerBoy1": true,
+	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
 	"Chicken Don": false,
 }
@@ -195,5 +195,48 @@ var wave_data = {
 
 
 	],
+
+	"Map2": [
+		["Samurai", 0.0],
+		["Samurai", 1.0],
+		["Samurai", 1.0],
+
+	],
+
+
+	"Map3": [
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["WhiteSamurai", 1.0],
+		["WhiteSamurai", 1.0],
+		["WhiteSamurai", 1.0],
+		["WhiteSamurai", 1.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+		["RocketSamurai", 0.0],
+
+
+	]
 	
 }
