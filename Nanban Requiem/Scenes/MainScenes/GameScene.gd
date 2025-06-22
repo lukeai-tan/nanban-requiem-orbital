@@ -48,6 +48,7 @@ func _ready():
 	tower_manager.connect("tower_count_changed", Callable(ui, "update_tower_count"))
 	
 	wave_spawner.map_node = map_node
+	wave_spawner.map_to_load = map_to_load
 	wave_spawner.wave_complete.connect(_on_wave_complete)
 	wave_spawner.start_next_wave()
 

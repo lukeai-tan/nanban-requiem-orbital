@@ -523,6 +523,7 @@ tile_map_data = PackedByteArray("AAD//wcAAAAHAAAAAAAAAAcAAAAAAAIAAAABAAcAAAAIAAE
 tile_set = SubResource("TileSet_02l5e")
 
 [node name="TowerExclusions" type="TileMapLayer" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAALAAEAAAAAAAAAAAASAAIAAAAAAAAAAAAGAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAA=")
 tile_set = ExtResource("2_ilpbb")
 
