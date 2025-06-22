@@ -15,7 +15,7 @@ public partial class BasicRangedBuff : BasicRangedAttack
     {
         if (this.IsUsable())
         {
-            Node2D projectilesNode = this.initiator.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map1/Projectiles");
+            Node2D projectilesNode = this.initiator.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
             var projectileInstance = this.projectileScene.Instantiate();
             if (projectileInstance is ProjectileB<T> projectile)
             {

@@ -22,7 +22,7 @@ func _ready():
 
 	if map_scene:
 		map_node = map_scene.instantiate()
-		map_node.name = "Map1"
+		map_node.name = "Map"
 		add_child(map_node)
 	else:
 		push_error("Failed to load map: " + map_path)
