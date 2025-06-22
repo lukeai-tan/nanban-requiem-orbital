@@ -28,9 +28,16 @@ func load_main_menu():
 func on_new_game_pressed():
 	$"MainMenu".queue_free()
 	print("New Game button pressed")
+
+	'''
 	var game_scene: Node2D = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
 	game_scene.connect("game_finished", unload_game)
 	call_deferred('add_child', game_scene)
+	'''
+
+	var map_selector = load("res://Scenes/UIScenes/MapSelector.tscn").instantiate()
+	map_selector.connect("map_selected", Callable(self, "_on_map_selected"))
+	call_deferred('add_child', map_selector)
 	
 
 func on_journal_pressed():
@@ -49,10 +56,15 @@ func on_settings_pressed():
 func on_quit_pressed():
 	get_tree().quit()
 
-
 func _on_ui_returned(ui_node):
 	ui_node.queue_free()
 	load_main_menu()
+
+func _on_map_selected(map_name: String):
+	var game_scene: Node2D = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
+	game_scene.set("map_to_load", map_name)
+	game_scene.connect("game_finished", unload_game)
+	call_deferred('add_child', game_scene)
 
 func unload_game(_result):
 	get_node("GameScene").queue_free()

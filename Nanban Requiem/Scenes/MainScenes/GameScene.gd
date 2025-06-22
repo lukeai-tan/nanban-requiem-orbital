@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @onready var tower_builder = preload("res://Scenes/MainScenes/TowerBuilder.gd").new()
@@ -9,16 +10,28 @@ extends Node2D
 signal game_finished(result)
 
 var ui
+var map_to_load: String = "Map1"
 var base_health := 5.0
 
 func _ready():
 	ui = get_node("UI")
+	
+	var map_node: Node = null
+	var map_path = "res://Scenes/Maps/%s.tscn" % map_to_load
+	var map_scene = load(map_path)
+
+	if map_scene:
+		map_node = map_scene.instantiate()
+		map_node.name = "Map"
+		add_child(map_node)
+	else:
+		push_error("Failed to load map: " + map_path)
+		return
+
 	add_child(tower_builder)
 	add_child(wave_spawner)
 	add_child(tower_manager)
 
-
-	var map_node = get_node("Map1")
 	tower_builder.map_node = map_node
 	tower_builder.ui = ui
 	tower_builder.tower_manager = tower_manager
@@ -36,10 +49,6 @@ func _ready():
 	
 	wave_spawner.map_node = map_node
 	wave_spawner.wave_complete.connect(_on_wave_complete)
-	'''
-	for i in get_tree().get_nodes_in_group("tower_options"):
-		i.pressed.connect(tower_builder.initiate_build_mode.bind(i.name))
-	'''
 	wave_spawner.start_next_wave()
 
 

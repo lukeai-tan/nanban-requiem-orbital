@@ -1,9 +1,12 @@
 extends Control
 class_name MapSelector
 
-@onready var maps: Array = [$MapIcon, $MapIcon2, $MapIcon3]
+@onready var maps: Array = [$MapIcon1, $MapIcon2, $MapIcon3]
 var current_map: int = 0
 var move_tween: Tween
+var map_name: String
+
+signal map_selected(map_name: String)
 
 func _ready() -> void:
 	# sets default map to index 0 (aka Map 1)
@@ -27,14 +30,11 @@ func _input(event):
 
 	if event.is_action_pressed("ui_accept"):
 		print("Map clicked")
+		map_name = "Map%d" % (current_map + 1)
+		print("Selected map node: ", map_name)
+		emit_signal("map_selected", map_name)
+		queue_free()
 
-	'''
-	if event.is_action_pressed("ui_accept"):
-		if maps[current_map].map_selector_scene:
-			get_tree().get_root().add_child(maps[current_map].map_selector_scene)
-			get_tree().current_scene = maps[current_map].map_selector_scene
-			get_tree().get_root().remove_child(self)
-	'''
 
 func tween_icon():
 	move_tween = get_tree().create_tween()

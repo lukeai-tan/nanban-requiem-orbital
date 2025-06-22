@@ -40,7 +40,7 @@ theme_override_font_sizes/font_size = 70
 text = "Map Select"
 horizontal_alignment = 1
 
-[node name="MapIcon" parent="." instance=ExtResource("3_e51tu")]
+[node name="MapIcon1" parent="." instance=ExtResource("3_e51tu")]
 layout_mode = 1
 offset_left = 259.0
 offset_top = 256.0
