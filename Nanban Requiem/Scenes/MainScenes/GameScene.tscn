@@ -1,9 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=21 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
-[ext_resource type="PackedScene" uid="uid://b1ptux668fjj2" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
 [ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
-[ext_resource type="PackedScene" uid="uid://cy6vplqbmo517" path="res://Scenes/Maps/Map2.tscn" id="3_l2122"]
 [ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="3_tnagp"]
 [ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="4_7co2h"]
 [ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="4_o10dm"]
@@ -25,11 +23,6 @@
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_68uyl")
-
-[node name="Map1" parent="." instance=ExtResource("1_ianr5")]
-
-[node name="Map2" parent="." instance=ExtResource("3_l2122")]
-visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("3_jem3k")

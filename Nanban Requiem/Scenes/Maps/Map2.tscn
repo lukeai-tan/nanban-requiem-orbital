@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://cy6vplqbmo517"]
+[gd_scene load_steps=13 format=4 uid="uid://cy6vplqbmo517"]
 
 [ext_resource type="Texture2D" uid="uid://b7vtov78qmk1h" path="res://Assets/Environment/Tilesets/terrainTiles_default.png" id="1_jigm6"]
 [ext_resource type="Texture2D" uid="uid://dbxsg11ade8o3" path="res://Assets/Environment/Props/treeBrown_large.png" id="2_1qhhe"]
 [ext_resource type="Texture2D" uid="uid://bkqird25es8ao" path="res://Assets/Environment/Props/treeGreen_large.png" id="3_3uasi"]
+[ext_resource type="AudioStream" uid="uid://s5eiu37exaso" path="res://Assets/UI/Sounds/CarnivalOfJesters.mp3" id="4_3uasi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6nn38"]
 texture = ExtResource("1_jigm6")
@@ -120,7 +121,7 @@ sources/1 = SubResource("TileSetAtlasSource_7rev7")
 
 [sub_resource type="Curve2D" id="Curve2D_jigm6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 96, -64, 0, 0, 0, 0, 96, 384, 0, 0, 0, 0, 128, 416, 0, 0, 0, 0, 256, 416, 0, 0, 0, 0, 288, 384, 0, 0, 0, 0, 288, 128, 0, 0, 0, 0, 320, 96, 0, 0, 0, 0, 384, 96, 0, 0, 0, 0, 416, 128, 0, 0, 0, 0, 416, 448, 0, 0, 0, 0, 448, 480, 0, 0, 0, 0, 576, 480, 0, 0, 0, 0, 608, 448, 0, 0, 0, 0, 608, 256, 0, 0, 0, 0, 640, 224, 0, 0, 0, 0, 704, 224, 0, 0, 0, 0, 736, 192, 0, 0, 0, 0, 736, 128, 0, 0, 0, 0, 768, 96, 0, 0, 0, 0, 960, 96, 0, 0, 0, 0, 992, 128, 0, 0, 0, 0, 992, 352, 0, 0, 0, 0, 832, 352, 0, 0, 0, 0, 800, 384, 0, 0, 0, 0, 800, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 1056, 544, 0, 0, 0, 0, 1056, 384, 0, 0, 0, 0, 1024, 352, 0, 0, 0, 0, 832, 352, 0, 0, 0, 0, 800, 384, 0, 0, 0, 0, 800, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 1056, 544, 0, 0, 0, 0, 1344, 544)
+"points": PackedVector2Array(0, 0, 0, 0, 96, -64, 0, 0, 0, 0, 96, 384, -38.5543, 0, 38.5543, 0, 128, 416, -42.0242, 0.771086, 42.0242, -0.771086, 256, 416, 0, 0, 0, 0, 288, 384, 0.526662, 33.1797, -0.526662, -33.1797, 288, 128, 0, 0, 0, 0, 320, 96, 0, 0, 0, 0, 384, 96, -0.789994, -40.0263, 0.789994, 40.0263, 416, 128, 0, 0, 0, 0, 416, 448, -38.5543, -0.637262, 38.5543, 0.637262, 448, 480, -35.6866, 0, 35.6866, 0, 576, 480, 0, 0, 0, 0, 608, 448, 0.848195, 32.2314, -0.848195, -32.2314, 608, 256, 0, 0, 0, 0, 640, 224, -36.4724, 0.424098, 36.4724, -0.424098, 704, 224, 0, 0, 0, 0, 736, 192, 2.96868, 38.5929, -2.96868, -38.5929, 736, 128, 0, 0, 0, 0, 768, 96, 0, 0, 0, 0, 960, 96, 0, -34.3519, 0, 34.3519, 992, 128, -1.84332, 0, 1.84332, 0, 992, 352, 36.0483, -0.424098, -36.0483, 0.424098, 832, 352, 0, 0, 0, 0, 800, 384, -0.718176, -39.4997, 0.718176, 39.4997, 800, 512, 0, 0, 0, 0, 832, 544, -0.539576, 0.359717, 0.539576, -0.359717, 1056, 544, 0, 33.1797, 0, -33.1797, 1056, 384, 0, 0, 0, 0, 1024, 352, 37.3206, 0, -37.3206, 0, 832, 352, 0, 0, 0, 0, 800, 384, 0, -39.2603, 0, 39.2603, 800, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 1056, 544, 0, 0, 0, 0, 1344, 544)
 }
 point_count = 35
 
@@ -145,4 +146,8 @@ curve = SubResource("Curve2D_jigm6")
 
 [node name="Projectiles" type="Node2D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3uasi")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
