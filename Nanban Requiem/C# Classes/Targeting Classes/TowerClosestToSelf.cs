@@ -21,4 +21,9 @@ public class TowerClosestToSelf : ITargeting<Tower>
         return targetable.FirstOrDefault();
     } 
 
+    public List<Tower> GetTargets(List<Tower> targets)
+    {
+        return targets;
+    }
+
 }

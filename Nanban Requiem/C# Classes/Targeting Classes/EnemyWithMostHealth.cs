@@ -13,4 +13,9 @@ public class EnemyWithMostHealth : ITargeting<Enemy>
         return targetable.FirstOrDefault();
     }
 
+    public List<Enemy> GetTargets(List<Enemy> targets)
+    {
+        return targets;
+    }
+
 }
