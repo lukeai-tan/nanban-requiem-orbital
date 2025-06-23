@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dggex5hn14rg4"]
+
+[ext_resource type="Script" uid="uid://c5ok7mjdmckpy" path="res://C# Classes/Secret/Priestess.cs" id="1_g31t8"]
+[ext_resource type="Texture2D" uid="uid://40fb12xnq80s" path="res://Scenes/Bosses/New Piskel (34).png" id="2_g31t8"]
+[ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/GlobalDetectionRange.cs" id="3_fkma7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7tsm"]
+size = Vector2(21, 49)
+
+[node name="Priestess" type="CharacterBody2D"]
+script = ExtResource("1_g31t8")
+attack = 200
+skillcooldown = 4.0
+movementSpeed = 20
+health = 50000
+physDefense = 30
+artsDefense = 30
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_l7tsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_g31t8")
+
+[node name="Range" type="Node2D" parent="."]
+script = ExtResource("3_fkma7")

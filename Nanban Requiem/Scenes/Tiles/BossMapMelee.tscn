@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://w6gsrkj0tsk"]
+
+[ext_resource type="Script" uid="uid://cb31lemlovwd" path="res://C# Classes/Tile Subclasses/LowGroundTile.cs" id="1_4qbc6"]
+[ext_resource type="Texture2D" uid="uid://dru68f6apel7j" path="res://Assets/Tiles/MeleeTile.png" id="2_lg18w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g2fw"]
+
+[node name="BossMapMelee" type="Area2D"]
+script = ExtResource("1_4qbc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5g2fw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.63913e-06, -5.36442e-07)
+scale = Vector2(0.0195313, 0.0195313)
+texture = ExtResource("2_lg18w")

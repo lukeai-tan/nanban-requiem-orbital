@@ -13,4 +13,9 @@ public class EnemyClosestToBase : ITargeting<Enemy>
         return targetable.LastOrDefault();
     }
 
+    public List<Enemy> GetTargets(List<Enemy> targets)
+    {
+        return targets;
+    }
+
 }

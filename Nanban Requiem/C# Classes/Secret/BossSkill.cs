@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public abstract partial class BossSkill : Node2D, IAction
+public abstract partial class BossSkill : Node2D
 {
 
     protected bool usable = false;
@@ -17,8 +17,7 @@ public abstract partial class BossSkill : Node2D, IAction
         return "Priority: " + this.priority.ToString();
     }
 
-    public abstract void Execute<T>(T target)
-        where T : Unit;
+    public abstract void Execute();
 
     public int GetPriority()
     {

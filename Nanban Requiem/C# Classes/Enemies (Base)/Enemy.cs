@@ -26,9 +26,10 @@ public abstract partial class Enemy : Unit
 
     public virtual void Initialize(Path2D path)
     {
-        this.pathing = new BasicEnemyPathing(this);
-        this.pathing.InitializePath(path);
-        this.pathing.PathCompletion += this.ReachedBase;
+        BasicEnemyPathing pathing = new BasicEnemyPathing(this);
+        pathing.InitializePath(path);
+        this.pathing = pathing;
+        this.pathing.PathCompletion += this.ReachedObjective;
         this.initialized = true;
     }
 
@@ -38,24 +39,25 @@ public abstract partial class Enemy : Unit
         this.pathing.Update(this.movementSpeed * (float) modifier * (float) delta);
     }
 
-    public void ModifyMovementSpeed(double multiplier)
+    public virtual void ModifyMovementSpeed(double multiplier)
     {
         this.msModifier += multiplier;
     }
-
     
     public float GetProgress()
     {
         return this.pathing.GetProgress();
     }
 
-    
     protected void ChangePath(Path2D path)
     {
-        this.pathing.InitializePath(path);
+        if (this.pathing is BasicEnemyPathing pathing)
+        {
+            pathing.InitializePath(path);
+        }
     }
 
-    public void ReachedBase(object pathing, EventArgs e)
+    public virtual void ReachedObjective(object pathing, EventArgs e)
     {
         this.EmitSignal(nameof(DamageBase), 1);
         this.Despawn();
@@ -63,7 +65,7 @@ public abstract partial class Enemy : Unit
 
     public override void _ExitTree()
     {
-        this.pathing.PathCompletion -= this.ReachedBase;
+        this.pathing.PathCompletion -= this.ReachedObjective;
     }
 
 }
