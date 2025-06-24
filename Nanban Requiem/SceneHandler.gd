@@ -23,17 +23,12 @@ func load_main_menu():
 	var quit_button = get_node("MainMenu/Margin/VB_buttons/Quit")
 	if not quit_button.is_connected("pressed", Callable(self, "on_quit_pressed")):
 		quit_button.connect("pressed", Callable(self, "on_quit_pressed"))
+	
 
 
 func on_new_game_pressed():
 	$"MainMenu".queue_free()
 	print("New Game button pressed")
-
-	'''
-	var game_scene: Node2D = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
-	game_scene.connect("game_finished", unload_game)
-	call_deferred('add_child', game_scene)
-	'''
 
 	var map_selector = load("res://Scenes/UIScenes/MapSelector.tscn").instantiate()
 	map_selector.connect("map_selected", Callable(self, "_on_map_selected"))
@@ -67,7 +62,9 @@ func _on_map_selected(map_name: String):
 	call_deferred('add_child', game_scene)
 
 func unload_game(_result):
-	get_node("GameScene").queue_free()
+	var game_scene = get_node_or_null("GameScene")
+	if game_scene:
+		game_scene.queue_free()
 	var main_menu = load("res://Scenes/UIScenes/MainMenu.tscn").instantiate()
 	add_child(main_menu)
 	load_main_menu()

@@ -3,7 +3,6 @@ extends Node2D
 @onready var tower_builder = preload("res://Scenes/MainScenes/TowerBuilder.gd").new()
 @onready var wave_spawner = preload("res://Scenes/MainScenes/WaveSpawner.gd").new()
 @onready var tower_manager = preload("res://Scenes/MainScenes/TowerManager.gd").new()
-#@onready var build_bar_manager = preload("res://Scenes/MainScenes/BuildBarManager.gd").new()
 @onready var build_bar = get_node("UI/HUD/BuildBar")
 
 signal game_finished(result)
