@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://hk28hriwj7gl"]
+[gd_scene load_steps=8 format=3 uid="uid://hk28hriwj7gl"]
 
 [ext_resource type="Texture2D" uid="uid://c51lbigqbpp2" path="res://Assets/UI/Art/mm_background.png" id="1_8w1xv"]
 [ext_resource type="Script" uid="uid://wnh640nodj7o" path="res://Scenes/UIScenes/MapSelector.gd" id="1_m58by"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="2_e51tu"]
 [ext_resource type="PackedScene" uid="uid://cd7jedlxx0vn4" path="res://Scenes/UIScenes/MapIcon.tscn" id="3_e51tu"]
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="4_wl4qx"]
+[ext_resource type="Texture2D" uid="uid://d1o2g8w8ym1il" path="res://Assets/Icons/ButtonA.png.png" id="6_u2tbe"]
+[ext_resource type="Texture2D" uid="uid://bev8dp65lls42" path="res://Assets/Icons/ButtonD.png.png" id="7_2j4ik"]
 
 [node name="MapSelector" type="Control"]
 layout_mode = 3
@@ -73,9 +75,34 @@ offset_bottom = 256.0
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("4_wl4qx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ControlHints" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1024.0
-offset_top = 640.0
-offset_right = 1088.0
-offset_bottom = 704.0
+offset_left = 896.0
+offset_top = 608.0
+offset_right = 1120.0
+offset_bottom = 672.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Left" type="Label" parent="ControlHints"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_e51tu")
+text = "Left : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonA" type="TextureRect" parent="ControlHints"]
+layout_mode = 2
+texture = ExtResource("6_u2tbe")
+stretch_mode = 2
+
+[node name="Right" type="Label" parent="ControlHints"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_e51tu")
+text = "Right :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonD" type="TextureRect" parent="ControlHints"]
+layout_mode = 2
+texture = ExtResource("7_2j4ik")
+stretch_mode = 2
