@@ -127,7 +127,7 @@ var enemy_data = {
 		"sprite_icon": "res://Assets/Enemies/samurai_sprite.png",
 		"sprite_in_game": "res://Assets/Enemies/samurai_sprite.png",
 		"name": "Samurai",
-		"description": "He is the first enemy you encounter in the game.\n",
+		"description": "He is the first enemy you encounter in the game. Using his sword, he deals melee damage to foes in his way.\n",
 		"stats": "Health: 500\nSpeed: 100\nMelee DMG : 100"
 	},
 	

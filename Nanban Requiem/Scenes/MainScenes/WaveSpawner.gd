@@ -10,10 +10,11 @@ signal wave_complete
 var map_node: Node2D
 
 func _process(_delta):
-	var path = map_node.get_node("Path2D")
-	if all_enemies_in_wave_spawned and path.get_child_count() == 0:
-		all_enemies_in_wave_spawned = false
-		wave_complete.emit()
+	if map_node:
+		var path = map_node.get_node_or_null("Path2D")
+		if all_enemies_in_wave_spawned and path.get_child_count() == 0:
+			all_enemies_in_wave_spawned = false
+			wave_complete.emit()
 
 
 func start_next_wave():
