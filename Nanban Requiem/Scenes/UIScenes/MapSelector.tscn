@@ -72,3 +72,10 @@ offset_right = 384.0
 offset_bottom = 256.0
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("4_wl4qx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 640.0
+offset_right = 1088.0
+offset_bottom = 704.0

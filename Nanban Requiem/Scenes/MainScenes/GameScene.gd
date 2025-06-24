@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 @onready var tower_builder = preload("res://Scenes/MainScenes/TowerBuilder.gd").new()
