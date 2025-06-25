@@ -6,7 +6,6 @@ using Godot;
 public abstract partial class MeleeTowerBase : ObstacleBase, IAct
 {
 
-    [Export] protected int meleeDamage;
     protected Attack meleeAttack;
     protected BasicMeleeAttack basicMelee;
     [Export] protected double attackSpeed;
@@ -38,7 +37,7 @@ public abstract partial class MeleeTowerBase : ObstacleBase, IAct
             Enemy target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
-                this.basicMelee.SetModifiers(this.meleeDamage, 1);
+                this.basicMelee.SetModifiers(this.attack, this.atkModifier);
                 this.basicMelee.Execute(target);
                 this.timeSinceLastAttack = 0;
             }
@@ -47,7 +46,7 @@ public abstract partial class MeleeTowerBase : ObstacleBase, IAct
 
     public override string ToString()
     {
-        return "Melee Attack: " + this.meleeDamage.ToString() + " " + base.ToString();
+        return "Melee Attack: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

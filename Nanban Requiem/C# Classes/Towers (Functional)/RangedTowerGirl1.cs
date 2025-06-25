@@ -22,7 +22,7 @@ public partial class RangedTowerGirl1 : RangedBufferBase
 
     public override string ToString()
     {
-        return "Ranged Tower Girl 1: " + this.rangedDamage.ToString() + " " + base.ToString();
+        return "Ranged Tower Girl 1: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

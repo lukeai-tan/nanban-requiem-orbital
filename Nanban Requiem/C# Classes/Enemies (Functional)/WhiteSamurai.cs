@@ -12,7 +12,7 @@ public partial class WhiteSamurai : BasicMeleeEnemy
     
     public override string ToString()
     {
-        return "White: " + this.meleeDamage.ToString() + " " + base.ToString();
+        return "White: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

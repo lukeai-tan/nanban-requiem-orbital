@@ -7,7 +7,6 @@ using Godot;
 public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
 {
 
-    [Export] protected int meleeDamage;
     protected Attack meleeAttack;
     protected BasicMeleeAttack basicMelee;
     [Export] protected double attackSpeed;
@@ -55,7 +54,7 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
             {
                 this.animation.Play("attack");
             }
-            this.basicMelee.SetModifiers(this.meleeDamage, 1);
+            this.basicMelee.SetModifiers(this.attack, this.atkModifier);
             this.basicMelee.Execute(this.blocked);
             this.timeSinceLastAttack = 0;
         }
@@ -84,7 +83,7 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
 
     public override string ToString()
     {
-        return "Melee: " + this.meleeDamage.ToString() + " " + base.ToString();
+        return "Melee: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

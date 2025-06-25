@@ -14,7 +14,7 @@ public partial class Samurai : BasicMeleeEnemy
 
     public override string ToString()
     {
-        return "Samurai: " + this.meleeDamage.ToString() + " " + base.ToString();
+        return "Samurai: " + this.attack.ToString() + " " + base.ToString();
     }
     
 }

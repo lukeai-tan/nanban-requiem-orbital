@@ -8,7 +8,7 @@ using Godot;
 // rangedDamage, rangedAttack, projectileSpeed, projectileScene, targeting, range
 public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
 {
-    [Export] protected int rangedDamage;
+
     protected Attack rangedAttack;
     [Export] protected int projectileSpeed;
     protected BasicRangedAttack basicRanged;
@@ -57,7 +57,7 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
             Tower target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
-                this.basicRanged.SetModifiers(this.rangedDamage, 1);
+                this.basicRanged.SetModifiers(this.attack * 2, this.atkModifier);
                 this.basicRanged.Execute(target);
                 this.timeSinceLastAttack = 0;
             }
@@ -72,7 +72,7 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
 
     public override string ToString()
     {
-        return "Ranged: " + this.rangedDamage.ToString() + " " + base.ToString();
+        return "Ranged: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

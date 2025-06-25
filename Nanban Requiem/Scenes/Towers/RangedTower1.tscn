@@ -15,10 +15,10 @@ radius = 306.0
 [node name="RangedTower1" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_ymvci")
-rangedDamage = 15
 projectileSpeed = 300
 projectileScene = ExtResource("2_qxkfp")
 attackSpeed = 3.0
+attack = 15
 health = 1000
 physDefense = 10
 artsDefense = 10

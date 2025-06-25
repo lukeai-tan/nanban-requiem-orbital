@@ -12,7 +12,7 @@ public partial class RangedTower2 : AOETowerBase
 
     public override string ToString()
     {
-        return "Ranged Tower 2: " + this.rangedDamage.ToString() + " " + base.ToString();
+        return "Ranged Tower 2: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }
