@@ -86,4 +86,6 @@ public abstract partial class Boss : Enemy, IAct
 
     public override void ModifyMovementSpeed(double multiplier) { }
 
+    public override void ModifyAtk(double multiplier) { }
+
 }

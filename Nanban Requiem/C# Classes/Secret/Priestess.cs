@@ -7,12 +7,13 @@ using Godot;
 public partial class Priestess : Boss
 {
 
+    // Hp thresholds
     public event EventHandler ThreeQ;
     public event EventHandler Half;
     public event EventHandler OneQ;
     public event EventHandler Zero;
 
-    [Export] protected int attack;
+    // Skills
     [Export] protected PackedScene projectileScene;
     [Export] protected PackedScene debuffScene;
     [Export] protected PackedScene buffScene;
@@ -20,16 +21,15 @@ public partial class Priestess : Boss
     protected BasicRangedBuff attack1;
     protected BasicMeleeBuff buff1;
     protected AOEMeleeAttack attack2;
-    // Basic Attack
-    protected ITargeting<Tower> targeting1;
-    // Basic Buff
-    protected ITargeting<Enemy> targeting2;
-    // Area Nuke
-    protected ITargeting<Tower> targeting3;
+    protected PriestessBasic targeting1;
+    protected PriestessBuff targeting2;
+    protected PriestessNuke targeting3;
+    public event EventHandler LockUI;
+    public event EventHandler LockDeployment;
 
+    // Phase transition 
     protected Vector2 stage = new Vector2(640, 640);
     protected bool onStage = false;
-    // OnStage is for activating tileswaps
     public event EventHandler OnStage;
     protected double cooldown = 30;
     public event EventHandler Computation;
@@ -44,6 +44,10 @@ public partial class Priestess : Boss
 
     public override void SetActions()
     {
+        this.targeting1 = new PriestessBasic(this);
+        this.targeting2 = new PriestessBuff(this);
+        this.targeting3 = new PriestessNuke(this);
+
         this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
         this.attack1.SetAttackAndSpeed(new ArtsAttack(), 300);
         this.attack1.SetModifiers(this.attack, 0.8);
@@ -91,6 +95,7 @@ public partial class Priestess : Boss
         {
             this.attack1.Execute(target);
         }
+        this.Recover();
     }
 
     // 2 / 3 target enemy buff
@@ -101,13 +106,15 @@ public partial class Priestess : Boss
         {
             this.buff1.Execute(target);
         }
+        this.Recover();
     }
 
     // Simplifies your UI, so you cant see health bars for some time
     public void UIWipe()
     {
         this.incapacitated = true;
-        GD.Print("Wiped");
+        this.LockUI?.Invoke(this, EventArgs.Empty);
+        this.Recover();
     }
 
     // 2 / 4 multi area attack
@@ -118,13 +125,15 @@ public partial class Priestess : Boss
         {
             this.attack2.Execute(target);
         }
+        this.Recover();
     }
 
     // Prevents deployment for some time
     public void ClearDeployment()
     {
         this.incapacitated = true;
-        GD.Print("Cleared All");
+        this.LockDeployment?.Invoke(this, EventArgs.Empty);
+        this.Recover();
     }
 
     protected void Recover()

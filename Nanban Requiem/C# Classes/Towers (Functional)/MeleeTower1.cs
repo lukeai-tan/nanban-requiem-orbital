@@ -12,7 +12,7 @@ public partial class MeleeTower1 : MeleeTowerBase
 
     public override string ToString()
     {
-        return "Melee Tower 1: " + this.meleeDamage.ToString() + " " + base.ToString();
+        return "Melee Tower 1: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

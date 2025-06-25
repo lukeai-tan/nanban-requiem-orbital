@@ -5,6 +5,8 @@ using Godot;
 public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
 {
     public event EventHandler Despawning;
+    [Export] protected int attack;
+    protected double atkModifier = 1;
     [Export] protected int health;
     protected int maxHealth;
     [Export] protected int physDefense;
@@ -123,6 +125,11 @@ public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
         this.adModifier += multiplier;
     }
 
+    public virtual void ModifyAtk(double multiplier)
+    {
+        this.atkModifier += multiplier;
+    }
+
     public void Despawn()
     {
         this.Despawning?.Invoke(this, EventArgs.Empty);
@@ -132,6 +139,11 @@ public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
     public int GetHealth()
     {
         return this.health;
+    }
+
+    public double GetAttack()
+    {
+        return this.attack * this.atkModifier;
     }
     
     public override string ToString()

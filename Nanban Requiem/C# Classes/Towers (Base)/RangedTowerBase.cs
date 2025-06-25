@@ -6,7 +6,6 @@ using Godot;
 public abstract partial class RangedTowerBase : Tower, IAct
 {
 
-    [Export] protected int rangedDamage;
     protected Attack rangedAttack;
     [Export] protected int projectileSpeed;
     protected BasicRangedAttack basicRanged;
@@ -47,7 +46,7 @@ public abstract partial class RangedTowerBase : Tower, IAct
                 {
                     turret.LookAt(target.GlobalPosition);
                 }
-                this.basicRanged.SetModifiers(this.rangedDamage, 1);
+                this.basicRanged.SetModifiers(this.attack, this.atkModifier);
                 this.basicRanged.Execute(target);
                 this.timeSinceLastAttack = 0;
             }
@@ -62,7 +61,7 @@ public abstract partial class RangedTowerBase : Tower, IAct
 
     public override string ToString()
     {
-        return "Ranged Attack: " + this.rangedDamage.ToString() + " " + base.ToString();
+        return "Ranged Attack: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }

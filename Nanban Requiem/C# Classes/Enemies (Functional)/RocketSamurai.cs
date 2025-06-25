@@ -15,7 +15,7 @@ public partial class RocketSamurai : BasicRangedEnemy
 
     public override string ToString()
     {
-        return "Rocket Samurai: " + this.meleeDamage.ToString() + " " + base.ToString();
+        return "Rocket Samurai: " + this.attack.ToString() + " " + base.ToString();
     }
 
 }
