@@ -66,3 +66,9 @@ curve = SubResource("Curve2D_8qc03")
 
 [node name="Phase2 Enemy3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_53mf3")
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
