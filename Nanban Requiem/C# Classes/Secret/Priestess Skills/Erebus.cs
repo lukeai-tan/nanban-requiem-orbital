@@ -1,16 +1,16 @@
 using System;
 using Godot;
 
-public partial class BasicBuff : BossSkill
+public partial class Erebus : BossSkill
 {
-
+    
     protected Priestess boss;
     [Export] protected double cooldown;
     protected double timeSinceLastUse = 0;
 
     public override void _Ready()
     {
-        this.priority = 1;
+        this.priority = 2;
         this.usable = true;
         this.boss = this.GetParentOrNull<Priestess>();
     }
@@ -25,7 +25,7 @@ public partial class BasicBuff : BossSkill
 
     public override void Execute()
     {
-        this.boss.BasicBuff();
+        this.boss.Erebus();
         this.usable = false;
         this.timeSinceLastUse = 0;
     }

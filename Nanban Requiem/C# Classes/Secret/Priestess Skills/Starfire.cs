@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class UIWipe : BossSkill
+public partial class Starfire : BossSkill
 {
     
     protected Priestess boss;
@@ -15,7 +15,7 @@ public partial class UIWipe : BossSkill
 
     public override void Execute()
     {
-        this.boss.UIWipe();
+        this.boss.Starfire();
     }
 
 }

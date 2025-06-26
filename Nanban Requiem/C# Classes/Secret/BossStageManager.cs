@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Godot;
 
 public partial class BossStageManager : Node2D
@@ -8,6 +10,7 @@ public partial class BossStageManager : Node2D
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
     protected float baseHp = 30;
+    protected int corrosionBar = 10000;
 
     private Node towerBuilder;
     private BossWaveSpawner waveSpawner;
@@ -56,6 +59,33 @@ public partial class BossStageManager : Node2D
         //this.waveSpawner.Set("map_to_load", MapToLoad);
         //this.waveSpawner.Connect("wave_complete", new Callable(this, nameof(OnWaveComplete)));
         //this.waveSpawner.Call("start_next_wave");
+
+        this.GetPrts();
+        this.SpawnPriestess();
+    }
+
+    private void GetPrts()
+    {
+        this.prts = this.GetNodeOrNull<Prts>("Prts");
+        this.prts.Corrode += (object boss, EventArgs e) => this.Corrode();
+        this.prts.Zero += (object boss, EventArgs e) => this.ResetCorrosion();
+    }
+
+    private void Corrode()
+    {
+        if (this.corrosionBar == 0)
+        {
+            this.EmitSignal(SignalName.GameFinished, "game_finished");
+        }
+        else
+        {
+            this.corrosionBar -= 1;
+        }
+    }
+
+    private void ResetCorrosion()
+    {
+        this.corrosionBar = 10000;
     }
 
     private void SpawnPriestess()
@@ -64,10 +94,25 @@ public partial class BossStageManager : Node2D
         this.priestess.Initialize(this.map.GetNode<Path2D>("Phase1 Priestess"));
         this.prts.Connect(this.priestess);
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
+        this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
         this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
     }
 
     private void PhaseTwo()
+    {
+        List<Node> towers = this.map.GetNodeOrNull("Towers").GetChildren().ToList();
+        List<Node> enemies = this.map.GetNodeOrNull("Enemies").GetChildren().ToList();
+        foreach (Node node in enemies)
+        {
+            node.QueueFree();
+        }
+        foreach (Node node in towers)
+        {
+            node.QueueFree();
+        }
+    }
+
+    private void PhaseFinal()
     {
         
     }

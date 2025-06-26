@@ -26,6 +26,7 @@ public partial class Priestess : Boss
     protected PriestessNuke targeting3;
     public event EventHandler LockUI;
     public event EventHandler LockDeployment;
+    public event EventHandler Finale;
 
     // Phase transition 
     protected Vector2 stage = new Vector2(640, 640);
@@ -74,6 +75,7 @@ public partial class Priestess : Boss
         {
             if (this.timeSinceLastSkill >= 1 / this.skillcooldown)
             {
+                this.incapacitated = true;
                 this.Act();
             }
             this.timeSinceLastSkill += delta;
@@ -81,59 +83,70 @@ public partial class Priestess : Boss
         }
     }
 
-    public override void Act()
-    {
-        BossSkill skill = base.ChooseSkill();
-        skill.Execute();
-    }
-
     // 2 / 3 target ranged attack
-    public void BasicAttack()
+    public async void Inferno()
     {
-        this.incapacitated = true;
+        // this.animation.Play("");
         foreach (Tower target in this.targeting1.GetTargets(this.range.GetAllTowers()))
         {
             this.attack1.Execute(target);
         }
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
     // 2 / 3 target enemy buff
-    public void BasicBuff()
+    public async void Cocytus()
     {
-        this.incapacitated = true;
+        // this.animation.Play("");
         foreach (Enemy target in this.targeting2.GetTargets(this.range.GetAllEnemies()))
         {
             this.buff1.Execute(target);
         }
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
     // Simplifies your UI, so you cant see health bars for some time
-    public void UIWipe()
+    public async void Starfire()
     {
-        this.incapacitated = true;
+        // this.animation.Play("");
         this.LockUI?.Invoke(this, EventArgs.Empty);
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
     // 2 / 4 multi area attack
-    public void AreaNuke()
+    public async void Erebus()
     {
-        this.incapacitated = true;
+        // this.animation.Play("");
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
         foreach (Tower target in this.targeting3.GetTargets(this.range.GetAllTowers()))
         {
             this.attack2.Execute(target);
         }
+        await ToSignal(GetTree().CreateTimer(2f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
     // Prevents deployment for some time
-    public void ClearDeployment()
+    public async void Hyades()
     {
-        this.incapacitated = true;
+        // this.animation.Play("");
         this.LockDeployment?.Invoke(this, EventArgs.Empty);
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
+    }
+
+    public async void FatesFinale()
+    {
+        this.Finale?.Invoke(this, EventArgs.Empty);
+        this.invulnerable = true;
+        this.incapacitated = true;
+        this.targetable = false;
+        await ToSignal(GetTree().CreateTimer(30f), SceneTreeTimer.SignalName.Timeout);
+        this.Zero?.Invoke(this, EventArgs.Empty);
+        this.QueueFree();
     }
 
     protected void Recover()
@@ -186,8 +199,8 @@ public partial class Priestess : Boss
             this.ToStage();
         }
         this.Half?.Invoke(this, EventArgs.Empty);
-        // this.targeting1.NumTagrets(3);
-        // this.targeting2.NumTargets(3);
+        this.targeting1.SetTargets(3);
+        this.targeting2.SetTargets(3);
     }
 
     protected override void OneQF()
@@ -195,12 +208,12 @@ public partial class Priestess : Boss
         this.OneQ?.Invoke(this, EventArgs.Empty);
         this.skillcooldown = 3;
         this.attack1.SetModifiers(this.attack, 1.5);
-        // this.targeting3.NumTargets(4);
+        this.targeting3.SetTargets(4);
     }
 
     protected override void ZeroF()
-    { 
-        this.Zero?.Invoke(this, EventArgs.Empty);
+    {
+        this.FatesFinale();
     }
 
 }

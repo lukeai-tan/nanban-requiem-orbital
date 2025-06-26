@@ -58,7 +58,11 @@ public abstract partial class Boss : Enemy, IAct
 
     protected abstract void ThreeQF();
 
-    public abstract void Act();
+    public void Act()
+    {
+        BossSkill skill = this.ChooseSkill();
+        skill.Execute();
+    }
 
     protected void CheckTargets()
     {
