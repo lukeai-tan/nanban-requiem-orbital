@@ -7,26 +7,29 @@ public partial class Prts : Boss
 {
 
     public event EventHandler Half;
+    public event EventHandler Zero;
     public Priestess girlboss;
+
+    public event EventHandler Corrode;
 
     public override void _Ready()
     {
         base._Ready();
 
         // Wipes all enemies / towers in a horizontal / vertical strip
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("NullError"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
 
         // Turns one of your units hostile
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("CosmicBitFlip"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
 
         // Unending machine gun attack until you "break" the "loop" (shield)
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("WhileLoop"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Astrape"));
 
         // Hot potato with units. You must "return" the bomb by relocating to her
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("RecursiveCall"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
 
         // Simon says, or in reverse? Read the if else statement
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("IfElse"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
     }
 
     public override void SetActions()
@@ -49,15 +52,46 @@ public partial class Prts : Boss
 
     public override void _Process(double delta)
     {
-        if (!this.incapacitated && this.timeSinceLastSkill >= 1 / this.skillcooldown)
+        if (!this.incapacitated)
         {
-            this.Act();
+            if (this.timeSinceLastSkill >= 1 / this.skillcooldown)
+            {
+                this.incapacitated = true;
+                this.Act();
+            }
+            this.timeSinceLastSkill += delta;
+            this.Corrode?.Invoke(this, EventArgs.Empty);
         }
     }
-    
-    public override void Act()
+
+    // Wipes all enemies / towers in a horizontal / vertical strip
+    public async void Helios()
     {
-        throw new NotImplementedException();
+        
+    }
+
+    // Turns one of your units hostile
+    public async void Achlys()
+    {
+
+    }
+
+    // Unending machine gun attack until you "break" the "loop" (shield)
+    public async void Astrape()
+    {
+
+    }
+
+    // Hot potato with units. You must "return" the bomb by relocating to her
+    public async void Charybdis()
+    {
+        
+    }
+
+    // Simon says, or in reverse? Read the if else statement
+    public async void Pharos()
+    {
+
     }
 
     protected override void ThreeQF() { }
@@ -72,6 +106,7 @@ public partial class Prts : Boss
     protected override void ZeroF()
     {
         this.Deactivate();
+        this.Zero?.Invoke(this, EventArgs.Empty);
         this.girlboss.ExitComputation();
     }
 
