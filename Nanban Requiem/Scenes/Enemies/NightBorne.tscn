@@ -423,7 +423,7 @@ animations = [{
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_y5t73")
 animation = &"death"
-frame_progress = 0.0602085
+frame_progress = 0.860235
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_08hrv")

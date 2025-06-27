@@ -33,6 +33,7 @@ func _ready():
 	tower_builder.map_node = map_node
 	tower_builder.ui = ui
 	tower_builder.tower_manager = tower_manager
+	tower_builder.build_bar = build_bar
 
 	ui.tower_builder = tower_builder
 	ui.tower_manager = tower_manager

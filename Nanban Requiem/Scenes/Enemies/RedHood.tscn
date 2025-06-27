@@ -561,7 +561,7 @@ animations = [{
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_rqx6a")
 animation = &"attack"
-frame_progress = 0.0683404
+frame_progress = 0.579506
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
