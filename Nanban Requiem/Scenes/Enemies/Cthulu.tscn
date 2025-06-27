@@ -502,8 +502,8 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4rx6d")
-animation = &"flying"
-frame_progress = 0.776507
+animation = &"attack1"
+frame_progress = 0.0622406
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

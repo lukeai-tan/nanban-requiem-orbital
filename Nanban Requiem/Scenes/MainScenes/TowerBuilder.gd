@@ -9,6 +9,7 @@ var build_type: String
 var ui
 var tower_manager: Node2D
 var tower_preview_node = null
+var build_bar
 
 func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
@@ -78,3 +79,11 @@ func verify_and_build():
 	
 	elif not tower_manager.can_place_tower():
 		return
+
+func enable_build_bar():
+	build_bar.visible = true
+
+func disable_build_bar():
+	if build_mode:
+		cancel_build_mode()
+	build_bar.visible = false
