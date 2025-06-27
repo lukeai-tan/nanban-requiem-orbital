@@ -6,7 +6,7 @@ public abstract partial class ProjectileAA<T> : ProjectileA<T>
 {
     protected PackedScene areaEffectScene;
 
-    public void Initialize(Attack attack, int damage, double multiplier, T target, int speed, Vector2 position, PackedScene areaEffectScene)
+    public virtual void Initialize(Attack attack, int damage, double multiplier, T target, int speed, Vector2 position, PackedScene areaEffectScene)
     {
         this.areaEffectScene = areaEffectScene;
         base.Initialize(attack, damage, multiplier, target, speed, position);

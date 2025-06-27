@@ -1,5 +1,6 @@
-[gd_scene load_steps=59 format=3 uid="uid://3rkipn1ory5s"]
+[gd_scene load_steps=60 format=3 uid="uid://3rkipn1ory5s"]
 
+[ext_resource type="Script" uid="uid://dou6fygfigh4a" path="res://C# Classes/Enemies (Functional)/Nightborne.cs" id="1_8yvy6"]
 [ext_resource type="Texture2D" uid="uid://coho6bsmeeaqe" path="res://Assets/Enemies/Nightborne_spritesheet.png" id="1_g8yim"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yvy6"]
@@ -418,6 +419,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_08hrv"]
 
 [node name="NightBorne" type="CharacterBody2D"]
+script = ExtResource("1_8yvy6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
