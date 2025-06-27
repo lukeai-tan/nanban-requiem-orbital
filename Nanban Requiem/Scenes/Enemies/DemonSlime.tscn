@@ -1,6 +1,9 @@
-[gd_scene load_steps=64 format=3 uid="uid://cplfejvep5alk"]
+[gd_scene load_steps=68 format=3 uid="uid://cplfejvep5alk"]
 
+[ext_resource type="Script" uid="uid://btp2v1kfsg8c1" path="res://C# Classes/Enemies (Functional)/DemonSlime.cs" id="1_p0vum"]
 [ext_resource type="Texture2D" uid="uid://2g8tagwk2vvu" path="res://Assets/Enemies/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="1_yqbt3"]
+[ext_resource type="PackedScene" uid="uid://ua2nf170j7ou" path="res://Scenes/Projectile/DemonSlimeProjectile.tscn" id="2_7x5tn"]
+[ext_resource type="Script" uid="uid://bra7k2qumsqdq" path="res://C# Classes/Detection Range Subclasses/EnemyDetectionRange.cs" id="3_dnd87"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrt8h"]
 atlas = ExtResource("1_yqbt3")
@@ -174,26 +177,6 @@ region = Rect2(1152, 0, 288, 160)
 atlas = ExtResource("1_yqbt3")
 region = Rect2(1440, 0, 288, 160)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbvr6"]
-atlas = ExtResource("1_yqbt3")
-region = Rect2(0, 480, 288, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5g0n"]
-atlas = ExtResource("1_yqbt3")
-region = Rect2(288, 480, 288, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8rs07"]
-atlas = ExtResource("1_yqbt3")
-region = Rect2(576, 480, 288, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hbdbh"]
-atlas = ExtResource("1_yqbt3")
-region = Rect2(864, 480, 288, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x0xn"]
-atlas = ExtResource("1_yqbt3")
-region = Rect2(1152, 480, 288, 160)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n37x"]
 atlas = ExtResource("1_yqbt3")
 region = Rect2(0, 160, 288, 160)
@@ -241,6 +224,26 @@ region = Rect2(2880, 160, 288, 160)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqk2r"]
 atlas = ExtResource("1_yqbt3")
 region = Rect2(3168, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbvr6"]
+atlas = ExtResource("1_yqbt3")
+region = Rect2(0, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5g0n"]
+atlas = ExtResource("1_yqbt3")
+region = Rect2(288, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rs07"]
+atlas = ExtResource("1_yqbt3")
+region = Rect2(576, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbdbh"]
+atlas = ExtResource("1_yqbt3")
+region = Rect2(864, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x0xn"]
+atlas = ExtResource("1_yqbt3")
+region = Rect2(1152, 480, 288, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hfgo8"]
 animations = [{
@@ -390,26 +393,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tbvr6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5g0n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8rs07")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hbdbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4x0xn")
-}],
-"loop": true,
-"name": &"take_hit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8n37x")
 }, {
 "duration": 1.0,
@@ -446,20 +429,60 @@ animations = [{
 "texture": SubResource("AtlasTexture_cqk2r")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbvr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5g0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rs07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbdbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x0xn")
+}],
+"loop": true,
+"name": &"take_hit",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xrea"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x5tn"]
+radius = 172.073
+
 [node name="DemonSlime" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_p0vum")
+projectileSpeed = 200
+projectileScene = ExtResource("2_7x5tn")
+attackSpeed = 1.0
+blockCount = 2
+movementSpeed = 100
+attack = 200
+health = 2000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-5, -42)
 sprite_frames = SubResource("SpriteFrames_hfgo8")
-animation = &"walk"
-frame_progress = 0.882486
+animation = &"take_hit"
 speed_scale = 2.0
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1xrea")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_dnd87")
+
+[node name="Hitbox" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_7x5tn")

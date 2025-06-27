@@ -167,7 +167,7 @@ var enemy_data = {
 
 var wave_data = {
 	"Map1": [
-		# Wave 1
+		# Wave 1		
 		["Samurai", 0.0],
 		
 		# Wave 2
@@ -195,7 +195,7 @@ var wave_data = {
 		["RocketSamurai", 1.0],
 		["WhiteSamurai", 2.0],
 		["WhiteSamurai", 2.0],
-
+		
 
 	],
 
@@ -227,6 +227,9 @@ var wave_data = {
 		["RocketSamurai", 1.0],
 		["WhiteSamurai", 2.0],
 		["WhiteSamurai", 2.0],
+
+		# Final Wave
+		["DemonSlime", 10.0],
 
 	],
 

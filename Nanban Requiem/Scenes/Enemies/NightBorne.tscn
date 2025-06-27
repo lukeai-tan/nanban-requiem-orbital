@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://3rkipn1ory5s"]
+[gd_scene load_steps=62 format=3 uid="uid://3rkipn1ory5s"]
 
 [ext_resource type="Script" uid="uid://dou6fygfigh4a" path="res://C# Classes/Enemies (Functional)/Nightborne.cs" id="1_8yvy6"]
 [ext_resource type="Texture2D" uid="uid://coho6bsmeeaqe" path="res://Assets/Enemies/Nightborne_spritesheet.png" id="1_g8yim"]
+[ext_resource type="Script" uid="uid://bra7k2qumsqdq" path="res://C# Classes/Detection Range Subclasses/EnemyDetectionRange.cs" id="3_bxott"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yvy6"]
 atlas = ExtResource("1_g8yim")
@@ -418,7 +419,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08hrv"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0a3y"]
+radius = 172.073
+
 [node name="NightBorne" type="CharacterBody2D"]
+collision_layer = 8
 script = ExtResource("1_8yvy6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -429,3 +434,10 @@ frame_progress = 0.860235
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_08hrv")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_bxott")
+
+[node name="Hitbox" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_m0a3y")
