@@ -491,7 +491,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xgewf")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"running",
 "speed": 5.0
 }]
 
@@ -502,8 +502,7 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4rx6d")
-animation = &"attack1"
-frame_progress = 0.0622406
+animation = &"running"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

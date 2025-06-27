@@ -1,6 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://cnx68g8se01kn"]
+[gd_scene load_steps=83 format=3 uid="uid://cnx68g8se01kn"]
 
 [ext_resource type="Texture2D" uid="uid://d1wsda3vl40y4" path="res://Assets/Enemies/RedHood_attack.png" id="1_d02am"]
+[ext_resource type="Script" uid="uid://2aqhxix5vjyv" path="res://C# Classes/Enemies (Functional)/RedHood.cs" id="1_xqfbr"]
 [ext_resource type="Texture2D" uid="uid://cnngfchgxl2s4" path="res://Assets/Enemies/RedHood_hurt.png" id="2_xqfbr"]
 [ext_resource type="Texture2D" uid="uid://dvf7smxloxsuq" path="res://Assets/Enemies/RedHood_idle.png" id="3_qr64u"]
 [ext_resource type="Texture2D" uid="uid://c8aynu02arq12" path="res://Assets/Enemies/RedHood_run.png" id="4_pjlu8"]
@@ -556,12 +557,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_08hrv"]
 
 [node name="RedHood" type="CharacterBody2D"]
+script = ExtResource("1_xqfbr")
+attackSpeed = 1.0
+blockCount = 1
+movementSpeed = 100
+attack = 50
+health = 500
+physDefense = 10
+artsDefense = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_rqx6a")
-animation = &"attack"
-frame_progress = 0.579506
+animation = &"running"
+frame_progress = 0.0324029
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
