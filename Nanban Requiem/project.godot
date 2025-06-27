@@ -28,7 +28,7 @@ GameVolume="*res://Singletons/GameVolume.gd"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://dub52gf3i6q3r"
 

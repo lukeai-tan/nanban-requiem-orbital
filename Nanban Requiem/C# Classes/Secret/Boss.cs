@@ -11,10 +11,10 @@ public abstract partial class Boss : Enemy, IAct
     protected bool incapacitated = false;
     protected double timeSinceLastSkill = 0;
     [Export] protected double skillcooldown;
-    protected List<BossSkill> skills;
+    protected List<BossSkill> skills = new List<BossSkill>();
     protected GlobalDetectionRange range;
-    public event EventHandler HasEnemy;
-    public event EventHandler HasTower;
+    public event EventHandler<BoolEventArgs> HasEnemy;
+    public event EventHandler<BoolEventArgs> HasTower;
 
     public override void _Ready()
     {
@@ -60,20 +60,18 @@ public abstract partial class Boss : Enemy, IAct
 
     public void Act()
     {
+        this.CheckTargets();
         BossSkill skill = this.ChooseSkill();
-        skill.Execute();
+        if (skill != null)
+        {
+            skill.Execute();
+        }
     }
 
     protected void CheckTargets()
     {
-        if (this.range.GetAllEnemies().Count > 0)
-        {
-            this.HasEnemy?.Invoke(this, EventArgs.Empty);
-        }
-        if (this.range.GetAllTowers().Count > 0)
-        {
-            this.HasTower?.Invoke(this, EventArgs.Empty);
-        }
+        this.HasEnemy?.Invoke(this, new BoolEventArgs(this.range.GetAllEnemies().Count > 0));
+        this.HasTower?.Invoke(this, new BoolEventArgs(this.range.GetAllTowers().Count > 0));
     }
 
     protected BossSkill ChooseSkill()

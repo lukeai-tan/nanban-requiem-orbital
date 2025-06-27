@@ -11,8 +11,8 @@ public partial class GlobalDetectionRange : Node2D
 
     public override void _Ready()
     {
-        this.towers = GetNodeOrNull<Node2D>("/root/Map/Towers");
-        this.enemies = GetNodeOrNull<Node2D>("/root/Map/Enemies");
+        this.towers = this.GetTree().CurrentScene.GetNodeOrNull<Node2D>("BossStageManager/Map/Towers");
+        this.enemies = this.GetTree().CurrentScene.GetNodeOrNull<Node2D>("BossStageManager/Map/Enemies");
     }
 
     public List<Tower> GetAllTowers()
