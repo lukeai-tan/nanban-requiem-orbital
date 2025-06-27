@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dggex5hn14rg4"]
+[gd_scene load_steps=16 format=3 uid="uid://dggex5hn14rg4"]
 
 [ext_resource type="Script" uid="uid://c5ok7mjdmckpy" path="res://C# Classes/Secret/Priestess.cs" id="1_g31t8"]
 [ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/VampireProjectile.tscn" id="2_bjx4r"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://d31rvsghqvck1" path="res://C# Classes/Secret/Priestess Skills/Starfire.cs" id="6_m2d5i"]
 [ext_resource type="Script" uid="uid://cotk4rgaulmrq" path="res://C# Classes/Secret/Priestess Skills/Erebus.cs" id="7_2skqe"]
 [ext_resource type="Script" uid="uid://dvjdrtecmbrwh" path="res://C# Classes/Secret/Priestess Skills/Hyades.cs" id="8_bjx4r"]
+[ext_resource type="Texture2D" uid="uid://cyl6sa2qqrfym" path="res://Scenes/Bosses/New Piskel (36).png" id="13_e2xoy"]
+[ext_resource type="Texture2D" uid="uid://dmpl5fkt7jnrt" path="res://Scenes/Bosses/New Piskel (38).png" id="14_mj3wb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7tsm"]
 size = Vector2(21, 49)
@@ -34,7 +36,7 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_l7tsm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_g31t8")
 
 [node name="Range" type="Node2D" parent="."]
@@ -56,3 +58,15 @@ cooldown = 12.0
 
 [node name="Hyades" type="Node2D" parent="."]
 script = ExtResource("8_bjx4r")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -92.0
+offset_right = 997.0
+offset_bottom = 932.0
+scale = Vector2(0.05, 0.05)
+min_value = 1.0
+max_value = 50000.0
+value = 50000.0
+texture_under = ExtResource("13_e2xoy")
+texture_over = ExtResource("14_mj3wb")

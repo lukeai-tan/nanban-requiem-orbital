@@ -10,7 +10,8 @@ public partial class BossStageManager : Node2D
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
     protected float baseHp = 30;
-    protected int corrosionBar = 10000;
+    protected TextureProgressBar corrosionBar;
+    protected int corrosion = 8000;
 
     private Node towerBuilder;
     private BossWaveSpawner waveSpawner;
@@ -67,6 +68,9 @@ public partial class BossStageManager : Node2D
     {
         this.GetPrts();
         this.SpawnPriestess();
+        this.corrosionBar = this.map.GetNodeOrNull<TextureProgressBar>("CorrosionBar");
+        this.corrosionBar.MaxValue = this.corrosion;
+        this.corrosionBar.Value = this.corrosion;
     }
 
     private void GetPrts()
@@ -79,19 +83,21 @@ public partial class BossStageManager : Node2D
 
     private void Corrode()
     {
-        if (this.corrosionBar == 0)
+        if (this.corrosion == 0)
         {
             this.EmitSignal(SignalName.GameFinished, "game_finished");
         }
         else
         {
-            this.corrosionBar -= 1;
+            this.corrosion -= 1;
+            this.corrosionBar.Value = this.corrosion;
         }
     }
 
     private void ResetCorrosion()
     {
-        this.corrosionBar = 10000;
+        this.corrosion = 8000;
+        this.corrosionBar.Value = this.corrosion;
     }
 
     private void SpawnPriestess()

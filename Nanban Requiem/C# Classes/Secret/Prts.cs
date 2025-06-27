@@ -15,6 +15,7 @@ public partial class Prts : Boss
     public override void _Ready()
     {
         base._Ready();
+        this.incapacitated = true;
 
         // Wipes all enemies / towers in a horizontal / vertical strip
         // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));

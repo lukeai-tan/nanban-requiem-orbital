@@ -30,10 +30,11 @@ public partial class Priestess : Boss
 
     // Phase transition 
     protected double timer = 0;
+    protected int teleports = 0;
     protected Vector2 stage = new Vector2(640, 640);
     protected bool onStage = false;
     public event EventHandler OnStage;
-    protected double cooldown = 30;
+    protected double cooldown = 0;
     public event EventHandler Computation;
 
     public override void SetActions()
@@ -59,39 +60,51 @@ public partial class Priestess : Boss
 
     public override void _Process(double delta)
     {
-        switch (this.timer)
-        {
-            case >= 60:
-                this.ToStage();
-                break;
-            case >= 45:
-                this.GlobalPosition = new Vector2(864, 672);
-                break;
-            case >= 30:
-                this.GlobalPosition = new Vector2(864, 480);
-                break;
-            case >= 15:
-                this.GlobalPosition = new Vector2(416, 481);
-                break;
-        }
-        if (this.onStage)
-        {
-            if (this.cooldown <= 0)
-            {
-                this.ComputationMode();
-                return;
-            }
-            this.cooldown -= delta;
-        }
         if (!this.incapacitated)
         {
+            if (this.onStage)
+            {
+                if (this.cooldown <= 0)
+                {
+                    this.ComputationMode();
+                    return;
+                }
+                this.cooldown -= delta;
+            }
+            else
+            {
+                this.timer += delta;
+                if (timer >= 15)
+                {
+                    switch (this.teleports)
+                    {
+                        case 3:
+                            this.ToStage();
+                            return;
+                        case 2:
+                            this.GlobalPosition = new Vector2(864, 672);
+                            this.timer = 0;
+                            this.teleports += 1;
+                            return;
+                        case 1:
+                            this.GlobalPosition = new Vector2(864, 480);
+                            this.timer = 0;
+                            this.teleports += 1;
+                            return;
+                        case 0:
+                            this.GlobalPosition = new Vector2(416, 481);
+                            this.timer = 0;
+                            this.teleports += 1;
+                            return;
+                    }
+                }
+            }
             if (this.timeSinceLastSkill >= 1 / this.skillcooldown)
             {
                 this.Act();
             }
             this.timeSinceLastSkill += delta;
         }
-        this.timer += delta;
     }
 
     // 2 / 3 target ranged attack

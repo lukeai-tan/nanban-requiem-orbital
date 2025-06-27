@@ -18,7 +18,9 @@ public abstract partial class Boss : Enemy, IAct
 
     public override void _Ready()
     {
-        base._Ready();
+        this.maxHealth = this.health;
+        this.healthBar = this.GetNodeOrNull<TextureProgressBar>("BossHealthBar");
+        this.animation = this.GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
         this.range = this.GetNodeOrNull<GlobalDetectionRange>("Range");
     }
 
