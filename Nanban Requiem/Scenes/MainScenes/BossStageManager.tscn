@@ -1,0 +1,310 @@
+[gd_scene load_steps=21 format=3 uid="uid://cp4tsdihiexek"]
+
+[ext_resource type="Script" uid="uid://q3eoe1jne7kw" path="res://C# Classes/Secret/BossStageManager.cs" id="1_7bv37"]
+[ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="2_w277s"]
+[ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="3_jd04r"]
+[ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="4_kourl"]
+[ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="5_msd52"]
+[ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="6_064ww"]
+[ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/RangedTower1_turret.png" id="7_hvuvc"]
+[ext_resource type="Texture2D" uid="uid://cntcgyt8s5788" path="res://Assets/Towers/RangedTower2_turret.png" id="8_o64v5"]
+[ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/Obstacle1_base.png" id="9_yvg1w"]
+[ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="10_2puma"]
+[ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl1_icon.png" id="11_ymsrg"]
+[ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="12_lj1pt"]
+[ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_gggqq"]
+[ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="14_0q0yg"]
+[ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="15_2fqkj"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_otjwt"]
+[ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="17_od0sx"]
+[ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="18_spupq"]
+[ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="19_78aft"]
+[ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="20_rr8m3"]
+
+[node name="BossStageManager" type="Node2D"]
+script = ExtResource("1_7bv37")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("2_w277s")
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 180.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+script = ExtResource("3_jd04r")
+
+[node name="RangedTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_hvuvc")
+
+[node name="RangedTower2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTower2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_o64v5")
+
+[node name="Obstacle1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Obstacle1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_yvg1w")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MeleeTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/MeleeTower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_2puma")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RangedTowerGirl1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 168.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_ymsrg")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RangedTowerGirl2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 254.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_lj1pt")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RangedTowerBoy1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_kourl")
+texture_pressed = ExtResource("5_msd52")
+texture_hover = ExtResource("6_064ww")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerBoy1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 168.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_gggqq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="InfoBar" type="ColorRect" parent="UI/HUD"]
+self_modulate = Color(0, 0, 0, 0.470588)
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_right = 516.0
+offset_bottom = 60.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UI/HUD/InfoBar/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_0q0yg")
+theme_override_font_sizes/font_size = 30
+text = "    HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseHPBar" type="TextureProgressBar" parent="UI/HUD/InfoBar/HBoxContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("15_2fqkj")
+texture_progress = ExtResource("15_2fqkj")
+tint_under = Color(0.215686, 0.215686, 0.215686, 1)
+tint_progress = Color(0.305882, 1, 0.0823529, 1)
+
+[node name="Tower Count Label" type="Label" parent="UI/HUD/InfoBar"]
+layout_direction = 2
+layout_mode = 2
+offset_left = 644.0
+offset_top = 18.0
+offset_right = 834.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 30
+text = "Tower count:"
+
+[node name="Tower Count" type="Label" parent="UI/HUD/InfoBar"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 806.0
+offset_top = 18.0
+offset_right = 996.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 30
+text = "0 / 10"
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(150, 75)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Restart" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_mode = 2
+texture_normal = ExtResource("17_od0sx")
+
+[node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_mode = 2
+texture_normal = ExtResource("18_spupq")
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_direction = 3
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("19_78aft")
+texture_pressed = ExtResource("20_rr8m3")
+
+[connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]

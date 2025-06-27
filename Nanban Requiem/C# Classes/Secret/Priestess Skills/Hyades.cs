@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class ClearDeployment : BossSkill
+public partial class Hyades : BossSkill
 {
     
     protected Priestess boss;

@@ -29,22 +29,19 @@ public partial class Priestess : Boss
     public event EventHandler Finale;
 
     // Phase transition 
+    protected double timer = 0;
     protected Vector2 stage = new Vector2(640, 640);
     protected bool onStage = false;
     public event EventHandler OnStage;
     protected double cooldown = 30;
     public event EventHandler Computation;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("BasicAttack"));
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("BasicBuff"));
-        this.skills.Add(this.GetNodeOrNull<BossSkill>("AreaNuke"));
-    }
-
     public override void SetActions()
     {
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Inferno"));
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Cocytus"));
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Erebus"));
+
         this.targeting1 = new PriestessBasic(this);
         this.targeting2 = new PriestessBuff(this);
         this.targeting3 = new PriestessNuke(this);
@@ -62,6 +59,21 @@ public partial class Priestess : Boss
 
     public override void _Process(double delta)
     {
+        switch (this.timer)
+        {
+            case >= 60:
+                this.ToStage();
+                break;
+            case >= 45:
+                this.GlobalPosition = new Vector2(864, 672);
+                break;
+            case >= 30:
+                this.GlobalPosition = new Vector2(864, 480);
+                break;
+            case >= 15:
+                this.GlobalPosition = new Vector2(416, 481);
+                break;
+        }
         if (this.onStage)
         {
             if (this.cooldown <= 0)
@@ -75,17 +87,18 @@ public partial class Priestess : Boss
         {
             if (this.timeSinceLastSkill >= 1 / this.skillcooldown)
             {
-                this.incapacitated = true;
                 this.Act();
             }
             this.timeSinceLastSkill += delta;
-            this.pathing.Update(this.movementSpeed * (float)delta);
         }
+        this.timer += delta;
     }
 
     // 2 / 3 target ranged attack
     public async void Inferno()
     {
+        GD.Print("Inferno");
+        this.incapacitated = true;
         // this.animation.Play("");
         foreach (Tower target in this.targeting1.GetTargets(this.range.GetAllTowers()))
         {
@@ -98,6 +111,8 @@ public partial class Priestess : Boss
     // 2 / 3 target enemy buff
     public async void Cocytus()
     {
+        GD.Print("Cocytus");
+        this.incapacitated = true;
         // this.animation.Play("");
         foreach (Enemy target in this.targeting2.GetTargets(this.range.GetAllEnemies()))
         {
@@ -110,6 +125,8 @@ public partial class Priestess : Boss
     // Simplifies your UI, so you cant see health bars for some time
     public async void Starfire()
     {
+        GD.Print("Starfire");
+        this.incapacitated = true;
         // this.animation.Play("");
         this.LockUI?.Invoke(this, EventArgs.Empty);
         await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
@@ -119,6 +136,8 @@ public partial class Priestess : Boss
     // 2 / 4 multi area attack
     public async void Erebus()
     {
+        GD.Print("Erebus");
+        this.incapacitated = true;
         // this.animation.Play("");
         await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
         foreach (Tower target in this.targeting3.GetTargets(this.range.GetAllTowers()))
@@ -132,6 +151,8 @@ public partial class Priestess : Boss
     // Prevents deployment for some time
     public async void Hyades()
     {
+        GD.Print("Hyades");
+        this.incapacitated = true;
         // this.animation.Play("");
         this.LockDeployment?.Invoke(this, EventArgs.Empty);
         await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
@@ -155,14 +176,8 @@ public partial class Priestess : Boss
         this.incapacitated = false;
     }
 
-    public override void ReachedObjective(object pathing, EventArgs e)
-    {
-        this.ToStage();
-    }
-
     protected void ToStage()
     {
-        this.pathing = null;
         this.GlobalPosition = this.stage;
         this.onStage = true;
         this.OnStage?.Invoke(this, EventArgs.Empty);

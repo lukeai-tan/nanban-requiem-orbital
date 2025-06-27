@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dggex5hn14rg4"]
+[gd_scene load_steps=14 format=3 uid="uid://dggex5hn14rg4"]
 
 [ext_resource type="Script" uid="uid://c5ok7mjdmckpy" path="res://C# Classes/Secret/Priestess.cs" id="1_g31t8"]
+[ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/VampireProjectile.tscn" id="2_bjx4r"]
 [ext_resource type="Texture2D" uid="uid://40fb12xnq80s" path="res://Scenes/Bosses/New Piskel (34).png" id="2_g31t8"]
+[ext_resource type="PackedScene" uid="uid://cix7tiilnucau" path="res://Scenes/AdditionalEffects/PhysDefenseDown.tscn" id="3_1eodr"]
 [ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/GlobalDetectionRange.cs" id="3_fkma7"]
+[ext_resource type="PackedScene" uid="uid://dqxhgfphncata" path="res://Scenes/AdditionalEffects/MovementSpeedBuff.tscn" id="4_e2xoy"]
 [ext_resource type="Script" uid="uid://b1opburagbtmc" path="res://C# Classes/Secret/Priestess Skills/Inferno.cs" id="4_x3sye"]
 [ext_resource type="Script" uid="uid://deaiqsygxcy5s" path="res://C# Classes/Secret/Priestess Skills/Cocytus.cs" id="5_6kjgb"]
+[ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="5_mj3wb"]
 [ext_resource type="Script" uid="uid://d31rvsghqvck1" path="res://C# Classes/Secret/Priestess Skills/Starfire.cs" id="6_m2d5i"]
 [ext_resource type="Script" uid="uid://cotk4rgaulmrq" path="res://C# Classes/Secret/Priestess Skills/Erebus.cs" id="7_2skqe"]
 [ext_resource type="Script" uid="uid://dvjdrtecmbrwh" path="res://C# Classes/Secret/Priestess Skills/Hyades.cs" id="8_bjx4r"]
@@ -14,8 +18,12 @@ size = Vector2(21, 49)
 
 [node name="Priestess" type="CharacterBody2D"]
 script = ExtResource("1_g31t8")
+projectileScene = ExtResource("2_bjx4r")
+debuffScene = ExtResource("3_1eodr")
+buffScene = ExtResource("4_e2xoy")
+areaScene = ExtResource("5_mj3wb")
 skillcooldown = 4.0
-movementSpeed = 20
+movementSpeed = 50
 attack = 200
 health = 50000
 physDefense = 30
@@ -26,7 +34,7 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_l7tsm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_g31t8")
 
 [node name="Range" type="Node2D" parent="."]

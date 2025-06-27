@@ -65,6 +65,14 @@ offset_right = -256.0
 offset_bottom = -304.0
 map_index = 3
 
+[node name="BossMapIcon" parent="." instance=ExtResource("3_e51tu")]
+layout_mode = 1
+offset_left = 582.0
+offset_top = 451.0
+offset_right = -570.0
+offset_bottom = -109.0
+map_index = 4
+
 [node name="PlayerIcon" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 0

@@ -33,12 +33,14 @@ public partial class BossStageManager : Node2D
         this.AddChild(mapNode);
         this.map = mapNode;
 
-        this.towerBuilder = GD.Load<PackedScene>("res://Scenes/MainScenes/TowerBuilder.gd").Instantiate();
-        //this.waveSpawner = GD.Load<BossWaveSpawner>("res://Scenes/MainScenes/BossWaveSpawner.gd").Instantiate();
-        this.towerManager = GD.Load<PackedScene>("res://Scenes/MainScenes/TowerManager.gd").Instantiate();
+        var towerBuilderScript = GD.Load<Script>("res://Scenes/MainScenes/TowerBuilder.gd");
+        this.towerBuilder = (Node)towerBuilderScript.Call("new");
+
+        var towerManagerScript = GD.Load<Script>("res://Scenes/MainScenes/TowerManager.gd");
+        this.towerManager = (Node)towerManagerScript.Call("new");
 
         this.AddChild(towerBuilder);
-        this.AddChild(waveSpawner);
+        //this.AddChild(waveSpawner);
         this.AddChild(towerManager);
 
         this.towerBuilder.Set("map_node", this.map);
@@ -59,14 +61,18 @@ public partial class BossStageManager : Node2D
         //this.waveSpawner.Set("map_to_load", MapToLoad);
         //this.waveSpawner.Connect("wave_complete", new Callable(this, nameof(OnWaveComplete)));
         //this.waveSpawner.Call("start_next_wave");
+    }
 
+    public void Initialize()
+    {
         this.GetPrts();
         this.SpawnPriestess();
     }
 
     private void GetPrts()
     {
-        this.prts = this.GetNodeOrNull<Prts>("Prts");
+        this.prts = this.map.GetNodeOrNull<Prts>("Prts");
+        this.prts.SetActions();
         this.prts.Corrode += (object boss, EventArgs e) => this.Corrode();
         this.prts.Zero += (object boss, EventArgs e) => this.ResetCorrosion();
     }
@@ -91,7 +97,9 @@ public partial class BossStageManager : Node2D
     private void SpawnPriestess()
     {
         this.priestess = GD.Load<PackedScene>("res://Scenes/Bosses/Priestess.tscn").Instantiate<Priestess>();
-        this.priestess.Initialize(this.map.GetNode<Path2D>("Phase1 Priestess"));
+        this.map.AddChild(this.priestess);
+        this.priestess.GlobalPosition = new Vector2(416, 673);
+        this.priestess.SetActions();
         this.prts.Connect(this.priestess);
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
