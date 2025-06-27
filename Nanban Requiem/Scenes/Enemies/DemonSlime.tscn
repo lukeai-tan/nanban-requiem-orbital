@@ -458,7 +458,7 @@ animations = [{
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hfgo8")
 animation = &"walk"
-frame_progress = 0.322427
+frame_progress = 0.882486
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
