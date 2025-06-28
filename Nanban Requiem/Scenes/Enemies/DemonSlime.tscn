@@ -467,11 +467,11 @@ attackSpeed = 1.0
 blockCount = 2
 movementSpeed = 100
 attack = 200
-health = 2000
+health = 3000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-5, -42)
+position = Vector2(0, -52)
 sprite_frames = SubResource("SpriteFrames_hfgo8")
 animation = &"take_hit"
 speed_scale = 2.0
