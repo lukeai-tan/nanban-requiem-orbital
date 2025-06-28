@@ -82,17 +82,17 @@ public partial class Priestess : Boss
                             this.ToStage();
                             return;
                         case 2:
-                            this.GlobalPosition = new Vector2(864, 672);
+                            this.GlobalPosition = new Vector2(737, 542);
                             this.timer = 0;
                             this.teleports += 1;
                             return;
                         case 1:
-                            this.GlobalPosition = new Vector2(864, 480);
+                            this.GlobalPosition = new Vector2(546, 542);
                             this.timer = 0;
                             this.teleports += 1;
                             return;
                         case 0:
-                            this.GlobalPosition = new Vector2(416, 481);
+                            this.GlobalPosition = new Vector2(865, 542);
                             this.timer = 0;
                             this.teleports += 1;
                             return;
