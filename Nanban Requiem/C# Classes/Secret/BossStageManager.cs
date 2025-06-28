@@ -104,7 +104,7 @@ public partial class BossStageManager : Node2D
     {
         this.priestess = GD.Load<PackedScene>("res://Scenes/Bosses/Priestess.tscn").Instantiate<Priestess>();
         this.map.AddChild(this.priestess);
-        this.priestess.GlobalPosition = new Vector2(416, 673);
+        this.priestess.GlobalPosition = new Vector2(418, 542);
         this.priestess.SetActions();
         this.prts.Connect(this.priestess);
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
