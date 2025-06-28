@@ -50,6 +50,7 @@ func _ready():
 	wave_spawner.map_to_load = map_to_load
 	wave_spawner.wave_complete.connect(_on_wave_complete)
 	wave_spawner.start_next_wave()
+	Engine.set_time_scale(1.0)
 
 
 func _on_wave_complete():
