@@ -426,7 +426,7 @@ attackSpeed = 0.5
 blockCount = 2
 movementSpeed = 100
 attack = 300
-health = 2000
+health = 2500
 physDefense = 10
 artsDefense = 10
 
