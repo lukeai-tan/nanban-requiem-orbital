@@ -153,5 +153,5 @@ texture_filter = 1
 position = Vector2(-34, 0)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_3csun")
-frame_progress = 0.513653
+frame_progress = 0.318404
 speed_scale = 4.0

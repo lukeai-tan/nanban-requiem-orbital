@@ -53,7 +53,8 @@ func _ready():
 
 
 func _on_wave_complete():
-	wave_spawner.start_next_wave()
+	game_finished.emit("game_finished")
+	#wave_spawner.start_next_wave()
 	
 func on_base_damage(damage: float) -> void:
 	base_health -= damage
