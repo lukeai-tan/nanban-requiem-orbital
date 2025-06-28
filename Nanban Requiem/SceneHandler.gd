@@ -57,6 +57,7 @@ func _on_ui_returned(ui_node):
 
 func _on_map_selected(map_name: String):
 	var game_scene: Node2D
+	
 	if map_name == "BossMap":
 		game_scene = load("res://Scenes/MainScenes/BossStageManager.tscn").instantiate()
 		game_scene.connect("GameFinished", unload_game)
@@ -64,6 +65,7 @@ func _on_map_selected(map_name: String):
 		game_scene.Initialize()
 	else:
 		game_scene = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
+		game_scene.set("map_to_load", map_name)
 		game_scene.connect("game_finished", unload_game)
 		add_child(game_scene)
 
