@@ -5,6 +5,7 @@ extends CanvasLayer
 
 var tower_builder
 var tower_manager
+var color_change = 0
 
 
 func set_tower_preview(tower_type, mouse_position):
@@ -92,12 +93,22 @@ func _on_restart_pressed() -> void:
 func update_health_bar(base_health):
 	var hp_bar_tween = base_hp_bar.create_tween()
 	hp_bar_tween.tween_property(base_hp_bar, "value", base_health, 0.1)
-	if base_health >= 5.0:
-		base_hp_bar.tint_progress = Color("3cc510") # Green
-	elif base_health <= 4.0 and base_health >= 2.0:
+	update_color()
+
+
+func update_color():
+	var ratio : float = base_hp_bar.value / base_hp_bar.max_value;
+	if color_change == 0 and ratio <= 0.5:
 		base_hp_bar.tint_progress = Color("e1be32") # Orange
-	else:
+		color_change += 1
+	elif color_change == 1 and ratio <= 0.25:
 		base_hp_bar.tint_progress = Color("e11e1e") # Red
+
+
+func set_hp(hp):
+	base_hp_bar.max_value = hp
+	base_hp_bar.value = hp
+	base_hp_bar.tint_progress = Color("3cc510") # Green
 
 
 func update_tower_count(current_count: int, max_count: int) -> void:
