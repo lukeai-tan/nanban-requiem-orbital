@@ -169,7 +169,7 @@ var enemy_data = {
 		"sprite_in_game": "res://Assets/Enemies/DemonSlime_sprite.png",
 		"name": "Voidmire",
 		"description": "A towering mass of molten slime born from the blood of a forgotten demon prince, surrounded by orbiting fire orbs.",
-		"stats": "Health: 3500\nSpeed: 100\nMelee DMG: 100\nRanged DMG: 200"
+		"stats": "Health: 4000\nSpeed: 100\nMelee DMG: 150\nRanged DMG: 300"
 	},
 
 	"Unknown": {
