@@ -128,7 +128,7 @@ var enemy_data = {
 		"sprite_in_game": "res://Assets/Enemies/samurai_sprite.png",
 		"name": "Samurai",
 		"description": "He is the first enemy you encounter in the game. Using his sword, he deals melee damage to foes in his way.\n",
-		"stats": "Health: 500\nSpeed: 100\nMelee DMG : 100"
+		"stats": "Health: 500\nSpeed: 100\nMelee DMG: 100"
 	},
 	
 	"RocketSamurai": {
@@ -139,7 +139,7 @@ var enemy_data = {
 		"name": "Rocket Samurai",
 		"description": "After getting hold of Pew Pew's technology, the Samurai upgraded his arsenal with a rocket launcher.\n
 						He is able to shoot rockets that deal damage to enemies.",
-		"stats": "Health: 300\nSpeed: 100\nMelee DMG: 50\nRanged DMG: 100"
+		"stats": "Health: 300\nSpeed: 100\nMelee DMG: 30\nRanged DMG: 60"
 	},
 	
 	"WhiteSamurai": {
@@ -150,6 +150,26 @@ var enemy_data = {
 		"name": "Mighty Whitey",
 		"description": "Mighty Whitey is the Leader of the Samurai Clan. He embodies the common white saviour stereotype in western media and uses it to his advantage.\n",
 		"stats": "Health: 200\nSpeed: 200\nMelee DMG : 150"
+	},
+
+	"NightBorne": {
+		"health": 0,
+		"speed": 0,
+		"sprite_icon": "res://Assets/Enemies/NightBorne_sprite.png",
+		"sprite_in_game": "res://Assets/Enemies/NightBorne_sprite.png",
+		"name": "DuskBorne",
+		"description": "A demon prince corrupted by the void, striking enemies with its colossal energy sword.",
+		"stats": "Health: 2500\nSpeed: 100\nMelee DMG: 300"
+	},
+
+	"DemonSlime": {
+		"health": 0,
+		"speed": 0,
+		"sprite_icon": "res://Assets/Enemies/DemonSlime_sprite.png",
+		"sprite_in_game": "res://Assets/Enemies/DemonSlime_sprite.png",
+		"name": "Voidmire",
+		"description": "A towering mass of molten slime born from the blood of a forgotten demon prince, surrounded by orbiting fire orbs.",
+		"stats": "Health: 4000\nSpeed: 100\nMelee DMG: 150\nRanged DMG: 300"
 	},
 
 	"Unknown": {
@@ -246,13 +266,7 @@ var wave_data = {
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
+		["NightBorne", 10.0],
 		["WhiteSamurai", 1.0],
 		["WhiteSamurai", 1.0],
 		["WhiteSamurai", 1.0],
@@ -262,14 +276,7 @@ var wave_data = {
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["DemonSlime", 5.0],
+		["NightBorne", 5.0],
 		["DemonSlime", 5.0]
 
 
