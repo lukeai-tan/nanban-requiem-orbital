@@ -9,9 +9,7 @@ public partial class BossStageManager : Node2D
 
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
-    protected float baseHp = 30;
-    protected TextureProgressBar corrosionBar;
-    protected int corrosion = 8000;
+    protected int objectiveHp = 30000;
 
     private Node towerBuilder;
     private BossWaveSpawner waveSpawner;
@@ -50,6 +48,7 @@ public partial class BossStageManager : Node2D
 
         this.ui.Set("tower_builder", this.towerBuilder);
         this.ui.Set("tower_manager", this.towerManager);
+        this.ui.Call("set_hp", this.objectiveHp);
 
         this.buildBar.Call("setup", this.towerBuilder);
         this.buildBar.Set("tower_builder", this.towerBuilder);
@@ -68,9 +67,6 @@ public partial class BossStageManager : Node2D
     {
         this.GetPrts();
         this.SpawnPriestess();
-        this.corrosionBar = this.map.GetNodeOrNull<TextureProgressBar>("CorrosionBar");
-        this.corrosionBar.MaxValue = this.corrosion;
-        this.corrosionBar.Value = this.corrosion;
     }
 
     private void GetPrts()
@@ -78,26 +74,32 @@ public partial class BossStageManager : Node2D
         this.prts = this.map.GetNodeOrNull<Prts>("Prts");
         this.prts.SetActions();
         this.prts.Corrode += (object boss, EventArgs e) => this.Corrode();
-        this.prts.Zero += (object boss, EventArgs e) => this.ResetCorrosion();
     }
 
-    private void Corrode()
+    private void Corrode(int damage)
     {
-        if (this.corrosion == 0)
+        if (this.objectiveHp <= damage)
         {
             this.EmitSignal(SignalName.GameFinished, "game_finished");
         }
         else
         {
-            this.corrosion -= 1;
-            this.corrosionBar.Value = this.corrosion;
+            this.objectiveHp -= damage;
+            this.ui.Call("update_health_bar", this.objectiveHp);
         }
     }
 
-    private void ResetCorrosion()
+    private void Corrode()
     {
-        this.corrosion = 8000;
-        this.corrosionBar.Value = this.corrosion;
+        if (this.objectiveHp <= 1)
+        {
+            this.EmitSignal(SignalName.GameFinished, "game_finished");
+        }
+        else
+        {
+            this.objectiveHp -= 1;
+            this.ui.Call("corrode");
+        }
     }
 
     private void SpawnPriestess()
@@ -107,6 +109,7 @@ public partial class BossStageManager : Node2D
         this.priestess.GlobalPosition = new Vector2(418, 542);
         this.priestess.SetActions();
         this.prts.Connect(this.priestess);
+        this.priestess.Computation += (object boss, EventArgs e) => this.ui.Call("update_ui");
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
         this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
@@ -138,11 +141,7 @@ public partial class BossStageManager : Node2D
 
     public void OnBaseDamage(float damage)
     {
-        this.baseHp -= damage;
-        this.ui.Call("update_health_bar", this.baseHp);
-
-        if (this.baseHp <= 0)
-            this.EmitSignal(SignalName.GameFinished, "game_finished");
+        this.Corrode((int)damage * 1000);
     }
 
     public override void _Process(double delta)

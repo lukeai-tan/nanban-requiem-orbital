@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cp4tsdihiexek"]
+[gd_scene load_steps=22 format=3 uid="uid://cp4tsdihiexek"]
 
 [ext_resource type="Script" uid="uid://q3eoe1jne7kw" path="res://C# Classes/Secret/BossStageManager.cs" id="1_7bv37"]
-[ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="2_w277s"]
+[ext_resource type="Script" uid="uid://bim586pwyxbcj" path="res://Scenes/MainScenes/BossUI.gd" id="2_7bv37"]
 [ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="3_jd04r"]
 [ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="4_kourl"]
 [ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="5_msd52"]
@@ -13,10 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl1_icon.png" id="11_ymsrg"]
 [ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="12_lj1pt"]
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_gggqq"]
-[ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="14_0q0yg"]
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="15_2fqkj"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_otjwt"]
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="17_od0sx"]
+[ext_resource type="Texture2D" uid="uid://e1nxfjnenkoa" path="res://Assets/Enemies/PRTS.png" id="17_w277s"]
+[ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="18_jd04r"]
 [ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="18_spupq"]
 [ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="19_78aft"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="20_rr8m3"]
@@ -25,7 +26,7 @@
 script = ExtResource("1_7bv37")
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("2_w277s")
+script = ExtResource("2_7bv37")
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
@@ -224,23 +225,17 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 60.0
+offset_bottom = 128.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/InfoBar"]
 layout_mode = 0
-offset_right = 516.0
-offset_bottom = 60.0
+offset_left = 805.0
+offset_top = 34.0
+offset_right = 1205.0
+offset_bottom = 94.0
+scale = Vector2(0.8, 1)
 theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="UI/HUD/InfoBar/HBoxContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_0q0yg")
-theme_override_font_sizes/font_size = 30
-text = "    HP"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BaseHPBar" type="TextureProgressBar" parent="UI/HUD/InfoBar/HBoxContainer"]
 custom_minimum_size = Vector2(400, 30)
@@ -255,13 +250,57 @@ texture_progress = ExtResource("15_2fqkj")
 tint_under = Color(0.215686, 0.215686, 0.215686, 1)
 tint_progress = Color(0.305882, 1, 0.0823529, 1)
 
+[node name="HBoxContainer3" type="VBoxContainer" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 25.0
+offset_right = 551.0
+offset_bottom = 105.0
+scale = Vector2(0.8, 1)
+theme_override_constants/separation = 20
+
+[node name="BaseHPBar" type="TextureProgressBar" parent="UI/HUD/InfoBar/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("15_2fqkj")
+texture_progress = ExtResource("15_2fqkj")
+tint_under = Color(0.215686, 0.215686, 0.215686, 1)
+tint_progress = Color(0.305882, 1, 0.0823529, 1)
+
+[node name="BaseHPBar2" type="TextureProgressBar" parent="UI/HUD/InfoBar/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("15_2fqkj")
+texture_progress = ExtResource("15_2fqkj")
+tint_under = Color(0.215686, 0.215686, 0.215686, 1)
+tint_progress = Color(0.305882, 1, 0.0823529, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 6.0
+offset_right = 549.0
+offset_bottom = 49.0
+scale = Vector2(0.8, 1)
+theme_override_constants/separation = 20
+
 [node name="Tower Count Label" type="Label" parent="UI/HUD/InfoBar"]
 layout_direction = 2
 layout_mode = 2
-offset_left = 644.0
-offset_top = 18.0
-offset_right = 834.0
-offset_bottom = 45.0
+offset_left = 521.0
+offset_top = 77.0
+offset_right = 711.0
+offset_bottom = 104.0
 theme_override_fonts/font = ExtResource("16_otjwt")
 theme_override_font_sizes/font_size = 30
 text = "Tower count:"
@@ -269,13 +308,50 @@ text = "Tower count:"
 [node name="Tower Count" type="Label" parent="UI/HUD/InfoBar"]
 layout_direction = 2
 layout_mode = 0
-offset_left = 806.0
-offset_top = 18.0
-offset_right = 996.0
-offset_bottom = 45.0
+offset_left = 687.0
+offset_top = 79.0
+offset_right = 877.0
+offset_bottom = 106.0
 theme_override_fonts/font = ExtResource("16_otjwt")
 theme_override_font_sizes/font_size = 30
 text = "0 / 10"
+
+[node name="Frame" type="ColorRect" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0, 0, 0, 1)
+
+[node name="EnemyIcon" type="TextureRect" parent="UI/HUD/InfoBar/Frame"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1032.0
+offset_bottom = 1032.0
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("17_w277s")
+
+[node name="Frame2" type="ColorRect" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 1280.0
+offset_bottom = 128.0
+color = Color(0, 0, 0, 1)
+
+[node name="BaseIcon" type="TextureRect" parent="UI/HUD/InfoBar/Frame2"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1032.0
+offset_bottom = 1032.0
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("18_jd04r")
+
+[node name="HideHPBar" type="ColorRect" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 75.0
+offset_right = 471.0
+offset_bottom = 105.0
+color = Color(0, 0, 0, 0.654902)
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
 custom_minimum_size = Vector2(150, 75)
@@ -284,6 +360,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -719.0
+offset_top = 20.0
+offset_right = -561.0
+offset_bottom = 95.0
 grow_horizontal = 0
 alignment = 2
 

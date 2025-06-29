@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://thw1mpx4ej03"]
+[gd_scene load_steps=12 format=4 uid="uid://thw1mpx4ej03"]
 
 [ext_resource type="TileSet" uid="uid://xi6dbhxjj022" path="res://Resources/Tilesets/laboratory.tres" id="1_qn84b"]
 [ext_resource type="PackedScene" uid="uid://cbhiw6joeb0wl" path="res://Scenes/Bosses/Prts.tscn" id="2_8bh5t"]
-[ext_resource type="PackedScene" uid="uid://daybt3phuf0b3" path="res://Scenes/HealthBar/HealthBar.tscn" id="3_127qf"]
 
 [sub_resource type="Curve2D" id="Curve2D_127qf"]
 _data = {
@@ -121,13 +120,6 @@ curve = SubResource("Curve2D_sip0v")
 [node name="Prts" parent="." instance=ExtResource("2_8bh5t")]
 position = Vector2(641, 220)
 scale = Vector2(0.22, 0.22)
-
-[node name="CorrosionBar" parent="." instance=ExtResource("3_127qf")]
-offset_left = 385.0
-offset_top = 62.0
-offset_right = 439.0
-offset_bottom = 65.0
-scale = Vector2(9.5, 22)
 
 [node name="Path2D" type="Path2D" parent="."]
 rotation = 0.00210521
