@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="15_2fqkj"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_otjwt"]
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="17_od0sx"]
-[ext_resource type="Texture2D" uid="uid://e1nxfjnenkoa" path="res://Assets/Enemies/PRTS.png" id="17_w277s"]
+[ext_resource type="Texture2D" uid="uid://dyx164vu6m1n2" path="res://Assets/Enemies/PRTS.png" id="17_w277s"]
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="18_jd04r"]
 [ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="18_spupq"]
 [ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="19_78aft"]
@@ -323,6 +323,7 @@ offset_bottom = 128.0
 color = Color(0, 0, 0, 1)
 
 [node name="EnemyIcon" type="TextureRect" parent="UI/HUD/InfoBar/Frame"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 1032.0
@@ -338,6 +339,7 @@ offset_bottom = 128.0
 color = Color(0, 0, 0, 1)
 
 [node name="BaseIcon" type="TextureRect" parent="UI/HUD/InfoBar/Frame2"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 1032.0
