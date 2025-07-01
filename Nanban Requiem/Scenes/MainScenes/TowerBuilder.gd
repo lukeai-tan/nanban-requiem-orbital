@@ -9,7 +9,10 @@ var build_type: String
 var ui
 var tower_manager: Node2D
 var tower_preview_node = null
-var build_bar
+
+var tower_exclusions : TileMapLayer
+var low_ground : TileMapLayer
+var high_ground : TileMapLayer
 
 func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
@@ -20,42 +23,43 @@ func initiate_build_mode(tower_type):
 	build_mode = true
 	ui.set_tower_preview(build_type, get_global_mouse_position())
 
-
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	
-	# tile layers that don't allow tower placements
-	var tower_exclusions = map_node.get_node("TowerExclusions")
-	var path_layer = map_node.get_node("Path")
-	
-	# check if current tile is from tower exclusion tilemaplayer
-	var current_tile = tower_exclusions.local_to_map(mouse_position)
-	var tile_position = tower_exclusions.map_to_local(current_tile)
-	
-	# check if current tile is from path tilemaplayer
-	var invalid_by_exclusion : bool = tower_exclusions.get_cell_source_id(current_tile) != -1
-	var path_tile = path_layer.local_to_map(mouse_position)
-	var is_path_tile : bool = path_layer.get_cell_source_id(path_tile) != -1
-	
+	# check if current tile is a tower exclusion
+	var exclusion_tile = tower_exclusions.local_to_map(mouse_position)
+	var tile_position = tower_exclusions.map_to_local(exclusion_tile)
+	if tower_exclusions.get_cell_source_id(exclusion_tile) != -1:
+		ui.update_tower_preview(tile_position, "f00")
+		build_valid = false
+		return
+
 	# check if current tile has an existing tower
-	var tile_is_occupied : bool = false
 	for t in map_node.get_node("Towers").get_children():
 		if t.position == tile_position:
-			tile_is_occupied = true
-			break
-			
-	var valid : bool = false
+			ui.update_tower_preview(tile_position, "f00")
+			build_valid = false
+			return
 	
+	# check if current tile is a low tile
+	var low_tile = low_ground.local_to_map(mouse_position)
+	var is_low_tile : bool = low_ground.get_cell_source_id(low_tile) != -1
+
+	# check if current tile is a high tile
+	var high_tile = high_ground.local_to_map(mouse_position)
+	var is_high_tile : bool = high_ground.get_cell_source_id(high_tile) != -1
+	
+	var valid
 	if build_type.begins_with("RangedTower"):
-		valid = not invalid_by_exclusion and not is_path_tile and not tile_is_occupied
+		valid = is_high_tile
 	elif build_type.begins_with("MeleeTower") or build_type.begins_with("Obstacle"):
-		valid = is_path_tile and not tile_is_occupied
+		valid = is_low_tile
 		
 	if valid:
 		ui.update_tower_preview(tile_position, "fff")
 		build_valid = true
 		build_location = tile_position
-		build_tile = current_tile
+		build_tile = exclusion_tile
 	else:
 		ui.update_tower_preview(tile_position, "f00")
 		build_valid = false
@@ -79,11 +83,3 @@ func verify_and_build():
 	
 	elif not tower_manager.can_place_tower():
 		return
-
-func enable_build_bar():
-	build_bar.visible = true
-
-func disable_build_bar():
-	if build_mode:
-		cancel_build_mode()
-	build_bar.visible = false

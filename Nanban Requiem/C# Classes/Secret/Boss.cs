@@ -7,7 +7,7 @@ using Godot;
 public abstract partial class Boss : Enemy, IAct
 {
 
-    protected bool invulnerable = true;
+    protected bool invulnerable = false;
     protected bool incapacitated = false;
     protected double timeSinceLastSkill = 0;
     [Export] protected double skillcooldown;
@@ -15,13 +15,20 @@ public abstract partial class Boss : Enemy, IAct
     protected GlobalDetectionRange range;
     public event EventHandler<BoolEventArgs> HasEnemy;
     public event EventHandler<BoolEventArgs> HasTower;
+    protected int stoppers = 0;
 
     public override void _Ready()
     {
         this.maxHealth = this.health;
-        this.healthBar = this.GetNodeOrNull<TextureProgressBar>("BossHealthBar");
         this.animation = this.GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
         this.range = this.GetNodeOrNull<GlobalDetectionRange>("Range");
+    }
+
+    public void SetHealthBar(TextureProgressBar healthBar)
+    {
+        this.healthBar = healthBar;
+        this.healthBar.MaxValue = this.maxHealth;
+        this.healthBar.Value = this.health;
     }
 
     public abstract void SetActions();
@@ -34,21 +41,37 @@ public abstract partial class Boss : Enemy, IAct
             this.health -= trueDamage;
             this.healthBar.Value = this.health;
             double ratio = (double)this.health / (double)this.maxHealth;
-            switch (ratio)
+            switch (stoppers)
             {
-                case <= 0:
-                    this.ZeroF();
+                case 0:
+                    if (ratio <= 0.75)
+                    {
+                        this.ThreeQF();
+                        this.stoppers += 1;
+                    }
                     break;
-                case <= 0.25:
-                    this.OneQF();
+                case 1:
+                    if (ratio <= 0.5)
+                    {
+                        this.HalfF();
+                        this.stoppers += 1;
+                    }
                     break;
-                case <= 0.5:
-                    this.HalfF();
+                case 2:
+                    if (ratio <= 0.25)
+                    {
+                        this.OneQF();
+                        this.stoppers += 1;
+                    }
                     break;
-                case <= 0.75:
-                    this.ThreeQF();
+                case 3:
+                    if (ratio <= 0)
+                    {
+                        this.ZeroF();
+                    }
                     break;
             }
+            GD.Print(this.health);
         }
     }
 
@@ -72,8 +95,10 @@ public abstract partial class Boss : Enemy, IAct
 
     protected void CheckTargets()
     {
-        this.HasEnemy?.Invoke(this, new BoolEventArgs(this.range.GetAllEnemies().Count > 0));
-        this.HasTower?.Invoke(this, new BoolEventArgs(this.range.GetAllTowers().Count > 0));
+        bool hasEnemy = this.range.GetAllEnemies().Count > 0;
+        bool hasTower = this.range.GetAllTowers().Count > 0;
+        this.HasEnemy?.Invoke(this, new BoolEventArgs(hasEnemy));
+        this.HasTower?.Invoke(this, new BoolEventArgs(hasTower));
     }
 
     protected BossSkill ChooseSkill()
@@ -91,5 +116,10 @@ public abstract partial class Boss : Enemy, IAct
     public override void ModifyMovementSpeed(double multiplier) { }
 
     public override void ModifyAtk(double multiplier) { }
+
+    public override float GetProgress()
+    {
+        return 0;
+    }
 
 }

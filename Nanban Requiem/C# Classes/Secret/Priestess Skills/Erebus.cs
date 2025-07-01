@@ -12,7 +12,7 @@ public partial class Erebus : BossSkill
     {
         this.priority = 2;
         this.boss = this.GetParentOrNull<Priestess>();
-        this.boss.HasEnemy += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
+        this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
     }
     
     public override void _Process(double delta)
@@ -22,7 +22,7 @@ public partial class Erebus : BossSkill
 
     public void UseCheck(bool hasTarget)
     {
-        if (hasTarget && this.timeSinceLastUse >= 1 / this.cooldown)
+        if (hasTarget && this.timeSinceLastUse >= this.cooldown)
         {
             this.usable = true;
         }

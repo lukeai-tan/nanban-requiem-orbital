@@ -22,7 +22,7 @@ public partial class Cocytus : BossSkill
 
     public void UseCheck(bool hasTarget)
     {
-        if (hasTarget && this.timeSinceLastUse >= 1 / this.cooldown)
+        if (hasTarget && this.timeSinceLastUse >= this.cooldown)
         {
             this.usable = true;
         }

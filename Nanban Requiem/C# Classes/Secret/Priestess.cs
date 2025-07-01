@@ -46,6 +46,9 @@ public partial class Priestess : Boss
         this.targeting1 = new PriestessBasic(this);
         this.targeting2 = new PriestessBuff(this);
         this.targeting3 = new PriestessNuke(this);
+        this.targeting1.SetTargets(2);
+        this.targeting2.SetTargets(2);
+        this.targeting3.SetTargets(2);
 
         this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
         this.attack1.SetAttackAndSpeed(new ArtsAttack(), 300);
@@ -55,7 +58,7 @@ public partial class Priestess : Boss
 
         this.attack2 = new AOEMeleeAttack(this.areaScene);
         this.attack2.SetAttack(new PhysicalAttack());
-        this.attack2.SetModifiers(this.attack, 0.4);
+        this.attack2.SetModifiers(this.attack, 0.8);
     }
 
     public override void _Process(double delta)
@@ -74,7 +77,7 @@ public partial class Priestess : Boss
             else
             {
                 this.timer += delta;
-                if (timer >= 2)
+                if (timer >= 15)
                 {
                     switch (this.teleports)
                     {
@@ -99,7 +102,7 @@ public partial class Priestess : Boss
                     }
                 }
             }
-            if (this.timeSinceLastSkill >= 1 / this.skillcooldown)
+            if (this.timeSinceLastSkill >= this.skillcooldown)
             {
                 this.Act();
             }
@@ -117,7 +120,7 @@ public partial class Priestess : Boss
         {
             this.attack1.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -131,7 +134,7 @@ public partial class Priestess : Boss
         {
             this.buff1.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -157,7 +160,7 @@ public partial class Priestess : Boss
         {
             this.attack2.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(2f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -168,7 +171,7 @@ public partial class Priestess : Boss
         this.incapacitated = true;
         // this.animation.Play("");
         this.LockDeployment?.Invoke(this, EventArgs.Empty);
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -210,14 +213,14 @@ public partial class Priestess : Boss
         this.invulnerable = false;
         this.incapacitated = false;
         this.targetable = true;
-        this.cooldown = 30;
+        this.cooldown = 40;
     }
 
     protected override void ThreeQF()
     {
         this.ThreeQ?.Invoke(this, EventArgs.Empty);
-        this.attack1.SetModifiers(this.attack, 1.2);
-        this.attack2.SetModifiers(this.attack, 0.8);
+        this.attack1.SetModifiers(this.attack, 1);
+        this.attack2.SetModifiers(this.attack, 0.9);
     }
 
     protected override void HalfF()
@@ -227,6 +230,7 @@ public partial class Priestess : Boss
             this.ToStage();
         }
         this.Half?.Invoke(this, EventArgs.Empty);
+        this.skillcooldown = 2;
         this.targeting1.SetTargets(3);
         this.targeting2.SetTargets(3);
     }
@@ -234,8 +238,8 @@ public partial class Priestess : Boss
     protected override void OneQF()
     {
         this.OneQ?.Invoke(this, EventArgs.Empty);
-        this.skillcooldown = 3;
-        this.attack1.SetModifiers(this.attack, 1.5);
+        this.attack1.SetModifiers(this.attack, 1.2);
+        this.attack2.SetModifiers(this.attack, 1);
         this.targeting3.SetTargets(4);
     }
 

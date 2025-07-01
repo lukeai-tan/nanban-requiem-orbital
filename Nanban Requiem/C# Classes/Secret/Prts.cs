@@ -15,7 +15,9 @@ public partial class Prts : Boss
     public override void _Ready()
     {
         base._Ready();
+        this.invulnerable = true;
         this.incapacitated = true;
+        this.targetable = false;
 
         // Wipes all enemies / towers in a horizontal / vertical strip
         // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
@@ -46,6 +48,8 @@ public partial class Prts : Boss
 
     public void Activate()
     {
+        this.health = this.maxHealth;
+        this.healthBar.Value = this.maxHealth;
         this.invulnerable = false;
         this.incapacitated = false;
         this.targetable = true;
@@ -55,9 +59,9 @@ public partial class Prts : Boss
     {
         if (!this.incapacitated)
         {
-            if (this.timeSinceLastSkill >= 1 / this.skillcooldown)
+            if (this.timeSinceLastSkill >= this.skillcooldown)
             {
-                this.incapacitated = true;
+                // this.incapacitated = true;
                 this.Act();
             }
             this.timeSinceLastSkill += delta;
@@ -117,8 +121,6 @@ public partial class Prts : Boss
         this.invulnerable = true;
         this.incapacitated = true;
         this.targetable = false;
-        this.girlboss.ExitComputation();
-        this.health = this.maxHealth;
     }
 
 }

@@ -5,13 +5,13 @@ using Godot;
 public partial class TowerSingleUse : AreaEffect<Enemy>
 {
 
-    public async override void _Process(double delta)
+    public async override void _PhysicsProcess(double delta)
     {
         if (this.active)
         {
+            this.active = false;
             await ToSignal(GetTree(), "physics_frame");
             base.Effect();
-            this.active = false;
             await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
             this.QueueFree();
         }
