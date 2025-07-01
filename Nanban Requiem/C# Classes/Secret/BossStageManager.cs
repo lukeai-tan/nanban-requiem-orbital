@@ -9,7 +9,7 @@ public partial class BossStageManager : Node2D
 
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
-    protected int objectiveHp = 30000;
+    protected int objectiveHp = 40000;
 
     private Node towerBuilder;
     private BossWaveSpawner waveSpawner;
@@ -45,6 +45,9 @@ public partial class BossStageManager : Node2D
         this.towerBuilder.Set("map_node", this.map);
         this.towerBuilder.Set("ui", this.ui);
         this.towerBuilder.Set("tower_manager", this.towerManager);
+        this.towerBuilder.Set("tower_exclusions", this.map.GetNodeOrNull<TileMapLayer>("Phase1 Exclusions"));
+        this.towerBuilder.Set("low_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase1 Low"));
+        this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase1 High"));
 
         this.ui.Set("tower_builder", this.towerBuilder);
         this.ui.Set("tower_manager", this.towerManager);
@@ -72,8 +75,10 @@ public partial class BossStageManager : Node2D
     private void GetPrts()
     {
         this.prts = this.map.GetNodeOrNull<Prts>("Prts");
+        this.prts.SetHealthBar((TextureProgressBar) this.ui.Call("get_prts_healthbar"));
         this.prts.SetActions();
         this.prts.Corrode += (object boss, EventArgs e) => this.Corrode();
+        this.prts.Zero += (object boss, EventArgs e) => this.ui.Call("update_ui");
     }
 
     private void Corrode(int damage)
@@ -107,16 +112,20 @@ public partial class BossStageManager : Node2D
         this.priestess = GD.Load<PackedScene>("res://Scenes/Bosses/Priestess.tscn").Instantiate<Priestess>();
         this.map.AddChild(this.priestess);
         this.priestess.GlobalPosition = new Vector2(418, 542);
+        this.priestess.SetHealthBar((TextureProgressBar) this.ui.Call("get_priestess_healthbar"));
         this.priestess.SetActions();
         this.prts.Connect(this.priestess);
         this.priestess.Computation += (object boss, EventArgs e) => this.ui.Call("update_ui");
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
+        this.priestess.LockUI += (object boss, EventArgs e) => this.LockUI();
+        this.priestess.LockDeployment += (object boss, EventArgs e) => this.LockDeployment();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
         this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
     }
 
-    private void PhaseTwo()
+    private async void PhaseTwo()
     {
+        this.GetTree().Paused = true;
         List<Node> towers = this.map.GetNodeOrNull("Towers").GetChildren().ToList();
         List<Node> enemies = this.map.GetNodeOrNull("Enemies").GetChildren().ToList();
         foreach (Node node in enemies)
@@ -127,11 +136,38 @@ public partial class BossStageManager : Node2D
         {
             node.QueueFree();
         }
+
+        this.map.GetNodeOrNull<TileMapLayer>("Phase1 Low").Visible = false;
+        this.map.GetNodeOrNull<TileMapLayer>("Phase1 High").Visible = false;
+        this.map.GetNodeOrNull<TileMapLayer>("Phase2 Low").Visible = true;
+        this.map.GetNodeOrNull<TileMapLayer>("Phase2 High").Visible = true;
+        this.towerBuilder.Set("tower_exclusions", this.map.GetNodeOrNull<TileMapLayer>("Phase2 Exclusions"));
+        this.towerBuilder.Set("low_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase2 Low"));
+        this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase2 High"));
+
+        await ToSignal(GetTree().CreateTimer(3f), SceneTreeTimer.SignalName.Timeout);
+        this.GetTree().Paused = false;
+    }
+
+    private async void LockUI()
+    {
+        //this.ui.Call("mess_ui");
+        //this.towerManager.Call("change_deployment", 3);
+        await ToSignal(GetTree().CreateTimer(30f), SceneTreeTimer.SignalName.Timeout);
+        //this.towerManager.Call("change_deployment", 5);
+        //this.ui.Call("unmess_ui");
+    }
+
+    private async void LockDeployment()
+    {
+        this.ui.Call("disable_build_bar");
+        await ToSignal(GetTree().CreateTimer(15f), SceneTreeTimer.SignalName.Timeout);
+        this.ui.Call("enable_build_bar");
     }
 
     private void PhaseFinal()
     {
-        
+
     }
 
     private void OnWaveComplete()

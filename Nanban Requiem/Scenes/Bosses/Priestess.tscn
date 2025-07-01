@@ -1,30 +1,29 @@
-[gd_scene load_steps=16 format=3 uid="uid://dggex5hn14rg4"]
+[gd_scene load_steps=14 format=3 uid="uid://dggex5hn14rg4"]
 
 [ext_resource type="Script" uid="uid://c5ok7mjdmckpy" path="res://C# Classes/Secret/Priestess.cs" id="1_g31t8"]
-[ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/VampireProjectile.tscn" id="2_bjx4r"]
+[ext_resource type="PackedScene" uid="uid://wud3ewsei0u0" path="res://Scenes/Projectile/PriestessProjectile.tscn" id="2_bjx4r"]
 [ext_resource type="Texture2D" uid="uid://40fb12xnq80s" path="res://Scenes/Bosses/New Piskel (34).png" id="2_g31t8"]
 [ext_resource type="PackedScene" uid="uid://cix7tiilnucau" path="res://Scenes/AdditionalEffects/PhysDefenseDown.tscn" id="3_1eodr"]
 [ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/GlobalDetectionRange.cs" id="3_fkma7"]
 [ext_resource type="PackedScene" uid="uid://dqxhgfphncata" path="res://Scenes/AdditionalEffects/MovementSpeedBuff.tscn" id="4_e2xoy"]
 [ext_resource type="Script" uid="uid://b1opburagbtmc" path="res://C# Classes/Secret/Priestess Skills/Inferno.cs" id="4_x3sye"]
 [ext_resource type="Script" uid="uid://deaiqsygxcy5s" path="res://C# Classes/Secret/Priestess Skills/Cocytus.cs" id="5_6kjgb"]
-[ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="5_mj3wb"]
+[ext_resource type="PackedScene" uid="uid://cekvx4f1jf3sd" path="res://Scenes/AdditionalEffects/EnemySingleUse.tscn" id="5_bjx4r"]
 [ext_resource type="Script" uid="uid://d31rvsghqvck1" path="res://C# Classes/Secret/Priestess Skills/Starfire.cs" id="6_m2d5i"]
 [ext_resource type="Script" uid="uid://cotk4rgaulmrq" path="res://C# Classes/Secret/Priestess Skills/Erebus.cs" id="7_2skqe"]
 [ext_resource type="Script" uid="uid://dvjdrtecmbrwh" path="res://C# Classes/Secret/Priestess Skills/Hyades.cs" id="8_bjx4r"]
-[ext_resource type="Texture2D" uid="uid://cyl6sa2qqrfym" path="res://Scenes/Bosses/New Piskel (36).png" id="13_e2xoy"]
-[ext_resource type="Texture2D" uid="uid://dmpl5fkt7jnrt" path="res://Scenes/Bosses/New Piskel (38).png" id="14_mj3wb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7tsm"]
 size = Vector2(21, 49)
 
 [node name="Priestess" type="CharacterBody2D"]
+collision_layer = 8
 script = ExtResource("1_g31t8")
 projectileScene = ExtResource("2_bjx4r")
 debuffScene = ExtResource("3_1eodr")
 buffScene = ExtResource("4_e2xoy")
-areaScene = ExtResource("5_mj3wb")
-skillcooldown = 4.0
+areaScene = ExtResource("5_bjx4r")
+skillcooldown = 3.0
 movementSpeed = 50
 attack = 200
 health = 50000
@@ -58,15 +57,3 @@ cooldown = 12.0
 
 [node name="Hyades" type="Node2D" parent="."]
 script = ExtResource("8_bjx4r")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -27.0
-offset_top = -92.0
-offset_right = 997.0
-offset_bottom = 932.0
-scale = Vector2(0.05, 0.05)
-min_value = 1.0
-max_value = 50000.0
-value = 50000.0
-texture_under = ExtResource("13_e2xoy")
-texture_over = ExtResource("14_mj3wb")

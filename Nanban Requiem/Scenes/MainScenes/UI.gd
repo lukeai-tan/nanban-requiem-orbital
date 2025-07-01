@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var base_hp_bar = get_node("HUD/InfoBar/HBoxContainer/BaseHPBar")
 @onready var tower_count = get_node("HUD/InfoBar/Tower Count")
+@onready var build_bar = get_node("HUD/BuildBar")
 
 var tower_builder
 var tower_manager
@@ -113,3 +114,11 @@ func set_hp(hp):
 
 func update_tower_count(current_count: int, max_count: int) -> void:
 	tower_count.text = "%d / %d" % [current_count, max_count]
+
+func enable_build_bar():
+	build_bar.visible = true
+
+func disable_build_bar():
+	if tower_builder.build_mode:
+		tower_builder.cancel_build_mode()
+	build_bar.visible = false

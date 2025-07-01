@@ -11,7 +11,7 @@ public partial class Inferno : BossSkill
     {
         this.priority = 0;
         this.boss = this.GetParentOrNull<Priestess>();
-        this.boss.HasEnemy += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
+        this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
     }
 
     public void UseCheck(bool hasTarget)

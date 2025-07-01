@@ -44,7 +44,7 @@ public abstract partial class Enemy : Unit
         this.msModifier += multiplier;
     }
     
-    public float GetProgress()
+    public virtual float GetProgress()
     {
         return this.pathing.GetProgress();
     }

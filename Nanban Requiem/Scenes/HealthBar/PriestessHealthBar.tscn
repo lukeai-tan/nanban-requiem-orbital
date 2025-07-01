@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djl2dv6yrkf4i"]
+
+[ext_resource type="Texture2D" uid="uid://cyl6sa2qqrfym" path="res://Scenes/Bosses/New Piskel (36).png" id="1_vwloi"]
+[ext_resource type="Texture2D" uid="uid://dmpl5fkt7jnrt" path="res://Scenes/Bosses/New Piskel (38).png" id="2_cnptn"]
+
+[node name="BossHealthBar" type="TextureProgressBar"]
+offset_left = -27.0
+offset_top = -92.0
+offset_right = 997.0
+offset_bottom = 932.0
+scale = Vector2(0.05, 0.05)
+min_value = 1.0
+value = 100.0
+texture_under = ExtResource("1_vwloi")
+texture_progress = ExtResource("2_cnptn")
