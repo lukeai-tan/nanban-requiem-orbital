@@ -18,6 +18,11 @@ func _process(_delta):
 		current_tower_count = new_tower_count
 		emit_signal("tower_count_changed", current_tower_count, max_tower_count)
 
+## sets or changes the max tower limit for the map
+func change_deployment(count: int):
+	max_tower_count = count
+	emit_signal("tower_count_changed", current_tower_count, max_tower_count)
+
 
 func get_tower_count() -> int:
 	return map_node.get_node("Towers").get_child_count()
