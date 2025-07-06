@@ -73,6 +73,14 @@ func unload_game(_result):
 	var game_scene = get_node_or_null("GameScene")
 	if game_scene:
 		game_scene.queue_free()
+	
+	var existing_menu = get_node_or_null("MainMenu")
+	if existing_menu:
+		existing_menu.queue_free()
+	
+	call_deferred("_deferred_load_main_menu")
+
+func _deferred_load_main_menu():
 	var main_menu = load("res://Scenes/UIScenes/MainMenu.tscn").instantiate()
 	add_child(main_menu)
 	load_main_menu()
