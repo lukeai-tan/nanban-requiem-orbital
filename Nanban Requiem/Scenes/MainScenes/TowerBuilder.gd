@@ -18,7 +18,9 @@ func initiate_build_mode(tower_type):
 	# Base case where build mode is initiated during build mode
 	if build_mode:
 		cancel_build_mode()
-		
+
+	Engine.set_time_scale(0.3)
+
 	build_type = tower_type
 	build_mode = true
 	ui.set_tower_preview(build_type, get_global_mouse_position())
@@ -69,6 +71,7 @@ func cancel_build_mode():
 	build_mode = false
 	build_valid = false
 	ui.get_node("TowerPreview").free()
+	Engine.set_time_scale(GameData.time_scale)
 
 # IF build location is valid, instantiate selected tower scene
 # position it at stored tile
@@ -80,6 +83,5 @@ func verify_and_build():
 		
 		build_mode = false
 		build_valid = false
-	
-	elif not tower_manager.can_place_tower():
-		return
+		
+		Engine.set_time_scale(GameData.time_scale)

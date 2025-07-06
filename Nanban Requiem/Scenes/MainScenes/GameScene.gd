@@ -33,7 +33,6 @@ func _ready():
 	tower_builder.map_node = map_node
 	tower_builder.ui = ui
 	tower_builder.tower_manager = tower_manager
-	tower_builder.build_bar = build_bar
 	tower_builder.tower_exclusions = map_node.get_node("TowerExclusions")
 	tower_builder.low_ground = map_node.get_node("Path")
 	tower_builder.high_ground = map_node.get_node("Ground")

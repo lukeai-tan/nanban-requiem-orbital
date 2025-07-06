@@ -83,8 +83,10 @@ func _on_fast_forward_pressed() -> void:
 		tower_builder.cancel_build_mode()
 	if Engine.get_time_scale() == 2.0:
 		Engine.set_time_scale(1.0)
+		GameData.time_scale = 1.0
 	else:
 		Engine.set_time_scale(2.0)
+		GameData.time_scale = 2.0
 
 # Restart current scene Button
 func _on_restart_pressed() -> void:

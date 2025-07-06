@@ -26,6 +26,7 @@ var tower_squad = {
 	"Chicken Don": false,
 }
 
+var time_scale = 1.0
 
 
 var tower_data = {
@@ -78,7 +79,7 @@ var tower_data = {
 
 
 	"RangedTowerGirl2": {
-		"range": 0,
+		"range": 400,
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl2_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl2_base.png",
 		"name": "Nyx",
