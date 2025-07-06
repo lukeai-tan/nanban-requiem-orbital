@@ -117,7 +117,7 @@ public partial class BossStageManager : Node2D
         this.prts.Connect(this.priestess);
         this.priestess.Computation += (object boss, EventArgs e) => this.ui.Call("update_ui");
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
-        this.priestess.LockUI += (object boss, EventArgs e) => this.LockUI();
+        this.priestess.LockUI += (object boss, EventArgs e) => this.InvertUI();
         this.priestess.LockDeployment += (object boss, EventArgs e) => this.LockDeployment();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
         this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
@@ -149,19 +149,18 @@ public partial class BossStageManager : Node2D
         this.GetTree().Paused = false;
     }
 
-    private async void LockUI()
+    private async void InvertUI()
     {
-        //this.ui.Call("mess_ui");
-        //this.towerManager.Call("change_deployment", 3);
-        await ToSignal(GetTree().CreateTimer(30f), SceneTreeTimer.SignalName.Timeout);
-        //this.towerManager.Call("change_deployment", 5);
-        //this.ui.Call("unmess_ui");
+        Transform2D invert = new Transform2D(new Vector2(-1, 0), new Vector2(0, -1), GetViewport().GetVisibleRect().Size);
+        this.ui.Set("transform", invert);
+        await ToSignal(GetTree().CreateTimer(15f, true), SceneTreeTimer.SignalName.Timeout);
+        this.ui.Set("transform", Transform2D.Identity);
     }
 
     private async void LockDeployment()
     {
         this.ui.Call("disable_build_bar");
-        await ToSignal(GetTree().CreateTimer(15f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(15f, true), SceneTreeTimer.SignalName.Timeout);
         this.ui.Call("enable_build_bar");
     }
 
