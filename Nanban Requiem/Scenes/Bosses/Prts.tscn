@@ -10,6 +10,8 @@ size = Vector2(1325, 892)
 [node name="Prts" type="CharacterBody2D"]
 script = ExtResource("1_u5awg")
 health = 20000
+physDefense = 10
+artsDefense = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-83, -28)

@@ -71,7 +71,6 @@ public abstract partial class Boss : Enemy, IAct
                     }
                     break;
             }
-            GD.Print(this.health);
         }
     }
 
@@ -121,5 +120,7 @@ public abstract partial class Boss : Enemy, IAct
     {
         return 0;
     }
+
+    public override void _ExitTree() { }
 
 }
