@@ -78,7 +78,7 @@ var tower_data = {
 
 
 	"RangedTowerGirl2": {
-		"range": 0,
+		"range": 400,
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl2_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl2_base.png",
 		"name": "Nyx",
