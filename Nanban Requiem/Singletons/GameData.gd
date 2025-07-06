@@ -26,6 +26,7 @@ var tower_squad = {
 	"Chicken Don": false,
 }
 
+var time_scale = 1.0
 
 
 var tower_data = {
