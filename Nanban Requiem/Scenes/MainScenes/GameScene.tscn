@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=22 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="12_ibot7"]
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_rs15k"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_ahi2e"]
+[ext_resource type="Texture2D" uid="uid://d2ddhnm21a5gn" path="res://Assets/Icons/fastForward_red.png" id="19_7co2h"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_68uyl")
@@ -295,7 +296,9 @@ texture_normal = ExtResource("9_h0y4r")
 [node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
 process_mode = 3
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("9_80vwl")
+texture_pressed = ExtResource("19_7co2h")
 
 [node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
 process_mode = 3
