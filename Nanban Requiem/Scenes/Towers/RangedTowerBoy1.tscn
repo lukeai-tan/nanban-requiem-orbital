@@ -37,5 +37,5 @@ shape = SubResource("RectangleShape2D_fdf7w")
 collision_mask = 8
 script = ExtResource("2_yhphy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+[node name="HitBox" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_7ff34")

@@ -7,6 +7,7 @@ using Godot;
 public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
 {
 
+    public event EventHandler TakeAction;
     protected Attack meleeAttack;
     protected BasicMeleeAttack basicMelee;
     [Export] protected double attackSpeed;
@@ -50,6 +51,7 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
     {
         if (this.timeSinceLastAttack >= 1 / this.attackSpeed)
         {
+            this.Signal(this.blocked);
             if (this.animation != null)
             {
                 this.animation.Play("attack");
@@ -58,6 +60,11 @@ public abstract partial class BasicMeleeEnemy : Enemy, IAct, IBlock
             this.basicMelee.Execute(this.blocked);
             this.timeSinceLastAttack = 0;
         }
+    }
+
+    protected void Signal(Tower target)
+    {
+        this.TakeAction?.Invoke(target, EventArgs.Empty);
     }
 
     public int GetBlockCount()

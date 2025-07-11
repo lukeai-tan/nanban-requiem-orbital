@@ -22,6 +22,7 @@ public abstract partial class AOERangedEnemy : BasicRangedEnemy
             Tower target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
+                this.Signal(target);
                 this.rangedBuff.SetModifiers(this.attack * 2, this.atkModifier);
                 this.rangedBuff.Execute(target);
                 this.timeSinceLastAttack = 0;

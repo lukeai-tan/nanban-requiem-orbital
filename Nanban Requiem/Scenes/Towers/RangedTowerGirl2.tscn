@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="2_omxl8"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="2_sjwcm"]
 [ext_resource type="PackedScene" uid="uid://xph8vr5rrsu1" path="res://Scenes/AdditionalEffects/VampireRegen.tscn" id="3_h7mj7"]
-[ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/VampireProjectile.tscn" id="3_omxl8"]
+[ext_resource type="PackedScene" uid="uid://h85nende5a1s" path="res://Scenes/Projectile/VampireProjectile.tscn" id="3_omxl8"]
 [ext_resource type="Script" uid="uid://b3ck115yslqnb" path="res://C# Classes/Skills (Towers)/VampiricBlast.cs" id="6_dit54"]
 [ext_resource type="PackedScene" uid="uid://dvos2kip1ivqs" path="res://Scenes/Projectile/FlamingProjectile.tscn" id="7_whhsv"]
 [ext_resource type="Texture2D" uid="uid://ctbrxtgqpei24" path="res://Assets/UI/Buttons/skill_button_wa.png" id="10_dx32v"]
@@ -39,7 +39,7 @@ script = ExtResource("1_044w5")
 buffScene = ExtResource("2_044w5")
 projectileSpeed = 300
 projectileScene = ExtResource("3_omxl8")
-attackSpeed = 0.3
+attackSpeed = 0.2
 attack = 100
 health = 500
 physDefense = 10
@@ -56,7 +56,7 @@ shape = SubResource("RectangleShape2D_fdf7w")
 collision_mask = 8
 script = ExtResource("2_sjwcm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+[node name="HitBox" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_7ff34")
 
 [node name="SKill" type="Node2D" parent="."]

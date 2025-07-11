@@ -14,13 +14,15 @@ public partial class Prts : Boss
     // Skills
     [Export] protected PackedScene projectileScene;
     [Export] protected PackedScene debuffScene;
+    [Export] protected PackedScene controlDebuffScene;
+    [Export] protected PackedScene bombDebuffScene;
     [Export] protected PackedScene areaScene;
     protected BasicRangedBuff attack1;
-    // protected AOEMeleeAttack attack2;
-    protected TowerClosestToSelf targeting;
-    // public event EventHandler LockUI;
-    // public event EventHandler LockDeployment;
-    // public event EventHandler Finale;
+    protected BasicMeleeBuff debuff1;
+    protected AOEMeleeAttack attack2;
+    protected PrtsRandom targeting1;
+    protected PrtsControl targeting2;
+    protected TowerFurthestFromSelf targeting3;
     protected bool shield = false;
     protected int shieldHp = 0;
     [Export] protected int maxShieldHp;
@@ -32,26 +34,44 @@ public partial class Prts : Boss
         this.invulnerable = true;
         this.incapacitated = true;
         this.targetable = false;
-
-        // Wipes all enemies / towers in a horizontal / vertical strip
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
-
-        // Turns one of your units hostile
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
-
-        // Unending machine gun attack until you "break" the "loop" (shield)
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Astrape"));
-
-        // Hot potato with units. You must "return" the bomb by relocating to her
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
-
-        // Simon says, or in reverse? Read the if else statement
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
     }
+
+    // Wipes all enemies / towers in a horizontal / vertical strip
+    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
+
+    // Turns one of your units hostile
+    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
+
+    // Unending machine gun attack until you "break" the "loop" (shield)
+    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Astrape"));
+
+    // Hot potato with units. You must "return" the bomb by relocating to her
+    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
+
+    // Picks a designated area/pattern and deals massive damage to all in that area
+    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
 
     public override void SetActions()
     {
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
+        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
 
+        this.targeting1 = new PrtsRandom();
+        this.targeting2 = new PrtsControl();
+        this.targeting3 = new TowerFurthestFromSelf(this);
+
+        this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
+        this.attack1.SetAttackAndSpeed(new PhysicalAttack(), 300);
+        this.attack1.SetModifiers(this.attack, 0.5);
+
+        this.debuff1 = new BasicMeleeBuff(this.controlDebuffScene);
+        this.debuff1.SetAttack(new PhysicalAttack());
+
+        this.attack2 = new AOEMeleeAttack(this.areaScene);
+        this.attack2.SetAttack(new ArtsAttack());
+        this.attack2.SetModifiers(this.attack, 1.2);
     }
 
     public void Connect(Priestess girlboss)
@@ -89,13 +109,22 @@ public partial class Prts : Boss
 
     }
 
-    // Turns one of your units hostile
+    // Debuffs a tower by making them attack other towers when trying to hit enemies
     public async void Achlys()
     {
-
+        GD.Print("Achlys");
+        this.incapacitated = true;
+        // this.animation.Play("");
+        Tower target = this.targeting1.GetTarget(this.range.GetAllTowers());
+        if (target != null)
+        {
+            this.debuff1.Execute(target);
+        }
+        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        this.Recover();
     }
 
-    // Unending machine gun attack until you "break" the "loop" (shield)
+    // Deploy shield followed by continuous attacks while active
     public async void Astrape()
     {
         GD.Print("Astrape");
@@ -105,19 +134,60 @@ public partial class Prts : Boss
         this.shield = true;
         while (shield)
         {
-            // attack
-            await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+            Tower target = this.targeting2.GetTarget(this.range.GetAllTowers());
+            if (target != null)
+            {
+                this.attack1.Execute(target);
+                await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+            }
         }
+        await ToSignal(GetTree().CreateTimer(15f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
     // Hot potato with units. You must "return" the bomb by relocating to her
     public async void Charybdis()
     {
+        GD.Print("Charybdis");
+        this.incapacitated = true;
+        // this.animation.Play("");
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        this.Spread(new List<Tower>());
+        this.Recover();
+    }
+    
+    protected void Implode(object target, EventArgs e)
+    {
 
     }
+    
+    protected void Explode(object target, List<Tower> marked)
+    {
+        if (target is Tower tower)
+        {
+            marked.Add(tower);
+            this.attack2.Execute(tower);
+            this.Spread(marked);
+        }
+    }
 
-    // Simon says, or in reverse? Read the if else statement
+    protected void Spread(List<Tower> marked)
+    {
+        List<Tower> targets = this.range.GetAllTowers().Where(tower => !marked.Contains(tower)).ToList();
+        Tower target = this.targeting3.GetTarget(targets);
+        if (target != null)
+        {
+            Node debuff = this.bombDebuffScene.Instantiate();
+            if (debuff is TowerBomb mark)
+            {
+                mark.Return += this.Implode;
+                mark.Next += (object target, EventArgs e) => this.Explode(target, marked);
+                target.ReceiveBuff(mark);
+            }
+        }
+    }
+
+    // 2 / 3 consecutive devastating area attacks with windup
     public async void Pharos()
     {
 
@@ -143,7 +213,10 @@ public partial class Prts : Boss
                 this.shield = false;
             }
         }
-        base.TakeDamage(damage);
+        else
+        {
+            base.TakeDamage(damage);
+        }
     }
 
     protected override void ThreeQF() { }
@@ -168,6 +241,11 @@ public partial class Prts : Boss
         this.invulnerable = true;
         this.incapacitated = true;
         this.targetable = false;
+    }
+
+    public override float GetProgress()
+    {
+        return 10000;
     }
 
     public override void _ExitTree()

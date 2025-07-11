@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var ui = get_node("HUD")
 @onready var base_hp_bar = get_node("HUD/InfoBar/HBoxContainer/BaseHPBar")
 @onready var tower_count = get_node("HUD/InfoBar/Tower Count")
 @onready var build_bar = get_node("HUD/BuildBar")
@@ -125,3 +126,6 @@ func disable_build_bar():
 	if tower_builder.build_mode:
 		tower_builder.cancel_build_mode()
 	build_bar.visible = false
+
+func toggle_ui():
+	ui.visible = !ui.visible

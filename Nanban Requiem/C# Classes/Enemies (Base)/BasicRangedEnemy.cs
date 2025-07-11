@@ -57,11 +57,17 @@ public abstract partial class BasicRangedEnemy : BasicMeleeEnemy
             Tower target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
+                this.Signal(target);
                 this.basicRanged.SetModifiers(this.attack * 2, this.atkModifier);
                 this.basicRanged.Execute(target);
                 this.timeSinceLastAttack = 0;
             }
         }
+    }
+
+    public DetectionRange<Tower> GetRange()
+    {
+        return this.range;
     }
 
     public override void _ExitTree()

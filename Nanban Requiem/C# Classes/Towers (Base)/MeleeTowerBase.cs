@@ -6,6 +6,7 @@ using Godot;
 public abstract partial class MeleeTowerBase : ObstacleBase, IAct
 {
 
+    public event EventHandler TakeAction;
     protected Attack meleeAttack;
     protected BasicMeleeAttack basicMelee;
     [Export] protected double attackSpeed;
@@ -37,6 +38,7 @@ public abstract partial class MeleeTowerBase : ObstacleBase, IAct
             Enemy target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
+                this.TakeAction?.Invoke(target, EventArgs.Empty);
                 this.basicMelee.SetModifiers(this.attack, this.atkModifier);
                 this.basicMelee.Execute(target);
                 this.timeSinceLastAttack = 0;

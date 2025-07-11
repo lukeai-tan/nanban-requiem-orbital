@@ -77,7 +77,7 @@ public partial class Priestess : Boss
             else
             {
                 this.timer += delta;
-                if (timer >= 15)
+                if (timer >= 1)
                 {
                     switch (this.teleports)
                     {
