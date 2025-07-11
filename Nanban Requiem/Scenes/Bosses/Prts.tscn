@@ -1,14 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbhiw6joeb0wl"]
+[gd_scene load_steps=13 format=3 uid="uid://cbhiw6joeb0wl"]
 
 [ext_resource type="Script" uid="uid://6g7xoks4su25" path="res://C# Classes/Secret/Prts.cs" id="1_u5awg"]
+[ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/PrtsProjectile.tscn" id="2_2e4o6"]
 [ext_resource type="Texture2D" uid="uid://bg28xxd3dd7g5" path="res://Scenes/Bosses/New Piskel (35).png" id="2_lqta0"]
-[ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/GlobalDetectionRange.cs" id="3_lqta0"]
+[ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/Extras/GlobalDetectionRange.cs" id="3_lqta0"]
+[ext_resource type="PackedScene" uid="uid://cix7tiilnucau" path="res://Scenes/AdditionalEffects/PhysDefenseDown.tscn" id="3_rymh7"]
+[ext_resource type="PackedScene" uid="uid://bcavosimi0whx" path="res://Scenes/AdditionalEffects/PrtsControl.tscn" id="4_n4pua"]
+[ext_resource type="PackedScene" uid="uid://bk47mhjs1svyf" path="res://Scenes/AdditionalEffects/PrtsBomb.tscn" id="5_ghv44"]
+[ext_resource type="PackedScene" uid="uid://cekvx4f1jf3sd" path="res://Scenes/AdditionalEffects/EnemySingleUse.tscn" id="6_2e4o6"]
+[ext_resource type="Script" uid="uid://brgrbg8hlj10r" path="res://C# Classes/Secret/Prts Skills/Achlys.cs" id="9_7xx78"]
+[ext_resource type="Script" uid="uid://643lunkri5ak" path="res://C# Classes/Secret/Prts Skills/Astrape.cs" id="10_wocj5"]
+[ext_resource type="Script" uid="uid://lvb8mplvsbn5" path="res://C# Classes/Secret/Prts Skills/Charybdis.cs" id="11_h2rai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogxx2"]
 size = Vector2(1325, 892)
 
 [node name="Prts" type="CharacterBody2D"]
 script = ExtResource("1_u5awg")
+projectileScene = ExtResource("2_2e4o6")
+debuffScene = ExtResource("3_rymh7")
+controlDebuffScene = ExtResource("4_n4pua")
+bombDebuffScene = ExtResource("5_ghv44")
+areaScene = ExtResource("6_2e4o6")
+maxShieldHp = 5000
+skillcooldown = 5.0
+attack = 300
 health = 20000
 physDefense = 10
 artsDefense = 10
@@ -23,3 +39,14 @@ shape = SubResource("RectangleShape2D_ogxx2")
 
 [node name="Range" type="Node2D" parent="."]
 script = ExtResource("3_lqta0")
+
+[node name="Achlys" type="Node2D" parent="."]
+script = ExtResource("9_7xx78")
+cooldown = 5.0
+
+[node name="Astrape" type="Node2D" parent="."]
+script = ExtResource("10_wocj5")
+
+[node name="Charybdis" type="Node2D" parent="."]
+script = ExtResource("11_h2rai")
+cooldown = 18.0

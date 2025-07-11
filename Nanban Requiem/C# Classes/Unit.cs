@@ -43,7 +43,6 @@ public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
             this.health -= trueDamage;
             this.healthBar.Value = this.health;
         }
-        GD.Print(this.health);
     }
 
     public void Heal(int heal)

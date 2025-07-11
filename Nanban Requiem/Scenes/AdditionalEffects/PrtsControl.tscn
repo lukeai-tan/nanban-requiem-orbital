@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcavosimi0whx"]
+
+[ext_resource type="Script" uid="uid://beiw3g1wc3e47" path="res://C# Classes/Secret/Extras/TowerManipulation.cs" id="1_m173a"]
+[ext_resource type="PackedScene" uid="uid://ua2nf170j7ou" path="res://Scenes/Projectile/DemonSlimeProjectile.tscn" id="2_cxf8n"]
+[ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/Extras/GlobalDetectionRange.cs" id="3_xtdbs"]
+
+[node name="PrtsControl" type="Node2D"]
+script = ExtResource("1_m173a")
+projectileScene = ExtResource("2_cxf8n")
+id = 20
+duration = 8.0
+modifier = -1.0
+
+[node name="Range" type="Node2D" parent="."]
+script = ExtResource("3_xtdbs")

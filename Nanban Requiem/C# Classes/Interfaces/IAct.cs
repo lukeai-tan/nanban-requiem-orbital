@@ -4,6 +4,8 @@ using System;
 public interface IAct
 {
 
+    public event EventHandler TakeAction;
+
     public void SetActions();
 
     public void Act();

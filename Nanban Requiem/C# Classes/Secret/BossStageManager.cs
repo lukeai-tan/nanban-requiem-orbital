@@ -126,6 +126,7 @@ public partial class BossStageManager : Node2D
     private async void PhaseTwo()
     {
         this.GetTree().Paused = true;
+        this.ui.Call("toggle_ui");
         List<Node> towers = this.map.GetNodeOrNull("Towers").GetChildren().ToList();
         List<Node> enemies = this.map.GetNodeOrNull("Enemies").GetChildren().ToList();
         foreach (Node node in enemies)
@@ -146,6 +147,7 @@ public partial class BossStageManager : Node2D
         this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase2 High"));
 
         await ToSignal(GetTree().CreateTimer(3f), SceneTreeTimer.SignalName.Timeout);
+        this.ui.Call("toggle_ui");
         this.GetTree().Paused = false;
     }
 

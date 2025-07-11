@@ -7,6 +7,7 @@ using Godot;
 public abstract partial class Boss : Enemy, IAct
 {
 
+    public event EventHandler TakeAction;
     protected bool invulnerable = false;
     protected bool incapacitated = false;
     protected double timeSinceLastSkill = 0;
@@ -88,6 +89,7 @@ public abstract partial class Boss : Enemy, IAct
         BossSkill skill = this.ChooseSkill();
         if (skill != null)
         {
+            this.TakeAction?.Invoke(this, EventArgs.Empty);
             skill.Execute();
         }
     }

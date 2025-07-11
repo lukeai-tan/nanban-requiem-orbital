@@ -72,7 +72,6 @@ func _process(delta):
 		tower_builder.update_tower_preview()
 	wave_spawner._process(delta)
 
-
 ## Left Click to Deploy, Right Click to Cancel
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and tower_builder.build_mode:

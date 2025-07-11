@@ -6,6 +6,7 @@ using Godot;
 public abstract partial class RangedTowerBase : Tower, IAct
 {
 
+    public event EventHandler TakeAction;
     protected Attack rangedAttack;
     [Export] protected int projectileSpeed;
     protected BasicRangedAttack basicRanged;
@@ -41,6 +42,7 @@ public abstract partial class RangedTowerBase : Tower, IAct
             Enemy target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
+                this.TakeAction?.Invoke(target, EventArgs.Empty);
                 Sprite2D turret = this.GetNodeOrNull<Sprite2D>("Turret");
                 if (turret != null)
                 {
@@ -52,6 +54,12 @@ public abstract partial class RangedTowerBase : Tower, IAct
             }
         }
     }
+
+    public DetectionRange<Enemy> GetRange()
+    {
+        return this.range;
+    }
+
 
     public override void _ExitTree()
     {
