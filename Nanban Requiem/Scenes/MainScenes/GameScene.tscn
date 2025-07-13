@@ -318,6 +318,7 @@ texture_normal = ExtResource("9_br1xs")
 texture_pressed = ExtResource("10_80vwl")
 
 [node name="TowerUI" type="Control" parent="UI/HUD"]
+visible = false
 texture_filter = 1
 anchors_preset = 0
 offset_top = 128.0
