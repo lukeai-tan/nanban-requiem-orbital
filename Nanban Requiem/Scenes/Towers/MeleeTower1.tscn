@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="2_01t3b"]
 [ext_resource type="Script" uid="uid://oylut6vt30jg" path="res://C# Classes/Detection Range Subclasses/TowerBlockRange.cs" id="3_3d6m0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
-size = Vector2(133, 132)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ns6h8"]
+size = Vector2(54, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gu6rp"]
 size = Vector2(134, 132)
@@ -22,10 +22,7 @@ physDefense = 20
 artsDefense = 20
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-light_mask = 4
-visibility_layer = 8
-position = Vector2(0.5, 1)
-shape = SubResource("RectangleShape2D_a6yce")
+shape = SubResource("RectangleShape2D_ns6h8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -36,5 +33,4 @@ collision_mask = 8
 script = ExtResource("3_3d6m0")
 
 [node name="Hitbox" type="CollisionShape2D" parent="BlockRange"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_gu6rp")

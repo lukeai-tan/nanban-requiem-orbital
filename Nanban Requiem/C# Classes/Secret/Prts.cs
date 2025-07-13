@@ -17,9 +17,11 @@ public partial class Prts : Boss
     [Export] protected PackedScene controlDebuffScene;
     [Export] protected PackedScene bombDebuffScene;
     [Export] protected PackedScene areaScene;
+    [Export] protected PackedScene tileScene;
     protected BasicRangedBuff attack1;
     protected BasicMeleeBuff debuff1;
     protected AOEMeleeAttack attack2;
+    protected BasicMeleeAttack attack3;
     protected PrtsRandom targeting1;
     protected PrtsControl targeting2;
     protected TowerFurthestFromSelf targeting3;
@@ -56,15 +58,16 @@ public partial class Prts : Boss
         this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
         this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
         // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
 
         this.targeting1 = new PrtsRandom();
         this.targeting2 = new PrtsControl();
         this.targeting3 = new TowerFurthestFromSelf(this);
+        this.targeting1.SetTargets(2);
 
         this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
         this.attack1.SetAttackAndSpeed(new PhysicalAttack(), 300);
-        this.attack1.SetModifiers(this.attack, 0.5);
+        this.attack1.SetModifiers(this.attack, 0.4);
 
         this.debuff1 = new BasicMeleeBuff(this.controlDebuffScene);
         this.debuff1.SetAttack(new PhysicalAttack());
@@ -72,6 +75,10 @@ public partial class Prts : Boss
         this.attack2 = new AOEMeleeAttack(this.areaScene);
         this.attack2.SetAttack(new ArtsAttack());
         this.attack2.SetModifiers(this.attack, 1.2);
+
+        this.attack3 = new BasicMeleeAttack();
+        this.attack3.SetAttack(new ArtsAttack());
+        this.attack3.SetModifiers(this.attack, 0.6);
     }
 
     public void Connect(Priestess girlboss)
@@ -115,7 +122,7 @@ public partial class Prts : Boss
         GD.Print("Achlys");
         this.incapacitated = true;
         // this.animation.Play("");
-        Tower target = this.targeting1.GetTarget(this.range.GetAllTowers());
+        Tower target = this.targeting2.GetTarget(this.range.GetAllTowers());
         if (target != null)
         {
             this.debuff1.Execute(target);
@@ -134,11 +141,11 @@ public partial class Prts : Boss
         this.shield = true;
         while (shield)
         {
-            Tower target = this.targeting2.GetTarget(this.range.GetAllTowers());
+            Tower target = this.targeting1.GetTarget(this.range.GetAllTowers());
             if (target != null)
             {
                 this.attack1.Execute(target);
-                await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+                await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
             }
         }
         await ToSignal(GetTree().CreateTimer(15f), SceneTreeTimer.SignalName.Timeout);
@@ -188,9 +195,28 @@ public partial class Prts : Boss
     }
 
     // 2 / 3 consecutive devastating area attacks with windup
-    public async void Pharos()
+    public async void Pharos(List<Vector2> chosenPosition)
     {
-
+        GD.Print("Pharos");
+        this.incapacitated = true;
+        // this.animation.Play("");
+        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
+        List<Tower> targets = this.targeting1.GetTargets(this.range.GetAllTowers());
+        foreach (Tower target in targets)
+        {
+            Vector2 targetPosition = target.GlobalPosition;
+            foreach (Vector2 position in chosenPosition)
+            {
+                Node areaEffect = tileScene.Instantiate();
+                if (areaEffect is EnemyLasting effect)
+                {
+                    projectilesNode.AddChild(effect);
+                    effect.Activate(targetPosition + position, this.attack3);
+                }
+            }
+        }
+        this.Recover();
     }
 
     protected void Recover()

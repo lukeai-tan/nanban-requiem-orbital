@@ -6,5 +6,9 @@ using Godot;
 // Required fields: health, physDefense, artsDefense
 public abstract partial class Tower : Unit
 {
+    public virtual void Signal(Enemy target)
+    {
+
+    }
     
 }
