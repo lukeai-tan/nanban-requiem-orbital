@@ -29,6 +29,7 @@ public partial class VampiricBlast : ManualTowerSkill
         Enemy target = this.targeting.GetTarget(this.range.GetTargets());
         if (target != null)
         {
+            this.owner.Signal(target);
             aoe.Execute(target);
         }
 

@@ -38,12 +38,17 @@ public abstract partial class MeleeTowerBase : ObstacleBase, IAct
             Enemy target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
-                this.TakeAction?.Invoke(target, EventArgs.Empty);
+                this.Signal(target);
                 this.basicMelee.SetModifiers(this.attack, this.atkModifier);
                 this.basicMelee.Execute(target);
                 this.timeSinceLastAttack = 0;
             }
         }
+    }
+
+    public override void Signal(Enemy target)
+    {
+        this.TakeAction?.Invoke(target, EventArgs.Empty);
     }
 
     public override string ToString()
