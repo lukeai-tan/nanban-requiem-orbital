@@ -49,7 +49,6 @@ artsDefense = 10
 sprite_frames = SubResource("SpriteFrames_7q840")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_fdf7w")
 
 [node name="DetectionRange" type="Area2D" parent="."]

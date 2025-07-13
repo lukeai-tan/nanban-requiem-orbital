@@ -42,7 +42,7 @@ public abstract partial class RangedTowerBase : Tower, IAct
             Enemy target = this.targeting.GetTarget(this.range.GetTargets());
             if (target != null)
             {
-                this.TakeAction?.Invoke(target, EventArgs.Empty);
+                this.Signal(target);
                 Sprite2D turret = this.GetNodeOrNull<Sprite2D>("Turret");
                 if (turret != null)
                 {
@@ -60,6 +60,10 @@ public abstract partial class RangedTowerBase : Tower, IAct
         return this.range;
     }
 
+    public override void Signal(Enemy target)
+    {
+        this.TakeAction?.Invoke(target, EventArgs.Empty);
+    }
 
     public override void _ExitTree()
     {

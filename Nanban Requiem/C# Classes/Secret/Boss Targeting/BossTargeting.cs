@@ -14,7 +14,7 @@ public abstract partial class BossTargeting<T> : ITargeting<T>
         this.numTargets = numTargets;
     }
 
-    public T GetTarget(List<T> targets)
+    public virtual T GetTarget(List<T> targets)
     {
         return null;
     }
