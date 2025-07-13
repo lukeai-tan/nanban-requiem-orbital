@@ -121,6 +121,8 @@ curve = SubResource("Curve2D_sip0v")
 position = Vector2(641, 220)
 scale = Vector2(0.22, 0.22)
 collision_layer = 8
+controlDebuffScene = null
+bombDebuffScene = null
 
 [node name="Path2D" type="Path2D" parent="."]
 rotation = 0.00210521
