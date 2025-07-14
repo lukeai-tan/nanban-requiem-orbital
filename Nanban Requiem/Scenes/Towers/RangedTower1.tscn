@@ -14,6 +14,7 @@ radius = 306.0
 
 [node name="RangedTower1" type="CharacterBody2D"]
 collision_layer = 4
+input_pickable = true
 script = ExtResource("1_ymvci")
 projectileSpeed = 300
 projectileScene = ExtResource("2_qxkfp")

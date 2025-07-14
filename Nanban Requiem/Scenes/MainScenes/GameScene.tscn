@@ -318,7 +318,6 @@ texture_normal = ExtResource("9_br1xs")
 texture_pressed = ExtResource("10_80vwl")
 
 [node name="TowerUI" type="Control" parent="UI/HUD"]
-visible = false
 texture_filter = 1
 anchors_preset = 0
 offset_top = 128.0
@@ -368,6 +367,7 @@ texture_disabled = ExtResource("25_w1ipd")
 stretch_mode = 0
 
 [node name="Skill Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 448.0
 offset_right = 192.0
@@ -390,6 +390,7 @@ texture_hover = ExtResource("27_6bkwl")
 stretch_mode = 0
 
 [node name="Retreat Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 256.0
 offset_right = 448.0
@@ -412,6 +413,7 @@ texture_hover = ExtResource("29_w1ipd")
 stretch_mode = 0
 
 [node name="Relocate Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 448.0
 offset_right = 448.0
