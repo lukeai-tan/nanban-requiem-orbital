@@ -15,14 +15,21 @@ public partial class TowerUI : Control
 
     public override void _Process(double delta)
     {
+        // hide UI if tower selected is null or invalid
         if (selectedTower == null || !GodotObject.IsInstanceValid(selectedTower))
         {
             this.Visible = false;
+        }
+        // keep game slowmo when tower UI visible
+        if (this.Visible)
+        {
+            Engine.TimeScale = 0.3f;
         }
     }
 
     public void ShowTowerUI(Tower tower)
     {
+        Engine.TimeScale = 0.3f;
         selectedTower = tower;
         this.Visible = true;
         var towerName = tower.GetType().Name;
@@ -65,6 +72,9 @@ public partial class TowerUI : Control
     {
         selectedTower = null;
         this.Visible = false;
+        var gameData = GetNode("/root/GameData");
+        var timeScale = gameData.Get("time_scale").AsSingle();
+        Engine.TimeScale = timeScale;
     }
 
     private void OnRetreatPressed()
