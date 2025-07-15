@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=34 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://b7hgqo11wju8m" path="res://Assets/Icons/trashcanOpen.png" id="27_6bkwl"]
 [ext_resource type="Texture2D" uid="uid://btk7c3mroqymw" path="res://Assets/Icons/relocate.png" id="28_6bkwl"]
 [ext_resource type="Texture2D" uid="uid://bntn4ciixudhw" path="res://Assets/Icons/relocate_red.png" id="29_w1ipd"]
+[ext_resource type="Texture2D" uid="uid://csnom10870oa5" path="res://Assets/Icons/smaller.png" id="30_wr8p8"]
+[ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="32_wrbj6"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_68uyl")
@@ -409,9 +411,9 @@ offset_left = 336.0
 offset_top = 336.0
 offset_right = 432.0
 offset_bottom = 432.0
-texture_normal = ExtResource("28_6bkwl")
+texture_normal = ExtResource("30_wr8p8")
 texture_pressed = ExtResource("29_w1ipd")
-texture_hover = ExtResource("29_w1ipd")
+texture_hover = ExtResource("28_6bkwl")
 stretch_mode = 0
 
 [node name="Relocate Label" type="Label" parent="UI/HUD/TowerUI"]
@@ -426,7 +428,17 @@ text = "Relocate"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Close Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 72.0
+offset_right = 506.0
+offset_bottom = 122.0
+texture_normal = ExtResource("32_wrbj6")
+stretch_mode = 0
+
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/TowerUI/Retreat Button" to="UI/HUD/TowerUI" method="OnRetreatPressed"]
+[connection signal="pressed" from="UI/HUD/TowerUI/Close Button" to="UI/HUD/TowerUI" method="OnClosePressed"]

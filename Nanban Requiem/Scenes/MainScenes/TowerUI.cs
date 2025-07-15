@@ -8,6 +8,8 @@ public partial class TowerUI : Control
     {
         var retreatButton = GetNode<TextureButton>("Retreat Button");
         retreatButton.Pressed += OnRetreatPressed;
+        var closeButton = GetNode<TextureButton>("Close Button");
+        closeButton.Pressed += OnClosePressed;
         this.Visible = false;
     }
 
@@ -72,5 +74,10 @@ public partial class TowerUI : Control
             selectedTower.Retreat();
             this.Visible = false;
         }
+    }
+
+    private void OnClosePressed()
+    {
+        HideTowerUI();
     }
 }
