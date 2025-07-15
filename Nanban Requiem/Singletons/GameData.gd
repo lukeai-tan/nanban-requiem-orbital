@@ -1,7 +1,5 @@
 extends Node
 
-
-
 '''
 # Template for Tower Data
 "Tower name": {
