@@ -25,3 +25,4 @@ func get_priestess_healthbar():
 
 func get_prts_healthbar():
 	return prtshp
+
