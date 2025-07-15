@@ -27,7 +27,10 @@ public abstract partial class Tower : Unit
 
     public void Retreat()
     {
+        var towerUI = GetNode<TowerUI>("/root/SceneHandler/GameScene/UI/HUD/TowerUI");
+        towerUI.HideTowerUI();
         GD.Print("Tower retreated!");
+        Despawn();
         QueueFree();
     }
 

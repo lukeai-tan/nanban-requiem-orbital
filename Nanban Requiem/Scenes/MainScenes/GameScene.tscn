@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_rs15k"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_ahi2e"]
 [ext_resource type="Texture2D" uid="uid://d2ddhnm21a5gn" path="res://Assets/Icons/fastForward_red.png" id="19_7co2h"]
-[ext_resource type="Script" uid="uid://b6nu2v0k46sfg" path="res://Scenes/MainScenes/TowerUi.cs" id="22_g6bh8"]
+[ext_resource type="Script" uid="uid://b6nu2v0k46sfg" path="res://Scenes/MainScenes/TowerUI.cs" id="22_g6bh8"]
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="22_qv6gw"]
 [ext_resource type="Texture2D" uid="uid://ctbrxtgqpei24" path="res://Assets/UI/Buttons/skill_button_wa.png" id="23_32wgn"]
 [ext_resource type="Texture2D" uid="uid://crajht8v8egco" path="res://Assets/UI/Buttons/skill_button_1.png" id="24_44qbg"]
@@ -343,7 +343,7 @@ offset_right = 178.0
 offset_bottom = 239.0
 texture = ExtResource("22_qv6gw")
 
-[node name="Label" type="Label" parent="UI/HUD/TowerUI"]
+[node name="Tower Name" type="Label" parent="UI/HUD/TowerUI"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 256.0
