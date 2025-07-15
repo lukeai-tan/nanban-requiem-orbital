@@ -10,9 +10,10 @@ size = Vector2(54, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gu6rp"]
 size = Vector2(134, 132)
 
-[node name="Melee1" type="CharacterBody2D"]
+[node name="MeleeTower1" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 8
+input_pickable = true
 script = ExtResource("1_ns6h8")
 attackSpeed = 1.0
 blockCount = 2

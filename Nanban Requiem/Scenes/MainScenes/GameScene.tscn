@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=32 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_rs15k"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_ahi2e"]
 [ext_resource type="Texture2D" uid="uid://d2ddhnm21a5gn" path="res://Assets/Icons/fastForward_red.png" id="19_7co2h"]
+[ext_resource type="Script" uid="uid://b6nu2v0k46sfg" path="res://Scenes/MainScenes/TowerUi.cs" id="22_g6bh8"]
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="22_qv6gw"]
 [ext_resource type="Texture2D" uid="uid://ctbrxtgqpei24" path="res://Assets/UI/Buttons/skill_button_wa.png" id="23_32wgn"]
 [ext_resource type="Texture2D" uid="uid://crajht8v8egco" path="res://Assets/UI/Buttons/skill_button_1.png" id="24_44qbg"]
@@ -323,6 +324,7 @@ anchors_preset = 0
 offset_top = 128.0
 offset_right = 512.0
 offset_bottom = 704.0
+script = ExtResource("22_g6bh8")
 
 [node name="ColorRect" type="ColorRect" parent="UI/HUD/TowerUI"]
 self_modulate = Color(0, 0, 0, 0.470588)
@@ -427,3 +429,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/TowerUI/Retreat Button" to="UI/HUD/TowerUI" method="OnRetreatPressed"]

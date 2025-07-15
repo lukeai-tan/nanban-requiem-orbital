@@ -25,6 +25,7 @@ size = Vector2(54, 52)
 radius = 354.51
 
 [node name="RangedTowerBoy1" type="CharacterBody2D"]
+input_pickable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q15eo")

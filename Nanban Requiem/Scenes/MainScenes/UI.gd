@@ -91,6 +91,7 @@ func _on_fast_forward_pressed() -> void:
 
 # Restart current scene Button
 func _on_restart_pressed() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 	Engine.set_time_scale(1.0)
 	

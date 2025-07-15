@@ -12,6 +12,7 @@ size = Vector2(131, 136)
 
 [node name="Obstacle1" type="CharacterBody2D"]
 collision_layer = 4
+input_pickable = true
 script = ExtResource("1_kmpsh")
 blockCount = 3
 health = 1500
