@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var base_hp_bar = get_node("HUD/InfoBar/HBoxContainer/BaseHPBar")
 @onready var tower_count = get_node("HUD/InfoBar/Tower Count")
 @onready var build_bar = get_node("HUD/BuildBar")
+@onready var quit_window = get_node("HUD/QuitWindow")
 
 var tower_builder
 var tower_manager
@@ -91,10 +92,8 @@ func _on_fast_forward_pressed() -> void:
 
 # Restart current scene Button
 func _on_restart_pressed() -> void:
-	get_tree().paused = false
-	get_tree().reload_current_scene()
-	Engine.set_time_scale(1.0)
-	
+	quit_window.visible = true
+
 
 func update_health_bar(base_health):
 	var hp_bar_tween = base_hp_bar.create_tween()
@@ -130,3 +129,14 @@ func disable_build_bar():
 
 func toggle_ui():
 	ui.visible = !ui.visible
+
+
+func _on_no_button_pressed() -> void:
+	quit_window.visible = false
+
+
+func _on_quit_button_pressed() -> void:
+	quit_window.visible = false
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	Engine.set_time_scale(1.0)

@@ -520,8 +520,66 @@ offset_bottom = 122.0
 texture_normal = ExtResource("32_8qiig")
 stretch_mode = 0
 
+[node name="QuitWindow" type="Control" parent="UI/HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 224.0
+offset_right = 960.0
+offset_bottom = 608.0
+
+[node name="TextureRect" type="ColorRect" parent="UI/HUD/QuitWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 32.0
+offset_right = -128.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.788235)
+
+[node name="Label" type="Label" parent="UI/HUD/QuitWindow"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 56.0
+offset_right = 464.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 35
+text = "Exit
+
+Are you sure you want to exit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="No Button" type="Button" parent="UI/HUD/QuitWindow"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 224.0
+offset_right = 280.0
+offset_bottom = 264.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 25
+text = "No"
+
+[node name="Quit Button" type="Button" parent="UI/HUD/QuitWindow"]
+offset_left = 360.0
+offset_top = 224.0
+offset_right = 464.0
+offset_bottom = 264.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/TowerUI/Retreat Button" to="UI/HUD/TowerUI" method="OnRetreatPressed"]
 [connection signal="pressed" from="UI/HUD/TowerUI/Close Button" to="UI/HUD/TowerUI" method="OnClosePressed"]
+[connection signal="pressed" from="UI/HUD/QuitWindow/No Button" to="UI" method="_on_no_button_pressed"]
+[connection signal="pressed" from="UI/HUD/QuitWindow/Quit Button" to="UI" method="_on_quit_button_pressed"]
