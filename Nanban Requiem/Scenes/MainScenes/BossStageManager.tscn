@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cp4tsdihiexek"]
+[gd_scene load_steps=34 format=3 uid="uid://cp4tsdihiexek"]
 
 [ext_resource type="Script" uid="uid://q3eoe1jne7kw" path="res://C# Classes/Secret/BossStageManager.cs" id="1_7bv37"]
 [ext_resource type="Script" uid="uid://bim586pwyxbcj" path="res://Scenes/MainScenes/BossUI.gd" id="2_7bv37"]
@@ -20,7 +20,19 @@
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="18_jd04r"]
 [ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="18_spupq"]
 [ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="19_78aft"]
+[ext_resource type="Texture2D" uid="uid://d2ddhnm21a5gn" path="res://Assets/Icons/fastForward_red.png" id="20_0q0yg"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="20_rr8m3"]
+[ext_resource type="Script" uid="uid://b6nu2v0k46sfg" path="res://Scenes/MainScenes/TowerUI.cs" id="22_gggqq"]
+[ext_resource type="Texture2D" uid="uid://ctbrxtgqpei24" path="res://Assets/UI/Buttons/skill_button_wa.png" id="23_0q0yg"]
+[ext_resource type="Texture2D" uid="uid://crajht8v8egco" path="res://Assets/UI/Buttons/skill_button_1.png" id="24_2fqkj"]
+[ext_resource type="Texture2D" uid="uid://bxr2wh8jkyb4l" path="res://Assets/UI/Buttons/skill_button_cooldown.png" id="25_otjwt"]
+[ext_resource type="Texture2D" uid="uid://h5g1u7n8ixm4" path="res://Assets/Icons/trashcan.png" id="26_od0sx"]
+[ext_resource type="Texture2D" uid="uid://ciaxppxnws426" path="res://Assets/Icons/trashcanOpen_red.png" id="27_spupq"]
+[ext_resource type="Texture2D" uid="uid://b7hgqo11wju8m" path="res://Assets/Icons/trashcanOpen.png" id="28_78aft"]
+[ext_resource type="Texture2D" uid="uid://csnom10870oa5" path="res://Assets/Icons/smaller.png" id="29_rr8m3"]
+[ext_resource type="Texture2D" uid="uid://bntn4ciixudhw" path="res://Assets/Icons/relocate_red.png" id="30_ee708"]
+[ext_resource type="Texture2D" uid="uid://btk7c3mroqymw" path="res://Assets/Icons/relocate.png" id="31_unwaa"]
+[ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="32_8qiig"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_7bv37")
@@ -377,7 +389,9 @@ texture_normal = ExtResource("17_od0sx")
 [node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
 process_mode = 3
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("18_spupq")
+texture_pressed = ExtResource("20_0q0yg")
 
 [node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
 process_mode = 3
@@ -387,6 +401,127 @@ toggle_mode = true
 texture_normal = ExtResource("19_78aft")
 texture_pressed = ExtResource("20_rr8m3")
 
+[node name="TowerUI" type="Control" parent="UI/HUD"]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_top = 128.0
+offset_right = 512.0
+offset_bottom = 704.0
+script = ExtResource("22_gggqq")
+
+[node name="ColorRect" type="ColorRect" parent="UI/HUD/TowerUI"]
+self_modulate = Color(0, 0, 0, 0.470588)
+layout_mode = 2
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_vertical = 3
+
+[node name="TowerIcon" type="TextureRect" parent="UI/HUD/TowerUI"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+offset_left = 80.0
+offset_top = 144.0
+offset_right = 178.0
+offset_bottom = 239.0
+texture = ExtResource("18_jd04r")
+
+[node name="Tower Name" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 192.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 25
+text = "Chicken Don"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skill Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 336.0
+offset_top = 144.0
+offset_right = 432.0
+offset_bottom = 240.0
+texture_normal = ExtResource("23_0q0yg")
+texture_pressed = ExtResource("23_0q0yg")
+texture_hover = ExtResource("24_2fqkj")
+texture_disabled = ExtResource("25_otjwt")
+stretch_mode = 0
+
+[node name="Skill Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 192.0
+offset_bottom = 480.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 25
+text = "Retreat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retreat Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 336.0
+offset_right = 176.0
+offset_bottom = 432.0
+texture_normal = ExtResource("26_od0sx")
+texture_pressed = ExtResource("27_spupq")
+texture_hover = ExtResource("28_78aft")
+stretch_mode = 0
+
+[node name="Retreat Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 256.0
+offset_right = 448.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 25
+text = "Skill"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Relocate Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 336.0
+offset_right = 432.0
+offset_bottom = 432.0
+texture_normal = ExtResource("29_rr8m3")
+texture_pressed = ExtResource("30_ee708")
+texture_hover = ExtResource("31_unwaa")
+stretch_mode = 0
+
+[node name="Relocate Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 448.0
+offset_right = 448.0
+offset_bottom = 480.0
+theme_override_fonts/font = ExtResource("16_otjwt")
+theme_override_font_sizes/font_size = 25
+text = "Relocate"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 72.0
+offset_right = 506.0
+offset_bottom = 122.0
+texture_normal = ExtResource("32_8qiig")
+stretch_mode = 0
+
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/TowerUI/Retreat Button" to="UI/HUD/TowerUI" method="OnRetreatPressed"]
+[connection signal="pressed" from="UI/HUD/TowerUI/Close Button" to="UI/HUD/TowerUI" method="OnClosePressed"]
