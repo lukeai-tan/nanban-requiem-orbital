@@ -7,6 +7,7 @@ var move_tween: Tween
 var map_name: String
 
 signal map_selected(map_name: String)
+signal return_to_main_menu
 
 func _ready() -> void:
 	# sets default map to index 0 (aka Map 1)
@@ -18,6 +19,9 @@ func _ready() -> void:
 
 func _input(event):
 	if move_tween and move_tween.is_running():
+		return
+
+	if event is InputEventMouseButton:
 		return
 	
 	if event.is_action_pressed("ui_left") and current_map > 0:
@@ -32,7 +36,7 @@ func _input(event):
 
 
 func _on_map_icon_gui_input(event: InputEvent, index: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if current_map == index:
 			_confirm_map()
 		else:
@@ -46,7 +50,7 @@ func _confirm_map() -> void:
 		map_name = "Map%d" % (current_map + 1)
 	print("Selected map node: ", map_name)
 	emit_signal("map_selected", map_name)
-	
+
 	var cleanup_tween := get_tree().create_tween()
 	cleanup_tween.tween_interval(0.1)
 	cleanup_tween.tween_callback(Callable(self, "queue_free"))
@@ -67,3 +71,8 @@ func tween_icon():
 	move_tween.tween_property($PlayerIcon, "global_position", maps[current_map].global_position, 0.3).set_trans(Tween.TRANS_SINE)
 	maps[current_map].get_node("Label").self_modulate = Color(1, 1, 0)
 
+
+
+func _on_back_to_main_pressed() -> void:
+	emit_signal("return_to_main_menu")
+	queue_free()
