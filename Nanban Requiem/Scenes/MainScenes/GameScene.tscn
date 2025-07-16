@@ -484,6 +484,7 @@ theme_override_font_sizes/font_size = 25
 text = "No"
 
 [node name="Quit Button" type="Button" parent="UI/HUD/QuitWindow"]
+layout_mode = 0
 offset_left = 360.0
 offset_top = 224.0
 offset_right = 464.0
