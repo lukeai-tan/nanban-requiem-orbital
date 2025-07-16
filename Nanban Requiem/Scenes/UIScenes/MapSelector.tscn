@@ -142,9 +142,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MouseRightClick" type="TextureRect" parent="ControlHints"]
-offset_left = 122.667
+offset_left = 245.333
 offset_top = 16.0
-offset_right = 250.667
+offset_right = 373.333
 offset_bottom = 144.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_irdns")
@@ -167,9 +167,9 @@ vertical_alignment = 1
 
 [node name="MouseLeftClick" type="TextureRect" parent="ControlHints"]
 layout_mode = 0
-offset_left = 245.333
+offset_left = 122.667
 offset_top = 16.0
-offset_right = 373.333
+offset_right = 250.667
 offset_bottom = 144.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_gig1j")
