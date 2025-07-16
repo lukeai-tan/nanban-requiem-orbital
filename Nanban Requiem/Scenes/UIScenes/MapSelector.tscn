@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="4_wl4qx"]
 [ext_resource type="Texture2D" uid="uid://d1o2g8w8ym1il" path="res://Assets/Icons/ButtonA.png.png" id="6_u2tbe"]
 [ext_resource type="Texture2D" uid="uid://bev8dp65lls42" path="res://Assets/Icons/ButtonD.png.png" id="7_2j4ik"]
-[ext_resource type="Texture2D" uid="uid://d2wy8k0uvihyc" path="res://Assets/Icons/T_Mouse_Right_Key_White.png" id="8_irdns"]
 [ext_resource type="Texture2D" uid="uid://cf0l1w1dyp0m1" path="res://Assets/Icons/T_Mouse_Left_Key_White.png" id="9_gig1j"]
+[ext_resource type="Texture2D" uid="uid://chso7g3mw7gue" path="res://Assets/Icons/home.png" id="10_gig1j"]
 
 [node name="MapSelector" type="Control"]
 layout_mode = 3
@@ -83,6 +83,7 @@ offset_top = 128.0
 offset_right = 384.0
 offset_bottom = 256.0
 pivot_offset = Vector2(64, 64)
+mouse_filter = 2
 texture = ExtResource("4_wl4qx")
 
 [node name="ControlHints" type="Control" parent="."]
@@ -95,9 +96,9 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Left" type="Label" parent="ControlHints"]
 layout_mode = 2
-offset_left = -122.667
+offset_left = 10.6667
 offset_top = 26.6667
-offset_right = -81.6667
+offset_right = 51.6667
 offset_bottom = 40.6667
 theme_override_fonts/font = ExtResource("2_e51tu")
 text = "Left : "
@@ -106,17 +107,17 @@ vertical_alignment = 1
 
 [node name="ButtonA" type="TextureRect" parent="ControlHints"]
 layout_mode = 2
-offset_left = -90.6667
-offset_right = -26.6667
+offset_left = 42.6667
+offset_right = 106.667
 offset_bottom = 64.0
 texture = ExtResource("6_u2tbe")
 stretch_mode = 2
 
 [node name="Right" type="Label" parent="ControlHints"]
 layout_mode = 2
-offset_left = -32.0
+offset_left = 106.667
 offset_top = 26.6667
-offset_right = 7.0
+offset_right = 145.667
 offset_bottom = 40.6667
 theme_override_fonts/font = ExtResource("2_e51tu")
 text = "Right :"
@@ -125,30 +126,10 @@ vertical_alignment = 1
 
 [node name="ButtonD" type="TextureRect" parent="ControlHints"]
 layout_mode = 2
-offset_left = -1.52588e-05
-offset_right = 64.0
+offset_left = 138.667
+offset_right = 202.667
 offset_bottom = 64.0
 texture = ExtResource("7_2j4ik")
-stretch_mode = 2
-
-[node name="RightClick" type="Label" parent="ControlHints"]
-offset_left = 160.0
-offset_top = 26.6667
-offset_right = 234.0
-offset_bottom = 40.6667
-theme_override_fonts/font = ExtResource("2_e51tu")
-text = "Fast Select :"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MouseRightClick" type="TextureRect" parent="ControlHints"]
-offset_left = 245.333
-offset_top = 16.0
-offset_right = 373.333
-offset_bottom = 144.0
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_irdns")
-expand_mode = 1
 stretch_mode = 2
 
 [node name="LeftClick" type="Label" parent="ControlHints"]
@@ -156,20 +137,31 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.016
 anchor_right = 0.016
-offset_left = 58.8
+offset_left = 197.467
 offset_top = 26.6667
-offset_right = 113.8
+offset_right = 271.467
 offset_bottom = 40.6667
 theme_override_fonts/font = ExtResource("2_e51tu")
-text = "Confirm :"
+text = "Fast Select:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MouseLeftClick" type="TextureRect" parent="ControlHints"]
 layout_mode = 0
-offset_left = 122.667
+offset_left = 282.667
 offset_top = 16.0
-offset_right = 250.667
+offset_right = 410.667
 offset_bottom = 144.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_gig1j")
+
+[node name="BackToMain" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 112.0
+texture_normal = ExtResource("10_gig1j")
+stretch_mode = 0
+
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]

@@ -32,6 +32,7 @@ func on_new_game_pressed():
 
 	var map_selector = load("res://Scenes/UIScenes/MapSelector.tscn").instantiate()
 	map_selector.connect("map_selected", Callable(self, "_on_map_selected"))
+	map_selector.connect("return_to_main_menu", Callable(self, "_on_ui_returned").bind(map_selector))
 	call_deferred('add_child', map_selector)
 	
 
