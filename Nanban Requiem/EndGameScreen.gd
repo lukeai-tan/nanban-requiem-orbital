@@ -10,9 +10,6 @@ var animation_finished: bool = false
 signal game_finished(result)
 
 func _ready():
-	Engine.set_time_scale(1.0)
-	GameData.time_scale = 1.0
-
 	background.modulate.a = 0.0
 	death_message.modulate.a = 0.0
 	victory_message.modulate.a = 0.0
@@ -28,6 +25,9 @@ func _on_game_lost():
 
 
 func fade_in_label(message: Label):
+	Engine.set_time_scale(1.0)
+	GameData.time_scale = 1.0
+	
 	var tween = get_tree().create_tween()
 	
 	tween.tween_property(background, "modulate:a", 1.0, 1.5)\
