@@ -20,9 +20,11 @@ func _ready():
 	
 func _on_game_won():
 	fade_in_label(victory_message)
+	print("Game won")
 
 func _on_game_lost():
 	fade_in_label(death_message)
+	print("Game lost")
 
 
 func fade_in_label(message: Label):

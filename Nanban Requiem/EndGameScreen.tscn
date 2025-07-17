@@ -39,6 +39,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Victory Message" type="Label" parent="."]
+layout_mode = 0
 offset_left = 128.0
 offset_top = 320.0
 offset_right = 1152.0
