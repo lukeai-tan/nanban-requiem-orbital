@@ -67,8 +67,10 @@ func _on_map_selected(map_name: String):
 	else:
 		game_scene = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
 		game_scene.set("map_to_load", map_name)
-		game_scene.connect("game_finished", unload_game)
+		#game_scene.connect("game_finished", unload_game)
 		add_child(game_scene)
+		var end_game_screen = game_scene.get_node("UI/EndGameScreen")
+		end_game_screen.connect("game_finished", unload_game)
 
 func unload_game(_result):
 	var game_scene = get_node_or_null("GameScene")

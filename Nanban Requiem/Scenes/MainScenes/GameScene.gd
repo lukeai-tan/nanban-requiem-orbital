@@ -6,7 +6,7 @@ extends Node2D
 @onready var build_bar = get_node("UI/HUD/BuildBar")
 @onready var end_game_screen = get_node("UI/EndGameScreen")
 
-signal game_finished(result)
+# signal game_finished(result)
 signal game_won()
 signal game_lost()
 
@@ -63,8 +63,9 @@ func _ready():
 
 
 func _on_wave_complete():
-	game_finished.emit("game_finished")
+	#game_finished.emit("game_finished")
 	#wave_spawner.start_next_wave()
+	game_won.emit()
 	
 func on_base_damage(damage: float) -> void:
 	base_health -= damage

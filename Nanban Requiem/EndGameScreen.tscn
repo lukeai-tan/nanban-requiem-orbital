@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crbv7a1q6kijt"]
+[gd_scene load_steps=4 format=3 uid="uid://crbv7a1q6kijt"]
 
 [ext_resource type="FontFile" uid="uid://d0jwvllp2ku3i" path="res://Assets/Fonts/OptimusPrinceps.ttf" id="1_08l4r"]
 [ext_resource type="Script" uid="uid://c0dfusrw74lx8" path="res://EndGameScreen.gd" id="1_tt3y6"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="3_qftkq"]
 
 [node name="EndGameScreen" type="Control"]
 layout_mode = 3
@@ -29,7 +30,7 @@ offset_left = 128.0
 offset_top = 320.0
 offset_right = 1152.0
 offset_bottom = 512.0
-theme_override_colors/font_color = Color(0.309804, 0, 0.00392157, 1)
+theme_override_colors/font_color = Color(0.448662, 0, 0.00768516, 1)
 theme_override_fonts/font = ExtResource("1_08l4r")
 theme_override_font_sizes/font_size = 100
 text = "THEY DINED"
@@ -49,3 +50,52 @@ text = "LUNCH HAS BEEN SERVED"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="ReturnToMain" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+theme_override_fonts/font = ExtResource("3_qftkq")
+theme_override_font_sizes/font_size = 20
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Click anywhere to return to main menu"
+flat = true
+autowrap_mode = 3
+
+[connection signal="pressed" from="ReturnToMain" to="." method="_on_return_to_main_pressed"]
