@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cp4tsdihiexek"]
+[gd_scene load_steps=35 format=3 uid="uid://cp4tsdihiexek"]
 
 [ext_resource type="Script" uid="uid://q3eoe1jne7kw" path="res://C# Classes/Secret/BossStageManager.cs" id="1_7bv37"]
 [ext_resource type="Script" uid="uid://bim586pwyxbcj" path="res://Scenes/MainScenes/BossUI.gd" id="2_7bv37"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bntn4ciixudhw" path="res://Assets/Icons/relocate_red.png" id="30_ee708"]
 [ext_resource type="Texture2D" uid="uid://btk7c3mroqymw" path="res://Assets/Icons/relocate.png" id="31_unwaa"]
 [ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="32_8qiig"]
+[ext_resource type="PackedScene" uid="uid://crbv7a1q6kijt" path="res://EndGameScreen.tscn" id="34_2fqkj"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_7bv37")
@@ -576,6 +577,8 @@ offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("16_otjwt")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
+
+[node name="EndGameScreen" parent="UI" instance=ExtResource("34_2fqkj")]
 
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]

@@ -13,6 +13,7 @@ signal game_lost()
 var ui
 var map_to_load: String = "Map1"
 var base_health := 5.0
+var game_state: String = "playing"
 
 func _ready():
 	ui = get_node("UI")
@@ -65,14 +66,18 @@ func _ready():
 func _on_wave_complete():
 	#game_finished.emit("game_finished")
 	#wave_spawner.start_next_wave()
-	game_won.emit()
+	if(game_state != "defeat"):
+		game_won.emit()
 	
 func on_base_damage(damage: float) -> void:
+	if game_state == "defeat":
+		return
 	base_health -= damage
 	ui.update_health_bar(base_health)
 
 	if base_health <= 0:
 		#game_finished.emit("game_finished")
+		game_state = "defeat"
 		game_lost.emit()
 
 
