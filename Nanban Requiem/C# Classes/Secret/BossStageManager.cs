@@ -9,7 +9,7 @@ public partial class BossStageManager : Node2D
 
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
-    protected int objectiveHp = 10; //40000;
+    protected int objectiveHp = 40000;
 
     private Node towerBuilder;
     private BossWaveSpawner waveSpawner;
