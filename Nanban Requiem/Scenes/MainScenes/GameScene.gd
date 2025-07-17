@@ -70,10 +70,12 @@ func _on_wave_complete():
 		game_won.emit()
 	
 func on_base_damage(damage: float) -> void:
+	if game_state == "defeat":
+		return
 	base_health -= damage
 	ui.update_health_bar(base_health)
 
-	if base_health == 0:
+	if base_health <= 0:
 		#game_finished.emit("game_finished")
 		game_state = "defeat"
 		game_lost.emit()
