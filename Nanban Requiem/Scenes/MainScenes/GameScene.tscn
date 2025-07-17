@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://da5itagju6nrx"]
+[gd_scene load_steps=35 format=3 uid="uid://da5itagju6nrx"]
 
 [ext_resource type="Script" uid="uid://c3q2jl86ekc4u" path="res://Scenes/MainScenes/GameScene.gd" id="1_68uyl"]
 [ext_resource type="Script" uid="uid://nbuf0cmw2nrf" path="res://Scenes/MainScenes/UI.gd" id="3_jem3k"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bntn4ciixudhw" path="res://Assets/Icons/relocate_red.png" id="29_w1ipd"]
 [ext_resource type="Texture2D" uid="uid://csnom10870oa5" path="res://Assets/Icons/smaller.png" id="30_wr8p8"]
 [ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="32_wrbj6"]
+[ext_resource type="PackedScene" uid="uid://crbv7a1q6kijt" path="res://EndGameScreen.tscn" id="34_yxws4"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_68uyl")
@@ -492,6 +493,8 @@ offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("16_ahi2e")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
+
+[node name="EndGameScreen" parent="UI" instance=ExtResource("34_yxws4")]
 
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]

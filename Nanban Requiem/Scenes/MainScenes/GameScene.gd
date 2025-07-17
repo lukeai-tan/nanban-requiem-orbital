@@ -4,8 +4,11 @@ extends Node2D
 @onready var wave_spawner = preload("res://Scenes/MainScenes/WaveSpawner.gd").new()
 @onready var tower_manager = preload("res://Scenes/MainScenes/TowerManager.gd").new()
 @onready var build_bar = get_node("UI/HUD/BuildBar")
+@onready var end_game_screen = get_node("UI/EndGameScreen")
 
-signal game_finished(result)
+# signal game_finished(result)
+signal game_won()
+signal game_lost()
 
 var ui
 var map_to_load: String = "Map1"
@@ -52,19 +55,25 @@ func _ready():
 	wave_spawner.map_to_load = map_to_load
 	wave_spawner.wave_complete.connect(_on_wave_complete)
 	wave_spawner.start_next_wave()
+
+	game_won.connect(end_game_screen._on_game_won)
+	game_lost.connect(end_game_screen._on_game_lost)
+
 	Engine.set_time_scale(1.0)
 
 
 func _on_wave_complete():
-	game_finished.emit("game_finished")
+	#game_finished.emit("game_finished")
 	#wave_spawner.start_next_wave()
+	game_won.emit()
 	
 func on_base_damage(damage: float) -> void:
 	base_health -= damage
 	ui.update_health_bar(base_health)
 
 	if base_health <= 0:
-		game_finished.emit("game_finished")
+		#game_finished.emit("game_finished")
+		game_lost.emit()
 
 
 func _process(delta):

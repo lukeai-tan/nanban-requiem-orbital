@@ -83,12 +83,14 @@ func _on_pause_play_pressed() -> void:
 func _on_fast_forward_pressed() -> void:
 	if tower_builder.build_mode:
 		tower_builder.cancel_build_mode()
-	if Engine.get_time_scale() == 2.0:
+
+	var game_speed = 2.0 # made this for debugging reasons, default max is 2.0
+	if Engine.get_time_scale() == game_speed:
 		Engine.set_time_scale(1.0)
 		GameData.time_scale = 1.0
 	else:
-		Engine.set_time_scale(2.0)
-		GameData.time_scale = 2.0
+		Engine.set_time_scale(game_speed)
+		GameData.time_scale = game_speed
 
 # Restart current scene Button
 func _on_restart_pressed() -> void:
