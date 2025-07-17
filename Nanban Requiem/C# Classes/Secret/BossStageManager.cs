@@ -21,12 +21,14 @@ public partial class BossStageManager : Node2D
 
     private Priestess priestess;
     private Prts prts;
-    /*
+
+    private string gameState = "playing";
+    
     [Signal]
     public delegate void GameWonEventHandler();
     [Signal]
     public delegate void GameLostEventHandler();
-    */
+    
     public override void _Ready()
     {
         this.ui = GetNode("UI");
@@ -70,11 +72,11 @@ public partial class BossStageManager : Node2D
         //this.waveSpawner.Set("map_to_load", MapToLoad);
         //this.waveSpawner.Connect("wave_complete", new Callable(this, nameof(OnWaveComplete)));
         //this.waveSpawner.Call("start_next_wave");
-        /*
+        
         endGameScreen = GetNode("UI/EndGameScreen");
         Connect("GameWon", new Callable(endGameScreen, "_on_game_won"));
         Connect("GameLost", new Callable(endGameScreen, "_on_game_lost"));
-        */
+        
     }
 
     public void Initialize()
@@ -94,9 +96,13 @@ public partial class BossStageManager : Node2D
 
     private void Corrode(int damage)
     {
+        if (gameState == "defeat")
+            return;
         if (this.objectiveHp <= damage)
         {
-            this.EmitSignal(SignalName.GameFinished, "game_finished");
+            // this.EmitSignal(SignalName.GameFinished, "game_finished");
+            gameState = "defeat";
+            this.EmitSignal(SignalName.GameLost);
         }
         else
         {
@@ -107,10 +113,13 @@ public partial class BossStageManager : Node2D
 
     private void Corrode()
     {
+        if (gameState == "defeat")
+            return;
         if (this.objectiveHp <= 1)
         {
-            this.EmitSignal(SignalName.GameFinished, "game_finished");
-            // this.EmitSignal(SignalName.GameLost);
+            //this.EmitSignal(SignalName.GameFinished, "game_finished");
+            gameState = "defeat";
+            this.EmitSignal(SignalName.GameLost);
         }
         else
         {
@@ -132,8 +141,8 @@ public partial class BossStageManager : Node2D
         this.priestess.LockUI += (object boss, EventArgs e) => this.InvertUI();
         this.priestess.LockDeployment += (object boss, EventArgs e) => this.LockDeployment();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
-        this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
-        // this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameWon); // new one, idk if it works
+        //this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
+        this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameWon); // new one, idk if it works
     }
 
     private async void PhaseTwo()
