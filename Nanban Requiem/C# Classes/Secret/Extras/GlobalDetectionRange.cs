@@ -21,7 +21,7 @@ public partial class GlobalDetectionRange : Node2D
         List<Tower> towerlist = new List<Tower>();
         foreach (Node node in list)
         {
-            if (node is Tower tower)
+            if (node is Tower tower && tower.CanTarget())
             {
                 towerlist.Add(tower);
             }
@@ -35,7 +35,7 @@ public partial class GlobalDetectionRange : Node2D
         List<Enemy> enemylist = new List<Enemy>();
         foreach (Node node in list)
         {
-            if (node is Enemy enemy)
+            if (node is Enemy enemy && enemy.CanTarget())
             {
                 enemylist.Add(enemy);
             }
