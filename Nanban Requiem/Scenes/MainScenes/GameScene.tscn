@@ -407,6 +407,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Relocate Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+visible = false
 layout_mode = 0
 offset_left = 336.0
 offset_top = 336.0
@@ -418,6 +419,7 @@ texture_hover = ExtResource("28_6bkwl")
 stretch_mode = 0
 
 [node name="Relocate Label" type="Label" parent="UI/HUD/TowerUI"]
+visible = false
 layout_mode = 0
 offset_left = 320.0
 offset_top = 448.0
@@ -439,6 +441,7 @@ texture_normal = ExtResource("32_wrbj6")
 stretch_mode = 0
 
 [node name="QuitWindow" type="Control" parent="UI/HUD"]
+process_mode = 3
 visible = false
 anchors_preset = 0
 offset_left = 320.0
