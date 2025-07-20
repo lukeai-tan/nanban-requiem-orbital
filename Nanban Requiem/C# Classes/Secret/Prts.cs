@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Godot;
 
@@ -111,9 +112,12 @@ public partial class Prts : Boss
     }
 
     // Wipes all enemies / towers in a horizontal / vertical strip
-    public async void Helios()
+    public async void Helios(int orientation)
     {
-
+        GD.Print("Helios");
+        this.incapacitated = true;
+        // this.animation.Play("");
+        Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
     }
 
     // Debuffs a tower by making them attack other towers when trying to hit enemies
@@ -122,12 +126,12 @@ public partial class Prts : Boss
         GD.Print("Achlys");
         this.incapacitated = true;
         // this.animation.Play("");
+        await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         Tower target = this.targeting2.GetTarget(this.range.GetAllTowers());
         if (target != null)
         {
             this.debuff1.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -145,10 +149,10 @@ public partial class Prts : Boss
             if (target != null)
             {
                 this.attack1.Execute(target);
-                await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
             }
+            await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         }
-        await ToSignal(GetTree().CreateTimer(15f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(15f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -158,7 +162,7 @@ public partial class Prts : Boss
         GD.Print("Charybdis");
         this.incapacitated = true;
         // this.animation.Play("");
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
         this.Spread(new List<Tower>());
         this.Recover();
     }
@@ -200,7 +204,7 @@ public partial class Prts : Boss
         GD.Print("Pharos");
         this.incapacitated = true;
         // this.animation.Play("");
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(1.5f, false), SceneTreeTimer.SignalName.Timeout);
         Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
         List<Tower> targets = this.targeting1.GetTargets(this.range.GetAllTowers());
         foreach (Tower target in targets)
