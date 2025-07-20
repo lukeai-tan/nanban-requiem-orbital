@@ -120,7 +120,7 @@ public partial class Priestess : Boss
         {
             this.attack1.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -134,7 +134,7 @@ public partial class Priestess : Boss
         {
             this.buff1.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -145,7 +145,7 @@ public partial class Priestess : Boss
         this.incapacitated = true;
         // this.animation.Play("");
         this.LockUI?.Invoke(this, EventArgs.Empty);
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -155,12 +155,12 @@ public partial class Priestess : Boss
         GD.Print("Erebus");
         this.incapacitated = true;
         // this.animation.Play("");
-        await ToSignal(GetTree().CreateTimer(1f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
         foreach (Tower target in this.targeting3.GetTargets(this.range.GetAllTowers()))
         {
             this.attack2.Execute(target);
         }
-        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -171,7 +171,7 @@ public partial class Priestess : Boss
         this.incapacitated = true;
         // this.animation.Play("");
         this.LockDeployment?.Invoke(this, EventArgs.Empty);
-        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -181,7 +181,7 @@ public partial class Priestess : Boss
         this.invulnerable = true;
         this.incapacitated = true;
         this.targetable = false;
-        await ToSignal(GetTree().CreateTimer(30f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(30f, false), SceneTreeTimer.SignalName.Timeout);
         this.Zero?.Invoke(this, EventArgs.Empty);
         this.QueueFree();
     }

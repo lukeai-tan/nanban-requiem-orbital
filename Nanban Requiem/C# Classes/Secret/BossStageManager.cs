@@ -177,14 +177,14 @@ public partial class BossStageManager : Node2D
     {
         Transform2D invert = new Transform2D(new Vector2(-1, 0), new Vector2(0, -1), GetViewport().GetVisibleRect().Size);
         this.ui.Set("transform", invert);
-        await ToSignal(GetTree().CreateTimer(15f, true), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(15f, false), SceneTreeTimer.SignalName.Timeout);
         this.ui.Set("transform", Transform2D.Identity);
     }
 
     private async void LockDeployment()
     {
         this.ui.Call("disable_build_bar");
-        await ToSignal(GetTree().CreateTimer(15f, true), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(15f, false), SceneTreeTimer.SignalName.Timeout);
         this.ui.Call("enable_build_bar");
     }
 
