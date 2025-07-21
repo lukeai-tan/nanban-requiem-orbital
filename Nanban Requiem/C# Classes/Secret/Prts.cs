@@ -17,8 +17,10 @@ public partial class Prts : Boss
     [Export] protected PackedScene debuffScene;
     [Export] protected PackedScene controlDebuffScene;
     [Export] protected PackedScene bombDebuffScene;
+    [Export] protected PackedScene wipeScene;
     [Export] protected PackedScene areaScene;
     [Export] protected PackedScene tileScene;
+    protected UnitWipe wipe1;
     protected BasicRangedBuff attack1;
     protected BasicMeleeBuff debuff1;
     protected AOEMeleeAttack attack2;
@@ -58,13 +60,15 @@ public partial class Prts : Boss
     {
         this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
         this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
-        // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
+        this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
         this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
 
         this.targeting1 = new PrtsRandom();
         this.targeting2 = new PrtsControl();
         this.targeting3 = new TowerFurthestFromSelf(this);
         this.targeting1.SetTargets(2);
+
+        this.wipe1 = new UnitWipe();
 
         this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
         this.attack1.SetAttackAndSpeed(new PhysicalAttack(), 300);
@@ -112,12 +116,25 @@ public partial class Prts : Boss
     }
 
     // Wipes all enemies / towers in a horizontal / vertical strip
-    public async void Helios(int orientation)
+    public async void Helios()
     {
         GD.Print("Helios");
         this.incapacitated = true;
         // this.animation.Play("");
+        await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
+        Vector2 position = this.targeting1.GetTarget(this.range.GetAllTowers()).GlobalPosition;
+        Node areaWipe = wipeScene.Instantiate();
+        if (areaWipe is GeneralSingleUse effect)
+        {
+            projectilesNode.AddChild(effect);
+            if (GD.Randi() % 2 == 0)
+            {
+                effect.RotationDegrees = 90;
+            }
+            effect.Activate(position, this.wipe1);
+        }
+        this.Recover();
     }
 
     // Debuffs a tower by making them attack other towers when trying to hit enemies

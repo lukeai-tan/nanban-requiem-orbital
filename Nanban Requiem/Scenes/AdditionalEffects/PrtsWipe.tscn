@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4juao0shusri"]
+
+[ext_resource type="Script" uid="uid://besoi7ri8rtna" path="res://C# Classes/Area Effect Subclasses/GeneralSingleUse.cs" id="1_7hegc"]
+[ext_resource type="Texture2D" uid="uid://bc2g1sf4cevsk" path="res://Assets/Enemies/REDACTED.png" id="2_i5wdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5wdv"]
+
+[node name="PrtsWipe" type="Area2D"]
+collision_mask = 12
+script = ExtResource("1_7hegc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-3.05176e-05, -0.999985)
+scale = Vector2(2.5, 0.0703125)
+texture = ExtResource("2_i5wdv")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(128, 3.2)
+shape = SubResource("RectangleShape2D_i5wdv")
