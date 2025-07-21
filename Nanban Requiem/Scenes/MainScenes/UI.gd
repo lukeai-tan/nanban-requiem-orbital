@@ -95,6 +95,7 @@ func _on_fast_forward_pressed() -> void:
 # Restart current scene Button
 func _on_restart_pressed() -> void:
 	quit_window.visible = true
+	get_tree().paused = true
 
 
 func update_health_bar(base_health):
@@ -135,6 +136,7 @@ func toggle_ui():
 
 func _on_no_button_pressed() -> void:
 	quit_window.visible = false
+	get_tree().paused = false
 
 
 func _on_quit_button_pressed() -> void:
