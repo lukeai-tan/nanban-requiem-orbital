@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbhiw6joeb0wl"]
+[gd_scene load_steps=17 format=3 uid="uid://cbhiw6joeb0wl"]
 
 [ext_resource type="Script" uid="uid://6g7xoks4su25" path="res://C# Classes/Secret/Prts.cs" id="1_u5awg"]
 [ext_resource type="PackedScene" uid="uid://dcbx45vnyumly" path="res://Scenes/Projectile/PrtsProjectile.tscn" id="2_2e4o6"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bcavosimi0whx" path="res://Scenes/AdditionalEffects/PrtsControl.tscn" id="4_n4pua"]
 [ext_resource type="PackedScene" uid="uid://bk47mhjs1svyf" path="res://Scenes/AdditionalEffects/PrtsBomb.tscn" id="5_ghv44"]
 [ext_resource type="PackedScene" uid="uid://cekvx4f1jf3sd" path="res://Scenes/AdditionalEffects/EnemySingleUse.tscn" id="6_2e4o6"]
+[ext_resource type="PackedScene" uid="uid://d4juao0shusri" path="res://Scenes/AdditionalEffects/PrtsWipe.tscn" id="6_yqntt"]
 [ext_resource type="PackedScene" uid="uid://ciexfiplirnir" path="res://Scenes/AdditionalEffects/PrtsTile.tscn" id="7_n4pua"]
 [ext_resource type="Script" uid="uid://brgrbg8hlj10r" path="res://C# Classes/Secret/Prts Skills/Achlys.cs" id="9_7xx78"]
 [ext_resource type="Script" uid="uid://643lunkri5ak" path="res://C# Classes/Secret/Prts Skills/Astrape.cs" id="10_wocj5"]
 [ext_resource type="Script" uid="uid://lvb8mplvsbn5" path="res://C# Classes/Secret/Prts Skills/Charybdis.cs" id="11_h2rai"]
 [ext_resource type="Script" uid="uid://bktshdw6wkyat" path="res://C# Classes/Secret/Prts Skills/Pharos.cs" id="12_rymh7"]
+[ext_resource type="Script" uid="uid://bk2ffked578ri" path="res://C# Classes/Secret/Prts Skills/Helios.cs" id="15_7xx78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogxx2"]
 size = Vector2(1325, 892)
@@ -23,6 +25,7 @@ projectileScene = ExtResource("2_2e4o6")
 debuffScene = ExtResource("3_rymh7")
 controlDebuffScene = ExtResource("4_n4pua")
 bombDebuffScene = ExtResource("5_ghv44")
+wipeScene = ExtResource("6_yqntt")
 areaScene = ExtResource("6_2e4o6")
 tileScene = ExtResource("7_n4pua")
 maxShieldHp = 5000
@@ -56,6 +59,8 @@ cooldown = 15.0
 
 [node name="Pharos" type="Node2D" parent="."]
 script = ExtResource("12_rymh7")
-cooldown = 30.0
+cooldown = 25.0
 
 [node name="Helios" type="Node2D" parent="."]
+script = ExtResource("15_7xx78")
+cooldown = 35.0
