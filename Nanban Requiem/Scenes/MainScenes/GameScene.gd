@@ -5,6 +5,7 @@ extends Node2D
 @onready var tower_manager = preload("res://Scenes/MainScenes/TowerManager.gd").new()
 @onready var build_bar = get_node("UI/HUD/BuildBar")
 @onready var end_game_screen = get_node("UI/EndGameScreen")
+@onready var dp_bar = get_node("UI/HUD/DPBar")
 
 # signal game_finished(result)
 signal game_won()
@@ -40,6 +41,7 @@ func _ready():
 	tower_builder.tower_exclusions = map_node.get_node("TowerExclusions")
 	tower_builder.low_ground = map_node.get_node("Path")
 	tower_builder.high_ground = map_node.get_node("Ground")
+	tower_builder.dp_bar = dp_bar
 
 	ui.tower_builder = tower_builder
 	ui.tower_manager = tower_manager
