@@ -301,6 +301,7 @@ script = ExtResource("17_6wdf6")
 
 [node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
 layout_direction = 2
+layout_mode = 0
 offset_left = 880.0
 offset_top = 18.0
 offset_right = 912.0

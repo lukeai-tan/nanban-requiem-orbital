@@ -412,6 +412,7 @@ script = ExtResource("23_otjwt")
 
 [node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
 layout_direction = 2
+layout_mode = 0
 offset_left = 587.0
 offset_top = 93.0
 offset_right = 619.0
@@ -612,7 +613,6 @@ theme_override_font_sizes/font_size = 25
 text = "Quit"
 
 [node name="EndGameScreen" parent="UI" instance=ExtResource("34_2fqkj")]
-visible = false
 
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
