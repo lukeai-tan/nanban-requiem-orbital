@@ -9,6 +9,7 @@ var build_type: String
 var ui
 var tower_manager: Node2D
 var tower_preview_node = null
+var dp_bar: Control
 
 var tower_exclusions : TileMapLayer
 var low_ground : TileMapLayer
@@ -76,7 +77,7 @@ func cancel_build_mode():
 # IF build location is valid, instantiate selected tower scene
 # position it at stored tile
 func verify_and_build():
-	if build_valid and tower_manager and tower_manager.can_place_tower():
+	if dp_bar.can_spend_dp(10) and build_valid and tower_manager and tower_manager.can_place_tower():
 		var new_tower = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		map_node.get_node("Towers").add_child(new_tower)

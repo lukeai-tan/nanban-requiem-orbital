@@ -18,6 +18,7 @@ public partial class BossStageManager : Node2D
     private Node buildBar;
     private Node map;
     private Node endGameScreen;
+    private Node dpBar;
 
     private Priestess priestess;
     private Prts prts;
@@ -33,6 +34,7 @@ public partial class BossStageManager : Node2D
     {
         this.ui = GetNode("UI");
         this.buildBar = GetNode("UI/HUD/BuildBar");
+        this.dpBar = GetNode("UI/HUD/DPBar");
 
         var mapScene = GD.Load<PackedScene>($"res://Scenes/Maps/BossMap.tscn");
         Node mapNode = mapScene.Instantiate();
@@ -56,6 +58,7 @@ public partial class BossStageManager : Node2D
         this.towerBuilder.Set("tower_exclusions", this.map.GetNodeOrNull<TileMapLayer>("Phase1 Exclusions"));
         this.towerBuilder.Set("low_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase1 Low"));
         this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase1 High"));
+        this.towerBuilder.Set("dp_bar", this.dpBar);
 
         this.ui.Set("tower_builder", this.towerBuilder);
         this.ui.Set("tower_manager", this.towerManager);
