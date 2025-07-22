@@ -43,14 +43,14 @@ collision_layer = 8
 script = ExtResource("1_byv68")
 attackSpeed = 100.0
 blockCount = 10000
-movementSpeed = 5
+movementSpeed = 4
 attack = 300
 health = 30000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_fiei6")
-animation = &"running"
+animation = &"phase2"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visibility_layer = 8
