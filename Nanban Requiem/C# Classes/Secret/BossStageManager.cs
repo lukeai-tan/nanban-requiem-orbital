@@ -12,7 +12,6 @@ public partial class BossStageManager : Node2D
     protected int objectiveHp = 40000;
 
     private Node towerBuilder;
-    private BossWaveSpawner waveSpawner;
     private Node towerManager;
     private Node ui;
     private Node buildBar;
@@ -20,8 +19,18 @@ public partial class BossStageManager : Node2D
     private Node endGameScreen;
     private Node dpBar;
 
+    private BossWaveManager wave01;
+    private BossWaveManager wave02;
+    private BossWaveManager wave03;
+    private BossWaveManager wave11;
+    private BossWaveManager wave12;
+    private BossWaveManager wave21;
+    private BossWaveManager wave31;
+    private BossWaveManager wave32;
+
     private Priestess priestess;
     private Prts prts;
+    private List<Enemy> enemies = [];
 
     private string gameState = "playing";
     
@@ -49,7 +58,6 @@ public partial class BossStageManager : Node2D
         this.towerManager = (Node)towerManagerScript.Call("new");
 
         this.AddChild(towerBuilder);
-        //this.AddChild(waveSpawner);
         this.AddChild(towerManager);
 
         this.towerBuilder.Set("map_node", this.map);
@@ -71,21 +79,61 @@ public partial class BossStageManager : Node2D
         this.towerManager.Set("map_node", this.map);
         this.towerManager.Connect("tower_count_changed", new Callable(this.ui, "update_tower_count"));
 
-        //this.waveSpawner.Set("map_node", mapNode);
-        //this.waveSpawner.Set("map_to_load", MapToLoad);
-        //this.waveSpawner.Connect("wave_complete", new Callable(this, nameof(OnWaveComplete)));
-        //this.waveSpawner.Call("start_next_wave");
+        this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
+        this.wave01.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave02 = this.map.GetNodeOrNull<BossWaveManager>("Wave02");
+        this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave03 = this.map.GetNodeOrNull<BossWaveManager>("Wave03");
+        this.wave03.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave11 = this.map.GetNodeOrNull<BossWaveManager>("Wave11");
+        this.wave11.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave12 = this.map.GetNodeOrNull<BossWaveManager>("Wave12");
+        this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave21 = this.map.GetNodeOrNull<BossWaveManager>("Wave21");
+        this.wave21.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave31 = this.map.GetNodeOrNull<BossWaveManager>("Wave31");
+        this.wave31.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
+
+        this.wave32 = this.map.GetNodeOrNull<BossWaveManager>("Wave32");
+        this.wave32.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
         
         endGameScreen = GetNode("UI/EndGameScreen");
         Connect("GameWon", new Callable(endGameScreen, "_on_game_won"));
         Connect("GameLost", new Callable(endGameScreen, "_on_game_lost"));
-        
+    }
+
+    public void AddEnemy(Enemy enemy)
+    {
+        this.enemies.Add(enemy);
+        enemy.Despawning += this.RemoveEnemy;
+    }
+
+    protected void RemoveEnemy(object obj, EventArgs e)
+    {
+        if (obj is Enemy enemy)
+        {
+            this.enemies.Remove(enemy);
+        }
+    }
+
+    public List<Enemy> GetEnemies()
+    {
+        return this.enemies;
     }
 
     public void Initialize()
     {
         this.GetPrts();
         this.SpawnPriestess();
+        this.wave01.Activate();
+        this.wave02.Activate();
+        this.wave03.Activate();
     }
 
     private void GetPrts()
@@ -94,7 +142,7 @@ public partial class BossStageManager : Node2D
         this.prts.SetHealthBar((TextureProgressBar) this.ui.Call("get_prts_healthbar"));
         this.prts.SetActions();
         this.prts.Corrode += (object boss, EventArgs e) => this.Corrode();
-        this.prts.Zero += (object boss, EventArgs e) => this.ui.Call("update_ui");
+        this.prts.Zero += (object boss, EventArgs e) => this.SwapPriestess();
     }
 
     private void Corrode(int damage)
@@ -139,7 +187,7 @@ public partial class BossStageManager : Node2D
         this.priestess.SetHealthBar((TextureProgressBar)this.ui.Call("get_priestess_healthbar"));
         this.priestess.SetActions();
         this.prts.Connect(this.priestess);
-        this.priestess.Computation += (object boss, EventArgs e) => this.ui.Call("update_ui");
+        this.priestess.Computation += (object boss, EventArgs e) => this.SwapPrts();
         this.priestess.OnStage += (object boss, EventArgs e) => this.PhaseTwo();
         this.priestess.LockUI += (object boss, EventArgs e) => this.InvertUI();
         this.priestess.LockDeployment += (object boss, EventArgs e) => this.LockDeployment();
@@ -151,16 +199,21 @@ public partial class BossStageManager : Node2D
     private async void PhaseTwo()
     {
         this.GetTree().Paused = true;
+        this.wave01.Deactivate();
+        this.wave02.Deactivate();
+        this.wave03.Deactivate();
         this.ui.Call("toggle_ui");
-        List<Node> towers = this.map.GetNodeOrNull("Towers").GetChildren().ToList();
-        List<Node> enemies = this.map.GetNodeOrNull("Enemies").GetChildren().ToList();
-        foreach (Node node in enemies)
+
+        List<Enemy> enemies = this.enemies;
+        this.enemies = [];
+        foreach (Enemy enemy in enemies)
         {
-            node.QueueFree();
+            enemy.Despawn();
         }
-        foreach (Node node in towers)
+        List<Node> towers = this.map.GetNodeOrNull("Towers").GetChildren().ToList();
+        foreach (Tower tower in towers)
         {
-            node.QueueFree();
+            tower.Despawn();
         }
 
         this.map.GetNodeOrNull<TileMapLayer>("Phase1 Low").Visible = false;
@@ -174,6 +227,22 @@ public partial class BossStageManager : Node2D
         await ToSignal(GetTree().CreateTimer(3f), SceneTreeTimer.SignalName.Timeout);
         this.ui.Call("toggle_ui");
         this.GetTree().Paused = false;
+    }
+
+    private void SwapPrts()
+    {
+        this.ui.Call("update_ui");
+        this.wave11.Deactivate();
+        this.wave12.Deactivate();
+        this.wave21.Activate();
+    }
+
+    private void SwapPriestess()
+    {
+        this.ui.Call("update_ui");
+        this.wave21.Deactivate();
+        this.wave11.Activate();
+        this.wave12.Activate();
     }
 
     private async void InvertUI()
@@ -193,7 +262,8 @@ public partial class BossStageManager : Node2D
 
     private void PhaseFinal()
     {
-
+        this.wave31.Activate();
+        this.wave32.Activate();
     }
 
     private void OnWaveComplete()
@@ -208,12 +278,11 @@ public partial class BossStageManager : Node2D
 
     public override void _Process(double delta)
     {
-        if ((bool) this.towerBuilder.Get("build_mode"))
+        if ((bool)this.towerBuilder.Get("build_mode"))
             this.towerBuilder.Call("update_tower_preview");
 
         //this.waveSpawner.Call("_process", delta);
     }
-
 
     public override void _UnhandledInput(InputEvent @event)
     {

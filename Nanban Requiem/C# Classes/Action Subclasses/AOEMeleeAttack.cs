@@ -39,4 +39,18 @@ public partial class AOEMeleeAttack : Action
         }
     }
 
+    public void Execute<T>(Vector2 position, Node2D projectilesNode)
+        where T : Unit
+    {
+        if (this.IsUsable())
+        {
+            Node areaEffect = this.areaEffectScene.Instantiate();
+            if (areaEffect is AreaEffect<T> effect)
+            {
+                projectilesNode.AddChild(effect);
+                effect.Activate(position, hit);
+            }
+        }
+    }
+
 }

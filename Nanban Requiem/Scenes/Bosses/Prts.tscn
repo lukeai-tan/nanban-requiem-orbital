@@ -28,10 +28,10 @@ bombDebuffScene = ExtResource("5_ghv44")
 wipeScene = ExtResource("6_yqntt")
 areaScene = ExtResource("6_2e4o6")
 tileScene = ExtResource("7_n4pua")
-maxShieldHp = 5000
+maxShieldHp = 3000
 skillcooldown = 5.0
-attack = 250
-health = 20000
+attack = 200
+health = 12000
 physDefense = 10
 artsDefense = 10
 
