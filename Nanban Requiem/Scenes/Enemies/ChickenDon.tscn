@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjjv3ocs50q0b"]
+
+[ext_resource type="Script" uid="uid://dy3o01a4lhqt8" path="res://C# Classes/Enemies (Functional)/ChickenDon.cs" id="1_byv68"]
+[ext_resource type="Texture2D" uid="uid://ccq66vkmioso2" path="res://Assets/Enemies/ChickenDonLive_sprite.png" id="1_u7pvu"]
+[ext_resource type="Script" uid="uid://bra7k2qumsqdq" path="res://C# Classes/Detection Range Subclasses/EnemyDetectionRange.cs" id="3_fiei6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byv68"]
+atlas = ExtResource("1_u7pvu")
+region = Rect2(0, 0, 1280, 889)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fiei6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byv68")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7pvu"]
+radius = 176.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u3yh3"]
+radius = 1216.03
+
+[node name="ChickenDon" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_byv68")
+attackSpeed = 100.0
+blockCount = 10000
+movementSpeed = 1
+attack = 300
+health = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_fiei6")
+animation = &"running"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visibility_layer = 8
+shape = SubResource("CircleShape2D_u7pvu")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+position = Vector2(0, -27)
+collision_mask = 4
+script = ExtResource("3_fiei6")
+
+[node name="Hitbox" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(0, -53)
+shape = SubResource("CircleShape2D_u3yh3")

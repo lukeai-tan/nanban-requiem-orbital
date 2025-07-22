@@ -75,6 +75,15 @@ offset_right = -576.0
 offset_bottom = -192.0
 map_index = 4
 
+[node name="MapIcon5" parent="." instance=ExtResource("3_e51tu")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 16.0
+offset_top = 624.0
+offset_right = -1136.0
+offset_bottom = -16.0
+map_index = 5
+
 [node name="PlayerIcon" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 0

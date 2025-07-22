@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpiiksxa4re3i"]
+
+[ext_resource type="Texture2D" uid="uid://bhc7eoe5cj7x1" path="res://Assets/UI/Art/ChickenDonDagaKotowaru.jpg" id="1_56y7d"]
+[ext_resource type="Texture2D" uid="uid://dt7vqkgcrruvg" path="res://Assets/UI/Art/ChickenDonYakuza.png" id="2_r54xx"]
+
+[node name="ChickenDonTitleCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DagaKotowaru" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -40.0
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = ExtResource("1_56y7d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1288.0
+offset_bottom = 808.0
+texture = ExtResource("2_r54xx")
+expand_mode = 1

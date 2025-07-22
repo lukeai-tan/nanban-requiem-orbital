@@ -278,7 +278,11 @@ var wave_data = {
 		["NightBorne", 5.0],
 		["DemonSlime", 5.0]
 
+	],
 
-	]
+	"Map5": [
+		["ChickenDon", 0.0]
+
+	],
 	
 }

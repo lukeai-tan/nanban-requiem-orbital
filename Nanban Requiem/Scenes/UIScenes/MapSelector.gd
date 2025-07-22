@@ -1,7 +1,7 @@
 extends Control
 class_name MapSelector
 
-@onready var maps: Array = [$MapIcon1, $MapIcon2, $MapIcon3, $BossMapIcon]
+@onready var maps: Array = [$MapIcon1, $MapIcon2, $MapIcon3, $BossMapIcon, $MapIcon5]
 var current_map: int = 0
 var move_tween: Tween
 var map_name: String
