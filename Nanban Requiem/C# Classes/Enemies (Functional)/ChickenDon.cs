@@ -15,35 +15,48 @@ public partial class ChickenDon : BasicMeleeEnemy
 
     public override void _Process(double delta)
     {
-        if (this.initialized)
+        if (!initialized)
+            return;
+
+        if (IsBlocked())
         {
-            if (this.IsBlocked())
-            {
-                this.Act();
-            }
-            else
-            {
-                if (this.animation != null)
-                {
-                    if (phaseTwoStarted)
-                    {
-                        this.animation.Play("phase2");
-                    }
-                    else if (!phaseTwoStarted && this.health <= phaseOneHealth / 2)
-                    {
-                        GD.Print("Phase 2 started for ChickenDon");
-                        this.movementSpeed *= 5;
-                        phaseTwoStarted = true;
-                    }
-                    else
-                    {
-                        this.animation.Play("running");
-                    }
-                }
-                base.Move(delta);
-            }
-            this.timeSinceLastAttack += delta;
+            Act();
         }
+        else
+        {
+            HandleAnimation();
+            base.Move(delta);
+        }
+
+        timeSinceLastAttack += delta;
+    }
+
+    private void HandleAnimation()
+    {
+        if (animation == null)
+            return;
+
+        if (phaseTwoStarted)
+        {
+            animation.Play("phase2");
+        }
+        else if (health <= phaseOneHealth / 2)
+        {
+            GD.Print("Phase 2 started for ChickenDon");
+            movementSpeed *= 5;
+            phaseTwoStarted = true;
+            animation.Play("phase2");
+        }
+        else
+        {
+            animation.Play("running");
+        }
+    }
+    
+    public override void ReachedObjective(object pathing, EventArgs e)
+    {
+        this.EmitSignal(nameof(DamageBase), 1000);
+        this.Despawn();
     }
 
 }
