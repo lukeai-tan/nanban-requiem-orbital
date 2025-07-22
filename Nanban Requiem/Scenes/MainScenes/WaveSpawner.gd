@@ -9,6 +9,9 @@ signal wave_complete
 
 var map_node: Node2D
 
+func set_map(map):
+	map_node = map
+
 func _process(_delta):
 	if map_node:
 		var path = map_node.get_node_or_null("Path2D")
@@ -20,7 +23,7 @@ func _process(_delta):
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	await(get_tree().create_timer(0.2)).timeout
-	spawn_enemies(wave_data)
+	spawn_enemies(wave_data, map_node.get_node("Path2D"))
 
 
 func retrieve_wave_data():
@@ -30,12 +33,12 @@ func retrieve_wave_data():
 	return wave_data
 
 
-func spawn_enemies(wave_data):
+func spawn_enemies(wave_data, path):
 	for i in wave_data:
 		await get_tree().create_timer(i[1]).timeout
 
 		var enemy_scene = load("res://Scenes/Enemies/" + i[0] + ".tscn")
 		var enemy = enemy_scene.instantiate();
-		enemy.call("Initialize", map_node.get_node("Path2D"));
+		enemy.call("Initialize", path);
 		enemy.connect("DamageBase", Callable(get_parent(), "on_base_damage"))
 	all_enemies_in_wave_spawned = true

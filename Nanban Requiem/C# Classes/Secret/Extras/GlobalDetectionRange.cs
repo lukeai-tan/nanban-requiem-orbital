@@ -7,12 +7,10 @@ public partial class GlobalDetectionRange : Node2D
 {
 
     protected Node2D towers;
-    protected Node2D enemies;
 
     public override void _Ready()
     {
         this.towers = this.GetTree().CurrentScene.GetNodeOrNull<Node2D>("GameScene/Map/Towers");
-        this.enemies = this.GetTree().CurrentScene.GetNodeOrNull<Node2D>("GameScene/Map/Enemies");
     }
 
     public List<Tower> GetAllTowers()
@@ -31,16 +29,12 @@ public partial class GlobalDetectionRange : Node2D
 
     public List<Enemy> GetAllEnemies()
     {
-        List<Node> list = this.towers.GetChildren().ToList();
-        List<Enemy> enemylist = new List<Enemy>();
-        foreach (Node node in list)
+        Node2D manager = this.GetTree().CurrentScene.GetNodeOrNull<Node2D>("GameScene");
+        if (manager is BossStageManager bossManager)
         {
-            if (node is Enemy enemy && enemy.CanTarget())
-            {
-                enemylist.Add(enemy);
-            }
+            return bossManager.GetEnemies();
         }
-        return enemylist;
+        return [];
     }
 
 }

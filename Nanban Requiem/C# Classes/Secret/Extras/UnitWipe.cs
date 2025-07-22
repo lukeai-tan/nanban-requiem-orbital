@@ -8,7 +8,7 @@ public class UnitWipe : Action
     {
         if (!(target is Boss))
         {
-            target.QueueFree();
+            target.Despawn();
         }
     }
 

@@ -11,6 +11,7 @@ public partial class Prts : Boss
     public event EventHandler Half;
     public event EventHandler Zero;
     public Priestess girlboss;
+    public bool active = false;
 
     // Skills
     [Export] protected PackedScene projectileScene;
@@ -37,24 +38,8 @@ public partial class Prts : Boss
     {
         base._Ready();
         this.invulnerable = true;
-        this.incapacitated = true;
         this.targetable = false;
     }
-
-    // Wipes all enemies / towers in a horizontal / vertical strip
-    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Helios"));
-
-    // Turns one of your units hostile
-    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Achlys"));
-
-    // Unending machine gun attack until you "break" the "loop" (shield)
-    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Astrape"));
-
-    // Hot potato with units. You must "return" the bomb by relocating to her
-    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Charybdis"));
-
-    // Picks a designated area/pattern and deals massive damage to all in that area
-    // this.skills.Add(this.GetNodeOrNull<BossSkill>("Pharos"));
 
     public override void SetActions()
     {
@@ -97,13 +82,13 @@ public partial class Prts : Boss
         this.health = this.maxHealth;
         this.healthBar.Value = this.maxHealth;
         this.invulnerable = false;
-        this.incapacitated = false;
+        this.active = true;
         this.targetable = true;
     }
 
     public override void _Process(double delta)
     {
-        if (!this.incapacitated)
+        if (this.active && !this.incapacitated)
         {
             if (this.timeSinceLastSkill >= this.skillcooldown)
             {
@@ -286,13 +271,13 @@ public partial class Prts : Boss
     protected void Deactivate()
     {
         this.invulnerable = true;
-        this.incapacitated = true;
+        this.active = false;
         this.targetable = false;
     }
 
     public override float GetProgress()
     {
-        return 10000;
+        return 0;
     }
 
     public override void _ExitTree()

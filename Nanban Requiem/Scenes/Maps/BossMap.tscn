@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://xi6dbhxjj022" path="res://Resources/Tilesets/laboratory.tres" id="1_qn84b"]
 [ext_resource type="PackedScene" uid="uid://cbhiw6joeb0wl" path="res://Scenes/Bosses/Prts.tscn" id="2_8bh5t"]
+[ext_resource type="Script" uid="uid://dv0fgr10a0i22" path="res://C# Classes/Secret/BossWaveManager.cs" id="2_127qf"]
 
 [sub_resource type="Curve2D" id="Curve2D_127qf"]
 _data = {
@@ -51,12 +52,6 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Curve2D" id="Curve2D_hfx40"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 418.404, 543.156, 0, 0, 0, 0, 865.143, 542.18, 0, 0, 0, 0, 546.403, 542.591, 0, 0, 0, 0, 737.401, 541.747)
-}
-point_count = 4
-
 [node name="BossMap" type="Node2D"]
 
 [node name="Phase1 Low" type="TileMapLayer" parent="."]
@@ -90,26 +85,68 @@ tile_set = ExtResource("1_qn84b")
 [node name="Phase1 Enemy1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_127qf")
 
+[node name="Wave01" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.00210521
+script = ExtResource("2_127qf")
+path = NodePath("../Phase1 Enemy1")
+
 [node name="Phase1 Enemy2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_t2j5d")
+
+[node name="Wave02" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.00421042
+script = ExtResource("2_127qf")
+path = NodePath("../Phase1 Enemy2")
 
 [node name="Phase1 Enemy3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ygfns")
 
+[node name="Wave03" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.00631563
+script = ExtResource("2_127qf")
+path = NodePath("../Phase1 Enemy3")
+
 [node name="Phase2 Enemy1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_yg1dn")
+
+[node name="Wave11" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.00842084
+script = ExtResource("2_127qf")
+path = NodePath("../Phase2 Enemy1")
 
 [node name="Phase2 Enemy2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8qc03")
 
+[node name="Wave12" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.010526
+script = ExtResource("2_127qf")
+path = NodePath("../Phase2 Enemy2")
+
 [node name="Phase2 Enemy3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_53mf3")
+
+[node name="Wave21" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.0126313
+script = ExtResource("2_127qf")
+path = NodePath("../Phase2 Enemy3")
 
 [node name="Phase3 Enemy1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_f41pu")
 
+[node name="Wave31" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.0147365
+scale = Vector2(1, 1)
+script = ExtResource("2_127qf")
+path = NodePath("../Phase3 Enemy1")
+
 [node name="Phase3 Enemy2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_sip0v")
+
+[node name="Wave32" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+rotation = 0.0168417
+scale = Vector2(1, 1)
+script = ExtResource("2_127qf")
+path = NodePath("../Phase3 Enemy2")
 
 [node name="Projectiles" type="Node2D" parent="."]
 
@@ -122,6 +159,4 @@ position = Vector2(641, 220)
 scale = Vector2(0.22, 0.22)
 collision_layer = 8
 
-[node name="Path2D" type="Path2D" parent="."]
-rotation = 0.00210521
-curve = SubResource("Curve2D_hfx40")
+[node name="Node2D" type="Node2D" parent="."]

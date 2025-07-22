@@ -12,6 +12,7 @@ public partial class Priestess : Boss
     public event EventHandler Half;
     public event EventHandler OneQ;
     public event EventHandler Zero;
+    public bool active = true;
 
     // Skills
     [Export] protected PackedScene projectileScene;
@@ -63,7 +64,7 @@ public partial class Priestess : Boss
 
     public override void _Process(double delta)
     {
-        if (!this.incapacitated)
+        if (this.active && !this.incapacitated)
         {
             if (this.onStage)
             {
@@ -179,9 +180,24 @@ public partial class Priestess : Boss
     {
         this.Finale?.Invoke(this, EventArgs.Empty);
         this.invulnerable = true;
-        this.incapacitated = true;
+        this.active = false;
         this.targetable = false;
-        await ToSignal(GetTree().CreateTimer(30f, false), SceneTreeTimer.SignalName.Timeout);
+
+        Rect2 viewport = GetViewport().GetVisibleRect();
+        float minX = viewport.Position.X;
+        float maxX = viewport.End.X;
+        float minY = viewport.Position.Y;
+        float maxY = viewport.End.Y;
+        Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
+
+        this.attack2.SetModifiers(this.attack, 0.8);
+        for (int i = 0; i < 120; i++)
+        {
+            Vector2 position = new Vector2((float)GD.RandRange(minX, maxX), (float)GD.RandRange(minY, maxY));
+            this.attack2.Execute<Tower>(position, projectilesNode);
+            await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
+        }
+
         this.Zero?.Invoke(this, EventArgs.Empty);
         this.QueueFree();
     }
@@ -203,7 +219,7 @@ public partial class Priestess : Boss
     public void ComputationMode()
     {
         this.invulnerable = true;
-        this.incapacitated = true;
+        this.active = false;
         this.targetable = false;
         this.Computation?.Invoke(this, EventArgs.Empty);
     }
@@ -211,7 +227,7 @@ public partial class Priestess : Boss
     public void ExitComputation()
     {
         this.invulnerable = false;
-        this.incapacitated = false;
+        this.active = true;
         this.targetable = true;
         this.cooldown = 40;
     }
@@ -225,10 +241,12 @@ public partial class Priestess : Boss
 
     protected override void HalfF()
     {
+        /*
         if (!this.onStage)
         {
             this.ToStage();
         }
+        */
         this.Half?.Invoke(this, EventArgs.Empty);
         this.skillcooldown = 2;
         this.targeting1.SetTargets(3);
