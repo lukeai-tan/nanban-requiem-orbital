@@ -43,9 +43,9 @@ collision_layer = 8
 script = ExtResource("1_byv68")
 attackSpeed = 100.0
 blockCount = 10000
-movementSpeed = 100
+movementSpeed = 4
 attack = 300
-health = 1000
+health = 30000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)

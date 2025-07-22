@@ -45,18 +45,16 @@ public partial class ChickenDon : BasicMeleeEnemy
             GD.Print("Phase 2 started for ChickenDon");
             movementSpeed *= 5;
             phaseTwoStarted = true;
-            animation.Play("phase2");
         }
         else
         {
             animation.Play("running");
         }
     }
-    
+
     public override void ReachedObjective(object pathing, EventArgs e)
     {
         this.EmitSignal(nameof(DamageBase), 1000);
         this.Despawn();
     }
-
 }
