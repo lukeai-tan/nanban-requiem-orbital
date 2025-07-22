@@ -73,9 +73,9 @@ map_name = "404 Terrain Not Found"
 [node name="BossMapIcon" parent="." instance=ExtResource("3_e51tu")]
 layout_mode = 1
 offset_left = 576.0
-offset_top = 448.0
+offset_top = 488.0
 offset_right = -576.0
-offset_bottom = -192.0
+offset_bottom = -152.0
 map_index = 4
 map_name = "Boss Map"
 
