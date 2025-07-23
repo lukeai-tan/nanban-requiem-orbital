@@ -24,6 +24,7 @@ buses/default_bus_layout="res://Resources/Audio Bus/default_bus_layout.tres"
 ButtonSoundManager="*res://Singletons/ButtonSoundManager.gd"
 GameData="*res://Singletons/GameData.gd"
 GameVolume="*res://Singletons/GameVolume.gd"
+UserInfo="*res://Singletons/UserInfo.gd"
 
 [display]
 
