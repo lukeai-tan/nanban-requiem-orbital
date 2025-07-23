@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjj3tfinvtxuq"
+path="res://.godot/imported/Mozart Lacrimosa.mp3-abc100d1489314664e628c20d0423530.mp3str"
+
+[deps]
+
+source_file="res://Assets/UI/Sounds/Mozart Lacrimosa.mp3"
+dest_files=["res://.godot/imported/Mozart Lacrimosa.mp3-abc100d1489314664e628c20d0423530.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

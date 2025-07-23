@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://b8ktmdwqhxcg2"]
+[gd_scene load_steps=10 format=4 uid="uid://b8ktmdwqhxcg2"]
 
 [ext_resource type="Texture2D" uid="uid://twsat0y6aavq" path="res://Assets/Environment/Tilesets/New Piskel (29).png" id="1_6ktta"]
+[ext_resource type="AudioStream" uid="uid://cjj3tfinvtxuq" path="res://Assets/UI/Sounds/Mozart Lacrimosa.mp3" id="2_aea82"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aea82"]
 texture = ExtResource("1_6ktta")
@@ -57,3 +58,9 @@ curve = SubResource("Curve2D_i2n3y")
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aea82")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
