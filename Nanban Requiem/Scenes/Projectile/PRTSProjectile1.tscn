@@ -647,6 +647,7 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dwg4r")
-animation = &"black_hole"
-frame_progress = 0.0205833
+animation = &"black_fire"
+frame = 15
+frame_progress = 0.656379
 speed_scale = 2.0

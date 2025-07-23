@@ -19,7 +19,6 @@ offset_bottom = 800.0
 texture = ExtResource("1_56y7d")
 
 [node name="YakuzaTitle" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1288.0
 offset_bottom = 808.0
