@@ -58,6 +58,7 @@ func _on_ui_returned(ui_node):
 
 func _on_map_selected(map_name: String):
 	var game_scene: Node2D
+	GameData["tower_squad"] = GameData[map_name + "_tower_squad"]
 	if map_name == "BossMap":
 		game_scene = load("res://Scenes/MainScenes/BossStageManager.tscn").instantiate()
 		#game_scene.connect("GameFinished", unload_game)
