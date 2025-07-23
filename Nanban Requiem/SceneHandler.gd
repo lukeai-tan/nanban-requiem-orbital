@@ -65,6 +65,15 @@ func _on_map_selected(map_name: String):
 		game_scene.Initialize()
 		var end_game_screen = game_scene.get_node("UI/EndGameScreen")
 		end_game_screen.connect("game_finished", unload_game)
+
+	elif map_name == "Map5":
+		game_scene = load("res://Scenes/MainScenes/ChickenStageManager.tscn").instantiate()
+		game_scene.set("map_to_load", map_name)
+		#game_scene.connect("game_finished", unload_game)
+		add_child(game_scene)
+		var end_game_screen = game_scene.get_node("UI/EndGameScreen")
+		end_game_screen.connect("game_finished", unload_game)
+
 	else:
 		game_scene = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
 		game_scene.set("map_to_load", map_name)

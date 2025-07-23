@@ -135,7 +135,6 @@ curve = SubResource("Curve2D_f41pu")
 
 [node name="Wave31" type="Node2D" parent="." node_paths=PackedStringArray("path")]
 rotation = 0.0147365
-scale = Vector2(1, 1)
 script = ExtResource("2_127qf")
 path = NodePath("../Phase3 Enemy1")
 
@@ -144,7 +143,6 @@ curve = SubResource("Curve2D_sip0v")
 
 [node name="Wave32" type="Node2D" parent="." node_paths=PackedStringArray("path")]
 rotation = 0.0168417
-scale = Vector2(1, 1)
 script = ExtResource("2_127qf")
 path = NodePath("../Phase3 Enemy2")
 
