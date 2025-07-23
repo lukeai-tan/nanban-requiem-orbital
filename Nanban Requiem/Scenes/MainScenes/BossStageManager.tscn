@@ -228,7 +228,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="InfoBar" type="ColorRect" parent="UI/HUD"]
-self_modulate = Color(0, 0, 0, 0.470588)
+self_modulate = Color(0, 0, 0, 0.392157)
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 10

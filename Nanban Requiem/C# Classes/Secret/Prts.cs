@@ -39,6 +39,7 @@ public partial class Prts : Boss
         base._Ready();
         this.invulnerable = true;
         this.targetable = false;
+        this.animation.Play("inactive");
     }
 
     public override void SetActions()
@@ -77,13 +78,16 @@ public partial class Prts : Boss
         this.girlboss.Computation += this.Activate;
     }
 
-    public void Activate(object gb, EventArgs e)
+    public async void Activate(object gb, EventArgs e)
     {
+        this.animation.Play("activate");
         this.health = this.maxHealth;
         this.healthBar.Value = this.maxHealth;
         this.invulnerable = false;
+        await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
         this.active = true;
         this.targetable = true;
+        this.animation.Play("active");
     }
 
     public override void _Process(double delta)
@@ -268,11 +272,14 @@ public partial class Prts : Boss
     }
 
     // After switching back to priestess
-    protected void Deactivate()
+    protected async void Deactivate()
     {
+        this.animation.Play("deactivate");
         this.invulnerable = true;
         this.active = false;
         this.targetable = false;
+        await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
+        this.animation.Play("inactive");
     }
 
     public override float GetProgress()
