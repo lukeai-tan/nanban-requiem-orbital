@@ -78,6 +78,7 @@ public partial class BossStageManager : Node2D
         this.towerManager.Call("set_ui", this.ui);
         this.towerManager.Set("map_node", this.map);
         this.towerManager.Connect("tower_count_changed", new Callable(this.ui, "update_tower_count"));
+        this.towerManager.Call("change_deployment", 8);
 
         this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
         this.wave01.SetWave(["Samurai", "Samurai", "WhiteSamurai"], [2.0, 2.0, 2.0]);
