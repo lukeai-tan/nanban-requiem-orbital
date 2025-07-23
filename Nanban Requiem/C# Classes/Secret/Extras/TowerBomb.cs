@@ -46,7 +46,10 @@ public partial class TowerBomb : Buff
 
     public override void _ExitTree()
     {
-        this.marked.TakeAction -= this.CheckHit;
+        if (this.marked != null)
+        {
+            this.marked.TakeAction -= this.CheckHit;
+        }
     }
 
 }
