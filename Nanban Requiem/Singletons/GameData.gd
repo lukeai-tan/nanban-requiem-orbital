@@ -24,6 +24,79 @@ var tower_squad = {
 	"Chicken Don": false,
 }
 
+var default_tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": true,
+	"RangedTowerGirl2": true,
+	"RangedTowerBoy1": false,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
+
+var Map1_tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": false,
+	"RangedTowerGirl2": false,
+	"RangedTowerBoy1": false,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
+
+var Map2_tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": true,
+	"RangedTowerGirl2": true,
+	"RangedTowerBoy1": false,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
+
+var Map3_tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": true,
+	"RangedTowerGirl2": true,
+	"RangedTowerBoy1": false,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
+
+var BossMap_tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": true,
+	"RangedTowerGirl2": true,
+	"RangedTowerBoy1": false,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
+
+var Map5_tower_squad = {
+	"RangedTower1": true,
+	"RangedTower2": true,
+	"Obstacle1": true,
+	"MeleeTower1": true,
+	"RangedTowerGirl1": true,
+	"RangedTowerGirl2": true,
+	"RangedTowerBoy1": false,
+	"RangedTowerBoy2": false,
+	"Chicken Don": false,
+}
+
+
 var time_scale = 1.0
 
 
