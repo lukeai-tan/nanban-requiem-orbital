@@ -1,0 +1,485 @@
+[gd_scene load_steps=30 format=3 uid="uid://c3g43ty7liue1"]
+
+[ext_resource type="Script" uid="uid://cq4r2aj4q41m1" path="res://Scenes/MainScenes/ChickenStageManager.gd" id="1_kvht5"]
+[ext_resource type="Script" uid="uid://dkq7asf4xepr4" path="res://Scenes/MainScenes/ChickenUI.gd" id="1_v143w"]
+[ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="2_kvht5"]
+[ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="3_8dpi0"]
+[ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="4_grutb"]
+[ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="5_sc4fh"]
+[ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/RangedTower1_turret.png" id="6_0gv25"]
+[ext_resource type="Texture2D" uid="uid://cntcgyt8s5788" path="res://Assets/Towers/RangedTower2_turret.png" id="7_a71jk"]
+[ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/Obstacle1_base.png" id="8_2p6va"]
+[ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="9_podhk"]
+[ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl1_icon.png" id="10_r2dw7"]
+[ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="11_i5q25"]
+[ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="12_dbgf7"]
+[ext_resource type="FontFile" uid="uid://ck5qkpnasud14" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="13_q71lh"]
+[ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="14_vmbex"]
+[ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="15_vw7ms"]
+[ext_resource type="Script" uid="uid://s6nxfft1rx52" path="res://Scenes/MainScenes/DPManager.gd" id="16_b7p5v"]
+[ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="17_k20wf"]
+[ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="18_qh7v2"]
+[ext_resource type="Texture2D" uid="uid://d2ddhnm21a5gn" path="res://Assets/Icons/fastForward_red.png" id="19_y0lji"]
+[ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="20_uqd4l"]
+[ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="21_cis2r"]
+[ext_resource type="Script" uid="uid://b6nu2v0k46sfg" path="res://Scenes/MainScenes/TowerUI.cs" id="22_xod8d"]
+[ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="23_6bbgx"]
+[ext_resource type="Texture2D" uid="uid://h5g1u7n8ixm4" path="res://Assets/Icons/trashcan.png" id="24_ajdwl"]
+[ext_resource type="Texture2D" uid="uid://ciaxppxnws426" path="res://Assets/Icons/trashcanOpen_red.png" id="25_pr8l2"]
+[ext_resource type="Texture2D" uid="uid://b7hgqo11wju8m" path="res://Assets/Icons/trashcanOpen.png" id="26_y6er7"]
+[ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="27_p57q6"]
+[ext_resource type="PackedScene" uid="uid://crbv7a1q6kijt" path="res://EndGameScreen.tscn" id="28_d14am"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_kvht5")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("1_v143w")
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 180.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+script = ExtResource("2_kvht5")
+
+[node name="RangedTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0gv25")
+
+[node name="RangedTower2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTower2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_a71jk")
+
+[node name="Obstacle1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Obstacle1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_2p6va")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MeleeTower1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/MeleeTower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_podhk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RangedTowerGirl1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 168.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_r2dw7")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RangedTowerGirl2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerGirl2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 254.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_i5q25")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RangedTowerBoy1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["tower_options"]]
+visible = false
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_8dpi0")
+texture_pressed = ExtResource("4_grutb")
+texture_hover = ExtResource("5_sc4fh")
+stretch_mode = 4
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/RangedTowerBoy1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 168.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_dbgf7")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="InfoBar" type="ColorRect" parent="UI/HUD"]
+self_modulate = Color(0, 0, 0, 0.470588)
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+layout_mode = 0
+offset_right = 516.0
+offset_bottom = 60.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UI/HUD/InfoBar/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_q71lh")
+theme_override_font_sizes/font_size = 30
+text = "    HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseHPBar" type="TextureProgressBar" parent="UI/HUD/InfoBar/HBoxContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("14_vmbex")
+texture_progress = ExtResource("14_vmbex")
+tint_under = Color(0.215686, 0.215686, 0.215686, 1)
+tint_progress = Color(0.305882, 1, 0.0823529, 1)
+
+[node name="Tower Count Label" type="Label" parent="UI/HUD/InfoBar"]
+layout_direction = 2
+layout_mode = 2
+offset_left = 571.0
+offset_top = 18.0
+offset_right = 761.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 30
+text = "Tower count:"
+
+[node name="Tower Count" type="Label" parent="UI/HUD/InfoBar"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 718.0
+offset_top = 18.0
+offset_right = 842.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 30
+text = "0 / 10"
+horizontal_alignment = 1
+
+[node name="DPBar" type="Control" parent="UI/HUD"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_b7p5v")
+
+[node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 880.0
+offset_top = 18.0
+offset_right = 912.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 30
+text = "DP:"
+
+[node name="DPCount" type="Label" parent="UI/HUD/DPBar"]
+layout_mode = 0
+offset_left = 926.0
+offset_top = 18.0
+offset_right = 1022.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 30
+text = "0 / 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(150, 75)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Restart" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_mode = 2
+texture_normal = ExtResource("17_k20wf")
+
+[node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_qh7v2")
+texture_pressed = ExtResource("19_y0lji")
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_direction = 3
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("20_uqd4l")
+texture_pressed = ExtResource("21_cis2r")
+
+[node name="TowerUI" type="Control" parent="UI/HUD"]
+visible = false
+texture_filter = 1
+anchors_preset = 0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 704.0
+script = ExtResource("22_xod8d")
+
+[node name="ColorRect" type="ColorRect" parent="UI/HUD/TowerUI"]
+self_modulate = Color(0, 0, 0, 0.470588)
+layout_mode = 2
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 512.0
+size_flags_vertical = 3
+
+[node name="TowerIcon" type="TextureRect" parent="UI/HUD/TowerUI"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+offset_left = 80.0
+offset_top = 144.0
+offset_right = 178.0
+offset_bottom = 239.0
+texture = ExtResource("23_6bbgx")
+
+[node name="Tower Name" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 192.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 25
+text = "Chicken Don"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retreat Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 336.0
+offset_right = 176.0
+offset_bottom = 432.0
+texture_normal = ExtResource("24_ajdwl")
+texture_pressed = ExtResource("25_pr8l2")
+texture_hover = ExtResource("26_y6er7")
+stretch_mode = 0
+
+[node name="Retreat Label" type="Label" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 192.0
+offset_bottom = 480.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 25
+text = "Retreat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close Button" type="TextureButton" parent="UI/HUD/TowerUI"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 72.0
+offset_right = 250.0
+offset_bottom = 122.0
+texture_normal = ExtResource("27_p57q6")
+stretch_mode = 0
+
+[node name="QuitWindow" type="Control" parent="UI/HUD"]
+process_mode = 3
+visible = false
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 224.0
+offset_right = 960.0
+offset_bottom = 608.0
+
+[node name="TextureRect" type="ColorRect" parent="UI/HUD/QuitWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 32.0
+offset_right = -128.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Label" type="Label" parent="UI/HUD/QuitWindow"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 56.0
+offset_right = 464.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 35
+text = "Exit
+
+I decide who exits."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="No Button" type="Button" parent="UI/HUD/QuitWindow"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 224.0
+offset_right = 280.0
+offset_bottom = 264.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 25
+text = "No"
+
+[node name="Quit Button" type="Button" parent="UI/HUD/QuitWindow"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 224.0
+offset_right = 464.0
+offset_bottom = 264.0
+theme_override_fonts/font = ExtResource("15_vw7ms")
+theme_override_font_sizes/font_size = 25
+text = "No"
+
+[node name="EndGameScreen" parent="UI" instance=ExtResource("28_d14am")]
+visible = false
+
+[connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/TowerUI/Retreat Button" to="UI/HUD/TowerUI" method="OnRetreatPressed"]
+[connection signal="pressed" from="UI/HUD/TowerUI/Close Button" to="UI/HUD/TowerUI" method="OnClosePressed"]
+[connection signal="pressed" from="UI/HUD/QuitWindow/No Button" to="UI" method="_on_no_button_pressed"]
+[connection signal="pressed" from="UI/HUD/QuitWindow/Quit Button" to="UI" method="_on_quit_button_pressed"]
