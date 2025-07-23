@@ -132,6 +132,10 @@ public abstract partial class Unit : CharacterBody2D, IUnit, IBuffable
 
     public void Despawn()
     {
+        foreach (Buff buff in this.status.Values)
+        {
+            buff.Deactivate();
+        }
         this.Despawning?.Invoke(this, EventArgs.Empty);
         this.QueueFree();
     }

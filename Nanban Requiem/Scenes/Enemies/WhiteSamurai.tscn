@@ -271,8 +271,8 @@ script = ExtResource("1_jxw4w")
 attackSpeed = 1.0
 blockCount = 1
 movementSpeed = 200
-attack = 150
-health = 200
+attack = 120
+health = 250
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(100, 100, 100, 1)

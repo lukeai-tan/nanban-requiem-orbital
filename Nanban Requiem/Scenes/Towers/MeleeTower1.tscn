@@ -15,12 +15,12 @@ collision_layer = 4
 collision_mask = 8
 input_pickable = true
 script = ExtResource("1_ns6h8")
-attackSpeed = 1.0
+attackSpeed = 1.5
 blockCount = 2
-attack = 30
-health = 1000
-physDefense = 20
-artsDefense = 20
+attack = 50
+health = 1800
+physDefense = 50
+artsDefense = 50
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ns6h8")
