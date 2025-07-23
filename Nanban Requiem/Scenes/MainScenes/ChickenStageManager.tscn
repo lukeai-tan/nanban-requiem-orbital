@@ -448,7 +448,7 @@ theme_override_fonts/font = ExtResource("15_vw7ms")
 theme_override_font_sizes/font_size = 35
 text = "Exit
 
-I decide who exits."
+I decide who exits,"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
