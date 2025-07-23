@@ -225,7 +225,7 @@ public partial class BossStageManager : Node2D
         this.towerBuilder.Set("low_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase2 Low"));
         this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase2 High"));
 
-        await ToSignal(GetTree().CreateTimer(3f), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(3f, true, false, true), SceneTreeTimer.SignalName.Timeout);
         this.ui.Call("toggle_ui");
         this.GetTree().Paused = false;
     }
