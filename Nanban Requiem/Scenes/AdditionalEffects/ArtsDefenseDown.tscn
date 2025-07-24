@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://duhoektvmesce"]
+
+[ext_resource type="Script" uid="uid://dwjajxtkqht6b" path="res://C# Classes/Buff Subclasses/ArtsDefenseBuff.cs" id="1_jmlhc"]
+
+[node name="ArtsDefenseDown" type="Node2D"]
+script = ExtResource("1_jmlhc")
+id = 13
+duration = 10.0
+modifier = -0.25

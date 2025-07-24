@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://c5ok7mjdmckpy" path="res://C# Classes/Secret/Priestess.cs" id="1_g31t8"]
 [ext_resource type="PackedScene" uid="uid://wud3ewsei0u0" path="res://Scenes/Projectile/PriestessProjectile.tscn" id="2_bjx4r"]
 [ext_resource type="Texture2D" uid="uid://40fb12xnq80s" path="res://Scenes/Bosses/New Piskel (34).png" id="2_g31t8"]
-[ext_resource type="PackedScene" uid="uid://cix7tiilnucau" path="res://Scenes/AdditionalEffects/PhysDefenseDown.tscn" id="3_1eodr"]
+[ext_resource type="PackedScene" uid="uid://duhoektvmesce" path="res://Scenes/AdditionalEffects/ArtsDefenseDown.tscn" id="3_bjx4r"]
 [ext_resource type="Script" uid="uid://clg466wo3c6vv" path="res://C# Classes/Secret/Extras/GlobalDetectionRange.cs" id="3_fkma7"]
-[ext_resource type="PackedScene" uid="uid://dqxhgfphncata" path="res://Scenes/AdditionalEffects/MovementSpeedBuff.tscn" id="4_e2xoy"]
+[ext_resource type="PackedScene" uid="uid://b10vv10tqeyct" path="res://Scenes/AdditionalEffects/AttackBuff.tscn" id="4_1eodr"]
 [ext_resource type="Script" uid="uid://b1opburagbtmc" path="res://C# Classes/Secret/Priestess Skills/Inferno.cs" id="4_x3sye"]
 [ext_resource type="Script" uid="uid://deaiqsygxcy5s" path="res://C# Classes/Secret/Priestess Skills/Cocytus.cs" id="5_6kjgb"]
 [ext_resource type="PackedScene" uid="uid://cekvx4f1jf3sd" path="res://Scenes/AdditionalEffects/EnemySingleUse.tscn" id="5_bjx4r"]
@@ -20,8 +20,8 @@ size = Vector2(21, 49)
 collision_layer = 8
 script = ExtResource("1_g31t8")
 projectileScene = ExtResource("2_bjx4r")
-debuffScene = ExtResource("3_1eodr")
-buffScene = ExtResource("4_e2xoy")
+debuffScene = ExtResource("3_bjx4r")
+buffScene = ExtResource("4_1eodr")
 areaScene = ExtResource("5_bjx4r")
 skillcooldown = 3.0
 movementSpeed = 50

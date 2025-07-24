@@ -25,7 +25,7 @@ public abstract partial class BossTargeting<T> : ITargeting<T>
         int num = this.numTargets;
         int count = targets.Count;
         List<T> chosen = [];
-        for (int i = 0; i < Math.Max(num, count); i++)
+        for (int i = 0; i < Math.Min(num, count); i++)
         {
             chosen.Add(targets[i]);
         }

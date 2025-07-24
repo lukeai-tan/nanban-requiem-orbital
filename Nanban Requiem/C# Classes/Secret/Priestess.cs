@@ -56,6 +56,8 @@ public partial class Priestess : Boss
         this.attack1.SetModifiers(this.attack, 0.8);
 
         this.buff1 = new BasicMeleeBuff(this.buffScene);
+        this.buff1.SetAttack(new Heal());
+        this.buff1.SetModifiers(this.attack, 1);
 
         this.attack2 = new AOEMeleeAttack(this.areaScene);
         this.attack2.SetAttack(new PhysicalAttack());
