@@ -30,7 +30,7 @@ public partial class TowerBomb : Buff
 
     protected void CheckHit(object enemy, EventArgs e)
     {
-        if (enemy is Prts)
+        if (enemy is Boss)
         {
             this.spread = false;
             this.IsExpired();
@@ -40,7 +40,6 @@ public partial class TowerBomb : Buff
 
     public override void Deactivate()
     {
-        GD.Print(1);
         if (this.spread)
         {
             this.Next?.Invoke(marked, EventArgs.Empty);

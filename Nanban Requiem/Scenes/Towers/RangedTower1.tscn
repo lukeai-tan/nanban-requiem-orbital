@@ -9,8 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxkfp"]
 size = Vector2(54, 52)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qxkfp"]
-radius = 306.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymvci"]
+radius = 220.009
 
 [node name="RangedTower1" type="CharacterBody2D"]
 collision_layer = 4
@@ -42,5 +42,5 @@ shape = SubResource("RectangleShape2D_qxkfp")
 collision_mask = 8
 script = ExtResource("5_ymvci")
 
-[node name="Hitbox" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_qxkfp")
+[node name="HitBox" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_ymvci")
