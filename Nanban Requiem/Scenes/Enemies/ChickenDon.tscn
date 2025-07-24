@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy3o01a4lhqt8" path="res://C# Classes/Enemies (Functional)/ChickenDon.cs" id="1_byv68"]
 [ext_resource type="Texture2D" uid="uid://ccq66vkmioso2" path="res://Assets/Enemies/ChickenDonLive_sprite.png" id="1_u7pvu"]
-[ext_resource type="PackedScene" uid="uid://gktn1jymmjv3" path="res://Scenes/Projectile/PRTSProjectile1.tscn" id="2_0g67v"]
+[ext_resource type="PackedScene" uid="uid://gktn1jymmjv3" path="res://Scenes/Projectile/ChickenProjectile.tscn" id="2_0g67v"]
 [ext_resource type="Texture2D" uid="uid://cu20x6evykah4" path="res://Assets/Enemies/ChickenDonLivePhase2_sprite.png" id="2_u3yh3"]
 [ext_resource type="Script" uid="uid://bra7k2qumsqdq" path="res://C# Classes/Detection Range Subclasses/EnemyDetectionRange.cs" id="3_fiei6"]
 
@@ -37,7 +37,7 @@ animations = [{
 radius = 176.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u3yh3"]
-radius = 1216.03
+radius = 2152.01
 
 [node name="ChickenDon" type="CharacterBody2D"]
 collision_layer = 8
@@ -45,10 +45,10 @@ script = ExtResource("1_byv68")
 speedGrowthMultiplier = 1.05
 projectileSpeed = 300
 projectileScene = ExtResource("2_0g67v")
-attackSpeed = 1.0
+attackSpeed = 2.0
 blockCount = 1000
 movementSpeed = 5
-attack = 1000
+attack = 100
 health = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
