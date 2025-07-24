@@ -188,8 +188,9 @@ public partial class Prts : Boss
         }
     }
 
-    protected void Spread(List<Tower> marked)
+    protected async void Spread(List<Tower> marked)
     {
+        await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
         List<Tower> targets = this.range.GetAllTowers().Where(tower => !marked.Contains(tower)).ToList();
         Tower target = this.targeting3.GetTarget(targets);
         if (target != null)
