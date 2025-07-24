@@ -404,7 +404,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_otjwt")
 current_dp = 20
-dp_gain_rate = 1.5
 
 [node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
 layout_direction = 2
