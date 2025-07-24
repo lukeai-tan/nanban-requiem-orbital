@@ -27,8 +27,8 @@ skillcooldown = 3.0
 movementSpeed = 50
 attack = 200
 health = 25000
-physDefense = 30
-artsDefense = 30
+physDefense = 25
+artsDefense = 25
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

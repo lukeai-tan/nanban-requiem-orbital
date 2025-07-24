@@ -6,6 +6,7 @@ public partial class BossWaveManager : Node2D
 {
     protected BossStageManager manager;
     protected bool active = false;
+    protected bool auto = true;
     [Export] protected Path2D path;
     protected bool complete = true;
     protected List<String> enemies = [];
@@ -20,6 +21,11 @@ public partial class BossWaveManager : Node2D
     {
         this.enemies = enemies;
         this.intervals = intervals;
+    }
+
+    public void Auto(bool auto)
+    {
+        this.auto = auto;
     }
 
     public void Activate()
@@ -58,6 +64,10 @@ public partial class BossWaveManager : Node2D
             }
             await ToSignal(GetTree().CreateTimer(this.intervals[i], false), SceneTreeTimer.SignalName.Timeout);
             i++;
+        }
+        if (!this.auto)
+        {
+            this.Deactivate();
         }
         this.complete = true;
     }

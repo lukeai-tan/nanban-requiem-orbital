@@ -78,7 +78,7 @@ public partial class Priestess : Boss
             else
             {
                 this.timer += delta;
-                if (timer >= 1)
+                if (timer >= 30)
                 {
                     switch (this.teleports)
                     {
@@ -241,12 +241,10 @@ public partial class Priestess : Boss
 
     protected override void HalfF()
     {
-        /*
         if (!this.onStage)
         {
             this.ToStage();
         }
-        */
         this.Half?.Invoke(this, EventArgs.Empty);
         this.skillcooldown = 2;
         this.targeting1.SetTargets(3);
