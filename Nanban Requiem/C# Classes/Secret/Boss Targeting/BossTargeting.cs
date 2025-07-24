@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime;
 using Godot;
 
@@ -23,11 +24,12 @@ public abstract partial class BossTargeting<T> : ITargeting<T>
     {
         int num = this.numTargets;
         int count = targets.Count;
-        if (count > num)
+        List<T> chosen = [];
+        for (int i = 0; i < Math.Max(num, count); i++)
         {
-            targets.RemoveRange(num, count - num);
+            chosen.Add(targets[i]);
         }
-        return targets;
+        return chosen;
     }
 
 }

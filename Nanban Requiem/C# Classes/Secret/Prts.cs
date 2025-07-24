@@ -69,7 +69,7 @@ public partial class Prts : Boss
 
         this.attack3 = new BasicMeleeAttack();
         this.attack3.SetAttack(new ArtsAttack());
-        this.attack3.SetModifiers(this.attack, 0.6);
+        this.attack3.SetModifiers(this.attack, 0.8);
     }
 
     public void Connect(Priestess girlboss)
