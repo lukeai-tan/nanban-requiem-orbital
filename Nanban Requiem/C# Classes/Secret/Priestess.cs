@@ -78,7 +78,7 @@ public partial class Priestess : Boss
             else
             {
                 this.timer += delta;
-                if (timer >= 30)
+                if (timer >= 3)
                 {
                     switch (this.teleports)
                     {
@@ -191,11 +191,11 @@ public partial class Priestess : Boss
         Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
 
         this.attack2.SetModifiers(this.attack, 0.8);
-        for (int i = 0; i < 120; i++)
+        for (int i = 0; i < 240; i++)
         {
             Vector2 position = new Vector2((float)GD.RandRange(minX, maxX), (float)GD.RandRange(minY, maxY));
             this.attack2.Execute<Tower>(position, projectilesNode);
-            await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
+            await ToSignal(GetTree().CreateTimer(0.25f, false), SceneTreeTimer.SignalName.Timeout);
         }
 
         this.Zero?.Invoke(this, EventArgs.Empty);
@@ -229,7 +229,7 @@ public partial class Priestess : Boss
         this.invulnerable = false;
         this.active = true;
         this.targetable = true;
-        this.cooldown = 90;
+        this.cooldown = 75;
     }
 
     protected override void ThreeQF()

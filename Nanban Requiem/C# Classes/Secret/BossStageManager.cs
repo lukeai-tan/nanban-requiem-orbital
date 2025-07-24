@@ -81,22 +81,22 @@ public partial class BossStageManager : Node2D
         this.towerManager.Call("change_deployment", 8);
 
         this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
-        this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 10.0, 5.0, 10.0, 20.0]);
+        this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 10.0, 5.0, 10.0, 10.0]);
 
         this.wave02 = this.map.GetNodeOrNull<BossWaveManager>("Wave02");
-        this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 10.0]);
+        this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 5.0]);
 
         this.wave03 = this.map.GetNodeOrNull<BossWaveManager>("Wave03");
-        this.wave03.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 10.0]);
+        this.wave03.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 5.0]);
 
         this.wave11 = this.map.GetNodeOrNull<BossWaveManager>("Wave11");
-        this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 30.0]);
+        this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 15.0]);
 
         this.wave12 = this.map.GetNodeOrNull<BossWaveManager>("Wave12");
-        this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 30.0]);
+        this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 15.0]);
 
         this.wave21 = this.map.GetNodeOrNull<BossWaveManager>("Wave21");
-        this.wave21.SetWave(["Samurai", "Samurai", "Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai"], [5.0, 5.0, 5.0, 15.0, 5.0, 5.0, 15.0]);
+        this.wave21.SetWave(["Samurai", "Samurai", "Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai"], [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]);
 
         this.wave31 = this.map.GetNodeOrNull<BossWaveManager>("Wave31");
         this.wave31.SetWave(["DemonSlime"], [10.0]);
@@ -207,9 +207,9 @@ public partial class BossStageManager : Node2D
         this.wave03.Deactivate();
         this.ui.Call("toggle_ui");
 
-        List<Enemy> enemies = this.enemies;
+        List<Enemy> currlist = this.enemies;
         this.enemies = [];
-        foreach (Enemy enemy in enemies)
+        foreach (Enemy enemy in currlist)
         {
             enemy.Despawn();
         }

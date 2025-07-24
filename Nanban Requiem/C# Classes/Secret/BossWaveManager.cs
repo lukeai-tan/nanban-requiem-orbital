@@ -59,8 +59,8 @@ public partial class BossWaveManager : Node2D
             if (entity is Enemy enemy)
             {
                 enemy.Initialize(this.path);
-                enemy.Connect("DamageBase", new Callable(this, nameof(OnBaseDamage)));
                 this.manager.AddEnemy(enemy);
+                enemy.Connect("DamageBase", new Callable(this, nameof(OnBaseDamage)));
             }
             await ToSignal(GetTree().CreateTimer(this.intervals[i], false), SceneTreeTimer.SignalName.Timeout);
             i++;
