@@ -93,7 +93,7 @@ var Map5_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"RangedTowerChicken": false,
+	"RangedTowerChicken": true,
 }
 
 
