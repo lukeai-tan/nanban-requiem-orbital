@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class ChickenDon : BasicMeleeEnemy
+public partial class ChickenDon : BasicRangedEnemy
 {
     [Export]
     public float speedGrowthMultiplier = 2.0f;
@@ -15,6 +15,8 @@ public partial class ChickenDon : BasicMeleeEnemy
     public override void _Ready()
     {
         this.meleeAttack = new PhysicalAttack();
+        this.rangedAttack = new ArtsAttack();
+        this.targeting = new TowerFurthestFromSelf(this);
         base._Ready();
         phaseOneHealth = this.health;
         originalSpeed = this.movementSpeed;
@@ -25,8 +27,9 @@ public partial class ChickenDon : BasicMeleeEnemy
         if (!initialized)
             return;
 
-        if (IsBlocked())
+        if (phaseThreeStarted && !IsBlocked())
         {
+            movementSpeed = 0;
             Act();
         }
         else
@@ -50,7 +53,11 @@ public partial class ChickenDon : BasicMeleeEnemy
     {
         if (animation == null)
             return;
-
+        if (health <= phaseOneHealth / 4 && !phaseThreeStarted)
+        {
+            GD.Print("Phase 3 started");
+            phaseThreeStarted = true;
+        }
         if (health <= phaseOneHealth / 2 && !phaseTwoStarted)
         {
             GD.Print("Phase 2 started");

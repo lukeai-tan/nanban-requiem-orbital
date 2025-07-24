@@ -180,7 +180,7 @@ var tower_data = {
 	},
 
 	"RangedTowerChicken": {
-		"range": 0,
+		"range": 1000,
 		"sprite_icon": "res://Assets/Towers/ChickenDon_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerChicken_sprite.png",
 		"name": "Chicken 'Don'",
