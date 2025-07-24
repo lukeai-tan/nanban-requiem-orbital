@@ -21,7 +21,7 @@ var tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 var default_tower_squad = {
@@ -33,7 +33,7 @@ var default_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 var Map1_tower_squad = {
@@ -45,7 +45,7 @@ var Map1_tower_squad = {
 	"RangedTowerGirl2": false,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 var Map2_tower_squad = {
@@ -57,7 +57,7 @@ var Map2_tower_squad = {
 	"RangedTowerGirl2": false,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 var Map3_tower_squad = {
@@ -69,7 +69,7 @@ var Map3_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 var BossMap_tower_squad = {
@@ -81,7 +81,7 @@ var BossMap_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 var Map5_tower_squad = {
@@ -93,7 +93,7 @@ var Map5_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"Chicken Don": false,
+	"RangedTowerChicken": false,
 }
 
 
@@ -150,7 +150,7 @@ var tower_data = {
 
 
 	"RangedTowerGirl2": {
-		"range": 400,
+		"range": 800,
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl2_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl2_base.png",
 		"name": "Nyx",
@@ -179,10 +179,10 @@ var tower_data = {
 		"stats": "Coming soon"
 	},
 
-	"Chicken Don": {
+	"RangedTowerChicken": {
 		"range": 0,
 		"sprite_icon": "res://Assets/Towers/ChickenDon_icon.png",
-		"sprite_in_game": "res://Assets/Towers/ChickenDon_sprite.png",
+		"sprite_in_game": "res://Assets/Towers/RangedTowerChicken_sprite.png",
 		"name": "Chicken 'Don'",
 		"description": "The Chicken, The Myth, The Legend.\n
 						This is the 'Before' image of the Spicy Tartar Chicken Nanban Don",

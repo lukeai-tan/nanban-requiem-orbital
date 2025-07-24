@@ -41,7 +41,7 @@ func _create_buttons():
         icon.offset_top = 0
         icon.offset_right = 20
         icon.offset_bottom = 12
-        
+        icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST        
         icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
         tower_button.add_child(icon)
