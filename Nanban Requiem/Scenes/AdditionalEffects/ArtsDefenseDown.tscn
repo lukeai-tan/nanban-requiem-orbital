@@ -6,4 +6,4 @@
 script = ExtResource("1_jmlhc")
 id = 13
 duration = 10.0
-modifier = -0.25
+modifier = -0.4

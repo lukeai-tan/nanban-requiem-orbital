@@ -60,7 +60,7 @@ public partial class Priestess : Boss
         this.buff1.SetModifiers(this.attack, 1);
 
         this.attack2 = new AOEMeleeAttack(this.areaScene);
-        this.attack2.SetAttack(new PhysicalAttack());
+        this.attack2.SetAttack(new ArtsAttack());
         this.attack2.SetModifiers(this.attack, 0.8);
     }
 
