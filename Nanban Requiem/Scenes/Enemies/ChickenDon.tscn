@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjjv3ocs50q0b"]
+[gd_scene load_steps=11 format=3 uid="uid://cjjv3ocs50q0b"]
 
 [ext_resource type="Script" uid="uid://dy3o01a4lhqt8" path="res://C# Classes/Enemies (Functional)/ChickenDon.cs" id="1_byv68"]
 [ext_resource type="Texture2D" uid="uid://ccq66vkmioso2" path="res://Assets/Enemies/ChickenDonLive_sprite.png" id="1_u7pvu"]
+[ext_resource type="PackedScene" uid="uid://gktn1jymmjv3" path="res://Scenes/Projectile/PRTSProjectile1.tscn" id="2_0g67v"]
 [ext_resource type="Texture2D" uid="uid://cu20x6evykah4" path="res://Assets/Enemies/ChickenDonLivePhase2_sprite.png" id="2_u3yh3"]
 [ext_resource type="Script" uid="uid://bra7k2qumsqdq" path="res://C# Classes/Detection Range Subclasses/EnemyDetectionRange.cs" id="3_fiei6"]
 
@@ -42,18 +43,20 @@ radius = 1216.03
 collision_layer = 8
 script = ExtResource("1_byv68")
 speedGrowthMultiplier = 1.05
-attackSpeed = 100.0
+projectileSpeed = 300
+projectileScene = ExtResource("2_0g67v")
+attackSpeed = 1.0
 blockCount = 1000
 movementSpeed = 5
-attack = 300
-health = 50000
+attack = 1000
+health = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_fiei6")
 animation = &"phase2"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 8
 shape = SubResource("CircleShape2D_u7pvu")
 

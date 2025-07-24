@@ -81,7 +81,7 @@ var BossMap_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"RangedTowerChicken": false,
+	"RangedTowerChicken": true,
 }
 
 var Map5_tower_squad = {
@@ -93,7 +93,7 @@ var Map5_tower_squad = {
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
 	"RangedTowerBoy2": false,
-	"RangedTowerChicken": true,
+	"RangedTowerChicken": false,
 }
 
 
@@ -180,7 +180,7 @@ var tower_data = {
 	},
 
 	"RangedTowerChicken": {
-		"range": 0,
+		"range": 1000,
 		"sprite_icon": "res://Assets/Towers/ChickenDon_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerChicken_sprite.png",
 		"name": "Chicken 'Don'",
