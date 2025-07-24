@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0hlly3rfwj3k"
-path="res://.godot/imported/ChickenDon_sprite.png-e745192e55e1970ef875a0569064deae.ctex"
+uid="uid://cx1c8tiawaljh"
+path="res://.godot/imported/RangedTowerChicken_base.png-543f7914cd955580efacdc60e316cd5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Towers/ChickenDon_sprite.png"
-dest_files=["res://.godot/imported/ChickenDon_sprite.png-e745192e55e1970ef875a0569064deae.ctex"]
+source_file="res://Assets/Towers/RangedTowerChicken_base.png"
+dest_files=["res://.godot/imported/RangedTowerChicken_base.png-543f7914cd955580efacdc60e316cd5d.ctex"]
 
 [params]
 

@@ -8,7 +8,6 @@ public partial class ChickenDon : BasicMeleeEnemy
     private int originalSpeed;
     [Export]
     public int maxSpeed = 500;
-
     bool phaseTwoStarted = false;
     bool phaseThreeStarted = false;
     int phaseOneHealth;
@@ -23,7 +22,6 @@ public partial class ChickenDon : BasicMeleeEnemy
 
     public override void _Process(double delta)
     {
-        lifetime += (float)delta;
         if (!initialized)
             return;
 
@@ -37,6 +35,7 @@ public partial class ChickenDon : BasicMeleeEnemy
             base.Move(delta);
             if (phaseTwoStarted)
             {
+                lifetime += (float)delta;
                 movementSpeed = Mathf.Clamp(
                     Mathf.RoundToInt(originalSpeed * Mathf.Pow(speedGrowthMultiplier, lifetime)),
                     originalSpeed,
@@ -44,7 +43,6 @@ public partial class ChickenDon : BasicMeleeEnemy
                 );
             }
         }
-
         timeSinceLastAttack += delta;
     }
 
@@ -62,10 +60,6 @@ public partial class ChickenDon : BasicMeleeEnemy
         else if (!phaseTwoStarted)
         {
             animation.Play("running");
-        }
-        else
-        {
-            
         }
     }
 
