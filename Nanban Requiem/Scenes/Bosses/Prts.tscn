@@ -440,15 +440,15 @@ script = ExtResource("10_wocj5")
 
 [node name="Charybdis" type="Node2D" parent="."]
 script = ExtResource("11_h2rai")
-cooldown = 15.0
+cooldown = 25.0
 
 [node name="Pharos" type="Node2D" parent="."]
 script = ExtResource("12_rymh7")
-cooldown = 25.0
+cooldown = 20.0
 
 [node name="Helios" type="Node2D" parent="."]
 script = ExtResource("15_7xx78")
-cooldown = 35.0
+cooldown = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.2, 1.2)

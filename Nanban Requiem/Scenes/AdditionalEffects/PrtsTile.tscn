@@ -296,7 +296,7 @@ animations = [{
 [node name="PrtsTile" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_hy2rt")
-duration = 9.0
+duration = 7.0
 cooldown = 2.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
