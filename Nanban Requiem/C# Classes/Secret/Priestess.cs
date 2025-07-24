@@ -231,7 +231,7 @@ public partial class Priestess : Boss
         this.invulnerable = false;
         this.active = true;
         this.targetable = true;
-        this.cooldown = 75;
+        this.cooldown = 90;
     }
 
     protected override void ThreeQF()

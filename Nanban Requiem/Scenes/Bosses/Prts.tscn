@@ -412,12 +412,12 @@ bombDebuffScene = ExtResource("5_ghv44")
 wipeScene = ExtResource("6_yqntt")
 areaScene = ExtResource("6_2e4o6")
 tileScene = ExtResource("7_n4pua")
-maxShieldHp = 3000
+maxShieldHp = 5000
 skillcooldown = 5.0
 attack = 200
-health = 12000
-physDefense = 10
-artsDefense = 10
+health = 10000
+physDefense = 15
+artsDefense = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
