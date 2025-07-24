@@ -46,10 +46,10 @@ speedGrowthMultiplier = 1.05
 projectileSpeed = 300
 projectileScene = ExtResource("2_0g67v")
 attackSpeed = 2.0
-blockCount = 1000
+blockCount = 100000
 movementSpeed = 5
-attack = 100
-health = 1000
+attack = 300
+health = 100000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
