@@ -90,10 +90,10 @@ public partial class BossStageManager : Node2D
         this.wave03.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 10.0]);
 
         this.wave11 = this.map.GetNodeOrNull<BossWaveManager>("Wave11");
-        this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 15.0]);
+        this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 10.0, 5.0, 5.0, 10.0, 10.0]);
 
         this.wave12 = this.map.GetNodeOrNull<BossWaveManager>("Wave12");
-        this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 15.0]);
+        this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 10.0, 5.0, 5.0, 10.0, 10.0]);
 
         this.wave21 = this.map.GetNodeOrNull<BossWaveManager>("Wave21");
         this.wave21.SetWave(["Samurai", "Samurai", "Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai"], [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 15.0]);
