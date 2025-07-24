@@ -12,7 +12,7 @@ public partial class Nightborne : BasicMeleeEnemy
 
     public override void ReachedObjective(object pathing, EventArgs e)
     {
-        this.EmitSignal(nameof(DamageBase), 2);
+        this.EmitSignal(nameof(DamageBase), 5);
         this.Despawn();
     }
 

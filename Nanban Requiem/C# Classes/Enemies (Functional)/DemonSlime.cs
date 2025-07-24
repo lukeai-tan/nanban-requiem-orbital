@@ -11,4 +11,10 @@ public partial class DemonSlime : BasicRangedEnemy
         base._Ready();
     }
 
+    public override void ReachedObjective(object pathing, EventArgs e)
+    {
+        this.EmitSignal(nameof(DamageBase), 5);
+        this.Despawn();
+    }
+
 }
