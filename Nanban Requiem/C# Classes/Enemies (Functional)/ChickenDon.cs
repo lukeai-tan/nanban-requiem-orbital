@@ -16,7 +16,7 @@ public partial class ChickenDon : BasicRangedEnemy
     {
         this.meleeAttack = new PhysicalAttack();
         this.rangedAttack = new ArtsAttack();
-        this.targeting = new TowerFurthestFromSelf(this);
+        this.targeting = new TowerClosestToSelf(this);
         base._Ready();
         phaseOneHealth = this.health;
         originalSpeed = this.movementSpeed;
@@ -29,14 +29,14 @@ public partial class ChickenDon : BasicRangedEnemy
 
         if (phaseThreeStarted && !IsBlocked())
         {
-            movementSpeed = 0;
             Act();
+            base.Move(delta);
         }
         else
         {
             HandleAnimation();
             base.Move(delta);
-            if (phaseTwoStarted)
+            if (phaseTwoStarted && !phaseThreeStarted)
             {
                 lifetime += (float)delta;
                 movementSpeed = Mathf.Clamp(
@@ -49,20 +49,23 @@ public partial class ChickenDon : BasicRangedEnemy
         timeSinceLastAttack += delta;
     }
 
+    
     private void HandleAnimation()
     {
         if (animation == null)
             return;
-        if (health <= phaseOneHealth / 4 && !phaseThreeStarted)
-        {
-            GD.Print("Phase 3 started");
-            phaseThreeStarted = true;
-        }
+
         if (health <= phaseOneHealth / 2 && !phaseTwoStarted)
         {
             GD.Print("Phase 2 started");
             phaseTwoStarted = true;
             animation.Play("phase2");
+        }
+
+        if (health <= phaseOneHealth / 4 && !phaseThreeStarted)
+        {
+            GD.Print("Phase 3 started");
+            phaseThreeStarted = true;
         }
         else if (!phaseTwoStarted)
         {
