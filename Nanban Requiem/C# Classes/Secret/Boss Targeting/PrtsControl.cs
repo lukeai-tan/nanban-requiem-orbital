@@ -10,7 +10,7 @@ public class PrtsControl : ITargeting<Tower>
     {
         List<Tower> targetable = targets.Where(tower => tower.CanTarget() && tower is IAct).ToList();
         targetable.Sort((t1, t2) => t1 is RangedTowerBase ? 1 : -1);
-        return targetable.LastOrDefault();
+        return targetable.FirstOrDefault();
     }
 
     public List<Tower> GetTargets(List<Tower> targets)
