@@ -40,7 +40,7 @@ public partial class TowerManipulation : Buff
             this.victim = tower;
             this.targeting = new PrtsControlled(this.victim);
             this.rangedCounter = new BasicRangedAttack(this.projectileScene, this.victim);
-            this.rangedCounter.SetAttackAndSpeed(new ArtsAttack(), 300);
+            this.rangedCounter.SetAttackAndSpeed(new PhysicalAttack(), 300);
             if (this.victim is IAct possessed)
             {
                 possessed.TakeAction += this.Fire;
