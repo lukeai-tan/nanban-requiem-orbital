@@ -14,6 +14,7 @@ public partial class Priestess : Boss
     public event EventHandler OneQ;
     public event EventHandler Zero;
     public bool active = true;
+    private bool handicap = false;
 
     // Skills
     [Export] protected PackedScene projectileScene;
@@ -32,12 +33,26 @@ public partial class Priestess : Boss
 
     // Phase transition 
     protected double timer = 0;
+    protected double idle = 30;
     protected int teleports = 0;
     protected Vector2 stage = new Vector2(640, 640);
     protected bool onStage = false;
     public event EventHandler OnStage;
     protected double cooldown = 0;
     public event EventHandler Computation;
+
+    public override void _Ready()
+    {
+        var gameData = GetNode("/root/GameData");
+        this.handicap = gameData.Get("boss_map_handicap").AsBool();
+        if (this.handicap)
+        {
+            this.health = 20000;
+            this.attack = 160;
+            this.idle = 20;
+        }
+        base._Ready();
+    }
 
     public override void SetActions()
     {
@@ -54,14 +69,15 @@ public partial class Priestess : Boss
 
         this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
         this.attack1.SetAttackAndSpeed(new ArtsAttack(), 300);
-        this.attack1.SetModifiers(this.attack, 1);
 
         this.buff1 = new BasicMeleeBuff(this.buffScene);
         this.buff1.SetAttack(new Heal());
-        this.buff1.SetModifiers(this.attack, 1);
 
         this.attack2 = new AOEMeleeAttack(this.areaScene);
         this.attack2.SetAttack(new ArtsAttack());
+
+        this.attack1.SetModifiers(this.attack, 1);
+        this.buff1.SetModifiers(this.attack, 1);
         this.attack2.SetModifiers(this.attack, 0.8);
     }
 
@@ -81,7 +97,7 @@ public partial class Priestess : Boss
             else
             {
                 this.timer += delta;
-                if (timer >= 30)
+                if (timer >= this.idle)
                 {
                     switch (this.teleports)
                     {
@@ -193,8 +209,18 @@ public partial class Priestess : Boss
         float maxY = viewport.End.Y;
         Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
 
-        this.attack2.SetModifiers(this.attack, 0.6);
-        for (int i = 0; i < 240; i++)
+        int attacks = 240;
+        if (this.handicap)
+        {
+            attacks = 180;
+            this.attack2.SetModifiers(this.attack, 0.5);
+        }
+        else
+        {
+            this.attack2.SetModifiers(this.attack, 0.7);
+        }
+
+        for (int i = 0; i < attacks; i++)
         {
             Vector2 position = new Vector2((float)GD.RandRange(minX, maxX), (float)GD.RandRange(minY, maxY));
             this.attack2.Execute<Tower>(position, projectilesNode);
@@ -251,18 +277,29 @@ public partial class Priestess : Boss
             this.ToStage();
         }
         this.Half?.Invoke(this, EventArgs.Empty);
-        this.skillcooldown = 2.5;
         this.attack1.SetModifiers(this.attack, 1.2);
         this.targeting1.SetTargets(3);
-        this.targeting3.SetTargets(3);
+        if (!this.handicap)
+        {
+            this.skillcooldown = 2.5;
+            this.targeting3.SetTargets(3);
+        }   
     }
 
     protected override void OneQF()
     {
         this.OneQ?.Invoke(this, EventArgs.Empty);
-        this.attack1.SetModifiers(this.attack, 1.3);
+        if (!this.handicap)
+        {
+            this.skillcooldown = 2;
+            this.targeting3.SetTargets(4);
+            this.attack1.SetModifiers(this.attack, 1.3);
+        }
+        else
+        {
+            this.targeting3.SetTargets(3);
+        }
         this.attack2.SetModifiers(this.attack, 1);
-        this.targeting3.SetTargets(4);
     }
 
     protected override void ZeroF()
