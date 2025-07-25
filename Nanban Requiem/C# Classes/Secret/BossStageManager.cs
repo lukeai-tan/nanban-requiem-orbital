@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using Godot;
 
 public partial class BossStageManager : Node2D
@@ -9,7 +10,8 @@ public partial class BossStageManager : Node2D
 
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
-    protected int objectiveHp = 3600;
+    protected int objectiveHp = 3000;
+    private bool handicap = false;
 
     private Node towerBuilder;
     private Node towerManager;
@@ -41,6 +43,9 @@ public partial class BossStageManager : Node2D
 
     public override void _Ready()
     {
+        var gameData = GetNode("/root/GameData");
+        this.handicap = gameData.Get("boss_map_handicap").AsBool();
+
         this.ui = GetNode("UI");
         this.buildBar = GetNode("UI/HUD/BuildBar");
         this.dpBar = GetNode("UI/HUD/DPBar");
@@ -80,38 +85,69 @@ public partial class BossStageManager : Node2D
         this.towerManager.Connect("tower_count_changed", new Callable(this.ui, "update_tower_count"));
         this.towerManager.Call("change_deployment", 8);
 
-        this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
-        this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 10.0, 5.0, 10.0, 10.0]);
+        if (this.handicap)
+        {
+            this.objectiveHp = 4000;
 
-        this.wave02 = this.map.GetNodeOrNull<BossWaveManager>("Wave02");
-        this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 10.0]);
+            this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
+            this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai"], [5.0, 15.0, 5.0, 5.0, 15.0]);
 
-        this.wave03 = this.map.GetNodeOrNull<BossWaveManager>("Wave03");
-        this.wave03.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 15.0, 10.0]);
+            this.wave02 = this.map.GetNodeOrNull<BossWaveManager>("Wave02");
+            this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai"], [5.0, 15.0, 5.0, 15.0]);
 
-        this.wave11 = this.map.GetNodeOrNull<BossWaveManager>("Wave11");
-        this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai", "WhiteSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 15.0]);
+            this.wave03 = this.map.GetNodeOrNull<BossWaveManager>("Wave03");
+            this.wave03.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai"], [5.0, 15.0, 5.0, 15.0]);
 
-        this.wave12 = this.map.GetNodeOrNull<BossWaveManager>("Wave12");
-        this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai", "RocketSamurai"], [5.0, 5.0, 15.0, 5.0, 5.0, 15.0, 15.0]);
+            this.wave11 = this.map.GetNodeOrNull<BossWaveManager>("Wave11");
+            this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai"], [5.0, 15.0, 5.0, 5.0, 15.0]);
 
-        this.wave21 = this.map.GetNodeOrNull<BossWaveManager>("Wave21");
-        this.wave21.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai", "Samurai", "RocketSamurai", "Samurai"], [5.0, 5.0, 5.0, 10.0, 5.0, 5.0, 5.0, 10.0]);
+            this.wave12 = this.map.GetNodeOrNull<BossWaveManager>("Wave12");
+            this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai"], [5.0, 15.0, 5.0, 5.0, 15.0]);
 
-        this.wave31 = this.map.GetNodeOrNull<BossWaveManager>("Wave31");
-        this.wave31.SetWave(["DemonSlime", "NightBorne"], [15.0, 0]);
-        this.wave31.Auto(false);
+            this.wave21 = this.map.GetNodeOrNull<BossWaveManager>("Wave21");
+            this.wave21.SetWave(["Samurai", "Samurai", "RocketSamurai", "WhiteSamurai", "Samurai", "Samurai"], [5.0, 10.0, 10.0, 5.0, 5.0, 10.0]);
 
-        this.wave32 = this.map.GetNodeOrNull<BossWaveManager>("Wave32");
-        this.wave32.SetWave(["NightBorne", "DemonSlime"], [15.0, 0]);
-        this.wave32.Auto(false);
+            this.wave31 = this.map.GetNodeOrNull<BossWaveManager>("Wave31");
+            this.wave31.SetWave(["DemonSlime"], [0]);
+            this.wave31.Auto(false);
 
+            this.wave32 = this.map.GetNodeOrNull<BossWaveManager>("Wave32");
+            this.wave32.SetWave(["NightBorne"], [0]);
+            this.wave32.Auto(false);
+        }
+        else
+        {
+            this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
+            this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "RocketSamurai"], [5.0, 10.0, 5.0, 5.0, 10.0]);
+
+            this.wave02 = this.map.GetNodeOrNull<BossWaveManager>("Wave02");
+            this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "RocketSamurai"], [5.0, 10.0, 5.0, 10.0, 15.0]);
+
+            this.wave03 = this.map.GetNodeOrNull<BossWaveManager>("Wave03");
+            this.wave03.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai"], [5.0, 10.0, 5.0, 10.0, 15.0]);
+
+            this.wave11 = this.map.GetNodeOrNull<BossWaveManager>("Wave11");
+            this.wave11.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai", "WhiteSamurai"], [5.0, 10.0, 5.0, 5.0, 10.0, 15.0]);
+
+            this.wave12 = this.map.GetNodeOrNull<BossWaveManager>("Wave12");
+            this.wave12.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai", "Samurai", "RocketSamurai"], [5.0, 10.0, 5.0, 5.0, 10.0, 15.0]);
+
+            this.wave21 = this.map.GetNodeOrNull<BossWaveManager>("Wave21");
+            this.wave21.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "WhiteSamurai", "Samurai", "RocketSamurai", "Samurai"], [5.0, 5.0, 5.0, 10.0, 5.0, 5.0, 5.0, 10.0]);
+
+            this.wave31 = this.map.GetNodeOrNull<BossWaveManager>("Wave31");
+            this.wave31.SetWave(["DemonSlime", "NightBorne"], [15.0, 0]);
+            this.wave31.Auto(false);
+
+            this.wave32 = this.map.GetNodeOrNull<BossWaveManager>("Wave32");
+            this.wave32.SetWave(["NightBorne", "DemonSlime"], [15.0, 0]);
+            this.wave32.Auto(false);
+        }
+        
         endGameScreen = GetNode("UI/EndGameScreen");
         Connect("GameWon", new Callable(endGameScreen, "_on_game_won"));
         Connect("GameLost", new Callable(endGameScreen, "_on_game_lost"));
-        
-        var gameData = GetNode("/root/GameData");
-        bool handicap = gameData.Get("boss_map_handicap").AsBool();
+
     }
 
     public void AddEnemy(Enemy enemy)
@@ -199,7 +235,6 @@ public partial class BossStageManager : Node2D
         this.priestess.LockUI += (object boss, EventArgs e) => this.InvertUI();
         this.priestess.LockDeployment += (object boss, EventArgs e) => this.LockDeployment();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
-        //this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
         this.priestess.Zero += (object boss, EventArgs e) =>
         {
             if (gameState != "defeat")
@@ -287,7 +322,14 @@ public partial class BossStageManager : Node2D
 
     public void OnBaseDamage(float damage)
     {
-        this.Corrode((int)damage * 200);
+        if (this.handicap)
+        {
+            this.Corrode((int)damage * 100);
+        }
+        else
+        {
+            this.Corrode((int)damage * 200);
+        }
     }
 
     public override void _Process(double delta)

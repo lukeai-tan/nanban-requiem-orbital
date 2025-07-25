@@ -13,6 +13,7 @@ public partial class Prts : Boss
     public event EventHandler Zero;
     public Priestess girlboss;
     public bool active = false;
+    private bool handicap = false;
 
     // Skills
     [Export] protected PackedScene projectileScene;
@@ -39,6 +40,15 @@ public partial class Prts : Boss
 
     public override void _Ready()
     {
+        var gameData = GetNode("/root/GameData");
+        this.handicap = gameData.Get("boss_map_handicap").AsBool();
+        if (this.handicap)
+        {
+            this.health = 8000;
+            this.maxShieldHp = 4000;
+            this.attack = 160;
+            this.skillcooldown = 5;
+        }
         base._Ready();
         this.invulnerable = true;
         this.targetable = false;
@@ -166,6 +176,12 @@ public partial class Prts : Boss
         this.shieldBar.Value = this.maxShieldHp;
         this.shieldBar.Visible = true;
         this.shield = true;
+
+        float interval = 0.4f;
+        if (this.handicap)
+        {
+            interval = 0.6f;
+        }
         while (shield)
         {
             Tower target = this.targeting1.GetTarget(this.range.GetAllTowers());
@@ -173,9 +189,16 @@ public partial class Prts : Boss
             {
                 this.attack1.Execute(target);
             }
-            await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
+            await ToSignal(GetTree().CreateTimer(interval, false), SceneTreeTimer.SignalName.Timeout);
         }
-        await ToSignal(GetTree().CreateTimer(10f, false), SceneTreeTimer.SignalName.Timeout);
+        if (this.handicap)
+        {
+            await ToSignal(GetTree().CreateTimer(10f, false), SceneTreeTimer.SignalName.Timeout);
+        }
+        else
+        {
+            await ToSignal(GetTree().CreateTimer(5f, false), SceneTreeTimer.SignalName.Timeout);
+        }
         this.Recover();
     }
 
@@ -281,6 +304,10 @@ public partial class Prts : Boss
     protected override void HalfF()
     {
         this.Half?.Invoke(this, EventArgs.Empty);
+        if (!this.handicap)
+        {
+            this.targeting1.SetTargets(3);
+        }
     }
 
     protected override void OneQF() { }
