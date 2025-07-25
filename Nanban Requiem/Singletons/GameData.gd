@@ -11,6 +11,7 @@ extends Node
 		"stats": "Tower stats"
 	},
 '''
+var chicken_don_dead = false
 
 var tower_squad = {
 	"RangedTower1": true,
@@ -185,7 +186,7 @@ var tower_data = {
 		"sprite_in_game": "res://Assets/Towers/RangedTowerChicken_sprite.png",
 		"name": "Chicken 'Don'",
 		"description": "The Chicken, The Myth, The Legend.\n
-						This is the 'Before' image of the Spicy Tartar Chicken Nanban Don",
+						First time where the playable final boss isn't nerfed into oblivion.",
 		"stats": "Chicken Don does not reveal his stats. He lets his muscles do the talking."
 	},
 

@@ -49,7 +49,7 @@ attackSpeed = 2.0
 blockCount = 100000
 movementSpeed = 5
 attack = 300
-health = 100000
+health = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
