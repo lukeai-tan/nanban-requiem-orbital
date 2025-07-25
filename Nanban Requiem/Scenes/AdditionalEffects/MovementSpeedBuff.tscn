@@ -6,4 +6,4 @@
 script = ExtResource("1_lbspp")
 id = 2
 duration = 5.0
-modifier = -0.5
+modifier = -0.6

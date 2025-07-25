@@ -175,7 +175,7 @@ public partial class Prts : Boss
             }
             await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
         }
-        await ToSignal(GetTree().CreateTimer(15f, false), SceneTreeTimer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(5f, false), SceneTreeTimer.SignalName.Timeout);
         this.Recover();
     }
 
@@ -189,10 +189,12 @@ public partial class Prts : Boss
         this.Spread(new List<Tower>());
         this.Recover();
     }
-    
-    protected void Implode(object target, EventArgs e)
-    {
 
+    protected async void Implode(object target, EventArgs e)
+    {
+        this.incapacitated = true;
+        await ToSignal(GetTree().CreateTimer(3f, false), SceneTreeTimer.SignalName.Timeout);
+        this.incapacitated = false;
     }
     
     protected void Explode(object target, List<Tower> marked)

@@ -193,7 +193,7 @@ public partial class Priestess : Boss
         float maxY = viewport.End.Y;
         Node2D projectilesNode = this.GetTree().CurrentScene.GetNode<Node2D>("GameScene/Map/Projectiles");
 
-        this.attack2.SetModifiers(this.attack, 0.8);
+        this.attack2.SetModifiers(this.attack, 0.6);
         for (int i = 0; i < 240; i++)
         {
             Vector2 position = new Vector2((float)GD.RandRange(minX, maxX), (float)GD.RandRange(minY, maxY));
