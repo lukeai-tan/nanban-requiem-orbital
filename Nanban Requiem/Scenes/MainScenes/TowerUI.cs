@@ -84,7 +84,7 @@ public partial class TowerUI : Control
         {
             selectedTower.Retreat();
             this.Visible = false;
-            dpBar.Call("gain_dp", 3);
+            dpBar.Call("gain_dp", 2);
         }
     }
 
