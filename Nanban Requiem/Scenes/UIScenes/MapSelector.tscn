@@ -178,4 +178,55 @@ offset_bottom = 112.0
 texture_normal = ExtResource("10_gig1j")
 stretch_mode = 0
 
+[node name="HandicapWindow" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 960.0
+offset_bottom = 576.0
+
+[node name="ColorRect" type="ColorRect" parent="HandicapWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Label" type="Label" parent="HandicapWindow"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 512.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("2_e51tu")
+theme_override_font_sizes/font_size = 30
+text = "Do you wish to enable beginner mode?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Yes" type="Button" parent="HandicapWindow"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("2_e51tu")
+theme_override_font_sizes/font_size = 30
+text = "Yes"
+
+[node name="No" type="Button" parent="HandicapWindow"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("2_e51tu")
+theme_override_font_sizes/font_size = 30
+text = "No"
+
 [connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="HandicapWindow/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="HandicapWindow/No" to="." method="_on_no_pressed"]

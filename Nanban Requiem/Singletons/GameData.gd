@@ -13,6 +13,8 @@ extends Node
 '''
 var chicken_don_dead = false
 
+var boss_map_handicap = false
+
 var tower_squad = {
 	"RangedTower1": true,
 	"RangedTower2": true,
