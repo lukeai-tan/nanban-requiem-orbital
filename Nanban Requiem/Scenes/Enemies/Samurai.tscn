@@ -266,8 +266,8 @@ blockCount = 1
 movementSpeed = 100
 attack = 100
 health = 400
-physDefense = 20
-artsDefense = 20
+physDefense = 15
+artsDefense = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
