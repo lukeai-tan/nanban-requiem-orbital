@@ -11,6 +11,8 @@ signal return_to_main_menu
 
 func _ready() -> void:
 	# sets default map to index 0 (aka Map 1)
+	Engine.time_scale = 1.0
+	GameData.time_scale = 1.0
 	$PlayerIcon.global_position = maps[current_map].global_position
 	maps[current_map].get_node("Label").self_modulate = Color(1, 1, 0)
 	for i in range(maps.size()):
