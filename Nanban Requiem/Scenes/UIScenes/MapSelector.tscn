@@ -179,6 +179,7 @@ texture_normal = ExtResource("10_gig1j")
 stretch_mode = 0
 
 [node name="HandicapWindow" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 320.0
 offset_top = 192.0
