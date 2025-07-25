@@ -59,8 +59,6 @@ func _confirm_map() -> void:
 	# emit_signal("map_selected", map_name)
 
 
-
-
 func _select_map(index: int) -> void:
 	if move_tween and move_tween.is_running():
 		return
