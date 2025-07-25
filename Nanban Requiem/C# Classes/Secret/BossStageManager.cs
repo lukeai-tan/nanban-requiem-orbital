@@ -38,7 +38,7 @@ public partial class BossStageManager : Node2D
     public delegate void GameWonEventHandler();
     [Signal]
     public delegate void GameLostEventHandler();
-    
+
     public override void _Ready()
     {
         this.ui = GetNode("UI");
@@ -105,10 +105,13 @@ public partial class BossStageManager : Node2D
         this.wave32 = this.map.GetNodeOrNull<BossWaveManager>("Wave32");
         this.wave32.SetWave(["NightBorne", "DemonSlime"], [15.0, 0]);
         this.wave32.Auto(false);
-        
+
         endGameScreen = GetNode("UI/EndGameScreen");
         Connect("GameWon", new Callable(endGameScreen, "_on_game_won"));
         Connect("GameLost", new Callable(endGameScreen, "_on_game_lost"));
+        
+        var gameData = GetNode("/root/GameData");
+        bool handicap = gameData.Get("boss_map_handicap").AsBool();
     }
 
     public void AddEnemy(Enemy enemy)
@@ -151,7 +154,7 @@ public partial class BossStageManager : Node2D
 
     private void Corrode(int damage)
     {
-        if (gameState == "defeat")
+        if (gameState == "defeat" || gameState == "victory")
             return;
         if (this.objectiveHp <= damage)
         {
@@ -168,7 +171,7 @@ public partial class BossStageManager : Node2D
 
     private void Corrode()
     {
-        if (gameState == "defeat")
+        if (gameState == "defeat" || gameState == "victory")
             return;
         if (this.objectiveHp <= 1)
         {
@@ -197,7 +200,14 @@ public partial class BossStageManager : Node2D
         this.priestess.LockDeployment += (object boss, EventArgs e) => this.LockDeployment();
         this.priestess.Finale += (object boss, EventArgs e) => this.PhaseFinal();
         //this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameFinished, "victory");
-        this.priestess.Zero += (object boss, EventArgs e) => this.EmitSignal(SignalName.GameWon); // new one, idk if it works
+        this.priestess.Zero += (object boss, EventArgs e) =>
+        {
+            if (gameState != "defeat")
+            {
+                gameState = "victory";
+                this.EmitSignal(SignalName.GameWon); // new one, idk if it works 
+            }
+        };
     }
 
     private async void PhaseTwo()

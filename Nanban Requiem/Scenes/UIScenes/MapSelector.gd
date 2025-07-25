@@ -2,9 +2,11 @@ extends Control
 class_name MapSelector
 
 @onready var maps: Array = [$MapIcon1, $MapIcon2, $MapIcon3, $BossMapIcon, $MapIcon5]
+@onready var handicap_window: Control = $HandicapWindow
 var current_map: int = 0
 var move_tween: Tween
 var map_name: String
+
 
 signal map_selected(map_name: String)
 signal return_to_main_menu
@@ -78,3 +80,13 @@ func tween_icon():
 func _on_back_to_main_pressed() -> void:
 	emit_signal("return_to_main_menu")
 	queue_free()
+
+
+func _on_yes_pressed() -> void:
+	GameData.boss_map_handicap = true
+	handicap_window.visible = false
+
+
+func _on_no_pressed() -> void:
+	GameData.boss_map_handicap = false
+	handicap_window.visible = false
