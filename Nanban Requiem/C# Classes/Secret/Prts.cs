@@ -46,6 +46,8 @@ public partial class Prts : Boss
         {
             this.health = 8000;
             this.maxShieldHp = 4000;
+            this.artsDefense = 20;
+            this.physDefense = 20;
             this.attack = 160;
             this.skillcooldown = 5;
         }
@@ -103,6 +105,7 @@ public partial class Prts : Boss
         this.animation.Play("activate");
         this.health = this.maxHealth;
         this.healthBar.Value = this.maxHealth;
+        this.stoppers = 0;
         this.invulnerable = false;
         await ToSignal(GetTree().CreateTimer(1f, false), SceneTreeTimer.SignalName.Timeout);
         this.active = true;
