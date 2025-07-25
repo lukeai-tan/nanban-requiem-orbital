@@ -22,10 +22,13 @@ public abstract partial class BossTargeting<T> : ITargeting<T>
 
     public virtual List<T> GetTargets(List<T> targets)
     {
-        int num = this.numTargets;
         int count = targets.Count;
+        if (count == 0 || this.numTargets == 0)
+        {
+            return [];
+        }
         List<T> chosen = [];
-        for (int i = 0; i < Math.Min(num, count); i++)
+        for (int i = 0; i < Math.Min(this.numTargets, count); i++)
         {
             chosen.Add(targets[i]);
         }

@@ -31,6 +31,7 @@ public partial class Prts : Boss
     protected PrtsControl targeting2;
     protected TowerFurthestFromSelf targeting3;
     protected bool shield = false;
+    protected TextureProgressBar shieldBar;
     protected int shieldHp = 0;
     [Export] protected int maxShieldHp;
     protected double timeSinceLastCorrosion = 0;
@@ -42,6 +43,12 @@ public partial class Prts : Boss
         this.invulnerable = true;
         this.targetable = false;
         this.animation.Play("inactive");
+    }
+
+    public void SetShieldBar(TextureProgressBar shieldBar)
+    {
+        this.shieldBar = shieldBar;
+        this.shieldBar.MaxValue = this.maxShieldHp;
     }
 
     public override void SetActions()
@@ -156,6 +163,8 @@ public partial class Prts : Boss
         this.incapacitated = true;
         // this.animation.Play("");
         this.shieldHp = this.maxShieldHp;
+        this.shieldBar.Value = this.maxShieldHp;
+        this.shieldBar.Visible = true;
         this.shield = true;
         while (shield)
         {
@@ -248,14 +257,17 @@ public partial class Prts : Boss
     {
         if (!this.invulnerable && this.shield)
         {
-            if (this.shieldHp > damage)
+            int trueDamage = damage > 1 ? damage : 1;
+            if (this.shieldHp > trueDamage)
             {
-                this.shieldHp -= damage;
+                this.shieldHp -= trueDamage;
+                this.shieldBar.Value = this.shieldHp;
             }
             else
             {
                 this.shieldHp = 0;
                 this.shield = false;
+                this.shieldBar.Visible = false;
             }
         }
         else

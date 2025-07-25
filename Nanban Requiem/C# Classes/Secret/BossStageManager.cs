@@ -143,6 +143,7 @@ public partial class BossStageManager : Node2D
     {
         this.prts = this.map.GetNodeOrNull<Prts>("Prts");
         this.prts.SetHealthBar((TextureProgressBar)this.ui.Call("get_prts_healthbar"));
+        this.prts.SetShieldBar((TextureProgressBar)this.ui.Call("get_prts_shieldbar"));
         this.prts.SetActions();
         this.prts.Corrode += (object boss, EventArgs e) => this.Corrode();
         this.prts.Zero += (object boss, EventArgs e) => this.SwapPriestess();

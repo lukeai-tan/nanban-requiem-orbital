@@ -10,6 +10,10 @@ public class PrtsRandom : BossTargeting<Tower>
 
     public override Tower GetTarget(List<Tower> targets)
     {
+        if (targets.Count == 0)
+        {
+            return null;
+        }
         return targets[rng.Next(targets.Count)];
     }
 
