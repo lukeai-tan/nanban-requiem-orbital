@@ -33,6 +33,7 @@ public partial class Prts : Boss
     protected bool shield = false;
     protected int shieldHp = 0;
     [Export] protected int maxShieldHp;
+    protected double timeSinceLastCorrosion = 0;
     public event EventHandler Corrode;
 
     public override void _Ready()
@@ -102,7 +103,12 @@ public partial class Prts : Boss
                 this.Act();
             }
             this.timeSinceLastSkill += delta;
-            this.Corrode?.Invoke(this, EventArgs.Empty);
+            this.timeSinceLastCorrosion += delta;
+            if (this.timeSinceLastCorrosion >= 0.1)
+            {
+                this.Corrode?.Invoke(this, EventArgs.Empty);
+                this.timeSinceLastCorrosion = 0;
+            }
         }
     }
 

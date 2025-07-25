@@ -9,7 +9,7 @@ public partial class BossStageManager : Node2D
 
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
-    protected int objectiveHp = 40000;
+    protected int objectiveHp = 3600;
 
     private Node towerBuilder;
     private Node towerManager;
@@ -276,7 +276,7 @@ public partial class BossStageManager : Node2D
 
     public void OnBaseDamage(float damage)
     {
-        this.Corrode((int)damage * 2000);
+        this.Corrode((int)damage * 200);
     }
 
     public override void _Process(double delta)
