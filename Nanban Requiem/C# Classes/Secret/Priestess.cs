@@ -39,6 +39,7 @@ public partial class Priestess : Boss
     protected bool onStage = false;
     public event EventHandler OnStage;
     protected double cooldown = 0;
+    protected double computation = 90;
     public event EventHandler Computation;
 
     public override void _Ready()
@@ -47,9 +48,12 @@ public partial class Priestess : Boss
         this.handicap = gameData.Get("boss_map_handicap").AsBool();
         if (this.handicap)
         {
-            this.health = 20000;
+            this.health = 18000;
             this.attack = 160;
+            this.artsDefense = 25;
+            this.physDefense = 25;
             this.idle = 20;
+            this.computation = 60;
         }
         base._Ready();
     }
@@ -259,7 +263,7 @@ public partial class Priestess : Boss
         this.invulnerable = false;
         this.active = true;
         this.targetable = true;
-        this.cooldown = 90;
+        this.cooldown = this.computation;
     }
 
     protected override void ThreeQF()
@@ -291,7 +295,6 @@ public partial class Priestess : Boss
         this.OneQ?.Invoke(this, EventArgs.Empty);
         if (!this.handicap)
         {
-            this.skillcooldown = 2;
             this.targeting3.SetTargets(4);
             this.attack1.SetModifiers(this.attack, 1.3);
         }

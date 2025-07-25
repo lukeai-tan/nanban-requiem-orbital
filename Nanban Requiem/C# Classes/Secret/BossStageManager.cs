@@ -10,7 +10,7 @@ public partial class BossStageManager : Node2D
 
     [Signal]
     public delegate void GameFinishedEventHandler(string result);
-    protected int objectiveHp = 3000;
+    protected int objectiveHp = 3600;
     private bool handicap = false;
 
     private Node towerBuilder;
@@ -87,10 +87,10 @@ public partial class BossStageManager : Node2D
 
         if (this.handicap)
         {
-            this.objectiveHp = 4000;
+            this.objectiveHp = 4200;
 
             this.wave01 = this.map.GetNodeOrNull<BossWaveManager>("Wave01");
-            this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai"], [5.0, 15.0, 5.0, 5.0, 15.0]);
+            this.wave01.SetWave(["Samurai", "Samurai", "RocketSamurai", "Samurai", "Samurai"], [5.0, 20.0, 5.0, 5.0, 20.0]);
 
             this.wave02 = this.map.GetNodeOrNull<BossWaveManager>("Wave02");
             this.wave02.SetWave(["Samurai", "Samurai", "WhiteSamurai", "Samurai"], [5.0, 15.0, 5.0, 15.0]);
