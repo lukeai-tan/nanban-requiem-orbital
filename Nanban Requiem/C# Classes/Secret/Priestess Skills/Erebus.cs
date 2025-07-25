@@ -13,6 +13,7 @@ public partial class Erebus : BossSkill
         this.priority = 2;
         this.boss = this.GetParentOrNull<Priestess>();
         this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
+        this.boss.Active += (object boss, EventArgs e) => this.timeSinceLastUse = 3;
     }
     
     public override void _Process(double delta)

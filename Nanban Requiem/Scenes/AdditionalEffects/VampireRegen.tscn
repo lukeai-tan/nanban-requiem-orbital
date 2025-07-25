@@ -70,7 +70,7 @@ animations = [{
 [node name="VampireRegen" type="Node2D"]
 script = ExtResource("1_pmudb")
 damage = 30
-interval = 0.3
+interval = 0.6
 id = 5
 duration = 3.0
 modifier = 1.0

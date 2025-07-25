@@ -64,10 +64,11 @@ public partial class Pharos : BossSkill
 
     public override void _Ready()
     {
-        this.priority = 3;
+        this.priority = 2;
         this.boss = this.GetParentOrNull<Prts>();
         this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
         this.boss.Half += (object boss, EventArgs e) => this.cooldown = 20;
+        this.boss.Active += (object boss, EventArgs e) => this.timeSinceLastUse = 15;
     }
     
     public override void _Process(double delta)

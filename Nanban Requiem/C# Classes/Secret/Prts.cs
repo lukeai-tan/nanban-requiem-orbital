@@ -8,6 +8,7 @@ public partial class Prts : Boss
 {
 
     // Hp thresholds
+    public event EventHandler Active;
     public event EventHandler Half;
     public event EventHandler Zero;
     public Priestess girlboss;
@@ -69,7 +70,7 @@ public partial class Prts : Boss
 
         this.attack3 = new BasicMeleeAttack();
         this.attack3.SetAttack(new ArtsAttack());
-        this.attack3.SetModifiers(this.attack, 0.8);
+        this.attack3.SetModifiers(this.attack, 0.6);
     }
 
     public void Connect(Priestess girlboss)
@@ -80,6 +81,7 @@ public partial class Prts : Boss
 
     public async void Activate(object gb, EventArgs e)
     {
+        this.Active?.Invoke(this, EventArgs.Empty);
         this.animation.Play("activate");
         this.health = this.maxHealth;
         this.healthBar.Value = this.maxHealth;

@@ -19,8 +19,8 @@ attackSpeed = 1.5
 blockCount = 2
 attack = 50
 health = 1800
-physDefense = 50
-artsDefense = 50
+physDefense = 40
+artsDefense = 40
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ns6h8")

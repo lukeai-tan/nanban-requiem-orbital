@@ -25,7 +25,7 @@ public partial class TowerManipulation : Buff
             Tower target = this.targeting.GetTarget(this.range.GetAllTowers());
             if (target != null)
             {
-                this.rangedCounter.SetModifiers(this.damage, 2);
+                this.rangedCounter.SetModifiers(this.damage, 1.5);
                 this.rangedCounter.Execute(target);
             }
         }
