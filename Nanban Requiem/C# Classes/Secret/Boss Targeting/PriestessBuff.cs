@@ -17,7 +17,7 @@ public partial class PriestessBuff : BossTargeting<Enemy>
     public override List<Enemy> GetTargets(List<Enemy> targets)
     {
         Vector2 position = this.self.GlobalPosition;
-        targets.Sort((e1, e2) => position.DistanceTo(e1.GlobalPosition).CompareTo(position.DistanceTo(e2.GlobalPosition)));
+        targets.Sort((e1, e2) => e1.GetHealth().CompareTo(e2.GetHealth()));
         return base.GetTargets(targets);
     }
 
