@@ -276,7 +276,7 @@ public partial class BossStageManager : Node2D
 
     public void OnBaseDamage(float damage)
     {
-        this.Corrode((int)damage * 1000);
+        this.Corrode((int)damage * 2000);
     }
 
     public override void _Process(double delta)
