@@ -403,7 +403,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_otjwt")
-current_dp = 20
+current_dp = 25
 
 [node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
 layout_direction = 2

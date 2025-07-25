@@ -79,10 +79,12 @@ public partial class TowerUI : Control
 
     private void OnRetreatPressed()
     {
-        if (selectedTower != null)
+        var dpBar = GetNode("/root/SceneHandler/GameScene/UI/HUD/DPBar");
+        if (selectedTower != null && dpBar != null)
         {
             selectedTower.Retreat();
             this.Visible = false;
+            dpBar.Call("gain_dp", 3);
         }
     }
 

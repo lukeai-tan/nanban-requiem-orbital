@@ -102,7 +102,7 @@ var time_scale = 1.0
 
 var tower_data = {
 	"RangedTower1": {
-		"range": 300,
+		"range": 450,
 		"sprite_icon": "res://Assets/Towers/RangedTower1_turret.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTower1_turret.png",
 		"name": "Pew Pew",
@@ -112,7 +112,7 @@ var tower_data = {
 	},
 		
 	"RangedTower2": {
-		"range": 600,
+		"range": 450,
 		"sprite_icon": "res://Assets/Towers/RangedTower2_turret.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTower2_turret.png",
 		"name": "Rocketeer",
@@ -140,7 +140,7 @@ var tower_data = {
 	},
 	
 	"RangedTowerGirl1": {
-		"range": 600,
+		"range": 450,
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl1_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl1_base.png",
 		"name": "Ranged Tower Girl",
@@ -150,7 +150,7 @@ var tower_data = {
 
 
 	"RangedTowerGirl2": {
-		"range": 800,
+		"range": 450,
 		"sprite_icon": "res://Assets/Towers/RangedTowerGirl2_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerGirl2_base.png",
 		"name": "Nyx",

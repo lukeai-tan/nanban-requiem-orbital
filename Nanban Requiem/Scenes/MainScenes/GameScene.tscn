@@ -292,6 +292,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("17_6wdf6")
+current_dp = 15
 
 [node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
 layout_direction = 2
