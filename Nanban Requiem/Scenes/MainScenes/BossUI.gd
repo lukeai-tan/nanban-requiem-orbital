@@ -5,6 +5,7 @@ var state : int = 0
 @onready var overlay = get_node("HUD/InfoBar/HideHPBar")
 @onready var priestesshp = get_node("HUD/InfoBar/BossBars/Priestess")
 @onready var prtshp = get_node("HUD/InfoBar/BossBars/Prts")
+@onready var prtsshieldhp = get_node("HUD/InfoBar/PrtsShield")
 
 func corrode():
 	base_hp_bar.value -= 1
@@ -25,4 +26,7 @@ func get_priestess_healthbar():
 
 func get_prts_healthbar():
 	return prtshp
+
+func get_prts_shieldbar():
+	return prtsshieldhp
 

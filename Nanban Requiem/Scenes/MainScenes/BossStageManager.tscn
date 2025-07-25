@@ -293,6 +293,23 @@ texture_progress = ExtResource("15_2fqkj")
 tint_under = Color(0.215686, 0.215686, 0.215686, 1)
 tint_progress = Color(0.305882, 1, 0.0823529, 1)
 
+[node name="PrtsShield" type="TextureProgressBar" parent="UI/HUD/InfoBar"]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+offset_left = 151.0
+offset_top = 75.0
+offset_right = 301.0
+offset_bottom = 105.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 4000.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("15_2fqkj")
+texture_progress = ExtResource("15_2fqkj")
+tint_under = Color(0.305882, 1, 0.0823529, 1)
+tint_progress = Color(0.4018, 0.787267, 0.98, 1)
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/HUD/InfoBar"]
 layout_mode = 0
 offset_left = 149.0
