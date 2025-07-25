@@ -5,24 +5,17 @@ public partial class Achlys : BossSkill
 {
     
     protected Prts boss;
-    [Export] protected double cooldown;
-    protected double timeSinceLastUse = 0;
-
+    protected bool hasTargets = false;
     public override void _Ready()
     {
-        this.priority = 1;
+        this.priority = 0;
         this.boss = this.GetParentOrNull<Prts>();
         this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
-    }
-    
-    public override void _Process(double delta)
-    {
-        this.timeSinceLastUse += delta;
     }
 
     public void UseCheck(bool hasTarget)
     {
-        if (hasTarget && this.timeSinceLastUse >= this.cooldown)
+        if (hasTarget)
         {
             this.usable = true;
         }
@@ -35,7 +28,6 @@ public partial class Achlys : BossSkill
     public override void Execute()
     {
         this.boss.Achlys();
-        this.timeSinceLastUse = 0;
     }
 
 }

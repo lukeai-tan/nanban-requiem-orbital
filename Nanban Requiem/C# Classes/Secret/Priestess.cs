@@ -8,6 +8,7 @@ public partial class Priestess : Boss
 {
 
     // Hp thresholds
+    public event EventHandler Active;
     public event EventHandler ThreeQ;
     public event EventHandler Half;
     public event EventHandler OneQ;
@@ -53,7 +54,7 @@ public partial class Priestess : Boss
 
         this.attack1 = new BasicRangedBuff(this.projectileScene, this, this.debuffScene);
         this.attack1.SetAttackAndSpeed(new ArtsAttack(), 300);
-        this.attack1.SetModifiers(this.attack, 0.8);
+        this.attack1.SetModifiers(this.attack, 1);
 
         this.buff1 = new BasicMeleeBuff(this.buffScene);
         this.buff1.SetAttack(new Heal());
@@ -80,7 +81,7 @@ public partial class Priestess : Boss
             else
             {
                 this.timer += delta;
-                if (timer >= 3)
+                if (timer >= 30)
                 {
                     switch (this.teleports)
                     {
@@ -228,6 +229,7 @@ public partial class Priestess : Boss
 
     public void ExitComputation()
     {
+        this.Active?.Invoke(this, EventArgs.Empty);
         this.invulnerable = false;
         this.active = true;
         this.targetable = true;
@@ -237,8 +239,9 @@ public partial class Priestess : Boss
     protected override void ThreeQF()
     {
         this.ThreeQ?.Invoke(this, EventArgs.Empty);
-        this.attack1.SetModifiers(this.attack, 1);
+        this.attack1.SetModifiers(this.attack, 1.1);
         this.attack2.SetModifiers(this.attack, 0.9);
+        this.targeting2.SetTargets(3);
     }
 
     protected override void HalfF()
@@ -248,15 +251,16 @@ public partial class Priestess : Boss
             this.ToStage();
         }
         this.Half?.Invoke(this, EventArgs.Empty);
-        this.skillcooldown = 2;
+        this.skillcooldown = 2.5;
+        this.attack1.SetModifiers(this.attack, 1.2);
         this.targeting1.SetTargets(3);
-        this.targeting2.SetTargets(3);
+        this.targeting3.SetTargets(3);
     }
 
     protected override void OneQF()
     {
         this.OneQ?.Invoke(this, EventArgs.Empty);
-        this.attack1.SetModifiers(this.attack, 1.2);
+        this.attack1.SetModifiers(this.attack, 1.3);
         this.attack2.SetModifiers(this.attack, 1);
         this.targeting3.SetTargets(4);
     }

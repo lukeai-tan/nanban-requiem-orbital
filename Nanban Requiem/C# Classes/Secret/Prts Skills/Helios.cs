@@ -13,6 +13,7 @@ public partial class Helios : BossSkill
         this.priority = 3;
         this.boss = this.GetParentOrNull<Prts>();
         this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
+        this.boss.Active += (object boss, EventArgs e) => this.timeSinceLastUse = 10;
     }
     
     public override void _Process(double delta)

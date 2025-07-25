@@ -25,7 +25,7 @@ animations = [{
 size = Vector2(54, 52)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ff34"]
-radius = 640.45
+radius = 232.138
 
 [node name="RangedTowerChicken" type="CharacterBody2D"]
 texture_filter = 1

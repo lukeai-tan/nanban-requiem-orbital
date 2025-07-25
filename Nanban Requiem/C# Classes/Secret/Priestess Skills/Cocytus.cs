@@ -13,6 +13,7 @@ public partial class Cocytus : BossSkill
         this.priority = 1;
         this.boss = this.GetParentOrNull<Priestess>();
         this.boss.HasEnemy += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
+        this.boss.Active += (object boss, EventArgs e) => this.timeSinceLastUse = 3;
     }
 
     public override void _Process(double delta)

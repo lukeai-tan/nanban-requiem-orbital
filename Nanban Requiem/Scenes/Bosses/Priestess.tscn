@@ -26,9 +26,9 @@ areaScene = ExtResource("5_bjx4r")
 skillcooldown = 3.0
 movementSpeed = 50
 attack = 200
-health = 25000
-physDefense = 25
-artsDefense = 25
+health = 24000
+physDefense = 30
+artsDefense = 30
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
@@ -53,7 +53,7 @@ script = ExtResource("6_m2d5i")
 
 [node name="Erebus" type="Node2D" parent="."]
 script = ExtResource("7_2skqe")
-cooldown = 12.0
+cooldown = 15.0
 
 [node name="Hyades" type="Node2D" parent="."]
 script = ExtResource("8_bjx4r")

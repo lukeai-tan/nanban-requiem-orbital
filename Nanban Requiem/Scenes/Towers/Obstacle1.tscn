@@ -16,8 +16,8 @@ input_pickable = true
 script = ExtResource("1_kmpsh")
 blockCount = 3
 health = 2400
-physDefense = 70
-artsDefense = 70
+physDefense = 60
+artsDefense = 60
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kmpsh")

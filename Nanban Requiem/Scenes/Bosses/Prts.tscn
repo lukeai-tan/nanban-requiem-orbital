@@ -412,12 +412,12 @@ bombDebuffScene = ExtResource("5_ghv44")
 wipeScene = ExtResource("6_yqntt")
 areaScene = ExtResource("6_2e4o6")
 tileScene = ExtResource("7_n4pua")
-maxShieldHp = 5000
-skillcooldown = 5.0
+maxShieldHp = 4000
+skillcooldown = 4.0
 attack = 200
-health = 10000
-physDefense = 15
-artsDefense = 15
+health = 8000
+physDefense = 20
+artsDefense = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -433,22 +433,21 @@ script = ExtResource("3_lqta0")
 
 [node name="Achlys" type="Node2D" parent="."]
 script = ExtResource("9_7xx78")
-cooldown = 5.0
 
 [node name="Astrape" type="Node2D" parent="."]
 script = ExtResource("10_wocj5")
 
 [node name="Charybdis" type="Node2D" parent="."]
 script = ExtResource("11_h2rai")
-cooldown = 25.0
+cooldown = 20.0
 
 [node name="Pharos" type="Node2D" parent="."]
 script = ExtResource("12_rymh7")
-cooldown = 20.0
+cooldown = 16.0
 
 [node name="Helios" type="Node2D" parent="."]
 script = ExtResource("15_7xx78")
-cooldown = 30.0
+cooldown = 28.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.2, 1.2)

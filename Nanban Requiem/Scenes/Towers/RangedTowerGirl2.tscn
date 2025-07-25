@@ -41,8 +41,8 @@ buffScene = ExtResource("2_044w5")
 projectileSpeed = 300
 projectileScene = ExtResource("3_omxl8")
 attackSpeed = 0.2
-attack = 100
-health = 500
+attack = 120
+health = 600
 physDefense = 10
 artsDefense = 10
 
@@ -61,7 +61,7 @@ shape = SubResource("CircleShape2D_7ff34")
 
 [node name="SKill" type="Node2D" parent="."]
 script = ExtResource("6_dit54")
-damage = 150
+damage = 120
 multiplier = 1.0
 projectileScene = ExtResource("7_whhsv")
 aoeScene = ExtResource("2_omxl8")

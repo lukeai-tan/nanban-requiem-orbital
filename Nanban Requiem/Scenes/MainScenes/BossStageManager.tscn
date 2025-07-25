@@ -347,6 +347,7 @@ offset_bottom = 128.0
 color = Color(0, 0, 0, 1)
 
 [node name="BaseIcon" type="TextureRect" parent="UI/HUD/InfoBar/Frame2"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -403,7 +404,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_otjwt")
-current_dp = 20
+current_dp = 25
+dp_gain_rate = 1.2
 
 [node name="DPCount Label" type="Label" parent="UI/HUD/DPBar"]
 layout_direction = 2

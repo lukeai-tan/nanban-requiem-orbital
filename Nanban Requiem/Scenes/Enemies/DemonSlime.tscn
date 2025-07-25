@@ -466,7 +466,7 @@ projectileScene = ExtResource("2_7x5tn")
 attackSpeed = 1.0
 blockCount = 2
 movementSpeed = 100
-attack = 150
+attack = 200
 health = 4000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
