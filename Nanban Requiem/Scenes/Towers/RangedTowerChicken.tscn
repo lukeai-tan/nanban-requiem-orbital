@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://h8u4ma4vla85"]
+[gd_scene load_steps=9 format=3 uid="uid://h8u4ma4vla85"]
 
 [ext_resource type="Script" uid="uid://dpicnpnu2ismo" path="res://C# Classes/Towers (Functional)/RangedTowerChicken.cs" id="1_pfgf4"]
-[ext_resource type="PackedScene" uid="uid://cpy306be7ciei" path="res://Scenes/AdditionalEffects/TowerSingleUse.tscn" id="2_rpsl7"]
-[ext_resource type="PackedScene" uid="uid://bhq23dymrbssa" path="res://Scenes/Projectile/TowerProjectileAA.tscn" id="3_2qbwk"]
+[ext_resource type="PackedScene" uid="uid://dpjsbb6jvxg60" path="res://Scenes/Projectile/ChickenTowerProjectile.tscn" id="2_dw4h6"]
 [ext_resource type="Texture2D" uid="uid://uf5bydw3u5x4" path="res://Assets/Towers/RangedTowerBoy1_base.png" id="4_0n4yh"]
 [ext_resource type="Script" uid="uid://dr1kuy3ykvdk8" path="res://C# Classes/Detection Range Subclasses/TowerDetectionRange.cs" id="5_rel7s"]
 
@@ -32,11 +31,10 @@ texture_filter = 1
 collision_layer = 4
 input_pickable = true
 script = ExtResource("1_pfgf4")
-areaEffectScene = ExtResource("2_rpsl7")
 projectileSpeed = 300
-projectileScene = ExtResource("3_2qbwk")
-attackSpeed = 20.0
-attack = 35
+projectileScene = ExtResource("2_dw4h6")
+attackSpeed = 30.0
+attack = 60
 health = 10000
 physDefense = 100
 artsDefense = 100

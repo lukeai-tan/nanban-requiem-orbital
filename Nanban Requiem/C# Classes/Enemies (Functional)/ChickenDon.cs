@@ -49,7 +49,7 @@ public partial class ChickenDon : BasicRangedEnemy
         timeSinceLastAttack += delta;
     }
 
-    
+
     private void HandleAnimation()
     {
         if (animation == null)
@@ -60,6 +60,7 @@ public partial class ChickenDon : BasicRangedEnemy
             GD.Print("Phase 2 started");
             phaseTwoStarted = true;
             animation.Play("phase2");
+            ChangeBackground();
         }
 
         if (health <= phaseOneHealth / 4 && !phaseThreeStarted)
@@ -77,5 +78,21 @@ public partial class ChickenDon : BasicRangedEnemy
     {
         this.EmitSignal(nameof(DamageBase), 1000);
         this.Despawn();
+    }
+
+    public async void ChangeBackground()
+    {
+        var backgroundOne = GetNode<TextureRect>("/root/SceneHandler/GameScene/Map/Background");
+        var backgroundTwo = GetNode<TextureRect>("/root/SceneHandler/GameScene/Map/Background2");
+        backgroundTwo.Visible = true;
+        backgroundTwo.Modulate = new Color(1, 1, 1, 0); 
+
+        var tween = GetTree().CreateTween();
+
+        tween.TweenProperty(backgroundOne, "modulate:a", 0.0f, 1.0f);
+        tween.TweenProperty(backgroundTwo, "modulate:a", 1.0f, 1.0f);
+        await ToSignal(tween, "finished");
+
+        backgroundOne.Visible = false;
     }
 }
