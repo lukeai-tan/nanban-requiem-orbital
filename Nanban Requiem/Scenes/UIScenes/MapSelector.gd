@@ -13,6 +13,7 @@ signal return_to_main_menu
 
 func _ready() -> void:
 	# sets default map to index 0 (aka Map 1)
+	handicap_window.visible = false
 	Engine.time_scale = 1.0
 	GameData.time_scale = 1.0
 	$PlayerIcon.global_position = maps[current_map].global_position
@@ -50,14 +51,14 @@ func _on_map_icon_gui_input(event: InputEvent, index: int) -> void:
 func _confirm_map() -> void:
 	if current_map == 3:
 		map_name = "BossMap"
+		handicap_window.visible = true
 	else:
 		map_name = "Map%d" % (current_map + 1)
-	print("Selected map node: ", map_name)
-	emit_signal("map_selected", map_name)
+		_emit_map_selected()
 
-	var cleanup_tween := get_tree().create_tween()
-	cleanup_tween.tween_interval(0.1)
-	cleanup_tween.tween_callback(Callable(self, "queue_free"))
+	# emit_signal("map_selected", map_name)
+
+
 
 
 func _select_map(index: int) -> void:
@@ -85,8 +86,17 @@ func _on_back_to_main_pressed() -> void:
 func _on_yes_pressed() -> void:
 	GameData.boss_map_handicap = true
 	handicap_window.visible = false
+	_emit_map_selected()
 
 
 func _on_no_pressed() -> void:
 	GameData.boss_map_handicap = false
 	handicap_window.visible = false
+	_emit_map_selected()
+
+func _emit_map_selected() -> void:
+	emit_signal("map_selected", map_name)
+	print("Selected map node: ", map_name)
+	var cleanup_tween := get_tree().create_tween()
+	cleanup_tween.tween_interval(0.1)
+	cleanup_tween.tween_callback(Callable(self, "queue_free"))
