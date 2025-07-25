@@ -465,7 +465,7 @@ projectileSpeed = 200
 projectileScene = ExtResource("2_7x5tn")
 attackSpeed = 1.0
 blockCount = 2
-movementSpeed = 100
+movementSpeed = 75
 attack = 200
 health = 4000
 

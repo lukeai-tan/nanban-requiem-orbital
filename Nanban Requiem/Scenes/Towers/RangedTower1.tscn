@@ -18,9 +18,9 @@ input_pickable = true
 script = ExtResource("1_ymvci")
 projectileSpeed = 300
 projectileScene = ExtResource("2_qxkfp")
-attackSpeed = 4.0
+attackSpeed = 3.0
 attack = 35
-health = 1000
+health = 800
 physDefense = 10
 artsDefense = 10
 
