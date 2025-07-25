@@ -347,6 +347,7 @@ offset_bottom = 128.0
 color = Color(0, 0, 0, 1)
 
 [node name="BaseIcon" type="TextureRect" parent="UI/HUD/InfoBar/Frame2"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
