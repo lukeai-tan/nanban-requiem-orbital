@@ -88,8 +88,8 @@ var BossMap_tower_squad = {
 var Map5_tower_squad = {
 	"RangedTower1": true,
 	"RangedTower2": true,
-	"Obstacle1": true,
-	"MeleeTower1": true,
+	"Obstacle1": false,
+	"MeleeTower1": false,
 	"RangedTowerGirl1": true,
 	"RangedTowerGirl2": true,
 	"RangedTowerBoy1": false,
@@ -185,9 +185,8 @@ var tower_data = {
 		"sprite_icon": "res://Assets/Towers/ChickenDon_icon.png",
 		"sprite_in_game": "res://Assets/Towers/RangedTowerChicken_sprite.png",
 		"name": "Chicken 'Don'",
-		"description": "The Chicken, The Myth, The Legend.\n
-						First time where the playable final boss isn't nerfed into oblivion.",
-		"stats": "Chicken Don does not reveal his stats. He lets his muscles do the talking."
+		"description": "The Chicken, The Myth, The Legend.\nFirst time where the playable final boss isn't nerfed into oblivion.\nControls all of space and time. He doesn't just fight enemies, he rewrites their destinies.\nBlink, and he has already clucked you out of existence.\n",
+		"stats": "Chicken Don does not reveal his stats. He lets his muscles do the talking.\nPriestess fears him."
 	},
 
 }

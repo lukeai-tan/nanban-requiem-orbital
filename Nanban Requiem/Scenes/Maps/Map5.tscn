@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://b8ktmdwqhxcg2"]
+[gd_scene load_steps=12 format=4 uid="uid://b8ktmdwqhxcg2"]
 
 [ext_resource type="Texture2D" uid="uid://twsat0y6aavq" path="res://Assets/Environment/Tilesets/New Piskel (29).png" id="1_6ktta"]
 [ext_resource type="AudioStream" uid="uid://cjj3tfinvtxuq" path="res://Assets/UI/Sounds/Mozart Lacrimosa.mp3" id="2_aea82"]
+[ext_resource type="Texture2D" uid="uid://bhgtd6ag1jf3n" path="res://Assets/UI/Art/black_hole_inverse.png" id="2_ra4ov"]
+[ext_resource type="Texture2D" uid="uid://cvibvl8yt6lcq" path="res://Assets/UI/Art/black-hole-chernaya-dyra.webp" id="3_mc23g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aea82"]
 texture = ExtResource("1_6ktta")
@@ -40,6 +42,19 @@ _data = {
 point_count = 2
 
 [node name="Map5" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = ExtResource("3_mc23g")
+
+[node name="Background2" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = ExtResource("2_ra4ov")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 modulate = Color(1, 1, 1, 0)
