@@ -12,6 +12,7 @@ public partial class BossStageManager : Node2D
     public delegate void GameFinishedEventHandler(string result);
     protected int objectiveHp = 3600;
     private bool handicap = false;
+    private bool cheated = false;
 
     private Node towerBuilder;
     private Node towerManager;
@@ -160,14 +161,19 @@ public partial class BossStageManager : Node2D
     {
         if (chicken is RangedTowerChicken chickenTower)
         {
-            if (this.handicap)
+            if (this.handicap && !this.cheated)
             {
                 this.PlayDialogue(0);
+                this.cheated = true;
             }
-            else
+            else if (!this.handicap)
             {
                 chickenTower.ModifyAtk(-1);
-                this.PlayDialogue(1);
+                if (!this.cheated)
+                {
+                    this.PlayDialogue(1);
+                    this.cheated = true;
+                }
                 await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
                 chickenTower.Despawn();
                 this.LockDeployment();
