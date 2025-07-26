@@ -21,6 +21,7 @@ public partial class ChickenDon : BasicRangedEnemy
         base._Ready();
         phaseOneHealth = this.health;
         originalSpeed = this.movementSpeed;
+        // CallSkillName("Chicken Don", "white");
     }
 
     public override void _Process(double delta)
@@ -62,10 +63,12 @@ public partial class ChickenDon : BasicRangedEnemy
             phaseTwoStarted = true;
             animation.Play("phase2");
             ChangeBackground();
+            CallSkillName("Eyes Over Heaven", "black");
         }
 
         if (health <= phaseOneHealth / 4 && !phaseThreeStarted)
         {
+            CallSkillName("Complete Global Oblivion", "black");
             GD.Print("Phase 3 started");
             phaseThreeStarted = true;
         }
@@ -97,10 +100,18 @@ public partial class ChickenDon : BasicRangedEnemy
         backgroundOne.Visible = false;
     }
 
-    public void CallSkillName()
+    public void CallSkillName(String text, String colour)
     {
-        var TitleCard = GetNode<TitleCard>("/root/SceneHandler/GameScene/UI/TitleCard");
-        TitleCard.ShowTitleCard();
-        TitleCard
+        var titleCard = GetNode("/root/SceneHandler/GameScene/UI/TitleCard");
+        if (colour == "black")
+        {
+            titleCard.Call("black_title_card");
+        }
+        else
+        {
+            titleCard.Call("white_title_card");
+        }
+        titleCard.Call("activate_title_sequence", text);
+        GD.Print("Showed Title Card");
     }
 }
