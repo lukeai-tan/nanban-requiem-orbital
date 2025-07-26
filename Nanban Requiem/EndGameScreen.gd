@@ -4,8 +4,10 @@ extends Control
 @onready var background = $"Background"
 @onready var death_message = $"Death Message"
 @onready var victory_message = $"Victory Message"
+@onready var boss_message = $"BossStageMessage"
 @onready var return_to_main_button = $"ReturnToMain"
 var animation_finished: bool = false
+var boss_stage: bool = false
 
 signal game_finished(result)
 
@@ -14,14 +16,19 @@ func _ready():
 	background.modulate.a = 0.0
 	death_message.modulate.a = 0.0
 	victory_message.modulate.a = 0.0
+	boss_message.modulate.a = 0.0
 	return_to_main_button.visible = false
 	
 func _on_game_won():
 	fade_in_label(victory_message)
+	if boss_stage:
+		fade_in_label(boss_message)
 	print("Game won")
 
 func _on_game_lost():
 	fade_in_label(death_message)
+	if boss_stage:
+		fade_in_label(boss_message)
 	print("Game lost")
 
 
