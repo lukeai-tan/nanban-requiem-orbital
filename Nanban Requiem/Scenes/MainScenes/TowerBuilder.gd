@@ -11,6 +11,8 @@ var tower_manager: Node2D
 var tower_preview_node = null
 var dp_bar: Control
 
+signal chicken(tower : Node)
+
 var tower_exclusions : TileMapLayer
 var low_ground : TileMapLayer
 var high_ground : TileMapLayer
@@ -89,3 +91,6 @@ func verify_and_build():
 		build_valid = false
 		
 		Engine.set_time_scale(GameData.time_scale)
+
+		if build_type == "RangedTowerChicken":
+			chicken.emit(new_tower)

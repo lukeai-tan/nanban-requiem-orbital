@@ -1,8 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://cp4tsdihiexek"]
+[gd_scene load_steps=33 format=3 uid="uid://cp4tsdihiexek"]
 
 [ext_resource type="Script" uid="uid://q3eoe1jne7kw" path="res://C# Classes/Secret/BossStageManager.cs" id="1_7bv37"]
 [ext_resource type="Script" uid="uid://bim586pwyxbcj" path="res://Scenes/MainScenes/BossUI.gd" id="2_7bv37"]
+[ext_resource type="Script" uid="uid://big83cmg6df2y" path="res://C# Classes/Secret/Extras/BossDialogueManager.cs" id="2_ymsrg"]
+[ext_resource type="Texture2D" uid="uid://dfd6q1batkb82" path="res://Assets/Enemies/priestess.png" id="3_gggqq"]
 [ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="3_jd04r"]
+[ext_resource type="FontFile" uid="uid://d0jwvllp2ku3i" path="res://Assets/Fonts/OptimusPrinceps.ttf" id="4_0q0yg"]
 [ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="4_kourl"]
 [ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="5_msd52"]
 [ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="6_064ww"]
@@ -32,6 +35,34 @@
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_7bv37")
+
+[node name="Cutscenes" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("2_ymsrg")
+
+[node name="Images" type="TextureRect" parent="Cutscenes"]
+offset_right = 1282.0
+offset_bottom = 800.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gggqq")
+
+[node name="Panel" type="Panel" parent="Cutscenes"]
+offset_top = 605.0
+offset_right = 1281.0
+offset_bottom = 799.0
+
+[node name="Dialogues" type="Label" parent="Cutscenes/Panel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 49.0
+offset_right = 1214.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("4_0q0yg")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("2_7bv37")
