@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfr30vqw5rege"]
+
+[ext_resource type="Script" uid="uid://dc1sk6xbapans" path="res://Scenes/UIScenes/TitleCard.gd" id="1_i122q"]
+[ext_resource type="FontFile" uid="uid://qd2ktfta80ko" path="res://Assets/Fonts/edosz.ttf" id="1_uuvpq"]
+
+[node name="TitleCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i122q")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 896.0
+offset_bottom = 512.0
+theme_override_fonts/font = ExtResource("1_uuvpq")
+theme_override_font_sizes/font_size = 50
+text = "Complete Global Dominion"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

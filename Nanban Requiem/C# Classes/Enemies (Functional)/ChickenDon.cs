@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Godot;
 
 public partial class ChickenDon : BasicRangedEnemy
@@ -85,7 +86,7 @@ public partial class ChickenDon : BasicRangedEnemy
         var backgroundOne = GetNode<TextureRect>("/root/SceneHandler/GameScene/Map/Background");
         var backgroundTwo = GetNode<TextureRect>("/root/SceneHandler/GameScene/Map/Background2");
         backgroundTwo.Visible = true;
-        backgroundTwo.Modulate = new Color(1, 1, 1, 0); 
+        backgroundTwo.Modulate = new Color(1, 1, 1, 0);
 
         var tween = GetTree().CreateTween();
 
@@ -94,5 +95,12 @@ public partial class ChickenDon : BasicRangedEnemy
         await ToSignal(tween, "finished");
 
         backgroundOne.Visible = false;
+    }
+
+    public void CallSkillName()
+    {
+        var TitleCard = GetNode<TitleCard>("/root/SceneHandler/GameScene/UI/TitleCard");
+        TitleCard.ShowTitleCard();
+        TitleCard
     }
 }
