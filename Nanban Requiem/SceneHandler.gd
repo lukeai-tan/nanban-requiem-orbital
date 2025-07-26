@@ -61,7 +61,7 @@ func _on_map_selected(map_name: String):
 	GameData["tower_squad"] = GameData[map_name + "_tower_squad"]
 	if(GameData.chicken_don_dead):
 		GameData["tower_squad"]["RangedTowerChicken"] = true
-	GameData["tower_squad"]["RangedTowerChicken"] = true
+	# GameData["tower_squad"]["RangedTowerChicken"] = true
 
 	if map_name == "BossMap":
 		game_scene = load("res://Scenes/MainScenes/BossStageManager.tscn").instantiate()
