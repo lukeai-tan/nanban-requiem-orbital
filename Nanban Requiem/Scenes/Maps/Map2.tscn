@@ -150,4 +150,5 @@ curve = SubResource("Curve2D_jigm6")
 stream = ExtResource("4_3uasi")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true

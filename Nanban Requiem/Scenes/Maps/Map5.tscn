@@ -78,4 +78,5 @@ curve = SubResource("Curve2D_i2n3y")
 stream = ExtResource("2_aea82")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
