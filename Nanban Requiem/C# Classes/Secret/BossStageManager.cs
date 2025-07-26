@@ -16,6 +16,7 @@ public partial class BossStageManager : Node2D
     private Node towerBuilder;
     private Node towerManager;
     private Node ui;
+    private BossDialogueManager cutscenes;
     private Node buildBar;
     private Node map;
     private Node endGameScreen;
@@ -47,6 +48,7 @@ public partial class BossStageManager : Node2D
         this.handicap = gameData.Get("boss_map_handicap").AsBool();
 
         this.ui = GetNode("UI");
+        this.cutscenes = GetNodeOrNull<BossDialogueManager>("Cutscenes");
         this.buildBar = GetNode("UI/HUD/BuildBar");
         this.dpBar = GetNode("UI/HUD/DPBar");
 
@@ -72,10 +74,13 @@ public partial class BossStageManager : Node2D
         this.towerBuilder.Set("low_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase1 Low"));
         this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase1 High"));
         this.towerBuilder.Set("dp_bar", this.dpBar);
+        this.towerBuilder.Connect("chicken", new Callable(this, nameof(CookChicken)));
 
         this.ui.Set("tower_builder", this.towerBuilder);
         this.ui.Set("tower_manager", this.towerManager);
         this.ui.Call("set_hp", this.objectiveHp);
+
+        this.cutscenes.DialogueComplete += (object obj, EventArgs e) => this.FinishDialogue();
 
         this.buildBar.Call("setup", this.towerBuilder);
         this.buildBar.Set("tower_builder", this.towerBuilder);
@@ -148,6 +153,38 @@ public partial class BossStageManager : Node2D
         Connect("GameWon", new Callable(endGameScreen, "_on_game_won"));
         Connect("GameLost", new Callable(endGameScreen, "_on_game_lost"));
 
+    }
+
+    protected async void CookChicken(Node chicken)
+    {
+        if (chicken is RangedTowerChicken chickenTower)
+        {
+            if (this.handicap)
+            {
+                this.PlayDialogue(0);
+            }
+            else
+            {
+                chickenTower.ModifyAtk(-1);
+                this.PlayDialogue(1);
+                await ToSignal(GetTree().CreateTimer(0.5f, false), SceneTreeTimer.SignalName.Timeout);
+                chickenTower.Despawn();
+                this.LockDeployment();
+            }
+        }
+    }
+
+    protected void PlayDialogue(int i)
+    {
+        this.GetTree().Paused = true;
+        this.ui.Call("toggle_ui");
+        this.cutscenes.PlayDialogue(i);
+    }
+
+    protected void FinishDialogue()
+    {
+        this.ui.Call("toggle_ui");
+        this.GetTree().Paused = false;
     }
 
     public void AddEnemy(Enemy enemy)
