@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hdfdj5wbmqjp"
+path="res://.godot/imported/The Army of Minotaur  Epic Orchestral Battle Music (CC-BY).mp3-f11443cd04b09722b57f97e6c921e732.mp3str"
+
+[deps]
+
+source_file="res://Assets/UI/Sounds/The Army of Minotaur  Epic Orchestral Battle Music (CC-BY).mp3"
+dest_files=["res://.godot/imported/The Army of Minotaur  Epic Orchestral Battle Music (CC-BY).mp3-f11443cd04b09722b57f97e6c921e732.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
