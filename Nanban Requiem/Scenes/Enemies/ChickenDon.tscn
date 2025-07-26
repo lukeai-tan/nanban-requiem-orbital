@@ -42,14 +42,14 @@ radius = 2152.01
 [node name="ChickenDon" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_byv68")
-speedGrowthMultiplier = 1.05
+speedGrowthMultiplier = 1.06
 projectileSpeed = 300
 projectileScene = ExtResource("2_0g67v")
 attackSpeed = 2.0
 blockCount = 100000
 movementSpeed = 5
 attack = 300
-health = 110000
+health = 105000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
