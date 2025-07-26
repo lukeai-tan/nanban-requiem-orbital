@@ -79,6 +79,7 @@ public partial class BossStageManager : Node2D
         this.ui.Set("tower_builder", this.towerBuilder);
         this.ui.Set("tower_manager", this.towerManager);
         this.ui.Call("set_hp", this.objectiveHp);
+        this.ui.GetNode("EndGameScreen").Set("boss_stage", true);
 
         this.cutscenes.DialogueComplete += (object obj, EventArgs e) => this.FinishDialogue();
 
