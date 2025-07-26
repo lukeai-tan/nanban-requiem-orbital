@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://thw1mpx4ej03"]
+[gd_scene load_steps=13 format=4 uid="uid://thw1mpx4ej03"]
 
 [ext_resource type="TileSet" uid="uid://xi6dbhxjj022" path="res://Resources/Tilesets/laboratory.tres" id="1_qn84b"]
 [ext_resource type="PackedScene" uid="uid://cbhiw6joeb0wl" path="res://Scenes/Bosses/Prts.tscn" id="2_8bh5t"]
 [ext_resource type="Script" uid="uid://dv0fgr10a0i22" path="res://C# Classes/Secret/BossWaveManager.cs" id="2_127qf"]
+[ext_resource type="AudioStream" uid="uid://hdfdj5wbmqjp" path="res://Assets/UI/Sounds/The Army of Minotaur  Epic Orchestral Battle Music (CC-BY).mp3" id="4_yg1dn"]
 
 [sub_resource type="Curve2D" id="Curve2D_127qf"]
 _data = {
@@ -154,3 +155,10 @@ path = NodePath("../Phase3 Enemy2")
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Towers" type="Node2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yg1dn")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true

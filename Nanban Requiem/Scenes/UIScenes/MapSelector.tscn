@@ -80,14 +80,14 @@ map_index = 4
 map_name = "Boss Map"
 
 [node name="MapIcon5" parent="." instance=ExtResource("3_e51tu")]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.054902)
 layout_mode = 1
 offset_left = 16.0
 offset_top = 624.0
 offset_right = -1136.0
 offset_bottom = -16.0
 map_index = 5
-map_name = "Map 5"
+map_name = "Chicken Don"
 
 [node name="PlayerIcon" type="TextureRect" parent="."]
 texture_filter = 1
