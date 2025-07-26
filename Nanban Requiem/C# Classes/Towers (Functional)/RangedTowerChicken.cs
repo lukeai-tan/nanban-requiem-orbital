@@ -17,10 +17,10 @@ public partial class RangedTowerChicken : RangedTowerBase
     public override void _Process(double delta)
     {
         base._Process(delta);
-        CompleteGlobalSaturation();
+        CompleteGlobalDominion();
     }
 
-    public void CompleteGlobalSaturation()
+    public void CompleteGlobalDominion()
     {
         float healthPercentage = Mathf.Clamp(this.health / this.originalHealth, 0.01f, 1f);
         float multiplier = 1f / healthPercentage;

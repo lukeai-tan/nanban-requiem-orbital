@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Godot;
 
 public partial class ChickenDon : BasicRangedEnemy
@@ -20,6 +21,7 @@ public partial class ChickenDon : BasicRangedEnemy
         base._Ready();
         phaseOneHealth = this.health;
         originalSpeed = this.movementSpeed;
+        // CallSkillName("Chicken Don", "white");
     }
 
     public override void _Process(double delta)
@@ -61,10 +63,12 @@ public partial class ChickenDon : BasicRangedEnemy
             phaseTwoStarted = true;
             animation.Play("phase2");
             ChangeBackground();
+            CallSkillName("Eyes Over Heaven", "black");
         }
 
         if (health <= phaseOneHealth / 4 && !phaseThreeStarted)
         {
+            CallSkillName("Complete Global Oblivion", "black");
             GD.Print("Phase 3 started");
             phaseThreeStarted = true;
         }
@@ -85,7 +89,7 @@ public partial class ChickenDon : BasicRangedEnemy
         var backgroundOne = GetNode<TextureRect>("/root/SceneHandler/GameScene/Map/Background");
         var backgroundTwo = GetNode<TextureRect>("/root/SceneHandler/GameScene/Map/Background2");
         backgroundTwo.Visible = true;
-        backgroundTwo.Modulate = new Color(1, 1, 1, 0); 
+        backgroundTwo.Modulate = new Color(1, 1, 1, 0);
 
         var tween = GetTree().CreateTween();
 
@@ -94,5 +98,20 @@ public partial class ChickenDon : BasicRangedEnemy
         await ToSignal(tween, "finished");
 
         backgroundOne.Visible = false;
+    }
+
+    public void CallSkillName(String text, String colour)
+    {
+        var titleCard = GetNode("/root/SceneHandler/GameScene/UI/TitleCard");
+        if (colour == "black")
+        {
+            titleCard.Call("black_title_card");
+        }
+        else
+        {
+            titleCard.Call("white_title_card");
+        }
+        titleCard.Call("activate_title_sequence", text);
+        GD.Print("Showed Title Card");
     }
 }

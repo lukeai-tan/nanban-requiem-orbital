@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3g43ty7liue1"]
+[gd_scene load_steps=31 format=3 uid="uid://c3g43ty7liue1"]
 
 [ext_resource type="Script" uid="uid://cq4r2aj4q41m1" path="res://Scenes/MainScenes/ChickenStageManager.gd" id="1_kvht5"]
 [ext_resource type="Script" uid="uid://dkq7asf4xepr4" path="res://Scenes/MainScenes/ChickenUI.gd" id="1_v143w"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://b7hgqo11wju8m" path="res://Assets/Icons/trashcanOpen.png" id="26_y6er7"]
 [ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="27_p57q6"]
 [ext_resource type="PackedScene" uid="uid://crbv7a1q6kijt" path="res://EndGameScreen.tscn" id="28_d14am"]
+[ext_resource type="PackedScene" uid="uid://dfr30vqw5rege" path="res://Scenes/UIScenes/TitleCard.tscn" id="30_8dpi0"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_kvht5")
@@ -475,6 +476,8 @@ text = "No"
 
 [node name="EndGameScreen" parent="UI" instance=ExtResource("28_d14am")]
 visible = false
+
+[node name="TitleCard" parent="UI" instance=ExtResource("30_8dpi0")]
 
 [connection signal="pressed" from="UI/HUD/GameControls/Restart" to="UI" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
