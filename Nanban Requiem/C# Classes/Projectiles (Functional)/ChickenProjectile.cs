@@ -22,6 +22,7 @@ public partial class ChickenProjectile : EnemyProjectileA
             return;
         }
         this.GlobalPosition = this.target.GlobalPosition;
+        // this.target.GlobalPosition = this.GlobalPosition;
         AnimatedSprite2D animation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
         animation.Visible = true;
         timeSinceSpawn += (float)delta;
