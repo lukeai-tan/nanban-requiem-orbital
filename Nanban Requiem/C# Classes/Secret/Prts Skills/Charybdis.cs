@@ -10,7 +10,7 @@ public partial class Charybdis : BossSkill
 
     public override void _Ready()
     {
-        this.priority = 1;
+        this.priority = 2;
         this.boss = this.GetParentOrNull<Prts>();
         this.boss.HasTower += (object boss, BoolEventArgs e) => this.UseCheck(e.boolean);
         this.boss.Active += (object boss, EventArgs e) => this.timeSinceLastUse = 5;
