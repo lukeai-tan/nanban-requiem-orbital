@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bim586pwyxbcj" path="res://Scenes/MainScenes/BossUI.gd" id="2_7bv37"]
 [ext_resource type="Texture2D" uid="uid://ie733wtodtxo" path="res://Assets/Enemies/Untitled_Artwork-1.png" id="2_o4roe"]
 [ext_resource type="Script" uid="uid://big83cmg6df2y" path="res://C# Classes/Secret/Extras/BossDialogueManager.cs" id="2_ymsrg"]
-[ext_resource type="Texture2D" uid="uid://dfd6q1batkb82" path="res://Assets/Enemies/priestess.png" id="3_gggqq"]
+[ext_resource type="Texture2D" uid="uid://evgdtdp2pvkt" path="res://Assets/Enemies/priestess.png" id="3_gggqq"]
 [ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="3_jd04r"]
 [ext_resource type="Texture2D" uid="uid://bhv2d37pncikm" path="res://Assets/Enemies/Untitled_Artwork-2.png" id="3_o3048"]
 [ext_resource type="FontFile" uid="uid://d0jwvllp2ku3i" path="res://Assets/Fonts/OptimusPrinceps.ttf" id="4_0q0yg"]
