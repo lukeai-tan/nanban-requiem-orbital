@@ -8,9 +8,9 @@ public partial class BossDialogueManager : CanvasLayer
 	public event EventHandler DialogueComplete;
 	protected Label dialogueLabel;
 
-	public override void _Ready()
-	{
-		dialogueLabel = GetNode("Panel").GetNodeOrNull<Label>("Dialogues");
+    public override void _Ready()
+    {
+        dialogueLabel = GetNode("Panel").GetNodeOrNull<Label>("Dialogues");
 	}
 
 	private List<List<string>> dialogueLines = [
@@ -40,12 +40,12 @@ public partial class BossDialogueManager : CanvasLayer
 	}
 
 	public override void _Input(InputEvent @event)
-	{
-		if (this.Visible && @event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
-		{
-			AdvanceDialogue();
-		}
-	}
+    {
+        if (this.Visible && @event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+        {
+            AdvanceDialogue();
+        }
+    }
 
 	private void ShowCurrentLine()
 	{
