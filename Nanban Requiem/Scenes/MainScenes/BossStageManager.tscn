@@ -1,40 +1,157 @@
-[gd_scene load_steps=33 format=3 uid="uid://cp4tsdihiexek"]
+[gd_scene load_steps=58 format=3 uid="uid://cp4tsdihiexek"]
 
 [ext_resource type="Script" uid="uid://q3eoe1jne7kw" path="res://C# Classes/Secret/BossStageManager.cs" id="1_7bv37"]
 [ext_resource type="Script" uid="uid://bim586pwyxbcj" path="res://Scenes/MainScenes/BossUI.gd" id="2_7bv37"]
+[ext_resource type="Texture2D" uid="uid://ie733wtodtxo" path="res://Assets/Enemies/Untitled_Artwork-1.png" id="2_o4roe"]
 [ext_resource type="Script" uid="uid://big83cmg6df2y" path="res://C# Classes/Secret/Extras/BossDialogueManager.cs" id="2_ymsrg"]
 [ext_resource type="Texture2D" uid="uid://dfd6q1batkb82" path="res://Assets/Enemies/priestess.png" id="3_gggqq"]
 [ext_resource type="Script" uid="uid://d0gboknna2m22" path="res://Scenes/MainScenes/BuildBarManager.gd" id="3_jd04r"]
+[ext_resource type="Texture2D" uid="uid://bhv2d37pncikm" path="res://Assets/Enemies/Untitled_Artwork-2.png" id="3_o3048"]
 [ext_resource type="FontFile" uid="uid://d0jwvllp2ku3i" path="res://Assets/Fonts/OptimusPrinceps.ttf" id="4_0q0yg"]
 [ext_resource type="Texture2D" uid="uid://ccmbrc832q733" path="res://Assets/UI/Buttons/button_square_depth_gradient.png" id="4_kourl"]
+[ext_resource type="Texture2D" uid="uid://hn3sj1vi6nik" path="res://Assets/Enemies/Untitled_Artwork-3.png" id="4_vhtei"]
+[ext_resource type="Texture2D" uid="uid://dw5dkuhgw5g1t" path="res://Assets/Enemies/Untitled_Artwork-4.png" id="5_45d4v"]
 [ext_resource type="Texture2D" uid="uid://cecy4rgv45ed" path="res://Assets/UI/Buttons/button_square_flat.png" id="5_msd52"]
+[ext_resource type="Texture2D" uid="uid://4uwlbr353gdc" path="res://Assets/Enemies/Untitled_Artwork-5.png" id="6_00y0d"]
 [ext_resource type="Texture2D" uid="uid://c38f4yytye8ga" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="6_064ww"]
 [ext_resource type="Texture2D" uid="uid://dcw0ohdkpaccy" path="res://Assets/Towers/RangedTower1_turret.png" id="7_hvuvc"]
+[ext_resource type="Texture2D" uid="uid://bflqxgojh0114" path="res://Assets/Enemies/Untitled_Artwork-6.png" id="7_msgqv"]
+[ext_resource type="Texture2D" uid="uid://ch8ge73turbvd" path="res://Assets/Enemies/Untitled_Artwork-7.png" id="8_58us1"]
 [ext_resource type="Texture2D" uid="uid://cntcgyt8s5788" path="res://Assets/Towers/RangedTower2_turret.png" id="8_o64v5"]
+[ext_resource type="Texture2D" uid="uid://c2cnvryg63f23" path="res://Assets/Enemies/Untitled_Artwork-8.png" id="9_oyq5m"]
 [ext_resource type="Texture2D" uid="uid://djsms1ysch5w6" path="res://Assets/Towers/Obstacle1_base.png" id="9_yvg1w"]
 [ext_resource type="Texture2D" uid="uid://41i2e76d22bw" path="res://Assets/Towers/MeleeTower1_base.png" id="10_2puma"]
+[ext_resource type="Texture2D" uid="uid://cmrlhcxngppww" path="res://Assets/Enemies/Untitled_Artwork-9.png" id="10_0068y"]
+[ext_resource type="Texture2D" uid="uid://dsqi22hhu1cq3" path="res://Assets/Enemies/Untitled_Artwork-10.png" id="11_am23t"]
 [ext_resource type="Texture2D" uid="uid://c3ihmkr4oh0gx" path="res://Assets/Towers/RangedTowerGirl1_icon.png" id="11_ymsrg"]
 [ext_resource type="Texture2D" uid="uid://dscw14lp4fqsv" path="res://Assets/Towers/RangedTowerGirl2_icon.png" id="12_lj1pt"]
+[ext_resource type="Texture2D" uid="uid://biyivljupftby" path="res://Assets/Enemies/Untitled_Artwork-11.png" id="12_p3j78"]
+[ext_resource type="Texture2D" uid="uid://fpt6s3th4nfq" path="res://Assets/Enemies/Untitled_Artwork-12.png" id="13_eafx7"]
 [ext_resource type="Texture2D" uid="uid://x3mjf6tyivs5" path="res://Assets/Towers/RangedTowerBoy1_icon.png" id="13_gggqq"]
+[ext_resource type="Texture2D" uid="uid://cpgvln6ng35fw" path="res://Assets/Enemies/Untitled_Artwork-13.png" id="14_eoytj"]
+[ext_resource type="Texture2D" uid="uid://u3hjd5lglscr" path="res://Assets/Enemies/Untitled_Artwork-14.png" id="15_0mi5f"]
 [ext_resource type="Texture2D" uid="uid://p5r8g8bpef3a" path="res://Assets/UI/HPbar.jpg" id="15_2fqkj"]
+[ext_resource type="Texture2D" uid="uid://basx3pfclnkuf" path="res://Assets/Enemies/Untitled_Artwork-15.png" id="16_2pnfn"]
 [ext_resource type="FontFile" uid="uid://br1g4yrtam3xr" path="res://Assets/Fonts/m6x11.ttf" id="16_otjwt"]
+[ext_resource type="Texture2D" uid="uid://bf24iovfi83ej" path="res://Assets/Enemies/Untitled_Artwork-16.png" id="17_fkt1m"]
 [ext_resource type="Texture2D" uid="uid://d2ghinnku76lx" path="res://Assets/Icons/return.png" id="17_od0sx"]
 [ext_resource type="Texture2D" uid="uid://dknmpl7du0ofw" path="res://Assets/Enemies/PRTS.png" id="17_w277s"]
 [ext_resource type="Texture2D" uid="uid://cye4s3lnr31gu" path="res://Assets/Towers/ChickenDon_icon.png" id="18_jd04r"]
+[ext_resource type="Texture2D" uid="uid://cbjlns7vbni6b" path="res://Assets/Enemies/Untitled_Artwork-17.png" id="18_pxsi3"]
 [ext_resource type="Texture2D" uid="uid://crp3r2xqp5tc3" path="res://Assets/Icons/fastForward.png" id="18_spupq"]
 [ext_resource type="Texture2D" uid="uid://w3koertuxglx" path="res://Assets/Icons/pause.png" id="19_78aft"]
+[ext_resource type="Texture2D" uid="uid://dwilvdv2bv78k" path="res://Assets/Enemies/Untitled_Artwork-18.png" id="19_vf2ui"]
 [ext_resource type="Texture2D" uid="uid://d2ddhnm21a5gn" path="res://Assets/Icons/fastForward_red.png" id="20_0q0yg"]
+[ext_resource type="Texture2D" uid="uid://dhduwqft65wt4" path="res://Assets/Enemies/Untitled_Artwork-19.png" id="20_q6tmu"]
 [ext_resource type="Texture2D" uid="uid://b52i1tf2w03ea" path="res://Assets/Icons/forward.png" id="20_rr8m3"]
+[ext_resource type="Texture2D" uid="uid://dx8ew2mf4kaq0" path="res://Assets/Enemies/Untitled_Artwork-20.png" id="21_15j46"]
+[ext_resource type="Texture2D" uid="uid://c7qwb5igpiado" path="res://Assets/Enemies/Untitled_Artwork-21.png" id="22_fm0q7"]
 [ext_resource type="Script" uid="uid://b6nu2v0k46sfg" path="res://Scenes/MainScenes/TowerUI.cs" id="22_gggqq"]
 [ext_resource type="Script" uid="uid://s6nxfft1rx52" path="res://Scenes/MainScenes/DPManager.gd" id="23_otjwt"]
+[ext_resource type="Texture2D" uid="uid://cqi7srcfbmme3" path="res://Assets/Enemies/Untitled_Artwork-22.png" id="23_shyfe"]
+[ext_resource type="Texture2D" uid="uid://cmdjem2s6t8vw" path="res://Assets/Enemies/Untitled_Artwork-23.png" id="24_6jel5"]
+[ext_resource type="Texture2D" uid="uid://6vymivko8r7s" path="res://Assets/Enemies/Untitled_Artwork-24.png" id="25_uopeb"]
 [ext_resource type="Texture2D" uid="uid://h5g1u7n8ixm4" path="res://Assets/Icons/trashcan.png" id="26_od0sx"]
 [ext_resource type="Texture2D" uid="uid://ciaxppxnws426" path="res://Assets/Icons/trashcanOpen_red.png" id="27_spupq"]
 [ext_resource type="Texture2D" uid="uid://b7hgqo11wju8m" path="res://Assets/Icons/trashcanOpen.png" id="28_78aft"]
 [ext_resource type="Texture2D" uid="uid://qjrcgqdphc0w" path="res://Assets/Icons/cross.png" id="32_8qiig"]
 [ext_resource type="PackedScene" uid="uid://crbv7a1q6kijt" path="res://EndGameScreen.tscn" id="34_2fqkj"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_gx7g8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o4roe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o3048")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vhtei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_45d4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_00y0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_msgqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_58us1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oyq5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0068y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_am23t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p3j78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_eafx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_eoytj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0mi5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2pnfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fkt1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pxsi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_vf2ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_q6tmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_15j46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_fm0q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_shyfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6jel5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_uopeb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_7bv37")
+
+[node name="Animations" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Animations"]
+offset_right = 1280.0
+offset_bottom = 800.0
+
+[node name="Animation" type="AnimatedSprite2D" parent="Animations"]
+process_mode = 3
+position = Vector2(640, 400)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_gx7g8")
 
 [node name="Cutscenes" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -42,8 +159,8 @@ visible = false
 script = ExtResource("2_ymsrg")
 
 [node name="Images" type="TextureRect" parent="Cutscenes"]
-offset_right = 1282.0
-offset_bottom = 800.0
+offset_right = 2560.0
+offset_bottom = 1600.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_gggqq")
 

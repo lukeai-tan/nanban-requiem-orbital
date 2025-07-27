@@ -22,6 +22,7 @@ public partial class BossStageManager : Node2D
     private Node map;
     private Node endGameScreen;
     private Node dpBar;
+    private CanvasLayer animations;
 
     private BossWaveManager wave01;
     private BossWaveManager wave02;
@@ -50,6 +51,7 @@ public partial class BossStageManager : Node2D
 
         this.ui = GetNode("UI");
         this.cutscenes = GetNodeOrNull<BossDialogueManager>("Cutscenes");
+        this.animations = GetNodeOrNull<CanvasLayer>("Animations");
         this.buildBar = GetNode("UI/HUD/BuildBar");
         this.dpBar = GetNode("UI/HUD/DPBar");
 
@@ -291,11 +293,16 @@ public partial class BossStageManager : Node2D
 
     private async void PhaseTwo()
     {
+        Engine.TimeScale = 1.0;
+        this.ui.Call("uncheck_button");
         this.GetTree().Paused = true;
         this.wave01.Deactivate();
         this.wave02.Deactivate();
         this.wave03.Deactivate();
         this.ui.Call("toggle_ui");
+
+        this.animations.Visible = true;
+        this.animations.GetNodeOrNull<AnimatedSprite2D>("Animation").Play("default");
 
         List<Enemy> currlist = this.enemies;
         this.enemies = [];
@@ -318,6 +325,7 @@ public partial class BossStageManager : Node2D
         this.towerBuilder.Set("high_ground", this.map.GetNodeOrNull<TileMapLayer>("Phase2 High"));
 
         await ToSignal(GetTree().CreateTimer(3f, true, false, true), SceneTreeTimer.SignalName.Timeout);
+        this.animations.Visible = false;
         this.ui.Call("toggle_ui");
         this.GetTree().Paused = false;
     }

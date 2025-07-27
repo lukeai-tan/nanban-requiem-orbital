@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var tower_count = get_node("HUD/InfoBar/Tower Count")
 @onready var build_bar = get_node("HUD/BuildBar")
 @onready var quit_window = get_node("HUD/QuitWindow")
+@onready var ffbutton = get_node("HUD/GameControls/FastForward")
 
 var tower_builder
 var tower_manager
@@ -92,6 +93,9 @@ func _on_fast_forward_pressed() -> void:
 	else:
 		Engine.set_time_scale(game_speed)
 		GameData.time_scale = game_speed
+
+func uncheck_button():
+	ffbutton.button_pressed = false
 
 # Restart current scene Button
 func _on_restart_pressed() -> void:
