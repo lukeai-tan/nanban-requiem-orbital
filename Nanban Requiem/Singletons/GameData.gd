@@ -335,10 +335,7 @@ var wave_data = {
 	"Map3": [
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
+		["RocketSamurai", 1.0],
 		["RocketSamurai", 0.0],
 		["NightBorne", 10.0],
 		["WhiteSamurai", 1.0],
@@ -347,10 +344,9 @@ var wave_data = {
 		["WhiteSamurai", 1.0],
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
+		["RocketSamurai", 1.0],
 		["RocketSamurai", 0.0],
 		["RocketSamurai", 0.0],
-		["RocketSamurai", 0.0],
-		["NightBorne", 5.0],
 		["DemonSlime", 5.0]
 
 	],
